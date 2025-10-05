@@ -1,0 +1,29 @@
+name: Poster Instagram
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"  # toutes les 15 minutes
+  workflow_dispatch:         # pour déclencher manuellement si besoin
+
+jobs:
+  post_instagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Process Instagram Payloads
+        run: python process_payloads.py
+        env:
+          # Ici, tu dois ajouter tous les secrets possibles pour chaque compte
+          # Ex: pour "perso" et "client"
+          PERSO_ACCESS_TOKEN: ${{ secrets.PERSO_ACCESS_TOKEN }}
+          CLIENT_ACCESS_TOKEN: ${{ secrets.CLIENT_ACCESS_TOKEN }}
