@@ -25,5 +25,6 @@ jobs:
         env:
           # Ici, tu dois ajouter tous les secrets possibles pour chaque compte
           # Ex: pour "perso" et "client"
-          PERSO_ACCESS_TOKEN: ${{ secrets.PERSO_ACCESS_TOKEN }}
-          CLIENT_ACCESS_TOKEN: ${{ secrets.CLIENT_ACCESS_TOKEN }}
+          cyberpunk_ACCESS_TOKEN: ${{ secrets.cyberpunk_ACCESS_TOKEN }}
+          university_ACCESS_TOKEN: ${{ secrets.university_ACCESS_TOKEN }}
+          influencer_ACCESS_TOKEN: ${{ secrets.influencer_ACCESS_TOKEN }}
