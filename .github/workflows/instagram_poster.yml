@@ -21,7 +21,7 @@ jobs:
         run: pip install requests
 
       - name: Process Instagram Payloads
-        run: python process_payloads.py
+        run: python scripts/process_payloads.py
         env:
           # Ici, tu dois ajouter tous les secrets possibles pour chaque compte
           # Ex: pour "perso" et "client"
