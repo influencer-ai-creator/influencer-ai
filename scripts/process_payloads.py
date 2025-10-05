@@ -4,7 +4,11 @@ import requests
 import os
 import time
 
-payload_dir = pathlib.Path(__file__).parent / "instagram_payloads"
+payload_dir = pathlib.Path(__file__).parent.parent / "instagram_payloads"
+print("payload_dir :", payload_dir)
+print("Existe :", payload_dir.exists())
+print("Fichiers :", list(payload_dir.glob("*.json")))
+payload_dir.mkdir(exist_ok=True)
 published_file = pathlib.Path(__file__).parent / "published.json"
 
 # Charger l'état des posts déjà publiés
@@ -17,6 +21,7 @@ else:
 now = int(time.time())
 
 for payload_file in payload_dir.glob("*.json"):
+    print(f"Traitement de {payload_file}")
     with open(payload_file) as f:
         payload = json.load(f)
 
