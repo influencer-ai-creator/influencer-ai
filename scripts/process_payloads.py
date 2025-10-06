@@ -77,6 +77,17 @@ for payload_file in payload_dir.glob("*.json"):
             published.add(pub_id)
             with open(published_file, "w") as f:
                 json.dump(sorted(list(published)), f, indent=2)
+            # Commit & push l'état mis à jour
+            subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
+            subprocess.run(["git", "config", "user.email", "actions@github.com"], check=True)
+            subprocess.run(["git", "add", str(published_file)], check=True)
+
+            # On ne veut pas échouer si aucun changement (ex: double exécution)
+            subprocess.run(
+                ["git", "commit", "-m", f"update published.json after {pub_id}"],
+                check=False
+            )
+            subprocess.run(["git", "push"], check=True)
             break
         except requests.exceptions.RequestException as e:
             print(f"[{pub_id}] ⚠️ Erreur publication ({attempt}/3) : {e}")
@@ -87,4 +98,5 @@ for payload_file in payload_dir.glob("*.json"):
 # Sauvegarder l'état des posts publiés
 with open(published_file, "w") as f:
     json.dump(list(published), f)
+
 
