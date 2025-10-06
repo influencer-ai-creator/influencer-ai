@@ -3,6 +3,7 @@ import pathlib
 import requests
 import os
 import time
+import subprocess
 from datetime import datetime, timezone, timedelta
 
 payload_dir = pathlib.Path(__file__).parent.parent / "instagram_payloads"
@@ -98,5 +99,6 @@ for payload_file in payload_dir.glob("*.json"):
 # Sauvegarder l'état des posts publiés
 with open(published_file, "w") as f:
     json.dump(list(published), f)
+
 
 
