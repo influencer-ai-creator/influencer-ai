@@ -3,11 +3,9 @@ import pathlib
 import requests
 import os
 import time
+from datetime import datetime, timezone, timedelta
 
 payload_dir = pathlib.Path(__file__).parent.parent / "instagram_payloads"
-print("payload_dir :", payload_dir)
-print("Existe :", payload_dir.exists())
-print("Fichiers :", list(payload_dir.glob("*.json")))
 payload_dir.mkdir(exist_ok=True)
 published_file = pathlib.Path(__file__).parent / "published.json"
 
@@ -44,7 +42,11 @@ for payload_file in payload_dir.glob("*.json"):
 
     # Vérifier si c'est le moment de publier
     if next_time > now:
-        print(f"[{pub_id}] ⏳ Pas encore l'heure (prochaine publication à {next_time})")
+        # Fuseau suisse : UTC+1 en hiver, UTC+2 en été
+        # Pour simplifier, ici on utilise UTC+2 (CEST) ; pour gérer automatiquement l'heure d'été, utiliser pytz ou zoneinfo
+        swiss_time = datetime.fromtimestamp(next_time, tz=timezone.utc) + timedelta(hours=2)
+
+        print(f"[{pub_id}] ⏳ Pas encore l'heure (prochaine publication à {swiss_time.strftime('%Y-%m-%d %H:%M:%S')})")
         continue
 
     # Créer conteneur média
