@@ -75,6 +75,8 @@ for payload_file in payload_dir.glob("*.json"):
             publish_r.raise_for_status()
             print(f"[{pub_id}] ✅ Publication envoyée : {publish_r.json()}")
             published.add(pub_id)
+            with open(published_file, "w") as f:
+                json.dump(sorted(list(published)), f, indent=2)
             break
         except requests.exceptions.RequestException as e:
             print(f"[{pub_id}] ⚠️ Erreur publication ({attempt}/3) : {e}")
@@ -85,3 +87,4 @@ for payload_file in payload_dir.glob("*.json"):
 # Sauvegarder l'état des posts publiés
 with open(published_file, "w") as f:
     json.dump(list(published), f)
+
