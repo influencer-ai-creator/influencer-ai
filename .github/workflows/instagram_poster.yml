@@ -8,23 +8,30 @@ on:
 jobs:
   post_instagram:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write        # ✅ donne le droit d'écriture pour le commit/push
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # ✅ version la plus récente
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ autorise le push
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: Install requests
+      - name: Install dependencies
         run: pip install requests
 
       - name: Process Instagram Payloads
-        run: python scripts/process_payloads.py
         env:
-          # Ici, tu dois ajouter tous les secrets possibles pour chaque compte
-          # Ex: pour "perso" et "client"
+          # ✅ Tes tokens d'accès pour les comptes
           CYBERPUNK_ACCESS_TOKEN: ${{ secrets.CYBERPUNK_ACCESS_TOKEN }}
           UNIVERSITY_ACCESS_TOKEN: ${{ secrets.UNIVERSITY_ACCESS_TOKEN }}
           INFLUENCER_ACCESS_TOKEN: ${{ secrets.INFLUENCER_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ nécessaire pour push
+        run: |
+          echo "🔄 Lancement du script de publication Instagram..."
+          python scripts/process_payloads.py
