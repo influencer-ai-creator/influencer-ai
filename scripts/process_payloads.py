@@ -29,7 +29,7 @@ for payload_file in payload_dir.glob("*.json"):
     image_url = payload["image_url"]
     caption = payload["caption"]
     instagram_id = payload["instagram_id"]
-    facebook_id = payload["facebook_id"]
+    facebook_id = payload.get("facebook_id")  # None si absent
     next_time = int(payload["next_time"])
 
     if pub_id in published:
