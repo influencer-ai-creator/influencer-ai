@@ -29,6 +29,7 @@ for payload_file in payload_dir.glob("*.json"):
     image_url = payload["image_url"]
     caption = payload["caption"]
     instagram_id = payload["instagram_id"]
+    facebook_id = payload["facebook_id"]
     next_time = int(payload["next_time"])
 
     if pub_id in published:
@@ -50,7 +51,7 @@ for payload_file in payload_dir.glob("*.json"):
         print(f"[{pub_id}] ⏳ Pas encore l'heure (prochaine publication à {swiss_time.strftime('%Y-%m-%d %H:%M:%S')})")
         continue
 
-    # Créer conteneur média
+    # --- Publier sur Instagram ---
     media_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
     media_params = {
         "image_url": image_url,
@@ -61,12 +62,11 @@ for payload_file in payload_dir.glob("*.json"):
         r = requests.post(media_url, data=media_params)
         r.raise_for_status()
         media_id = r.json()["id"]
-        print(f"[{pub_id}] ✅ Conteneur média créé : {media_id}")
+        print(f"[{pub_id}] ✅ Conteneur média Instagram créé : {media_id}")
     except requests.exceptions.RequestException as e:
-        print(f"[{pub_id}] ⚠️ Erreur création média : {e}")
+        print(f"[{pub_id}] ⚠️ Erreur création média Instagram : {e}")
         continue
 
-    # Publier avec 3 retries
     publish_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
     publish_params = {"creation_id": media_id, "access_token": access_token}
 
@@ -74,31 +74,45 @@ for payload_file in payload_dir.glob("*.json"):
         try:
             publish_r = requests.post(publish_url, data=publish_params)
             publish_r.raise_for_status()
-            print(f"[{pub_id}] ✅ Publication envoyée : {publish_r.json()}")
-            published.add(pub_id)
-            with open(published_file, "w") as f:
-                json.dump(sorted(list(published)), f, indent=2)
-            # Commit & push l'état mis à jour
-            subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
-            subprocess.run(["git", "config", "user.email", "actions@github.com"], check=True)
-            subprocess.run(["git", "add", str(published_file)], check=True)
-
-            # On ne veut pas échouer si aucun changement (ex: double exécution)
-            subprocess.run(
-                ["git", "commit", "-m", f"update published.json after {pub_id}"],
-                check=False
-            )
-            subprocess.run(["git", "push"], check=True)
+            print(f"[{pub_id}] ✅ Publication Instagram envoyée : {publish_r.json()}")
             break
         except requests.exceptions.RequestException as e:
-            print(f"[{pub_id}] ⚠️ Erreur publication ({attempt}/3) : {e}")
+            print(f"[{pub_id}] ⚠️ Erreur publication Instagram ({attempt}/3) : {e}")
             time.sleep(5)
     else:
-        print(f"[{pub_id}] ❌ Échec après 3 essais")
+        print(f"[{pub_id}] ❌ Échec Instagram après 3 essais")
+        continue
 
-# Sauvegarder l'état des posts publiés
-with open(published_file, "w") as f:
-    json.dump(list(published), f)
+    # --- Publier sur Facebook ---
+    if facebook_id:
+        fb_url = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
+        fb_params = {
+            "url": image_url,
+            "caption": caption,
+            "access_token": access_token
+        }
+        for attempt in range(1, 4):
+            try:
+                fb_r = requests.post(fb_url, data=fb_params)
+                fb_r.raise_for_status()
+                print(f"[{pub_id}] ✅ Publication Facebook envoyée : {fb_r.json()}")
+                break
+            except requests.exceptions.RequestException as e:
+                print(f"[{pub_id}] ⚠️ Erreur publication Facebook ({attempt}/3) : {e}")
+                time.sleep(5)
+        else:
+            print(f"[{pub_id}] ❌ Échec Facebook après 3 essais")
 
+    # --- Mettre à jour published.json ---
+    published.add(pub_id)
+    with open(published_file, "w") as f:
+        json.dump(sorted(list(published)), f, indent=2)
+
+    # Commit & push GitHub
+    subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
+    subprocess.run(["git", "config", "user.email", "actions@github.com"], check=True)
+    subprocess.run(["git", "add", str(published_file)], check=True)
+    subprocess.run(["git", "commit", "-m", f"update published.json after {pub_id}"], check=False)
+    subprocess.run(["git", "push"], check=True)
 
 
