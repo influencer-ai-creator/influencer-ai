@@ -33,6 +33,7 @@ jobs:
           INFLUENCER_ACCESS_TOKEN: ${{ secrets.INFLUENCER_ACCESS_TOKEN }}
           MEOWGINEEREDAI_ACCESS_TOKEN: ${{ secrets.MEOWGINEEREDAI_ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ nécessaire pour push
+          SUNDRESS_ACCESS_TOKEN: ${{ secrets.SUNDRESS_ACCESS_TOKEN }}
         run: |
           echo "🔄 Lancement du script de publication Instagram..."
           python scripts/process_payloads.py
