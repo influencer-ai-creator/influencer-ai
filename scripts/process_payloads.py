@@ -129,11 +129,17 @@ for payload_file in payload_dir.glob("*.json"):
     except Exception as e:
         print(f"⚠️ Impossible de supprimer l'image {image_file} : {e}")
 
-    # Commit & push GitHub
-    subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
-    subprocess.run(["git", "config", "user.email", "actions@github.com"], check=True)
-    subprocess.run(["git", "add", str(published_file)], check=True)
-    subprocess.run(["git", "commit", "-m", f"update published.json after {pub_id}"], check=False)
-    subprocess.run(["git", "push"], check=True)
+    # --- Commit & push GitHub (pull avant push pour éviter conflit) ---
+    repo_path = pathlib.Path(__file__).parent.parent
+    try:
+        subprocess.run(["git", "config", "user.name", "github-actions"], cwd=repo_path, check=True)
+        subprocess.run(["git", "config", "user.email", "actions@github.com"], cwd=repo_path, check=True)
+        subprocess.run(["git", "add", "-A"], cwd=repo_path, check=True)
+        subprocess.run(["git", "commit", "-m", f"update published.json after {pub_id}"], cwd=repo_path, check=False)
+        subprocess.run(["git", "pull", "--no-rebase"], cwd=repo_path, check=True)
+        subprocess.run(["git", "push"], cwd=repo_path, check=True)
+        print(f"✅ Commit & push effectués pour {pub_id}")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ Erreur lors du commit/push : {e}")
 
 
