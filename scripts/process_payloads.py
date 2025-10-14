@@ -110,6 +110,25 @@ for payload_file in payload_dir.glob("*.json"):
     with open(published_file, "w") as f:
         json.dump(sorted(list(published)), f, indent=2)
 
+        # --- Nettoyage : supprimer le payload et l'image ---
+    try:
+        # Supprimer le payload JSON
+        payload_file.unlink()
+        print(f"🗑️ Payload supprimé : {payload_file}")
+    except Exception as e:
+        print(f"⚠️ Impossible de supprimer le payload {payload_file} : {e}")
+
+    try:
+        # Supprimer l'image dans <compte>/to_publish/image_XXX
+        compte_dir = pathlib.Path(__file__).parent.parent / folder.lower() / "to_publish"
+        image_name = pathlib.Path(payload["image_url"]).name  # ex: image_239.png
+        image_file = compte_dir / image_name
+        if image_file.exists():
+            image_file.unlink()
+            print(f"🗑️ Image supprimée : {image_file}")
+    except Exception as e:
+        print(f"⚠️ Impossible de supprimer l'image {image_file} : {e}")
+
     # Commit & push GitHub
     subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
     subprocess.run(["git", "config", "user.email", "actions@github.com"], check=True)
