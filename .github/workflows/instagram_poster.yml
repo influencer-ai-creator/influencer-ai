@@ -27,13 +27,25 @@ jobs:
 
       - name: Process Instagram Payloads
         env:
-          # ✅ Tes tokens d'accès pour les comptes
+          # ✅ Tokens d'accès (secrets)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ nécessaire pour push
           CYBERPUNK_ACCESS_TOKEN: ${{ secrets.CYBERPUNK_ACCESS_TOKEN }}
           UNIVERSITY_ACCESS_TOKEN: ${{ secrets.UNIVERSITY_ACCESS_TOKEN }}
           INFLUENCER_ACCESS_TOKEN: ${{ secrets.INFLUENCER_ACCESS_TOKEN }}
           MEOWGINEEREDAI_ACCESS_TOKEN: ${{ secrets.MEOWGINEEREDAI_ACCESS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ nécessaire pour push
           SUNDRESS_ACCESS_TOKEN: ${{ secrets.SUNDRESS_ACCESS_TOKEN }}
+          # ℹ️ IDs Facebook / Instagram (variables GitHub)
+          CYBERPUNK_FACEBOOK_ID: ${{ vars.CYBERPUNK_FACEBOOK_ID }}
+          CYBERPUNK_INSTAGRAM_ID: ${{ vars.CYBERPUNK_INSTAGRAM_ID }}
+          UNIVERSITY_FACEBOOK_ID: ${{ vars.UNIVERSITY_FACEBOOK_ID }}
+          UNIVERSITY_INSTAGRAM_ID: ${{ vars.UNIVERSITY_INSTAGRAM_ID }}
+          INFLUENCER_FACEBOOK_ID: ${{ vars.INFLUENCER_FACEBOOK_ID }}
+          INFLUENCER_INSTAGRAM_ID: ${{ vars.INFLUENCER_INSTAGRAM_ID }}
+          MEOWGINEEREDAI_FACEBOOK_ID: ${{ vars.MEOWGINEEREDAI_FACEBOOK_ID }}
+          MEOWGINEEREDAI_INSTAGRAM_ID: ${{ vars.MEOWGINEEREDAI_INSTAGRAM_ID }}
+          SUNDRESS_FACEBOOK_ID: ${{ vars.SUNDRESS_FACEBOOK_ID }}
+          SUNDRESS_INSTAGRAM_ID: ${{ vars.SUNDRESS_INSTAGRAM_ID }}
+
         run: |
           echo "🔄 Lancement du script de publication Instagram..."
           python scripts/process_payloads.py

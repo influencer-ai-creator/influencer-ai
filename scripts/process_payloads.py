@@ -28,12 +28,7 @@ for payload_file in payload_dir.glob("*.json"):
     pub_id = payload["pub_id"]
     image_url = payload["image_url"]
     caption = payload["caption"]
-    instagram_id = payload["instagram_id"]
-    facebook_id = payload.get("facebook_id")  # None si absent
     next_time = int(payload["next_time"])
-
-    if pub_id in published:
-        continue  # déjà publié
 
     # Récupérer le secret depuis l'environnement
     secret_name = f"{folder.upper()}_ACCESS_TOKEN"
@@ -41,6 +36,13 @@ for payload_file in payload_dir.glob("*.json"):
     if not access_token:
         print(f"❌ Secret {secret_name} introuvable, post {pub_id} ignoré")
         continue
+
+     # --- Récupérer les IDs depuis les variables GitHub ---
+    instagram_id = os.environ.get(f"{folder}_INSTAGRAM_ID") or payload.get("instagram_id")
+    facebook_id = os.environ.get(f"{folder}_FACEBOOK_ID") or payload.get("facebook_id")
+
+    if pub_id in published:
+        continue  # déjà publié
 
     # Vérifier si c'est le moment de publier
     if next_time > now:
