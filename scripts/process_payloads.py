@@ -38,9 +38,10 @@ for payload_file in payload_dir.glob("*.json"):
         continue
 
      # --- Récupérer les IDs depuis les variables GitHub ---
-    instagram_id = os.environ.get(f"{folder}_INSTAGRAM_ID")
-    facebook_id = os.environ.get(f"{folder}_FACEBOOK_ID")
-
+    # --- Récupérer les IDs depuis les variables GitHub ---
+    folder_upper = folder.upper()
+    instagram_id = os.environ.get(f"{folder_upper}_INSTAGRAM_ID")
+    facebook_id = os.environ.get(f"{folder_upper}_FACEBOOK_ID")
     if pub_id in published:
         continue  # déjà publié
 
