@@ -38,8 +38,8 @@ for payload_file in payload_dir.glob("*.json"):
         continue
 
      # --- Récupérer les IDs depuis les variables GitHub ---
-    instagram_id = os.environ.get(f"{folder}_INSTAGRAM_ID") or payload.get("instagram_id")
-    facebook_id = os.environ.get(f"{folder}_FACEBOOK_ID") or payload.get("facebook_id")
+    instagram_id = os.environ.get(f"{folder}_INSTAGRAM_ID")
+    facebook_id = os.environ.get(f"{folder}_FACEBOOK_ID")
 
     if pub_id in published:
         continue  # déjà publié
@@ -54,36 +54,40 @@ for payload_file in payload_dir.glob("*.json"):
         continue
 
     # --- Publier sur Instagram ---
-    media_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
-    media_params = {
-        "image_url": image_url,
-        "caption": caption,
-        "access_token": access_token
-    }
-    try:
-        r = requests.post(media_url, data=media_params)
-        r.raise_for_status()
-        media_id = r.json()["id"]
-        print(f"[{pub_id}] ✅ Conteneur média Instagram créé : {media_id}")
-    except requests.exceptions.RequestException as e:
-        print(f"[{pub_id}] ⚠️ Erreur création média Instagram : {e}")
+    if not instagram_id:
+        print(f"❌ Aucun instagram_id trouvé pour {folder}, post {pub_id} ignoré")
         continue
-
-    publish_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
-    publish_params = {"creation_id": media_id, "access_token": access_token}
-
-    for attempt in range(1, 4):
-        try:
-            publish_r = requests.post(publish_url, data=publish_params)
-            publish_r.raise_for_status()
-            print(f"[{pub_id}] ✅ Publication Instagram envoyée : {publish_r.json()}")
-            break
-        except requests.exceptions.RequestException as e:
-            print(f"[{pub_id}] ⚠️ Erreur publication Instagram ({attempt}/3) : {e}")
-            time.sleep(5)
     else:
-        print(f"[{pub_id}] ❌ Échec Instagram après 3 essais")
-        continue
+        media_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+        media_params = {
+            "image_url": image_url,
+            "caption": caption,
+            "access_token": access_token
+        }
+        try:
+            r = requests.post(media_url, data=media_params)
+            r.raise_for_status()
+            media_id = r.json()["id"]
+            print(f"[{pub_id}] ✅ Conteneur média Instagram créé : {media_id}")
+        except requests.exceptions.RequestException as e:
+            print(f"[{pub_id}] ⚠️ Erreur création média Instagram : {e}")
+            continue
+
+        publish_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+        publish_params = {"creation_id": media_id, "access_token": access_token}
+
+        for attempt in range(1, 4):
+            try:
+                publish_r = requests.post(publish_url, data=publish_params)
+                publish_r.raise_for_status()
+                print(f"[{pub_id}] ✅ Publication Instagram envoyée : {publish_r.json()}")
+                break
+            except requests.exceptions.RequestException as e:
+                print(f"[{pub_id}] ⚠️ Erreur publication Instagram ({attempt}/3) : {e}")
+                time.sleep(5)
+        else:
+            print(f"[{pub_id}] ❌ Échec Instagram après 3 essais")
+            continue
 
     # --- Publier sur Facebook ---
     if facebook_id:
