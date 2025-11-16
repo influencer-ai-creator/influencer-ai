@@ -9,7 +9,6 @@ from datetime import datetime, timezone, timedelta
 payload_dir = pathlib.Path(__file__).parent.parent / "instagram_payloads"
 payload_dir.mkdir(exist_ok=True)
 published_file = pathlib.Path(__file__).parent / "published.json"
-errors = []
 
 # Charger l'état des posts déjà publiés
 if published_file.exists():
@@ -88,9 +87,7 @@ for payload_file in payload_dir.glob("*.json"):
                 print(f"[{pub_id}] ⚠️ Erreur publication Instagram ({attempt}/3) : {e}")
                 time.sleep(5)
         else:
-            err = f"{folder}: échec Instagram pour {pub_id} après 3 essais"
-            print("❌ " + err)
-            errors.append(err)
+            print(f"[{pub_id}] ❌ Échec Instagram après 3 essais")
             continue
 
     # --- Publier sur Facebook ---
@@ -111,9 +108,7 @@ for payload_file in payload_dir.glob("*.json"):
                 print(f"[{pub_id}] ⚠️ Erreur publication Facebook ({attempt}/3) : {e}")
                 time.sleep(5)
         else:
-            err = f"{folder}: échec Facebook pour {pub_id} après 3 essais"
-            print("❌ " + err)
-            errors.append(err)
+            print(f"[{pub_id}] ❌ Échec Facebook après 3 essais")
 
     # --- Mettre à jour published.json ---
     published.add(pub_id)
@@ -151,13 +146,5 @@ for payload_file in payload_dir.glob("*.json"):
         print(f"✅ Commit & push effectués pour {pub_id}")
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Erreur lors du commit/push : {e}")
-
-if errors:
-    print("\n=== ERREURS DÉTECTÉES ===")
-    for e in errors:
-        print(" - " + e)
-    raise SystemExit("\n❌ Problèmes détectés : " + ", ".join(errors))
-else:
-    print("✅ Aucune erreur détectée")
 
 
