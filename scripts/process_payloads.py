@@ -38,7 +38,6 @@ for payload_file in payload_dir.glob("*.json"):
         print(f"❌ Secret {secret_name} introuvable, post {pub_id} ignoré")
         continue
 
-     # --- Récupérer les IDs depuis les variables GitHub ---
     # --- Récupérer les IDs depuis les variables GitHub ---
     folder_upper = folder.upper()
     instagram_id = os.environ.get(f"{folder_upper}_INSTAGRAM_ID")
@@ -72,7 +71,8 @@ for payload_file in payload_dir.glob("*.json"):
             media_id = r.json()["id"]
             print(f"[{pub_id}] ✅ Conteneur média Instagram créé : {media_id}")
         except requests.exceptions.RequestException as e:
-            print(f"[{pub_id}] ⚠️ Erreur création média Instagram : {e}")
+            err = f"{folder}: échec création média Instagram pour {pub_id} -> {e}"
+            errors.append(err)
             continue
 
         publish_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
