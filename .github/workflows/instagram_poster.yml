@@ -1,0 +1,51 @@
+name: Poster Instagram
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"  # toutes les 15 minutes
+  workflow_dispatch:         # pour déclencher manuellement si besoin
+
+jobs:
+  post_instagram:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # ✅ donne le droit d'écriture pour le commit/push
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4   # ✅ version la plus récente
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ autorise le push
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Process Instagram Payloads
+        env:
+          # ✅ Tokens d'accès (secrets)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # ✅ nécessaire pour push
+          CYBERPUNK_ACCESS_TOKEN: ${{ secrets.CYBERPUNK_ACCESS_TOKEN }}
+          UNIVERSITY_ACCESS_TOKEN: ${{ secrets.UNIVERSITY_ACCESS_TOKEN }}
+          INFLUENCER_ACCESS_TOKEN: ${{ secrets.INFLUENCER_ACCESS_TOKEN }}
+          MEOWGINEEREDAI_ACCESS_TOKEN: ${{ secrets.MEOWGINEEREDAI_ACCESS_TOKEN }}
+          SUNDRESS_ACCESS_TOKEN: ${{ secrets.SUNDRESS_ACCESS_TOKEN }}
+          # ℹ️ IDs Facebook / Instagram (variables GitHub)
+          CYBERPUNK_FACEBOOK_ID: ${{ vars.CYBERPUNK_FACEBOOK_ID }}
+          CYBERPUNK_INSTAGRAM_ID: ${{ vars.CYBERPUNK_INSTAGRAM_ID }}
+          UNIVERSITY_FACEBOOK_ID: ${{ vars.UNIVERSITY_FACEBOOK_ID }}
+          UNIVERSITY_INSTAGRAM_ID: ${{ vars.UNIVERSITY_INSTAGRAM_ID }}
+          INFLUENCER_FACEBOOK_ID: ${{ vars.INFLUENCER_FACEBOOK_ID }}
+          INFLUENCER_INSTAGRAM_ID: ${{ vars.INFLUENCER_INSTAGRAM_ID }}
+          MEOWGINEEREDAI_FACEBOOK_ID: ${{ vars.MEOWGINEEREDAI_FACEBOOK_ID }}
+          MEOWGINEEREDAI_INSTAGRAM_ID: ${{ vars.MEOWGINEEREDAI_INSTAGRAM_ID }}
+          SUNDRESS_FACEBOOK_ID: ${{ vars.SUNDRESS_FACEBOOK_ID }}
+          SUNDRESS_INSTAGRAM_ID: ${{ vars.SUNDRESS_INSTAGRAM_ID }}
+
+        run: |
+          echo "🔄 Lancement du script de publication Instagram..."
+          python scripts/process_payloads.py
