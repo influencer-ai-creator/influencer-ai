@@ -152,6 +152,28 @@ for payload_file in payload_dir.glob("*.json"):
     except subprocess.CalledProcessError as e:
         print(f"⚠️ Erreur lors du commit/push : {e}")
 
+# --- Vérifier les comptes sans aucune publication restante ---
+comptes_avec_payloads = set()
+for payload_file in payload_dir.glob("*.json"):
+    try:
+        with open(payload_file) as f:
+            p = json.load(f)
+        comptes_avec_payloads.add(p["compte"])
+    except Exception:
+        pass
+
+# Récupérer tous les comptes connus via les variables d'environnement
+comptes_connus = set()
+for key in os.environ:
+    if key.endswith("_ACCESS_TOKEN"):
+        comptes_connus.add(key.replace("_ACCESS_TOKEN", "").lower())
+
+for compte in comptes_connus:
+    if compte not in comptes_avec_payloads:
+        err = f"{compte}: aucune publication restante dans la liste d'attente"
+        print("⚠️ " + err)
+        errors.append(err)
+
 if errors:
     print("\n=== ERREURS DÉTECTÉES ===")
     for e in errors:
