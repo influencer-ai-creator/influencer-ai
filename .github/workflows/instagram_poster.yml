@@ -34,7 +34,7 @@ jobs:
           INFLUENCER_ACCESS_TOKEN: ${{ secrets.INFLUENCER_ACCESS_TOKEN }}
           MEOWGINEEREDAI_ACCESS_TOKEN: ${{ secrets.MEOWGINEEREDAI_ACCESS_TOKEN }}
           SUNDRESS_ACCESS_TOKEN: ${{ secrets.SUNDRESS_ACCESS_TOKEN }}
-          IA_Actus_ACCESS_TOKEN: ${{ secrets.IA_Actus_ACCESS_TOKEN }}
+          IA_ACTUS_ACCESS_TOKEN: ${{ secrets.IA_Actus_ACCESS_TOKEN }}
           # ℹ️ IDs Facebook / Instagram (variables GitHub)
           CYBERPUNK_FACEBOOK_ID: ${{ vars.CYBERPUNK_FACEBOOK_ID }}
           CYBERPUNK_INSTAGRAM_ID: ${{ vars.CYBERPUNK_INSTAGRAM_ID }}
@@ -46,8 +46,8 @@ jobs:
           MEOWGINEEREDAI_INSTAGRAM_ID: ${{ vars.MEOWGINEEREDAI_INSTAGRAM_ID }}
           SUNDRESS_FACEBOOK_ID: ${{ vars.SUNDRESS_FACEBOOK_ID }}
           SUNDRESS_INSTAGRAM_ID: ${{ vars.SUNDRESS_INSTAGRAM_ID }}
-          IA_Actus_FACEBOOK_ID: ${{ vars.IA_Actus_FACEBOOK_ID }}
-          IA_Actus_INSTAGRAM_ID: ${{ vars.IA_Actus_INSTAGRAM_ID }}
+          IA_ACTUS_FACEBOOK_ID: ${{ vars.IA_Actus_FACEBOOK_ID }}
+          IA_ACTUS_INSTAGRAM_ID: ${{ vars.IA_Actus_INSTAGRAM_ID }}
 
         run: |
           echo "🔄 Lancement du script de publication Instagram..."
