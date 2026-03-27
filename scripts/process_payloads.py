@@ -93,6 +93,31 @@ for payload_file in payload_dir.glob("*.json"):
             errors.append(err)
             continue
 
+        print(f"[{pub_id}] 📸 Tentative de publication en Story...")
+        story_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+        story_params = {
+            "image_url": image_url,
+            "media_type": "STORIES",  # Indispensable pour le format Story
+            "access_token": access_token
+        }
+        
+        try:
+            rs = requests.post(story_url, data=story_params)
+            rs.raise_for_status()
+            story_media_id = rs.json()["id"]
+            
+            # Publication du conteneur Story
+            publish_story_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+            publish_story_params = {"creation_id": story_media_id, "access_token": access_token}
+            
+            # On tente la publication de la story (avec un petit délai car le traitement image est parfois long)
+            time.sleep(2)
+            rs_pub = requests.post(publish_story_url, data=publish_story_params)
+            rs_pub.raise_for_status()
+            print(f"[{pub_id}] ✅ Story Instagram publiée")
+        except requests.exceptions.RequestException as e:
+            print(f"[{pub_id}] ⚠️ Échec Story (mais le post principal a fonctionné) : {e}")
+
     # --- Publier sur Facebook ---
     if facebook_id:
         fb_url = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
