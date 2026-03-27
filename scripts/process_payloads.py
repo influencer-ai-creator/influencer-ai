@@ -158,7 +158,7 @@ for payload_file in payload_dir.glob("*.json"):
     try:
         with open(payload_file) as f:
             p = json.load(f)
-        comptes_avec_payloads.add(p["compte"])
+        comptes_avec_payloads.add(p["compte"].lower())
     except Exception:
         pass
 
