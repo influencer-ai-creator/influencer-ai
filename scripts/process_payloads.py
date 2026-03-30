@@ -21,49 +21,66 @@ if published_file.exists():
         published = set(json.load(f))
 else:
     published = set()
-
 def generate_dashboard(payload_dir, published_count):
-    """Génère un fichier README.md à la racine avec les posts restants."""
-    payloads_restants = []
+    """Génère un dashboard résumé par compte utilisateur."""
+    stats_comptes = {}
     
-    # Scanner les publications encore en attente (triées par date)
-    for p_file in sorted(payload_dir.glob("*.json")):
+    # Parcourir tous les fichiers pour agréger par compte
+    for p_file in payload_dir.glob("*.json"):
         try:
             with open(p_file) as f:
                 data = json.load(f)
-                # Heure suisse (UTC+2 pour l'été 2026)
-                dt = datetime.fromtimestamp(int(data["next_time"]), tz=timezone.utc) + timedelta(hours=2)
-                payloads_restants.append({
-                    "compte": data["compte"],
-                    "date": dt.strftime('%Y-%m-%d %H:%M'),
-                    "id": data["pub_id"],
-                    "image": data.get("image_url", "")
-                })
-        except Exception as e:
-            print(f"⚠️ Erreur lecture dashboard pour {p_file}: {e}")
+                compte = data["compte"].upper()
+                ts = int(data["next_time"])
+                
+                if compte not in stats_comptes:
+                    stats_comptes[compte] = {
+                        "count": 0,
+                        "first": ts,
+                        "last": ts,
+                        "thumb": data.get("image_url", "")
+                    }
+                
+                stats_comptes[compte]["count"] += 1
+                if ts < stats_comptes[compte]["first"]:
+                    stats_comptes[compte]["first"] = ts
+                    stats_comptes[compte]["thumb"] = data.get("image_url", "") # Image du prochain post
+                if ts > stats_comptes[compte]["last"]:
+                    stats_comptes[compte]["last"] = ts
+        except:
+            continue
 
-    # Construction du contenu Markdown
+    # Construction du Markdown
     md_content = f"# 📊 Dashboard de Publication\n\n"
-    md_content += f"Dernière mise à jour : **{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}** (Heure Suisse)\n\n"
-    md_content += f"✅ **Posts déjà publiés au total :** {published_count}\n\n"
+    md_content += f"Dernière mise à jour : **{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}**\n\n"
+    md_content += f"✅ **Total publiés historiquement :** {published_count}\n\n"
     
-    if not payloads_restants:
-        md_content += "### 🎉 Toutes les publications sont terminées !\n"
-        md_content += "La file d'attente est vide.\n"
+    if not stats_comptes:
+        md_content += "### 🎉 Toutes les files d'attente sont vides !\n"
     else:
-        md_content += "### ⏳ File d'attente ({})\n".format(len(payloads_restants))
-        md_content += "| Compte | Date de Publication | ID | Aperçu |\n"
-        md_content += "| :--- | :--- | :--- | :--- |\n"
+        md_content += "### 📱 État des comptes\n"
+        md_content += "| Compte | Posts en attente | Prochaine publication | Fin de programmation | Aperçu prochain |\n"
+        md_content += "| :--- | :---: | :--- | :--- | :---: |\n"
         
-        for p in payloads_restants:
-            thumb = f"<img src='{p['image']}' width='60'>" if p['image'] else "N/A"
-            md_content += f"| **{p['compte'].upper()}** | {p['date']} | `{p['id']}` | {thumb} |\n"
+        # Trier par nom de compte
+        for compte in sorted(stats_comptes.keys()):
+            s = stats_comptes[compte]
+            # Conversion des dates
+            date_next = (datetime.fromtimestamp(s["first"], tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
+            date_last = (datetime.fromtimestamp(s["last"], tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
+            
+            # Alerte visuelle si peu de posts restants
+            count_display = f"**{s['count']}**" if s['count'] > 5 else f"⚠️ **{s['count']}**"
+            
+            thumb = f"<img src='{s['thumb']}' width='50'>" if s['thumb'] else "N/A"
+            
+            md_content += f"| {compte} | {count_display} | {date_next} | {date_last} | {thumb} |\n"
 
-    # Écriture du README à la racine du repo
-    readme_path = base_dir / "README.md"
+    # Écriture
+    readme_path = pathlib.Path(__file__).parent.parent / "README.md"
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(md_content)
-    print("📝 Dashboard README mis à jour localement.")
+    print("📝 Dashboard résumé mis à jour.")
 
 # ==========================================
 # BOUCLE DE PUBLICATION
