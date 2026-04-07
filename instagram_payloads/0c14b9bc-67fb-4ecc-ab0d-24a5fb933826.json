@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "0c14b9bc-67fb-4ecc-ab0d-24a5fb933826", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1382.png", "caption": "Golden hour breeze whispers secrets of the coast... \ud83c\udf0a\u2728 #Maya #SpringFashion #BeachGlow", "next_time": 1777996800}
+{
+    "compte": "influencer",
+    "pub_id": "0c14b9bc-67fb-4ecc-ab0d-24a5fb933826",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1382.png",
+    "caption": "Golden hour breeze whispers secrets of the coast... 🌊✨ #Maya #SpringFashion #BeachGlow",
+    "next_time": 1777996800,
+    "media_type": "IMAGE"
+}

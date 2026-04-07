@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "76870924-badb-4820-957f-c6e7356fd4d5", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1325.png", "caption": "Sunset vibes on the coast! \ud83c\udf05 Feeling bold and free in this gorgeous spring breeze. #Fashion #Travel #Spring #Exotic", "next_time": 1775876992}
+{
+    "compte": "influencer",
+    "pub_id": "76870924-badb-4820-957f-c6e7356fd4d5",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1325.png",
+    "caption": "Sunset vibes on the coast! 🌅 Feeling bold and free in this gorgeous spring breeze. #Fashion #Travel #Spring #Exotic",
+    "next_time": 1775876992,
+    "media_type": "IMAGE"
+}

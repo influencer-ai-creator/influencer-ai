@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "b5e65995-d4d8-4a80-9409-228ec5dab30d", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1430.png", "caption": "Ocean breezes and golden light \ud83c\udf0a\u2728 Capturing this effortless spring magic \u2728 #CoastalChic #SpringVibes", "next_time": 1778774400}
+{
+    "compte": "influencer",
+    "pub_id": "b5e65995-d4d8-4a80-9409-228ec5dab30d",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1430.png",
+    "caption": "Ocean breezes and golden light 🌊✨ Capturing this effortless spring magic ✨ #CoastalChic #SpringVibes",
+    "next_time": 1778774400,
+    "media_type": "IMAGE"
+}
