@@ -1,3 +1,5 @@
+#process_payloads.py
+
 import json
 import pathlib
 import requests
@@ -21,80 +23,169 @@ if published_file.exists():
         published = set(json.load(f))
 else:
     published = set()
+
+
 def generate_dashboard(payload_dir, published_count):
     """Génère un dashboard résumé par compte utilisateur."""
     stats_comptes = {}
-    
-    # Parcourir tous les fichiers pour agréger par compte
+
     for p_file in payload_dir.glob("*.json"):
         try:
             with open(p_file) as f:
                 data = json.load(f)
                 compte = data["compte"].upper()
-                ts = int(data["next_time"])
-                
+                ts     = int(data["next_time"])
+
                 if compte not in stats_comptes:
                     stats_comptes[compte] = {
                         "count": 0,
                         "first": ts,
-                        "last": ts,
-                        "thumb": data.get("image_url", "")
+                        "last":  ts,
+                        "thumb": data.get("image_url") or data.get("media_url", "")
                     }
-                
+
                 stats_comptes[compte]["count"] += 1
                 if ts < stats_comptes[compte]["first"]:
                     stats_comptes[compte]["first"] = ts
-                    stats_comptes[compte]["thumb"] = data.get("image_url", "") # Image du prochain post
+                    stats_comptes[compte]["thumb"] = data.get("image_url") or data.get("media_url", "")
                 if ts > stats_comptes[compte]["last"]:
                     stats_comptes[compte]["last"] = ts
-        except:
+        except Exception:
             continue
 
-    # Construction du Markdown
-    md_content = f"# 📊 Dashboard de Publication\n\n"
+    md_content  = "# 📊 Dashboard de Publication\n\n"
     md_content += f"Dernière mise à jour : **{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}**\n\n"
     md_content += f"✅ **Total publiés historiquement :** {published_count}\n\n"
-    
+
     if not stats_comptes:
         md_content += "### 🎉 Toutes les files d'attente sont vides !\n"
     else:
         md_content += "### 📱 État des comptes\n"
         md_content += "| Compte | Posts en attente | Prochaine publication | Fin de programmation | Aperçu prochain |\n"
         md_content += "| :--- | :---: | :--- | :--- | :---: |\n"
-        
-        # Trier par nom de compte
+
         for compte in sorted(stats_comptes.keys()):
             s = stats_comptes[compte]
-            # Conversion des dates
             date_next = (datetime.fromtimestamp(s["first"], tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
-            date_last = (datetime.fromtimestamp(s["last"], tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
-            
-            # Alerte visuelle si peu de posts restants
+            date_last = (datetime.fromtimestamp(s["last"],  tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
             count_display = f"**{s['count']}**" if s['count'] > 5 else f"⚠️ **{s['count']}**"
-            
             thumb = f"<img src='{s['thumb']}' width='50'>" if s['thumb'] else "N/A"
-            
             md_content += f"| {compte} | {count_display} | {date_next} | {date_last} | {thumb} |\n"
 
-    # Écriture
     readme_path = pathlib.Path(__file__).parent.parent / "README.md"
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(md_content)
     print("📝 Dashboard résumé mis à jour.")
 
+
+# ==========================================
+# HELPERS PUBLICATION
+# ==========================================
+
+def publish_image(instagram_id, access_token, image_url, caption):
+    """
+    Publie une image sur Instagram (post classique).
+    Retourne (success: bool, media_id: str | None).
+    """
+    media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_params = {
+        "image_url":    image_url,
+        "caption":      caption,
+        "access_token": access_token
+    }
+    r = requests.post(media_url, data=media_params)
+    r.raise_for_status()
+    media_id = r.json()["id"]
+
+    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": media_id, "access_token": access_token}
+    time.sleep(2)
+    rp = requests.post(publish_url, data=publish_params)
+    rp.raise_for_status()
+    return True, media_id
+
+
+def publish_video(instagram_id, access_token, video_url, caption):
+    """
+    Publie une vidéo sur Instagram en tant que Reel.
+
+    Workflow Instagram Graph API pour les vidéos :
+      1. Créer le conteneur média avec media_type=REELS
+      2. Attendre que le statut passe à FINISHED (polling)
+      3. Publier via media_publish
+
+    Retourne (success: bool, media_id: str | None).
+    """
+    # 1. Créer le conteneur
+    media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_params = {
+        "media_type":   "REELS",
+        "video_url":    video_url,
+        "caption":      caption,
+        "access_token": access_token
+    }
+    r = requests.post(media_url, data=media_params)
+    r.raise_for_status()
+    container_id = r.json()["id"]
+    print(f"  📦 Conteneur vidéo créé : {container_id}")
+
+    # 2. Attendre que le traitement côté Meta soit terminé (max ~5 min)
+    status_url    = f"https://graph.facebook.com/v23.0/{container_id}"
+    status_params = {
+        "fields":       "status_code,status",
+        "access_token": access_token
+    }
+    max_wait   = 300   # secondes
+    poll_every = 10    # secondes
+    elapsed    = 0
+
+    while elapsed < max_wait:
+        time.sleep(poll_every)
+        elapsed += poll_every
+        rs = requests.get(status_url, params=status_params)
+        rs.raise_for_status()
+        status_data = rs.json()
+        status_code = status_data.get("status_code", "")
+        print(f"  ⏳ Statut vidéo ({elapsed}s) : {status_code}")
+
+        if status_code == "FINISHED":
+            break
+        elif status_code in ("ERROR", "EXPIRED"):
+            raise RuntimeError(
+                f"Traitement vidéo échoué côté Meta : {status_data.get('status', status_code)}"
+            )
+    else:
+        raise TimeoutError(
+            f"Délai dépassé ({max_wait}s) — le conteneur vidéo n'est pas passé à FINISHED."
+        )
+
+    # 3. Publier
+    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": container_id, "access_token": access_token}
+    rp = requests.post(publish_url, data=publish_params)
+    rp.raise_for_status()
+    return True, container_id
+
+
 # ==========================================
 # BOUCLE DE PUBLICATION
 # ==========================================
+
 for payload_file in payload_dir.glob("*.json"):
     print(f"\n--- Traitement de {payload_file.name} ---")
     with open(payload_file) as f:
         payload = json.load(f)
 
-    folder = payload["compte"]
-    pub_id = payload["pub_id"]
-    image_url = payload["image_url"]
-    caption = payload["caption"]
+    folder    = payload["compte"]
+    pub_id    = payload["pub_id"]
+    caption   = payload["caption"]
     next_time = int(payload["next_time"])
+
+    # Rétrocompatibilité : anciens payloads n'ont que image_url
+    media_type = payload.get("media_type", "IMAGE").upper()
+    media_url  = payload.get("media_url") or payload.get("image_url", "")
+    # image_url reste disponible pour les publications Facebook et Story
+    image_url  = payload.get("image_url") or (media_url if media_type == "IMAGE" else None)
 
     # Vérification si déjà publié
     if pub_id in published:
@@ -111,7 +202,7 @@ for payload_file in payload_dir.glob("*.json"):
     folder_upper = folder.upper()
     access_token = os.environ.get(f"{folder_upper}_ACCESS_TOKEN")
     instagram_id = os.environ.get(f"{folder_upper}_INSTAGRAM_ID")
-    facebook_id = os.environ.get(f"{folder_upper}_FACEBOOK_ID")
+    facebook_id  = os.environ.get(f"{folder_upper}_FACEBOOK_ID")
 
     if not access_token or not instagram_id:
         err = f"{folder}: Secrets manquants (TOKEN ou INSTA_ID)"
@@ -122,46 +213,50 @@ for payload_file in payload_dir.glob("*.json"):
     # --- Publication Instagram ---
     success_insta = False
     try:
-        media_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
-        media_params = {"image_url": image_url, "caption": caption, "access_token": access_token}
-        
-        r = requests.post(media_url, data=media_params)
-        r.raise_for_status()
-        media_id = r.json()["id"]
+        if media_type == "VIDEO":
+            print(f"[{pub_id}] 🎬 Publication vidéo (Reel)...")
+            success_insta, _ = publish_video(instagram_id, access_token, media_url, caption)
+        else:
+            print(f"[{pub_id}] 🖼️ Publication image...")
+            success_insta, _ = publish_image(instagram_id, access_token, media_url, caption)
 
-        publish_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
-        publish_params = {"creation_id": media_id, "access_token": access_token}
-        
-        time.sleep(2) # Sécurité traitement image
-        rp = requests.post(publish_url, data=publish_params)
-        rp.raise_for_status()
-        print(f"[{pub_id}] ✅ Post Instagram publié")
-        success_insta = True
+        if success_insta:
+            print(f"[{pub_id}] ✅ Post Instagram publié ({media_type})")
+
     except Exception as e:
         err = f"{folder}: Erreur Instagram {pub_id} -> {e}"
         errors.append(err)
         print(f"❌ {err}")
 
-    # --- Publication Story (Optionnel) ---
-    if success_insta:
+    # --- Publication Story (images uniquement) ---
+    if success_insta and media_type == "IMAGE" and image_url:
         try:
-            story_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
-            story_params = {"image_url": image_url, "media_type": "STORIES", "access_token": access_token}
+            story_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+            story_params = {
+                "image_url":    image_url,
+                "media_type":   "STORIES",
+                "access_token": access_token
+            }
             rs = requests.post(story_url, data=story_params)
             rs.raise_for_status()
             sm_id = rs.json()["id"]
             time.sleep(5)
-            requests.post(f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish", 
-                          data={"creation_id": sm_id, "access_token": access_token})
+            requests.post(
+                f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish",
+                data={"creation_id": sm_id, "access_token": access_token}
+            )
             print(f"[{pub_id}] ✅ Story publiée")
-        except:
+        except Exception:
             print(f"[{pub_id}] ⚠️ Story échouée (ignoré)")
 
-    # --- Publication Facebook ---
-    if success_insta and facebook_id:
+    # --- Publication Facebook (images uniquement, les vidéos nécessitent un autre endpoint) ---
+    if success_insta and media_type == "IMAGE" and facebook_id and image_url:
         try:
             fb_url = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
-            requests.post(fb_url, data={"url": image_url, "caption": caption, "access_token": access_token}).raise_for_status()
+            requests.post(
+                fb_url,
+                data={"url": image_url, "caption": caption, "access_token": access_token}
+            ).raise_for_status()
             print(f"[{pub_id}] ✅ Post Facebook publié")
         except Exception as e:
             print(f"[{pub_id}] ⚠️ Erreur Facebook: {e}")
@@ -171,18 +266,20 @@ for payload_file in payload_dir.glob("*.json"):
         published.add(pub_id)
         with open(published_file, "w") as f:
             json.dump(sorted(list(published)), f, indent=2)
-        
+
         # Supprimer payload
         payload_file.unlink()
-        
-        # Supprimer image locale
+
+        # Supprimer le fichier média local (image ou vidéo)
         try:
-            image_name = pathlib.Path(image_url).name
-            image_local = base_dir / folder.lower() / "to_publish" / image_name
-            if image_local.exists():
-                image_local.unlink()
-                print(f"🗑️ Image locale supprimée")
-        except: pass
+            media_name  = pathlib.Path(media_url).name
+            media_local = base_dir / folder.lower() / "to_publish" / media_name
+            if media_local.exists():
+                media_local.unlink()
+                print(f"🗑️ Fichier média local supprimé : {media_name}")
+        except Exception:
+            pass
+
 
 # ==========================================
 # FINALISATION : DASHBOARD ET GIT
@@ -196,7 +293,6 @@ try:
     subprocess.run(["git", "config", "user.name", "github-actions"], cwd=base_dir, check=True)
     subprocess.run(["git", "config", "user.email", "actions@github.com"], cwd=base_dir, check=True)
     subprocess.run(["git", "add", "-A"], cwd=base_dir, check=True)
-    # Check si changements avant de commit
     status = subprocess.run(["git", "status", "--porcelain"], cwd=base_dir, capture_output=True, text=True)
     if status.stdout:
         subprocess.run(["git", "commit", "-m", "🤖 Update dashboard & published status"], cwd=base_dir, check=True)
@@ -211,6 +307,5 @@ except Exception as e:
 # --- Rapport final ---
 if errors:
     print("\n=== RÉSUMÉ DES ERREURS ===")
-    for e in errors: print(f" - {e}")
-    # Optionnel : lever une erreur pour marquer le job comme 'failed' sur GitHub
-    # raise SystemExit(1)
+    for e in errors:
+        print(f" - {e}")
