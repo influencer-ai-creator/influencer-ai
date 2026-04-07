@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "a5ff6cfa-a6d0-4900-95dd-666ef300b913", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1555.png", "caption": "Lost in the heat, found in the adventure. The world is calling, and I'm dressed to conquer it. \n\ud83c\udf0d\u2728 #TravelInfluencer #ExoticGetaway", "next_time": 1779163200}
+{
+    "compte": "influencer",
+    "pub_id": "a5ff6cfa-a6d0-4900-95dd-666ef300b913",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1555.png",
+    "caption": "Lost in the heat, found in the adventure. The world is calling, and I'm dressed to conquer it. \n🌍✨ #TravelInfluencer #ExoticGetaway",
+    "next_time": 1779163200,
+    "media_type": "IMAGE"
+}

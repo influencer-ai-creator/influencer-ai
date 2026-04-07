@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "fbd3ba7f-d0a8-473d-abc5-f785481cc66d", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1356.png", "caption": "Sun-kissed vibes in Capri! \ud83c\udf0a\u2728 Feeling like a main character in this golden hour glow. #SpringSoul #CoastalChic", "next_time": 1776308992}
+{
+    "compte": "influencer",
+    "pub_id": "fbd3ba7f-d0a8-473d-abc5-f785481cc66d",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1356.png",
+    "caption": "Sun-kissed vibes in Capri! 🌊✨ Feeling like a main character in this golden hour glow. #SpringSoul #CoastalChic",
+    "next_time": 1776308992,
+    "media_type": "IMAGE"
+}

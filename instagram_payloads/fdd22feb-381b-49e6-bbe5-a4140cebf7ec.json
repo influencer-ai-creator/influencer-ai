@@ -1,1 +1,8 @@
-{"compte": "ia_actus", "pub_id": "fdd22feb-381b-49e6-bbe5-a4140cebf7ec", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_076.png", "caption": "Cursor 3 r\u00e9volutionne le d\u00e9veloppement : adieu l'IDE classique, bonjour la flotte d'agents IA ! \ud83d\ude80\n\nCursor lance sa version 3 avec une interface enti\u00e8rement repens\u00e9e autour des agents autonomes. Le but : passer de l'\u00e9dition manuelle du code \u00e0 l'ex\u00e9cution parall\u00e8le de multiples agents IA. Gestion de plusieurs workspaces, d\u00e9placement de sessions entre local/cloud, revue de diffs int\u00e9gr\u00e9e et navigation web native. L'avenir du d\u00e9veloppement autonome commence ici.\n\nSource : https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/\n\n#AI #Cursor #DevTools #Programming #IA #AutonomousAgents #TechNews", "next_time": 1775638800}
+{
+    "compte": "ia_actus",
+    "pub_id": "fdd22feb-381b-49e6-bbe5-a4140cebf7ec",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_076.png",
+    "caption": "Cursor 3 révolutionne le développement : adieu l'IDE classique, bonjour la flotte d'agents IA ! 🚀\n\nCursor lance sa version 3 avec une interface entièrement repensée autour des agents autonomes. Le but : passer de l'édition manuelle du code à l'exécution parallèle de multiples agents IA. Gestion de plusieurs workspaces, déplacement de sessions entre local/cloud, revue de diffs intégrée et navigation web native. L'avenir du développement autonome commence ici.\n\nSource : https://the-decoder.com/new-cursor-3-ditches-the-classic-ide-layout-for-an-agent-first-interface-built-around-parallel-ai-fleets/\n\n#AI #Cursor #DevTools #Programming #IA #AutonomousAgents #TechNews",
+    "next_time": 1775638800,
+    "media_type": "IMAGE"
+}

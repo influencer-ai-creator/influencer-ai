@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "44647ede-5a23-414c-986b-9b005a31bca8", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1324.png", "caption": "Maya catches the golden hour breeze in her sun-kissed floral dress, laughing as her reflection shimmers on the turquoise waves behind her #SpringVibes #BeachLife", "next_time": 1777388992}
+{
+    "compte": "influencer",
+    "pub_id": "44647ede-5a23-414c-986b-9b005a31bca8",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1324.png",
+    "caption": "Maya catches the golden hour breeze in her sun-kissed floral dress, laughing as her reflection shimmers on the turquoise waves behind her #SpringVibes #BeachLife",
+    "next_time": 1777388992,
+    "media_type": "IMAGE"
+}

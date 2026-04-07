@@ -1,1 +1,8 @@
-{"compte": "university", "pub_id": "18b7ed0d-22be-4578-85a9-28295b18f7f9", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1778.png", "caption": "Hi, it's Clara! Just finished grading papers and decided to take a little break to show off this spring look. Who says being a professor means you have to wear boring clothes? \ud83c\udf38\ud83d\udc57 #CampusVibes #SpringBreak", "next_time": 1777777874}
+{
+    "compte": "university",
+    "pub_id": "18b7ed0d-22be-4578-85a9-28295b18f7f9",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1778.png",
+    "caption": "Hi, it's Clara! Just finished grading papers and decided to take a little break to show off this spring look. Who says being a professor means you have to wear boring clothes? 🌸👗 #CampusVibes #SpringBreak",
+    "next_time": 1777777874,
+    "media_type": "IMAGE"
+}

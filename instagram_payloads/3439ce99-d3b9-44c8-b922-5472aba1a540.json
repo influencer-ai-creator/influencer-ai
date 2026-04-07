@@ -1,1 +1,8 @@
-{"compte": "influencer", "pub_id": "3439ce99-d3b9-44c8-b922-5472aba1a540", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1378.png", "caption": "Breeze whispers through my hair as the sunset paints the coast in gold \ud83c\udf05\u2728 #SpringVibes #ExoticChic", "next_time": 1777064992}
+{
+    "compte": "influencer",
+    "pub_id": "3439ce99-d3b9-44c8-b922-5472aba1a540",
+    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1378.png",
+    "caption": "Breeze whispers through my hair as the sunset paints the coast in gold 🌅✨ #SpringVibes #ExoticChic",
+    "next_time": 1777064992,
+    "media_type": "IMAGE"
+}
