@@ -105,18 +105,50 @@ def publish_image(instagram_id, access_token, image_url, caption):
     return True, media_id
 
 
+def _poll_instagram_container(container_id, access_token, max_wait=300, poll_every=10, label=""):
+    """
+    Attend que le conteneur Instagram passe au statut FINISHED.
+    Lève une exception si ERROR, EXPIRED ou timeout.
+    """
+    status_url    = f"https://graph.facebook.com/v23.0/{container_id}"
+    status_params = {
+        "fields":       "status_code,status",
+        "access_token": access_token
+    }
+    elapsed = 0
+
+    while elapsed < max_wait:
+        time.sleep(poll_every)
+        elapsed += poll_every
+        rs = requests.get(status_url, params=status_params)
+        rs.raise_for_status()
+        status_data = rs.json()
+        status_code = status_data.get("status_code", "")
+        print(f"  ⏳ Statut {label} ({elapsed}s) : {status_code}")
+
+        if status_code == "FINISHED":
+            return
+        elif status_code in ("ERROR", "EXPIRED"):
+            raise RuntimeError(
+                f"Traitement {label} échoué côté Meta : {status_data.get('status', status_code)}"
+            )
+
+    raise TimeoutError(
+        f"Délai dépassé ({max_wait}s) — le conteneur {label} n'est pas passé à FINISHED."
+    )
+
+
 def publish_video(instagram_id, access_token, video_url, caption):
     """
     Publie une vidéo sur Instagram en tant que Reel.
 
-    Workflow Instagram Graph API pour les vidéos :
+    Workflow :
       1. Créer le conteneur média avec media_type=REELS
       2. Attendre que le statut passe à FINISHED (polling)
       3. Publier via media_publish
 
-    Retourne (success: bool, media_id: str | None).
+    Retourne (success: bool, container_id: str).
     """
-    # 1. Créer le conteneur
     media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
     media_params = {
         "media_type":   "REELS",
@@ -127,16 +159,80 @@ def publish_video(instagram_id, access_token, video_url, caption):
     r = requests.post(media_url, data=media_params)
     r.raise_for_status()
     container_id = r.json()["id"]
-    print(f"  📦 Conteneur vidéo créé : {container_id}")
+    print(f"  📦 Conteneur Reel Instagram créé : {container_id}")
 
-    # 2. Attendre que le traitement côté Meta soit terminé (max ~5 min)
-    status_url    = f"https://graph.facebook.com/v23.0/{container_id}"
-    status_params = {
-        "fields":       "status_code,status",
+    _poll_instagram_container(container_id, access_token, max_wait=300, label="Reel Instagram")
+
+    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": container_id, "access_token": access_token}
+    rp = requests.post(publish_url, data=publish_params)
+    rp.raise_for_status()
+    return True, container_id
+
+
+def publish_video_story(instagram_id, access_token, video_url):
+    """
+    Publie une vidéo en Story Instagram.
+
+    Contrainte Meta : la vidéo doit durer entre 3 et 60 secondes.
+    Workflow identique aux Reels (polling requis avant publication).
+
+    Retourne (success: bool).
+    """
+    media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_params = {
+        "media_type":   "STORIES",
+        "video_url":    video_url,
         "access_token": access_token
     }
-    max_wait   = 300   # secondes
-    poll_every = 10    # secondes
+    r = requests.post(media_url, data=media_params)
+    r.raise_for_status()
+    container_id = r.json()["id"]
+    print(f"  📦 Conteneur Story vidéo créé : {container_id}")
+
+    # Délai réduit pour les Stories (vidéos courtes)
+    _poll_instagram_container(container_id, access_token, max_wait=120, label="Story vidéo")
+
+    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": container_id, "access_token": access_token}
+    rp = requests.post(publish_url, data=publish_params)
+    rp.raise_for_status()
+    return True
+
+
+def publish_video_facebook(facebook_id, access_token, video_url, caption):
+    """
+    Publie une vidéo sur une Page Facebook.
+
+    Depuis juin 2025, Meta traite toutes les vidéos comme des Reels.
+    L'endpoint /videos suffit — pas besoin de /video_reels séparé.
+
+    Différence clé avec Instagram : la vidéo est publiée automatiquement
+    dès la fin du traitement (published=true). Il n'y a pas d'étape
+    media_publish séparée.
+
+    Retourne (success: bool).
+    """
+    fb_url    = f"https://graph.facebook.com/v23.0/{facebook_id}/videos"
+    fb_params = {
+        "file_url":     video_url,
+        "description":  caption,
+        "published":    "true",
+        "access_token": access_token
+    }
+    r = requests.post(fb_url, data=fb_params)
+    r.raise_for_status()
+    video_id = r.json().get("id")
+    print(f"  📦 Vidéo Facebook soumise : {video_id}")
+
+    # Polling jusqu'à 100% de traitement
+    status_url    = f"https://graph.facebook.com/v23.0/{video_id}"
+    status_params = {
+        "fields":       "status",
+        "access_token": access_token
+    }
+    max_wait   = 300
+    poll_every = 15
     elapsed    = 0
 
     while elapsed < max_wait:
@@ -144,27 +240,15 @@ def publish_video(instagram_id, access_token, video_url, caption):
         elapsed += poll_every
         rs = requests.get(status_url, params=status_params)
         rs.raise_for_status()
-        status_data = rs.json()
-        status_code = status_data.get("status_code", "")
-        print(f"  ⏳ Statut vidéo ({elapsed}s) : {status_code}")
-
-        if status_code == "FINISHED":
+        progress = rs.json().get("status", {}).get("processing_progress", 0)
+        print(f"  ⏳ Traitement Facebook ({elapsed}s) : {progress}%")
+        if progress >= 100:
             break
-        elif status_code in ("ERROR", "EXPIRED"):
-            raise RuntimeError(
-                f"Traitement vidéo échoué côté Meta : {status_data.get('status', status_code)}"
-            )
     else:
-        raise TimeoutError(
-            f"Délai dépassé ({max_wait}s) — le conteneur vidéo n'est pas passé à FINISHED."
-        )
+        # Timeout non bloquant : Meta continue le traitement en arrière-plan
+        print(f"  ⚠️ Timeout polling Facebook ({max_wait}s) — vidéo probablement publiée quand même.")
 
-    # 3. Publier
-    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
-    publish_params = {"creation_id": container_id, "access_token": access_token}
-    rp = requests.post(publish_url, data=publish_params)
-    rp.raise_for_status()
-    return True, container_id
+    return True
 
 
 # ==========================================
@@ -184,7 +268,7 @@ for payload_file in payload_dir.glob("*.json"):
     # Rétrocompatibilité : anciens payloads n'ont que image_url
     media_type = payload.get("media_type", "IMAGE").upper()
     media_url  = payload.get("media_url") or payload.get("image_url", "")
-    # image_url reste disponible pour les publications Facebook et Story
+    # image_url reste disponible pour les publications Facebook et Story image
     image_url  = payload.get("image_url") or (media_url if media_type == "IMAGE" else None)
 
     # Vérification si déjà publié
@@ -210,56 +294,73 @@ for payload_file in payload_dir.glob("*.json"):
         errors.append(err)
         continue
 
-    # --- Publication Instagram ---
+    # --- Publication Instagram Feed ---
     success_insta = False
     try:
         if media_type == "VIDEO":
-            print(f"[{pub_id}] 🎬 Publication vidéo (Reel)...")
+            print(f"[{pub_id}] 🎬 Publication Reel Instagram...")
             success_insta, _ = publish_video(instagram_id, access_token, media_url, caption)
         else:
-            print(f"[{pub_id}] 🖼️ Publication image...")
+            print(f"[{pub_id}] 🖼️ Publication image Instagram...")
             success_insta, _ = publish_image(instagram_id, access_token, media_url, caption)
 
         if success_insta:
             print(f"[{pub_id}] ✅ Post Instagram publié ({media_type})")
 
     except Exception as e:
-        err = f"{folder}: Erreur Instagram {pub_id} -> {e}"
+        err = f"{folder}: Erreur Instagram Feed {pub_id} -> {e}"
         errors.append(err)
         print(f"❌ {err}")
 
-    # --- Publication Story (images uniquement) ---
-    if success_insta and media_type == "IMAGE" and image_url:
-        try:
-            story_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
-            story_params = {
-                "image_url":    image_url,
-                "media_type":   "STORIES",
-                "access_token": access_token
-            }
-            rs = requests.post(story_url, data=story_params)
-            rs.raise_for_status()
-            sm_id = rs.json()["id"]
-            time.sleep(5)
-            requests.post(
-                f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish",
-                data={"creation_id": sm_id, "access_token": access_token}
-            )
-            print(f"[{pub_id}] ✅ Story publiée")
-        except Exception:
-            print(f"[{pub_id}] ⚠️ Story échouée (ignoré)")
+    # --- Publication Story Instagram ---
+    if success_insta:
+        if media_type == "IMAGE" and image_url:
+            try:
+                story_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+                story_params = {
+                    "image_url":    image_url,
+                    "media_type":   "STORIES",
+                    "access_token": access_token
+                }
+                rs = requests.post(story_url, data=story_params)
+                rs.raise_for_status()
+                sm_id = rs.json()["id"]
+                time.sleep(5)
+                requests.post(
+                    f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish",
+                    data={"creation_id": sm_id, "access_token": access_token}
+                ).raise_for_status()
+                print(f"[{pub_id}] ✅ Story image Instagram publiée")
+            except Exception as e:
+                print(f"[{pub_id}] ⚠️ Story image Instagram échouée (ignoré) : {e}")
 
-    # --- Publication Facebook (images uniquement, les vidéos nécessitent un autre endpoint) ---
-    if success_insta and media_type == "IMAGE" and facebook_id and image_url:
-        try:
-            fb_url = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
-            requests.post(
-                fb_url,
-                data={"url": image_url, "caption": caption, "access_token": access_token}
-            ).raise_for_status()
-            print(f"[{pub_id}] ✅ Post Facebook publié")
-        except Exception as e:
-            print(f"[{pub_id}] ⚠️ Erreur Facebook: {e}")
+        elif media_type == "VIDEO" and media_url:
+            try:
+                publish_video_story(instagram_id, access_token, media_url)
+                print(f"[{pub_id}] ✅ Story vidéo Instagram publiée")
+            except Exception as e:
+                # Non bloquant : les Reels longs (>60s) ne peuvent pas être en Story
+                print(f"[{pub_id}] ⚠️ Story vidéo Instagram échouée (ignoré) : {e}")
+
+    # --- Publication Facebook ---
+    if success_insta and facebook_id:
+        if media_type == "IMAGE" and image_url:
+            try:
+                fb_url = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
+                requests.post(
+                    fb_url,
+                    data={"url": image_url, "caption": caption, "access_token": access_token}
+                ).raise_for_status()
+                print(f"[{pub_id}] ✅ Post Facebook image publié")
+            except Exception as e:
+                print(f"[{pub_id}] ⚠️ Erreur Facebook image : {e}")
+
+        elif media_type == "VIDEO" and media_url:
+            try:
+                publish_video_facebook(facebook_id, access_token, media_url, caption)
+                print(f"[{pub_id}] ✅ Post Facebook vidéo publié")
+            except Exception as e:
+                print(f"[{pub_id}] ⚠️ Erreur Facebook vidéo : {e}")
 
     # --- Nettoyage si succès ---
     if success_insta:
