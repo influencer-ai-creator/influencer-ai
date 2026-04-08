@@ -1,8 +1,0 @@
-{
-    "compte": "ia_actus",
-    "pub_id": "71b717ba-1951-4484-a4f0-5b17976e564c",
-    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_074.png",
-    "caption": "🤖 Les IA peinent à contrôler les robots sans \"briques\" humaines ! 🏗️\n\nUne nouvelle étude majeure de Nvidia, UC Berkeley et Stanford révèle un point crucial : les modèles de langage avancés (GPT, Claude, etc.) échouent en robotique s'ils doivent tout coder de zéro. Mais avec une structure appelée « agentic scaffolding », ils peuvent atteindre la fiabilité des humains ! 🚀\n\nLes modèles ne comprennent pas bien les images brutes, mais une description textuelle intermédiaire change tout. L'avenir de la robotique autonome approche.\n\nSource : https://the-decoder.com/ai-models-fail-at-robot-control-without-human-designed-building-blocks-but-agentic-scaffolding-closes-the-gap/\n\n#IA #Robotique #LLM #TechTrends #Automation #Nvidia #AIResearch #FutureTech",
-    "next_time": 1775628000,
-    "media_type": "IMAGE"
-}
