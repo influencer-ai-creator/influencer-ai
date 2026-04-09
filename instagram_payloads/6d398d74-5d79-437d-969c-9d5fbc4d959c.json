@@ -1,9 +1,0 @@
-{
-    "compte": "ia_actus",
-    "pub_id": "6d398d74-5d79-437d-969c-9d5fbc4d959c",
-    "media_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_086.png",
-    "media_type": "IMAGE",
-    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_086.png",
-    "caption": "Microsoft sort une nouvelle arme secrète pour l'IA 🚀\n\nBing a open-sourcé 'Harrier', un modèle d'embedding qui domine les benchmarks multilingues et dépasse les modèles propriétaires d'OpenAI et Amazon !\n\n💡 Plus de 100 langues\n📖 Contexte de 32 000 tokens\n🎯 Entraîné sur 2+ milliards d'exemples + données GPT-5\n\nDisponible en 3 tailles sur Hugging Face pour s'adapter à votre hardware.\n\nSource : The Decoder\n\n#IA #Microsoft #Bing #Harrier #OpenSource #AI #MachineLearning #TechNews",
-    "next_time": 1775736000
-}
