@@ -1,9 +1,0 @@
-{
-    "compte": "ia_actus",
-    "pub_id": "3f457061-b0c3-44a1-863e-89def2e7cfec",
-    "media_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_079.png",
-    "media_type": "IMAGE",
-    "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/image_079.png",
-    "caption": "Gemini a dit\n\n🚀 Alibaba révolutionne la vision par ordinateur avec une nouvelle méthode d'autocorrection ! 👁️\n\nL'équipe Qwen d'Alibaba vient de dévoiler une innovation majeure : HopChain, un framework conçu pour rectifier les erreurs de raisonnement des modèles de vision par IA lors de processus multi-étapes. Cette avancée neutralise le phénomène de « cascades d'erreurs » qui dégrade souvent la précision des VLMs (Vision Language Models). En contraignant le modèle à réanalyser l'image à chaque itération, HopChain booste les performances sur 20 des 24 benchmarks testés.\n\n#IA #Alibaba #Qwen #HopChain #VisionLanguageModels #TechNews",
-    "next_time": 1775692800
-}
