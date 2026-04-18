@@ -1,6 +1,6 @@
 # 📊 Dashboard de Publication
 
-Dernière mise à jour : **18/04/2026 21:08:56**
+Dernière mise à jour : **18/04/2026 21:52:41**
 
 ✅ **Total publiés historiquement :** 2665
 
@@ -12,4 +12,4 @@ Dernière mise à jour : **18/04/2026 21:08:56**
 | INFLUENCER | **142** | 19/04 08:09 | 01/07 06:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1355.png' width='50'> |
 | MEOWGINEEREDAI | **124** | 19/04 07:33 | 13/08 13:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/meowgineeredai/to_publish/image_541.png' width='50'> |
 | SUNDRESS | **246** | 19/04 08:10 | 28/08 02:10 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1475.png' width='50'> |
-| UNIVERSITY | **146** | 19/04 08:11 | 02/07 17:11 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1745.png' width='50'> |
+| UNIVERSITY | **162** | 19/04 08:11 | 10/07 17:11 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1745.png' width='50'> |
