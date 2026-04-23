@@ -1,8 +1,8 @@
 # 📊 Dashboard de Publication
 
-Dernière mise à jour : **23/04/2026 15:17:27**
+Dernière mise à jour : **23/04/2026 16:55:48**
 
-✅ **Total publiés historiquement :** 2718
+✅ **Total publiés historiquement :** 2720
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Aperçu prochain |
@@ -11,5 +11,5 @@ Dernière mise à jour : **23/04/2026 15:17:27**
 | IA_ACTUS | **11** | 23/04 20:00 | 26/04 20:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/video_242.mp4' width='50'> |
 | INFLUENCER | **165** | 24/04 08:09 | 16/07 18:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1384.png' width='50'> |
 | MEOWGINEEREDAI | **116** | 24/04 07:33 | 13/08 13:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/meowgineeredai/to_publish/image_651.png' width='50'> |
-| SUNDRESS | **239** | 23/04 17:10 | 28/08 02:10 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1486.png' width='50'> |
-| UNIVERSITY | **155** | 23/04 17:11 | 10/07 17:11 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1732.png' width='50'> |
+| SUNDRESS | **238** | 24/04 08:10 | 28/08 02:10 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1456.png' width='50'> |
+| UNIVERSITY | **154** | 24/04 08:11 | 10/07 17:11 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1728.png' width='50'> |
