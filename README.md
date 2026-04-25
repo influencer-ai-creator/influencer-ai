@@ -1,15 +1,15 @@
 # 📊 Dashboard de Publication
 
-Dernière mise à jour : **25/04/2026 11:27:13**
+Dernière mise à jour : **25/04/2026 12:08:04**
 
-✅ **Total publiés historiquement :** 2737
+✅ **Total publiés historiquement :** 2739
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Aperçu prochain |
 | :--- | :---: | :--- | :--- | :---: |
 | CYBERPUNK | **192** | 26/04 01:23 | 01/08 04:25 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/cyberpunk/to_publish/image_1365.png' width='50'> |
-| IA_ACTUS | **13** | 25/04 14:00 | 29/04 14:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/video_261.mp4' width='50'> |
+| IA_ACTUS | **12** | 25/04 20:00 | 29/04 14:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/ia_actus/to_publish/video_276.mp4' width='50'> |
 | INFLUENCER | **163** | 25/04 14:09 | 16/07 18:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1377.png' width='50'> |
-| MEOWGINEEREDAI | **114** | 25/04 13:33 | 13/08 13:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/meowgineeredai/to_publish/image_523.png' width='50'> |
+| MEOWGINEEREDAI | **113** | 26/04 04:33 | 13/08 13:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/meowgineeredai/to_publish/image_518.png' width='50'> |
 | SUNDRESS | **236** | 25/04 14:10 | 28/08 02:10 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1494.png' width='50'> |
 | UNIVERSITY | **152** | 25/04 14:11 | 10/07 17:11 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1731.png' width='50'> |
