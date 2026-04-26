@@ -202,52 +202,96 @@ def publish_video_story(instagram_id, access_token, video_url):
 
 def publish_video_facebook(facebook_id, access_token, video_url, caption):
     """
-    Publie une vidéo sur une Page Facebook.
+    Publie une vidéo sur une Page Facebook en tant que Reel (9:16, sans bandes noires).
 
-    Depuis juin 2025, Meta traite toutes les vidéos comme des Reels.
-    L'endpoint /videos suffit — pas besoin de /video_reels séparé.
+    Workflow en 3 étapes requis par Meta :
+      1. Initialiser l'upload → obtenir video_id
+      2. Uploader via rupload.facebook.com (file_url en header)
+      3. Publier avec upload_phase=finish + video_state=PUBLISHED
 
-    Différence clé avec Instagram : la vidéo est publiée automatiquement
-    dès la fin du traitement (published=true). Il n'y a pas d'étape
-    media_publish séparée.
+    Utilise /video_reels et non /videos — /videos affiche les vidéos portrait
+    avec des bandes noires car il ne les traite pas comme des Reels.
 
     Retourne (success: bool).
     """
-    fb_url    = f"https://graph.facebook.com/v23.0/{facebook_id}/videos"
-    fb_params = {
-        "file_url":     video_url,
-        "description":  caption,
-        "published":    "true",
-        "access_token": access_token
-    }
-    r = requests.post(fb_url, data=fb_params)
+    # Étape 1 : Initialiser
+    r = requests.post(
+        f"https://graph.facebook.com/v23.0/{facebook_id}/video_reels",
+        data={"upload_phase": "start", "access_token": access_token}
+    )
     r.raise_for_status()
-    video_id = r.json().get("id")
-    print(f"  📦 Vidéo Facebook soumise : {video_id}")
+    video_id = r.json()["video_id"]
+    print(f"  📦 Reel Facebook initialisé : {video_id}")
 
-    # Polling jusqu'à 100% de traitement
-    status_url    = f"https://graph.facebook.com/v23.0/{video_id}"
-    status_params = {
-        "fields":       "status",
-        "access_token": access_token
-    }
-    max_wait   = 300
-    poll_every = 15
-    elapsed    = 0
+    # Étape 2 : Upload depuis URL hébergée
+    ru = requests.post(
+        f"https://rupload.facebook.com/video-upload/v23.0/{video_id}",
+        headers={
+            "Authorization": f"OAuth {access_token}",
+            "file_url":      video_url,
+        }
+    )
+    ru.raise_for_status()
+    print(f"  ⬆️ Vidéo transmise à Meta")
 
-    while elapsed < max_wait:
-        time.sleep(poll_every)
-        elapsed += poll_every
-        rs = requests.get(status_url, params=status_params)
-        rs.raise_for_status()
-        progress = rs.json().get("status", {}).get("processing_progress", 0)
-        print(f"  ⏳ Traitement Facebook ({elapsed}s) : {progress}%")
-        if progress >= 100:
-            break
-    else:
-        # Timeout non bloquant : Meta continue le traitement en arrière-plan
-        print(f"  ⚠️ Timeout polling Facebook ({max_wait}s) — vidéo probablement publiée quand même.")
+    # Étape 3 : Publier
+    rp = requests.post(
+        f"https://graph.facebook.com/v23.0/{facebook_id}/video_reels",
+        data={
+            "video_id":     video_id,
+            "upload_phase": "finish",
+            "video_state":  "PUBLISHED",
+            "description":  caption,
+            "access_token": access_token,
+        }
+    )
+    rp.raise_for_status()
+    print(f"  ✅ Reel Facebook publié")
+    return True
 
+
+def publish_video_story_facebook(facebook_id, access_token, video_url):
+    """
+    Publie une vidéo en Story sur une Page Facebook.
+
+    Même workflow 3 étapes que les Reels Facebook.
+    Contrainte Meta : vidéo max 60 secondes.
+
+    Retourne (success: bool).
+    """
+    # Étape 1 : Initialiser
+    r = requests.post(
+        f"https://graph.facebook.com/v23.0/{facebook_id}/video_stories",
+        data={"upload_phase": "start", "access_token": access_token}
+    )
+    r.raise_for_status()
+    data     = r.json()
+    video_id = data["video_id"]
+    # Meta retourne parfois une upload_url directe, sinon on construit la nôtre
+    upload_url = data.get("upload_url") or f"https://rupload.facebook.com/video-upload/v23.0/{video_id}"
+    print(f"  📦 Story Facebook initialisée : {video_id}")
+
+    # Étape 2 : Upload depuis URL hébergée
+    ru = requests.post(
+        upload_url,
+        headers={
+            "Authorization": f"OAuth {access_token}",
+            "file_url":      video_url,
+        }
+    )
+    ru.raise_for_status()
+
+    # Étape 3 : Publier
+    rp = requests.post(
+        f"https://graph.facebook.com/v23.0/{facebook_id}/video_stories",
+        data={
+            "video_id":     video_id,
+            "upload_phase": "finish",
+            "access_token": access_token,
+        }
+    )
+    rp.raise_for_status()
+    print(f"  ✅ Story vidéo Facebook publiée")
     return True
 
 
@@ -361,6 +405,16 @@ for payload_file in payload_dir.glob("*.json"):
                 print(f"[{pub_id}] ✅ Post Facebook vidéo publié")
             except Exception as e:
                 print(f"[{pub_id}] ⚠️ Erreur Facebook vidéo : {e}")
+
+    # --- Publication Story Facebook ---
+    if success_insta and facebook_id:
+        if media_type == "VIDEO" and media_url:
+            try:
+                publish_video_story_facebook(facebook_id, access_token, media_url)
+                print(f"[{pub_id}] ✅ Story vidéo Facebook publiée")
+            except Exception as e:
+                # Non bloquant : les Reels longs (>60s) ne peuvent pas être en Story
+                print(f"[{pub_id}] ⚠️ Story vidéo Facebook échouée (ignoré) : {e}")
 
     # --- Nettoyage si succès ---
     if success_insta:
