@@ -252,6 +252,47 @@ def publish_video_story(instagram_id, access_token, video_url):
     return True
 
 
+def publish_carousel_facebook(facebook_id, access_token, children_urls, caption):
+    """Publie un carousel multi-photos sur une Page Facebook.
+
+    Workflow Facebook Graph API :
+      1. Upload chaque image en mode `published=false` → récupère N `media_fbid`
+      2. Créer un post avec `attached_media[i]={"media_fbid": id}` + `message=caption`
+
+    Retourne (success: bool, post_id: str | None).
+    """
+    media_fbids = []
+
+    # 1. Upload chaque slide en photo non-publiée
+    photos_endpoint = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
+    for i, url in enumerate(children_urls):
+        photo_params = {
+            "url":          url,
+            "published":    "false",
+            "access_token": access_token,
+        }
+        r = requests.post(photos_endpoint, data=photo_params)
+        r.raise_for_status()
+        fbid = r.json()["id"]
+        media_fbids.append(fbid)
+        print(f"  [SLIDE FB {i+1}/{len(children_urls)}] media_fbid={fbid}")
+
+    # 2. Créer le post avec les attached_media référencés
+    feed_endpoint = f"https://graph.facebook.com/v23.0/{facebook_id}/feed"
+    feed_params = {
+        "message":      caption,
+        "access_token": access_token,
+    }
+    for i, fbid in enumerate(media_fbids):
+        feed_params[f"attached_media[{i}]"] = json.dumps({"media_fbid": fbid})
+
+    rp = requests.post(feed_endpoint, data=feed_params)
+    rp.raise_for_status()
+    post_id = rp.json().get("id", "")
+    print(f"  [POST FB] Carousel publié : {post_id}")
+    return True, post_id
+
+
 def publish_video_facebook(facebook_id, access_token, video_url, caption):
     """
     Publie une vidéo sur une Page Facebook en tant que Reel (9:16, sans bandes noires).
@@ -461,6 +502,14 @@ for payload_file in payload_dir.glob("*.json"):
                 print(f"[{pub_id}] [OK] Post Facebook vidéo publié")
             except Exception as e:
                 print(f"[{pub_id}] [WARN] Erreur Facebook vidéo : {e}")
+
+        elif media_type == "CAROUSEL":
+            try:
+                children = payload.get("children", [])
+                publish_carousel_facebook(facebook_id, access_token, children, caption)
+                print(f"[{pub_id}] [OK] Post Facebook carousel publié ({len(children)} photos)")
+            except Exception as e:
+                print(f"[{pub_id}] [WARN] Erreur Facebook carousel : {e}")
 
     # --- Publication Story Facebook ---
     if success_insta and facebook_id:
