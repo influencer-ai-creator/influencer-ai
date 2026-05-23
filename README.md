@@ -1,8 +1,12 @@
 # 📊 Dashboard de Publication
 
-Dernière mise à jour : **23/05/2026 20:02:36**
+## ❌ Erreurs du dernier run (23/05/2026 20:53:39)
 
-[OK] **Total publiés historiquement :** 3064
+- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'ALtz9re0ouWpz4Gqlj5HYAB'}}`
+- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AXuKvwQTfzA-Dviq06-ATTo'}}`
+- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A31iHnDwSssoHlpKTgM416V'}}`
+
+📦 **Total publiés historiquement :** 3064
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Aperçu prochain |
