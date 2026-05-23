@@ -1,10 +1,10 @@
 # 📊 Dashboard de Publication
 
-## ❌ Erreurs du dernier run (23/05/2026 20:58:31)
+## ❌ Erreurs du dernier run (23/05/2026 21:08:44)
 
-- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'Az_0jXDP8g7tcPbSPKy8iE6'}}`
-- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AnFIoLH5mbrFlFGcNuXXunx'}}`
-- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A6WjF8AxQaDV6CcdtgFh2i9'}}`
+- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AxsGcA0qL_3IscqOLEN5i-9'}}`
+- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A1aE8iRlI4HEDo0t1j9jwSl'}}`
+- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A4M251azhAt4MjUViNCVmmU'}}`
 
 📦 **Total publiés historiquement :** 3064
 
