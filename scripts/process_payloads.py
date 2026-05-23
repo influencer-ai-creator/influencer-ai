@@ -4,6 +4,7 @@ import json
 import pathlib
 import requests
 import os
+import sys
 import time
 import subprocess
 from datetime import datetime, timezone, timedelta
@@ -25,8 +26,11 @@ else:
     published = set()
 
 
-def generate_dashboard(payload_dir, published_count):
-    """Génère un dashboard résumé par compte utilisateur."""
+def generate_dashboard(payload_dir, published_count, run_errors=None):
+    """Génère un dashboard résumé par compte utilisateur.
+
+    run_errors : liste des erreurs du run courant (affichées en haut du README si non vides).
+    """
     stats_comptes = {}
 
     for p_file in payload_dir.glob("*.json"):
@@ -53,9 +57,19 @@ def generate_dashboard(payload_dir, published_count):
         except Exception:
             continue
 
-    md_content  = "# 📊 Dashboard de Publication\n\n"
-    md_content += f"Dernière mise à jour : **{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}**\n\n"
-    md_content += f"[OK] **Total publiés historiquement :** {published_count}\n\n"
+    now_str = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    md_content = "# 📊 Dashboard de Publication\n\n"
+
+    # --- Bloc erreurs (affiché en tête si le run a échoué) ---
+    if run_errors:
+        md_content += f"## ❌ Erreurs du dernier run ({now_str})\n\n"
+        for err in run_errors:
+            md_content += f"- `{err}`\n"
+        md_content += "\n"
+    else:
+        md_content += f"✅ **Dernier run sans erreur** — {now_str}\n\n"
+
+    md_content += f"📦 **Total publiés historiquement :** {published_count}\n\n"
 
     if not stats_comptes:
         md_content += "### 🎉 Toutes les files d'attente sont vides !\n"
@@ -109,19 +123,41 @@ def _poll_instagram_container(container_id, access_token, max_wait=300, poll_eve
     """
     Attend que le conteneur Instagram passe au statut FINISHED.
     Lève une exception si ERROR, EXPIRED ou timeout.
+
+    Note : seul 'status_code' est utilisé — le champ 'status' est invalide pour
+    cet endpoint en API v23.0 et provoque un 400 immédiat.
+    Les erreurs HTTP transitoires (400/5xx) sont retentées jusqu'à MAX_HTTP_ERR fois.
     """
     status_url    = f"https://graph.facebook.com/v23.0/{container_id}"
     status_params = {
-        "fields":       "status_code,status",
+        "fields":       "status_code",
         "access_token": access_token
     }
-    elapsed = 0
+    elapsed      = 0
+    http_errors  = 0
+    MAX_HTTP_ERR = 3
 
     while elapsed < max_wait:
         time.sleep(poll_every)
         elapsed += poll_every
-        rs = requests.get(status_url, params=status_params)
-        rs.raise_for_status()
+        try:
+            rs = requests.get(status_url, params=status_params)
+            rs.raise_for_status()
+            http_errors = 0
+        except requests.HTTPError:
+            http_errors += 1
+            try:
+                body = rs.json()
+            except Exception:
+                body = rs.text
+            print(f"  [WARN] Erreur HTTP {rs.status_code} polling {label} ({elapsed}s) : {body}")
+            if http_errors >= MAX_HTTP_ERR:
+                raise RuntimeError(
+                    f"Polling {label} : {MAX_HTTP_ERR} erreurs HTTP consécutives "
+                    f"(code {rs.status_code}) — dernier body : {body}"
+                )
+            continue
+
         status_data = rs.json()
         status_code = status_data.get("status_code", "")
         print(f"  [WAIT] Statut {label} ({elapsed}s) : {status_code}")
@@ -130,7 +166,7 @@ def _poll_instagram_container(container_id, access_token, max_wait=300, poll_eve
             return
         elif status_code in ("ERROR", "EXPIRED"):
             raise RuntimeError(
-                f"Traitement {label} échoué côté Meta : {status_data.get('status', status_code)}"
+                f"Traitement {label} échoué côté Meta : {status_code}"
             )
 
     raise TimeoutError(
@@ -483,6 +519,27 @@ for payload_file in payload_dir.glob("*.json"):
                 # Non bloquant : les Reels longs (>60s) ne peuvent pas être en Story
                 print(f"[{pub_id}] [WARN] Story vidéo Instagram échouée (ignoré) : {e}")
 
+        elif media_type == "CAROUSEL" and payload.get("story_url"):
+            # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11)
+            try:
+                s_url        = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+                story_params = {
+                    "image_url":    payload["story_url"],
+                    "media_type":   "STORIES",
+                    "access_token": access_token,
+                }
+                rs = requests.post(s_url, data=story_params)
+                rs.raise_for_status()
+                sm_id = rs.json()["id"]
+                time.sleep(5)
+                requests.post(
+                    f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish",
+                    data={"creation_id": sm_id, "access_token": access_token}
+                ).raise_for_status()
+                print(f"[{pub_id}] [OK] Story carousel Instagram publiée")
+            except Exception as e:
+                print(f"[{pub_id}] [WARN] Story carousel Instagram échouée (ignoré) : {e}")
+
     # --- Publication Facebook ---
     if success_insta and facebook_id:
         if media_type == "IMAGE" and image_url:
@@ -533,12 +590,15 @@ for payload_file in payload_dir.glob("*.json"):
         # Supprimer les fichiers média locaux
         try:
             if media_type == "CAROUSEL":
-                for child_url in payload.get("children", []):
+                urls = list(payload.get("children", []))
+                if payload.get("story_url"):
+                    urls.append(payload["story_url"])
+                for child_url in urls:
                     child_name = pathlib.Path(child_url).name
                     child_local = base_dir / folder.lower() / "to_publish" / child_name
                     if child_local.exists():
                         child_local.unlink()
-                        print(f"[DEL] Slide local supprimé : {child_name}")
+                        print(f"[DEL] Fichier local supprimé : {child_name}")
             else:
                 media_name  = pathlib.Path(media_url).name
                 media_local = base_dir / folder.lower() / "to_publish" / media_name
@@ -554,7 +614,7 @@ for payload_file in payload_dir.glob("*.json"):
 # ==========================================
 
 # 1. Générer le Dashboard avec les fichiers RESTANTS
-generate_dashboard(payload_dir, len(published))
+generate_dashboard(payload_dir, len(published), run_errors=errors)
 
 # 2. Un seul Commit & Push pour tout le run
 try:
@@ -577,3 +637,6 @@ if errors:
     print("\n=== RÉSUMÉ DES ERREURS ===")
     for e in errors:
         print(f" - {e}")
+    # Exit code 1 : force GitHub Actions à marquer le run comme échoué
+    # → déclenche l'email de notification de workflow si activé dans les paramètres GitHub
+    sys.exit(1)
