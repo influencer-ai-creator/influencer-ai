@@ -174,6 +174,47 @@ def _poll_instagram_container(container_id, access_token, max_wait=300, poll_eve
     )
 
 
+def _publish_video_with_retry(instagram_id, access_token, container_id, label,
+                               first_sleep=60, poll_every=20, max_wait=300):
+    """
+    Tente de publier un conteneur vidéo Instagram en réessayant jusqu'à ce qu'il
+    soit prêt (subcode 2207027 = traitement en cours) ou jusqu'au timeout.
+
+    Utilisé à la place du polling GET /{container_id} pour les Reels et Stories
+    vidéo — le endpoint GET n'est pas accessible sur tous les comptes (subcode 33).
+    """
+    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": container_id, "access_token": access_token}
+
+    print(f"  [WAIT] Attente initiale {first_sleep}s pour le traitement {label}...")
+    time.sleep(first_sleep)
+    elapsed = first_sleep
+
+    while elapsed < max_wait:
+        try:
+            rp = requests.post(publish_url, data=publish_params)
+            rp.raise_for_status()
+            return rp.json().get("id", "")
+        except requests.HTTPError:
+            try:
+                body = rp.json()
+            except Exception:
+                body = rp.text
+            subcode = body.get("error", {}).get("error_subcode") if isinstance(body, dict) else None
+            if subcode == 2207027:
+                print(f"  [WAIT] {label} encore en traitement ({elapsed}s)...")
+                time.sleep(poll_every)
+                elapsed += poll_every
+            else:
+                raise RuntimeError(
+                    f"Erreur publication {label} (code {rp.status_code}) : {body}"
+                )
+
+    raise TimeoutError(
+        f"Délai dépassé ({max_wait}s) — le conteneur {label} n'est pas passé à FINISHED."
+    )
+
+
 def publish_carousel(instagram_id, access_token, children_urls, caption):
     """Publie un carousel Instagram (2 à 10 slides).
 
@@ -232,8 +273,11 @@ def publish_video(instagram_id, access_token, video_url, caption):
 
     Workflow :
       1. Créer le conteneur média avec media_type=REELS
-      2. Attendre que le statut passe à FINISHED (polling)
-      3. Publier via media_publish
+      2. Réessayer media_publish jusqu'à ce qu'Instagram ait traité la vidéo
+
+    Note : le polling GET /{container_id}?fields=status_code retourne error_subcode 33
+    sur certains comptes (restriction d'autorisation). On utilise directement media_publish
+    avec retry sur subcode 2207027 (traitement en cours).
 
     Retourne (success: bool, container_id: str).
     """
@@ -251,12 +295,8 @@ def publish_video(instagram_id, access_token, video_url, caption):
     container_id = creation_resp["id"]
     print(f"  [PKG] Conteneur Reel Instagram créé : {container_id}")
 
-    _poll_instagram_container(container_id, access_token, max_wait=300, label="Reel Instagram")
-
-    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
-    publish_params = {"creation_id": container_id, "access_token": access_token}
-    rp = requests.post(publish_url, data=publish_params)
-    rp.raise_for_status()
+    _publish_video_with_retry(instagram_id, access_token, container_id,
+                               label="Reel Instagram", first_sleep=60, poll_every=20, max_wait=300)
     return True, container_id
 
 
@@ -265,7 +305,7 @@ def publish_video_story(instagram_id, access_token, video_url):
     Publie une vidéo en Story Instagram.
 
     Contrainte Meta : la vidéo doit durer entre 3 et 60 secondes.
-    Workflow identique aux Reels (polling requis avant publication).
+    Même approche retry que les Reels (polling GET /{container_id} non accessible).
 
     Retourne (success: bool).
     """
@@ -280,13 +320,9 @@ def publish_video_story(instagram_id, access_token, video_url):
     container_id = r.json()["id"]
     print(f"  [PKG] Conteneur Story vidéo créé : {container_id}")
 
-    # Délai réduit pour les Stories (vidéos courtes)
-    _poll_instagram_container(container_id, access_token, max_wait=120, label="Story vidéo")
-
-    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
-    publish_params = {"creation_id": container_id, "access_token": access_token}
-    rp = requests.post(publish_url, data=publish_params)
-    rp.raise_for_status()
+    # Stories vidéo sont plus courtes — délai initial réduit
+    _publish_video_with_retry(instagram_id, access_token, container_id,
+                               label="Story vidéo", first_sleep=30, poll_every=15, max_wait=120)
     return True
 
 
