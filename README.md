@@ -1,11 +1,11 @@
 # 📊 Dashboard de Publication
 
-## ❌ Erreurs du dernier run (24/05/2026 07:32:53)
+## ❌ Erreurs du dernier run (24/05/2026 07:42:25)
 
-- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AczBx9s7-KA6_jQuOfrx-q3'}}`
-- `ia_actus: Erreur Instagram Feed 3ff8c9ad-7c62-4521-98e8-c4f29bf6d883 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A01gbQlWiaWnHlk1UnQ5Rjy'}}`
-- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AO3LLlad1ibVn6Qgv2zYnQm'}}`
-- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AXefd6plGWgrJ237xmwOfWY'}}`
+- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AlyXm0J1Sx2BGdS91_1yQAO'}}`
+- `ia_actus: Erreur Instagram Feed 3ff8c9ad-7c62-4521-98e8-c4f29bf6d883 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AYfsXkBzU6ehz70CEDb4ZAv'}}`
+- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AWKgb9v-HHDVRE8poSxuTYG'}}`
+- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'ApATXEjldV034yey__ItA3v'}}`
 
 📦 **Total publiés historiquement :** 3068
 
