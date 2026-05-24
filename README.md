@@ -1,10 +1,10 @@
 # 📊 Dashboard de Publication
 
-## ❌ Erreurs du dernier run (24/05/2026 04:40:15)
+## ❌ Erreurs du dernier run (24/05/2026 04:46:27)
 
-- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A7Pla11OfzLVLqRDhJFHiAF'}}`
-- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AZVS7L2pVnuWo96Q13wVlOy'}}`
-- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A0vbzS6PqEvyeD1J-tFT0uN'}}`
+- `ia_actus: Erreur Instagram Feed 2d018c7a-1ba8-46c9-90a7-901844f1ab77 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'A_hXiDAXuiAk4emYPxJJ6Tt'}}`
+- `ia_actus: Erreur Instagram Feed 8e1b73d7-cb09-4dad-a91e-7af38fd06226 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AyHeUSHDbVdOLrz6Bg9Iu7c'}}`
+- `ia_actus: Erreur Instagram Feed 766f4cf6-b26d-4909-a359-8df1fc8f1818 -> Polling Reel Instagram : 3 erreurs HTTP consécutives (code 400) — dernier body : {'error': {'message': 'Authorization Error', 'code': 100, 'type': 'GraphMethodException', 'error_subcode': 33, 'fbtrace_id': 'AMvVDk9OsjUYm0bo0m2Oti5'}}`
 
 📦 **Total publiés historiquement :** 3067
 
