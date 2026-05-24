@@ -101,7 +101,7 @@ def publish_image(instagram_id, access_token, image_url, caption):
     Publie une image sur Instagram (post classique).
     Retourne (success: bool, media_id: str | None).
     """
-    media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
     media_params = {
         "image_url":    image_url,
         "caption":      caption,
@@ -111,7 +111,7 @@ def publish_image(instagram_id, access_token, image_url, caption):
     r.raise_for_status()
     media_id = r.json()["id"]
 
-    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
     publish_params = {"creation_id": media_id, "access_token": access_token}
     time.sleep(2)
     rp = requests.post(publish_url, data=publish_params)
@@ -125,10 +125,10 @@ def _poll_instagram_container(container_id, access_token, max_wait=300, poll_eve
     Lève une exception si ERROR, EXPIRED ou timeout.
 
     Note : seul 'status_code' est utilisé — le champ 'status' est invalide pour
-    cet endpoint en API v23.0 et provoque un 400 immédiat.
+    cet endpoint en API v25.0 et provoque un 400 immédiat.
     Les erreurs HTTP transitoires (400/5xx) sont retentées jusqu'à MAX_HTTP_ERR fois.
     """
-    status_url    = f"https://graph.facebook.com/v23.0/{container_id}"
+    status_url    = f"https://graph.facebook.com/v25.0/{container_id}"
     status_params = {
         "fields":       "status_code",
         "access_token": access_token
@@ -183,7 +183,7 @@ def _publish_video_with_retry(instagram_id, access_token, container_id, label,
     Utilisé à la place du polling GET /{container_id} pour les Reels et Stories
     vidéo — le endpoint GET n'est pas accessible sur tous les comptes (subcode 33).
     """
-    publish_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
     publish_params = {"creation_id": container_id, "access_token": access_token}
 
     print(f"  [WAIT] Attente initiale {first_sleep}s pour le traitement {label}...")
@@ -230,7 +230,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
         raise ValueError(f"Instagram carousel requires 2-10 slides (got {len(children_urls)})")
 
     item_ids = []
-    media_url_endpoint = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_url_endpoint = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
 
     # 1. Upload chaque slide comme item de carousel
     for i, child_url in enumerate(children_urls):
@@ -261,7 +261,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
     _poll_instagram_container(container_id, access_token, max_wait=300, label="Carousel Instagram")
 
     # 4. Publier
-    publish_url = f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish"
+    publish_url = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
     rp = requests.post(publish_url, data={"creation_id": container_id, "access_token": access_token})
     rp.raise_for_status()
     return True, container_id
@@ -281,7 +281,7 @@ def publish_video(instagram_id, access_token, video_url, caption):
 
     Retourne (success: bool, container_id: str).
     """
-    media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
     media_params = {
         "media_type":   "REELS",
         "video_url":    video_url,
@@ -309,7 +309,7 @@ def publish_video_story(instagram_id, access_token, video_url):
 
     Retourne (success: bool).
     """
-    media_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+    media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
     media_params = {
         "media_type":   "STORIES",
         "video_url":    video_url,
@@ -338,7 +338,7 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
     media_fbids = []
 
     # 1. Upload chaque slide en photo non-publiée
-    photos_endpoint = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
+    photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
     for i, url in enumerate(children_urls):
         photo_params = {
             "url":          url,
@@ -352,7 +352,7 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
         print(f"  [SLIDE FB {i+1}/{len(children_urls)}] media_fbid={fbid}")
 
     # 2. Créer le post avec les attached_media référencés
-    feed_endpoint = f"https://graph.facebook.com/v23.0/{facebook_id}/feed"
+    feed_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/feed"
     feed_params = {
         "message":      caption,
         "access_token": access_token,
@@ -383,7 +383,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
     """
     # Étape 1 : Initialiser
     r = requests.post(
-        f"https://graph.facebook.com/v23.0/{facebook_id}/video_reels",
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_reels",
         data={"upload_phase": "start", "access_token": access_token}
     )
     r.raise_for_status()
@@ -392,7 +392,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
 
     # Étape 2 : Upload depuis URL hébergée
     ru = requests.post(
-        f"https://rupload.facebook.com/video-upload/v23.0/{video_id}",
+        f"https://rupload.facebook.com/video-upload/v25.0/{video_id}",
         headers={
             "Authorization": f"OAuth {access_token}",
             "file_url":      video_url,
@@ -403,7 +403,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
 
     # Étape 3 : Publier
     rp = requests.post(
-        f"https://graph.facebook.com/v23.0/{facebook_id}/video_reels",
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_reels",
         data={
             "video_id":     video_id,
             "upload_phase": "finish",
@@ -428,14 +428,14 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
     """
     # Étape 1 : Initialiser
     r = requests.post(
-        f"https://graph.facebook.com/v23.0/{facebook_id}/video_stories",
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_stories",
         data={"upload_phase": "start", "access_token": access_token}
     )
     r.raise_for_status()
     data     = r.json()
     video_id = data["video_id"]
     # Meta retourne parfois une upload_url directe, sinon on construit la nôtre
-    upload_url = data.get("upload_url") or f"https://rupload.facebook.com/video-upload/v23.0/{video_id}"
+    upload_url = data.get("upload_url") or f"https://rupload.facebook.com/video-upload/v25.0/{video_id}"
     print(f"  [PKG] Story Facebook initialisée : {video_id}")
 
     # Étape 2 : Upload depuis URL hébergée
@@ -450,7 +450,7 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
 
     # Étape 3 : Publier
     rp = requests.post(
-        f"https://graph.facebook.com/v23.0/{facebook_id}/video_stories",
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_stories",
         data={
             "video_id":     video_id,
             "upload_phase": "finish",
@@ -531,7 +531,7 @@ for payload_file in payload_dir.glob("*.json"):
     if success_insta:
         if media_type == "IMAGE" and image_url:
             try:
-                story_url    = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+                story_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
                 story_params = {
                     "image_url":    image_url,
                     "media_type":   "STORIES",
@@ -542,7 +542,7 @@ for payload_file in payload_dir.glob("*.json"):
                 sm_id = rs.json()["id"]
                 time.sleep(5)
                 requests.post(
-                    f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish",
+                    f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
                     data={"creation_id": sm_id, "access_token": access_token}
                 ).raise_for_status()
                 print(f"[{pub_id}] [OK] Story image Instagram publiée")
@@ -560,7 +560,7 @@ for payload_file in payload_dir.glob("*.json"):
         elif media_type == "CAROUSEL" and payload.get("story_url"):
             # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11)
             try:
-                s_url        = f"https://graph.facebook.com/v23.0/{instagram_id}/media"
+                s_url        = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
                 story_params = {
                     "image_url":    payload["story_url"],
                     "media_type":   "STORIES",
@@ -571,7 +571,7 @@ for payload_file in payload_dir.glob("*.json"):
                 sm_id = rs.json()["id"]
                 time.sleep(5)
                 requests.post(
-                    f"https://graph.facebook.com/v23.0/{instagram_id}/media_publish",
+                    f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
                     data={"creation_id": sm_id, "access_token": access_token}
                 ).raise_for_status()
                 print(f"[{pub_id}] [OK] Story carousel Instagram publiée")
@@ -582,7 +582,7 @@ for payload_file in payload_dir.glob("*.json"):
     if success_insta and facebook_id:
         if media_type == "IMAGE" and image_url:
             try:
-                fb_url = f"https://graph.facebook.com/v23.0/{facebook_id}/photos"
+                fb_url = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
                 requests.post(
                     fb_url,
                     data={"url": image_url, "caption": caption, "access_token": access_token}
