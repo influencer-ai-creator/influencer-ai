@@ -246,7 +246,9 @@ def publish_video(instagram_id, access_token, video_url, caption):
     }
     r = requests.post(media_url, data=media_params)
     r.raise_for_status()
-    container_id = r.json()["id"]
+    creation_resp = r.json()
+    print(f"  [PKG] Réponse création Reel : {creation_resp}")
+    container_id = creation_resp["id"]
     print(f"  [PKG] Conteneur Reel Instagram créé : {container_id}")
 
     _poll_instagram_container(container_id, access_token, max_wait=300, label="Reel Instagram")
