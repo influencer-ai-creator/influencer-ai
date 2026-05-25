@@ -287,8 +287,11 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
         kind = "VIDEO" if is_video_child else "IMAGE"
         print(f"  [SLIDE {i+1}/{len(children_urls)}] Item {kind} créé : {item_id}")
         if is_video_child:
-            # Polling court pour s'assurer que la vidéo est traitée avant l'étape suivante
-            _poll_instagram_container(item_id, access_token, max_wait=120, label=f"Slide vidéo {i+1}")
+            # Attente fixe : _poll_instagram_container peut retourner subcode 33 sur certains
+            # comptes (même restriction que le container final). L'item n'a pas de media_publish,
+            # donc on ne peut pas utiliser _publish_video_with_retry ici — on attend 90s.
+            print(f"  [WAIT] Attente 90s pour le traitement de la slide vidéo {i+1}...")
+            time.sleep(90)
 
     # 2. Créer le conteneur CAROUSEL
     container_params = {
@@ -633,11 +636,17 @@ for payload_file in payload_dir.glob("*.json"):
                 rs = requests.post(s_url, data=story_params)
                 rs.raise_for_status()
                 sm_id = rs.json()["id"]
-                time.sleep(5 if not is_video_story else 15)  # video STORIES = polling FINISHED comme reels
-                requests.post(
-                    f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
-                    data={"creation_id": sm_id, "access_token": access_token}
-                ).raise_for_status()
+                if is_video_story:
+                    # Même pattern que publish_video_story : retry sur subcode 2207027
+                    _publish_video_with_retry(instagram_id, access_token, sm_id,
+                                              label="Story vidéo carousel", first_sleep=30,
+                                              poll_every=15, max_wait=120)
+                else:
+                    time.sleep(5)
+                    requests.post(
+                        f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
+                        data={"creation_id": sm_id, "access_token": access_token}
+                    ).raise_for_status()
                 print(f"[{pub_id}] [OK] Story carousel Instagram publiée ({'video' if is_video_story else 'image'})")
             except Exception as e:
                 print(f"[{pub_id}] [WARN] Story carousel Instagram échouée (ignoré) : {e}")
