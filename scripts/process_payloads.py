@@ -26,6 +26,32 @@ else:
     published = set()
 
 
+def _thumb_url(data: dict) -> str:
+    """Extrait la meilleure URL de miniature selon le type de média.
+
+    - IMAGE   → image_url ou media_url
+    - CAROUSEL → premier enfant non-vidéo (children[0] si .jpg/.png)
+    - VIDEO    → vide (les .mp4 ne s'affichent pas dans Markdown GitHub)
+    """
+    media_type = data.get("media_type", "IMAGE").upper()
+    if media_type == "CAROUSEL":
+        return next(
+            (u for u in data.get("children", []) if not u.lower().endswith(".mp4")),
+            ""
+        )
+    if media_type == "VIDEO":
+        return ""
+    return data.get("image_url") or data.get("media_url", "")
+
+
+def _thumb_cell(thumb: str, media_type: str) -> str:
+    """Rendu HTML/emoji de la colonne Aperçu dans le README."""
+    if thumb:
+        return f"<img src='{thumb}' width='50'>"
+    icons = {"VIDEO": "🎬", "CAROUSEL": "🎠"}
+    return icons.get(media_type, "N/A")
+
+
 def generate_dashboard(payload_dir, published_count, run_errors=None):
     """Génère un dashboard résumé par compte utilisateur.
 
@@ -37,21 +63,25 @@ def generate_dashboard(payload_dir, published_count, run_errors=None):
         try:
             with open(p_file) as f:
                 data = json.load(f)
-                compte = data["compte"].upper()
-                ts     = int(data["next_time"])
+                compte      = data["compte"].upper()
+                ts          = int(data["next_time"])
+                media_type  = data.get("media_type", "IMAGE").upper()
+                thumb       = _thumb_url(data)
 
                 if compte not in stats_comptes:
                     stats_comptes[compte] = {
-                        "count": 0,
-                        "first": ts,
-                        "last":  ts,
-                        "thumb": data.get("image_url") or data.get("media_url", "")
+                        "count":      0,
+                        "first":      ts,
+                        "last":       ts,
+                        "thumb":      thumb,
+                        "thumb_type": media_type,
                     }
 
                 stats_comptes[compte]["count"] += 1
                 if ts < stats_comptes[compte]["first"]:
-                    stats_comptes[compte]["first"] = ts
-                    stats_comptes[compte]["thumb"] = data.get("image_url") or data.get("media_url", "")
+                    stats_comptes[compte]["first"]      = ts
+                    stats_comptes[compte]["thumb"]      = thumb
+                    stats_comptes[compte]["thumb_type"] = media_type
                 if ts > stats_comptes[compte]["last"]:
                     stats_comptes[compte]["last"] = ts
         except Exception:
@@ -83,7 +113,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None):
             date_next = (datetime.fromtimestamp(s["first"], tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
             date_last = (datetime.fromtimestamp(s["last"],  tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
             count_display = f"**{s['count']}**" if s['count'] > 5 else f"[WARN] **{s['count']}**"
-            thumb = f"<img src='{s['thumb']}' width='50'>" if s['thumb'] else "N/A"
+            thumb = _thumb_cell(s["thumb"], s["thumb_type"])
             md_content += f"| {compte} | {count_display} | {date_next} | {date_last} | {thumb} |\n"
 
     readme_path = pathlib.Path(__file__).parent.parent / "README.md"
@@ -233,17 +263,32 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
     media_url_endpoint = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
 
     # 1. Upload chaque slide comme item de carousel
+    # Détection extension : .mp4 → media_type=VIDEO + video_url, sinon → image_url
+    # (cf. CLAUDE.md §5.12 — carousel + music produit slide_XXX_00.mp4)
     for i, child_url in enumerate(children_urls):
-        params = {
-            "image_url":        child_url,
-            "is_carousel_item": "true",
-            "access_token":     access_token,
-        }
+        is_video_child = child_url.lower().endswith(".mp4")
+        if is_video_child:
+            params = {
+                "video_url":        child_url,
+                "media_type":       "VIDEO",
+                "is_carousel_item": "true",
+                "access_token":     access_token,
+            }
+        else:
+            params = {
+                "image_url":        child_url,
+                "is_carousel_item": "true",
+                "access_token":     access_token,
+            }
         r = requests.post(media_url_endpoint, data=params)
         r.raise_for_status()
         item_id = r.json()["id"]
         item_ids.append(item_id)
-        print(f"  [SLIDE {i+1}/{len(children_urls)}] Item créé : {item_id}")
+        kind = "VIDEO" if is_video_child else "IMAGE"
+        print(f"  [SLIDE {i+1}/{len(children_urls)}] Item {kind} créé : {item_id}")
+        if is_video_child:
+            # Polling court pour s'assurer que la vidéo est traitée avant l'étape suivante
+            _poll_instagram_container(item_id, access_token, max_wait=120, label=f"Slide vidéo {i+1}")
 
     # 2. Créer le conteneur CAROUSEL
     container_params = {
@@ -257,13 +302,12 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
     container_id = rc.json()["id"]
     print(f"  [CONTAINER] Carousel container créé : {container_id}")
 
-    # 3. Attendre FINISHED
-    _poll_instagram_container(container_id, access_token, max_wait=300, label="Carousel Instagram")
-
-    # 4. Publier
-    publish_url = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
-    rp = requests.post(publish_url, data={"creation_id": container_id, "access_token": access_token})
-    rp.raise_for_status()
+    # 3. Attendre FINISHED + Publier
+    # Note : le polling GET /{container_id} retourne error_subcode 33 sur certains comptes
+    # (même restriction que les Reels). On utilise media_publish avec retry sur subcode 2207027.
+    # Les carousels image sont traités rapidement (~10-30s), d'où le first_sleep court.
+    _publish_video_with_retry(instagram_id, access_token, container_id,
+                               label="Carousel Instagram", first_sleep=10, poll_every=10, max_wait=300)
     return True, container_id
 
 
@@ -331,15 +375,20 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
 
     Workflow Facebook Graph API :
       1. Upload chaque image en mode `published=false` → récupère N `media_fbid`
+         Les slides .mp4 sont ignorés (API photos ne supporte pas les vidéos ;
+         carousel_music_video peut avoir slide 0 en MP4 — cf. CLAUDE.md §5.12 C12).
       2. Créer un post avec `attached_media[i]={"media_fbid": id}` + `message=caption`
 
     Retourne (success: bool, post_id: str | None).
     """
     media_fbids = []
 
-    # 1. Upload chaque slide en photo non-publiée
+    # 1. Upload chaque slide en photo non-publiée (skip les .mp4)
     photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
     for i, url in enumerate(children_urls):
+        if url.lower().endswith(".mp4"):
+            print(f"  [SLIDE FB {i+1}/{len(children_urls)}] Ignoré (vidéo — non supporté dans carousel Facebook)")
+            continue
         photo_params = {
             "url":          url,
             "published":    "false",
@@ -350,6 +399,10 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
         fbid = r.json()["id"]
         media_fbids.append(fbid)
         print(f"  [SLIDE FB {i+1}/{len(children_urls)}] media_fbid={fbid}")
+
+    if not media_fbids:
+        print(f"  [WARN FB] Aucun slide image disponible (tous en .mp4 ?) — carousel Facebook ignoré")
+        return False, None
 
     # 2. Créer le post avec les attached_media référencés
     feed_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/feed"
@@ -558,23 +611,34 @@ for payload_file in payload_dir.glob("*.json"):
                 print(f"[{pub_id}] [WARN] Story vidéo Instagram échouée (ignoré) : {e}")
 
         elif media_type == "CAROUSEL" and payload.get("story_url"):
-            # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11)
+            # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11 + §5.12)
+            # Détection extension : .mp4 → STORIES video, .jpg → STORIES image
             try:
-                s_url        = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
-                story_params = {
-                    "image_url":    payload["story_url"],
-                    "media_type":   "STORIES",
-                    "access_token": access_token,
-                }
+                s_url = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
+                story_url_val = payload["story_url"]
+                is_video_story = story_url_val.lower().endswith(".mp4")
+
+                if is_video_story:
+                    story_params = {
+                        "video_url":    story_url_val,
+                        "media_type":   "STORIES",
+                        "access_token": access_token,
+                    }
+                else:
+                    story_params = {
+                        "image_url":    story_url_val,
+                        "media_type":   "STORIES",
+                        "access_token": access_token,
+                    }
                 rs = requests.post(s_url, data=story_params)
                 rs.raise_for_status()
                 sm_id = rs.json()["id"]
-                time.sleep(5)
+                time.sleep(5 if not is_video_story else 15)  # video STORIES = polling FINISHED comme reels
                 requests.post(
                     f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
                     data={"creation_id": sm_id, "access_token": access_token}
                 ).raise_for_status()
-                print(f"[{pub_id}] [OK] Story carousel Instagram publiée")
+                print(f"[{pub_id}] [OK] Story carousel Instagram publiée ({'video' if is_video_story else 'image'})")
             except Exception as e:
                 print(f"[{pub_id}] [WARN] Story carousel Instagram échouée (ignoré) : {e}")
 
