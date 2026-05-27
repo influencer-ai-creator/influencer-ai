@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
@@ -31,21 +31,15 @@ jobs:
         env:
           CLIPS_ACCESS_TOKEN: ${{ secrets.CLIPS_ACCESS_TOKEN }}
           CYBERPUNK_ACCESS_TOKEN: ${{ secrets.CYBERPUNK_ACCESS_TOKEN }}
-          IA_ACTUS_ACCESS_TOKEN: ${{ secrets.IA_ACTUS_ACCESS_TOKEN }}
           INFLUENCER_ACCESS_TOKEN: ${{ secrets.INFLUENCER_ACCESS_TOKEN }}
-          MEOWGINEEREDAI_ACCESS_TOKEN: ${{ secrets.MEOWGINEEREDAI_ACCESS_TOKEN }}
           SUNDRESS_ACCESS_TOKEN: ${{ secrets.SUNDRESS_ACCESS_TOKEN }}
           UNIVERSITY_ACCESS_TOKEN: ${{ secrets.UNIVERSITY_ACCESS_TOKEN }}
           CLIPS_FACEBOOK_ID: ${{ vars.CLIPS_FACEBOOK_ID }}
           CLIPS_INSTAGRAM_ID: ${{ vars.CLIPS_INSTAGRAM_ID }}
           CYBERPUNK_FACEBOOK_ID: ${{ vars.CYBERPUNK_FACEBOOK_ID }}
           CYBERPUNK_INSTAGRAM_ID: ${{ vars.CYBERPUNK_INSTAGRAM_ID }}
-          IA_ACTUS_FACEBOOK_ID: ${{ vars.IA_ACTUS_FACEBOOK_ID }}
-          IA_ACTUS_INSTAGRAM_ID: ${{ vars.IA_ACTUS_INSTAGRAM_ID }}
           INFLUENCER_FACEBOOK_ID: ${{ vars.INFLUENCER_FACEBOOK_ID }}
           INFLUENCER_INSTAGRAM_ID: ${{ vars.INFLUENCER_INSTAGRAM_ID }}
-          MEOWGINEEREDAI_FACEBOOK_ID: ${{ vars.MEOWGINEEREDAI_FACEBOOK_ID }}
-          MEOWGINEEREDAI_INSTAGRAM_ID: ${{ vars.MEOWGINEEREDAI_INSTAGRAM_ID }}
           SUNDRESS_FACEBOOK_ID: ${{ vars.SUNDRESS_FACEBOOK_ID }}
           SUNDRESS_INSTAGRAM_ID: ${{ vars.SUNDRESS_INSTAGRAM_ID }}
           UNIVERSITY_FACEBOOK_ID: ${{ vars.UNIVERSITY_FACEBOOK_ID }}
