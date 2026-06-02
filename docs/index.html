@@ -209,6 +209,78 @@
     .hw-grid { grid-template-columns: 1fr; }
     .lang-row { flex-direction: column; }
   }
+
+  /* Age gate modal */
+  .age-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+
+  .age-overlay.open { display: flex; }
+
+  .age-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2rem 1.75rem;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .age-modal h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: .6rem;
+  }
+
+  .age-modal p {
+    font-size: .88rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .age-buttons {
+    display: flex;
+    gap: .75rem;
+  }
+
+  .btn-confirm {
+    flex: 1;
+    padding: .7rem;
+    border-radius: 10px;
+    border: none;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--accent);
+    color: #fff;
+    transition: opacity .15s;
+  }
+
+  .btn-confirm:hover { opacity: .85; }
+
+  .btn-cancel {
+    flex: 1;
+    padding: .7rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: border-color .15s;
+  }
+
+  .btn-cancel:hover { border-color: var(--text); color: var(--text); }
 </style>
 </head>
 <body>
@@ -235,11 +307,11 @@
   <!-- Special Requests -->
   <div class="section-label">Special requests</div>
 
-  <a href="#" onclick="return false;" class="link-card" target="_blank" rel="noopener">
+  <a href="#" onclick="openAgeGate(); return false;" class="link-card">
     <div class="card-icon icon-purple">🔞</div>
     <div class="card-text">
-      <div class="card-title">Special Requests</div>
-      <div class="card-desc">Custom AI content — <span style="color:#f5a623;font-weight:600">Coming soon</span></div>
+      <div class="card-title">Exclusive AI Content</div>
+      <div class="card-desc">LocalAIGirls — adults only</div>
     </div>
     <div class="card-arrow">↗</div>
   </a>
@@ -306,5 +378,34 @@
   </footer>
 
 </div>
+
+<!-- Age gate modal -->
+<div class="age-overlay" id="ageOverlay">
+  <div class="age-modal">
+    <h2>Adults only</h2>
+    <p>This content is intended for adults aged 18 and over.<br>By continuing, you confirm you are of legal age.</p>
+    <div class="age-buttons">
+      <button class="btn-confirm" onclick="confirmAge()">I am 18+</button>
+      <button class="btn-cancel" onclick="closeAgeGate()">Go back</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openAgeGate() {
+    document.getElementById('ageOverlay').classList.add('open');
+  }
+  function closeAgeGate() {
+    document.getElementById('ageOverlay').classList.remove('open');
+  }
+  function confirmAge() {
+    window.open('https://www.fanvue.com/localaigirls', '_blank', 'noopener');
+    closeAgeGate();
+  }
+  document.getElementById('ageOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeAgeGate();
+  });
+</script>
+
 </body>
 </html>
