@@ -1,0 +1,9 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "0b58053e-7a46-4d70-9264-499571aec3a2",
+  "image_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/pipeline-test-1780835300/release_pipeline_test.jpg",
+  "caption": "🧪 Test du pipeline de publication via GitHub Releases — post de validation technique, sera supprimé. #test",
+  "next_time": 1780835355,
+  "media_type": "IMAGE",
+  "storage": "release"
+}
