@@ -378,8 +378,8 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
 
     Workflow Facebook Graph API :
       1. Upload chaque image en mode `published=false` → récupère N `media_fbid`
-         Les slides .mp4 sont ignorés (API photos ne supporte pas les vidéos ;
-         carousel_music_video peut avoir slide 0 en MP4 — cf. CLAUDE.md §5.12 C12).
+         children_urls doit contenir uniquement des .jpg/.png (cf. payload fb_children).
+         Les .mp4 sont skippés en safety net — ils ne devraient pas arriver ici.
       2. Créer un post avec `attached_media[i]={"media_fbid": id}` + `message=caption`
 
     Retourne (success: bool, post_id: str | None).
@@ -674,8 +674,11 @@ for payload_file in payload_dir.glob("*.json"):
         elif media_type == "CAROUSEL":
             try:
                 children = payload.get("children", [])
-                publish_carousel_facebook(facebook_id, access_token, children, caption)
-                print(f"[{pub_id}] [OK] Post Facebook carousel publié ({len(children)} photos)")
+                # fb_children remplace children quand slide 0 est un .mp4 (musique muxée)
+                # — Facebook ne supporte pas les vidéos dans les carousels via l'API photos
+                fb_children = payload.get("fb_children", children)
+                publish_carousel_facebook(facebook_id, access_token, fb_children, caption)
+                print(f"[{pub_id}] [OK] Post Facebook carousel publié ({len(fb_children)} photos)")
             except Exception as e:
                 print(f"[{pub_id}] [WARN] Erreur Facebook carousel : {e}")
 
@@ -698,26 +701,92 @@ for payload_file in payload_dir.glob("*.json"):
         # Supprimer payload
         payload_file.unlink()
 
-        # Supprimer les fichiers média locaux
+        # Supprimer les fichiers média
+        # Discriminant : storage="release" (ou URL contenant /releases/download/) = Release assets
+        # Sinon : chemin legacy (fichiers locaux dans to_publish/)
+        _is_release = (
+            payload.get("storage") == "release"
+            or "/releases/download/" in (payload.get("media_url") or "")
+            or any("/releases/download/" in u for u in payload.get("children", []))
+        )
         try:
-            if media_type == "CAROUSEL":
-                urls = list(payload.get("children", []))
-                if payload.get("story_url"):
-                    urls.append(payload["story_url"])
-                for child_url in urls:
-                    child_name = pathlib.Path(child_url).name
-                    child_local = base_dir / folder.lower() / "to_publish" / child_name
-                    if child_local.exists():
-                        child_local.unlink()
-                        print(f"[DEL] Fichier local supprimé : {child_name}")
+            if _is_release:
+                # --- Nouveau chemin : supprimer les assets via API GitHub ---
+                _gh_token  = os.environ.get("GITHUB_TOKEN", "")
+                _gh_repo   = os.environ.get("GITHUB_REPOSITORY", "")
+                _rel_tag   = "media-storage"
+                _api_base  = "https://api.github.com"
+                _gh_hdrs   = {
+                    "Authorization": f"token {_gh_token}",
+                    "Accept": "application/vnd.github+json",
+                }
+                def _delete_release_asset_by_url(asset_url):
+                    """Supprime le Release asset identifié par son browser_download_url."""
+                    if not asset_url or not _gh_token or not _gh_repo:
+                        return
+                    asset_name = pathlib.Path(asset_url).name
+                    # Récupérer la release
+                    r = requests.get(
+                        f"{_api_base}/repos/{_gh_repo}/releases/tags/{_rel_tag}",
+                        headers=_gh_hdrs, timeout=30
+                    )
+                    if r.status_code == 404:
+                        return
+                    r.raise_for_status()
+                    release_id = r.json()["id"]
+                    # Lister les assets et supprimer celui dont le name correspond
+                    assets_url = f"{_api_base}/repos/{_gh_repo}/releases/{release_id}/assets?per_page=100"
+                    while assets_url:
+                        ra = requests.get(assets_url, headers=_gh_hdrs, timeout=30)
+                        ra.raise_for_status()
+                        for asset in ra.json():
+                            if asset["name"] == asset_name:
+                                requests.delete(
+                                    f"{_api_base}/repos/{_gh_repo}/releases/assets/{asset['id']}",
+                                    headers=_gh_hdrs, timeout=30
+                                )
+                                print(f"[DEL] Asset Release supprimé : {asset_name}")
+                                return
+                        link = ra.headers.get("Link", "")
+                        assets_url = None
+                        for part in link.split(","):
+                            if 'rel="next"' in part:
+                                assets_url = part.split(";")[0].strip().strip("<>")
+                                break
+                if media_type == "CAROUSEL":
+                    urls_to_del = list(payload.get("children", []))
+                    if payload.get("story_url"):
+                        urls_to_del.append(payload["story_url"])
+                    # fb_children peut contenir des doublons de children -- skip les vus
+                    seen = set()
+                    for fb_u in payload.get("fb_children", []):
+                        if fb_u not in seen and fb_u not in urls_to_del:
+                            urls_to_del.append(fb_u)
+                        seen.add(fb_u)
+                    for u in urls_to_del:
+                        _delete_release_asset_by_url(u)
+                else:
+                    _delete_release_asset_by_url(payload.get("media_url") or payload.get("image_url"))
             else:
-                media_name  = pathlib.Path(media_url).name
-                media_local = base_dir / folder.lower() / "to_publish" / media_name
-                if media_local.exists():
-                    media_local.unlink()
-                    print(f"[DEL] Fichier média local supprimé : {media_name}")
-        except Exception:
-            pass
+                # --- Chemin legacy : supprimer les fichiers locaux dans to_publish/ ---
+                if media_type == "CAROUSEL":
+                    urls = list(payload.get("children", []))
+                    if payload.get("story_url"):
+                        urls.append(payload["story_url"])
+                    for child_url in urls:
+                        child_name = pathlib.Path(child_url).name
+                        child_local = base_dir / folder.lower() / "to_publish" / child_name
+                        if child_local.exists():
+                            child_local.unlink()
+                            print(f"[DEL] Fichier local supprimé : {child_name}")
+                else:
+                    media_name  = pathlib.Path(media_url).name
+                    media_local = base_dir / folder.lower() / "to_publish" / media_name
+                    if media_local.exists():
+                        media_local.unlink()
+                        print(f"[DEL] Fichier média local supprimé : {media_name}")
+        except Exception as _del_exc:
+            print(f"[WARN] Erreur nettoyage média : {_del_exc}")
 
 
 # ==========================================
