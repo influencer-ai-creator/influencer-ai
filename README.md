@@ -1,6 +1,9 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 12/06/2026 11:57:12
+## ❌ Erreurs du dernier run (12/06/2026 14:45:16)
+
+- `cyberpunk: Erreur Instagram Feed 588e6cb6-f464-4067-9506-fe4e187c33ea -> 500 Server Error: Internal Server Error for url: https://graph.facebook.com/v25.0/17841477747403675/media`
+- `sundress: Erreur Instagram Feed 2a5fd368-e5a2-4f87-916c-383074b012e8 -> 500 Server Error: Internal Server Error for url: https://graph.facebook.com/v25.0/17841477990850659/media`
 
 📦 **Total publiés historiquement :** 3233
 
