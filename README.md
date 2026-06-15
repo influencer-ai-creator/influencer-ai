@@ -1,13 +1,13 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 15/06/2026 00:08:46
+✅ **Dernier run sans erreur** — 15/06/2026 05:20:49
 
-📦 **Total publiés historiquement :** 3253
+📦 **Total publiés historiquement :** 3257
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Aperçu prochain |
 | :--- | :---: | :--- | :--- | :---: |
-| CYBERPUNK | **140** | 15/06 04:23 | 18/08 22:25 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/cyberpunk/to_publish/image_1545.png' width='50'> |
-| INFLUENCER | **136** | 15/06 06:00 | 21/08 06:00 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/influencer/to_publish/image_1599.png' width='50'> |
-| SUNDRESS | **200** | 15/06 02:10 | 23/09 02:10 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1688.png' width='50'> |
-| UNIVERSITY | **127** | 15/06 05:11 | 17/08 17:11 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/university/to_publish/image_1929.png' width='50'> |
+| CYBERPUNK | **139** | 15/06 16:23 | 18/08 22:25 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/cyberpunk/to_publish/image_1540_1.png' width='50'> |
+| INFLUENCER | **135** | 15/06 18:00 | 21/08 06:00 | 🎬 |
+| SUNDRESS | **199** | 15/06 14:10 | 23/09 02:10 | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1767.png' width='50'> |
+| UNIVERSITY | **126** | 15/06 17:11 | 17/08 17:11 | 🎬 |
