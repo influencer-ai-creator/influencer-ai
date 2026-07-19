@@ -1,6 +1,8 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 19/07/2026 11:28:43
+## ❌ Erreurs du dernier run (19/07/2026 12:17:41)
+
+- `sundress: Erreur Instagram Feed c618da54-c3c6-41f9-9a3a-20d712600668 -> Délai dépassé (300s) — le conteneur Reel Instagram n'est pas passé à FINISHED.`
 
 📦 **Total publiés historiquement :** 3528
 
