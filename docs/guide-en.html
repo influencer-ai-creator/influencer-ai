@@ -549,13 +549,21 @@
 
     <p>What I've automated in my workflow:</p>
     <ul class="feature-list">
-      <li><strong>Content generation</strong> — LLM → image/video prompt → ComfyUI generation</li>
-      <li><strong>Post-production</strong> — TTS audio, background music, karaoke subtitles</li>
+      <li><strong>Content generation</strong> — one LLM call returns every prompt the post needs (caption, image, motion, music) → ComfyUI generation</li>
+      <li><strong>Post-production</strong> — TTS voice-over, background music, karaoke subtitles, multi-shot reels (one image per paragraph, with transitions)</li>
       <li><strong>Publishing</strong> — scheduling, multi-account management, platform-adapted formats</li>
       <li><strong>News monitoring</strong> — source scraping → LLM summary → formatted post</li>
     </ul>
 
     <p>The whole pipeline runs without human intervention, 24/7.</p>
+
+    <div class="callout">
+      <strong>What makes it reliable: structured output.</strong> You hand the local model a JSON schema, and llama.cpp (or Ollama) compiles it into a grammar the sampler has to follow. The model <em>physically cannot</em> answer with prose, wrap the JSON in markdown, invent a field, or drop one. That is the difference between a demo you babysit and a pipeline you leave running — and it's free, locally.
+    </div>
+
+    <div class="callout">
+      <strong>Small detail, real retention gain:</strong> Instagram replays a reel on repeat, so the jump back to the first frame is the moment your viewer is shown most often. A short cross-fade from the end onto the beginning — or a ping-pong (the clip followed by its mirror) — removes it. One FFmpeg pass, no regeneration.
+    </div>
 
     <div class="callout" style="border-left-color:var(--green)">
       <strong>In production since 2025:</strong> 6 accounts running across different niches — 3,000+ posts generated automatically, 1,500 to 2,300+ followers each. Zero manual posting.
