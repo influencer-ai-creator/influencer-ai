@@ -261,6 +261,70 @@ def _publish_video_with_retry(instagram_id, access_token, container_id, label,
     )
 
 
+def _poll_facebook_video(video_id, access_token, label, max_wait=300, poll_every=15):
+    """
+    Attend que Meta ait fini de traiter ET de publier une vidéo Facebook.
+
+    `upload_phase=finish` renvoie 200 dès que la requête est acceptée : le
+    traitement est ASYNCHRONE. Sans ce polling, un Reel rejeté par Meta
+    (ratio, durée, codec) laisse le script imprimer [OK] alors que rien
+    n'apparaît sur la Page — symptôme observé sur ia_actus (onglet Reels vide
+    alors que la Story, elle, partait).
+
+    Le body de `fields=status` est imprimé à chaque tour : c'est lui qui porte
+    le motif de rejet exact dans `processing_phase.errors`.
+
+    Lève une exception si Meta signale une erreur ou au timeout.
+    """
+    status_url    = f"https://graph.facebook.com/v25.0/{video_id}"
+    status_params = {"fields": "status", "access_token": access_token}
+    elapsed       = 0
+    http_errors   = 0
+    MAX_HTTP_ERR  = 3
+
+    while elapsed < max_wait:
+        time.sleep(poll_every)
+        elapsed += poll_every
+        try:
+            rs = _get(status_url, params=status_params)
+            rs.raise_for_status()
+            http_errors = 0
+        except requests.HTTPError:
+            http_errors += 1
+            try:
+                body = rs.json()
+            except Exception:
+                body = rs.text
+            print(f"  [WARN] Erreur HTTP {rs.status_code} polling {label} ({elapsed}s) : {body}")
+            if http_errors >= MAX_HTTP_ERR:
+                raise RuntimeError(
+                    f"Polling {label} : {MAX_HTTP_ERR} erreurs HTTP consécutives "
+                    f"(code {rs.status_code}) — dernier body : {body}"
+                )
+            continue
+
+        status = rs.json().get("status", {}) or {}
+        print(f"  [WAIT] Statut {label} ({elapsed}s) : {json.dumps(status)}")
+
+        video_status = status.get("video_status", "")
+        processing   = (status.get("processing_phase") or {}).get("status", "")
+        publishing   = (status.get("publishing_phase") or {}).get("status", "")
+
+        if "error" in (video_status, processing, publishing):
+            raise RuntimeError(f"Traitement {label} rejeté par Meta : {json.dumps(status)}")
+        if video_status == "expired":
+            raise RuntimeError(f"Session d'upload {label} expirée : {json.dumps(status)}")
+        if publishing == "complete":
+            return
+        # video_status "ready" sans publishing_phase renseignée = ancien schéma
+        if video_status == "ready" and not publishing:
+            return
+
+    raise TimeoutError(
+        f"Délai dépassé ({max_wait}s) — {label} n'a jamais été confirmé publié par Meta."
+    )
+
+
 def publish_carousel(instagram_id, access_token, children_urls, caption):
     """Publie un carousel Instagram (2 à 10 slides).
 
@@ -390,52 +454,33 @@ def publish_video_story(instagram_id, access_token, video_url):
 
 
 def publish_carousel_facebook(facebook_id, access_token, children_urls, caption):
-    """Publie un carousel multi-photos sur une Page Facebook.
+    """Publie un carousel sur une Page Facebook — en PHOTO UNIQUE (slide 0).
 
-    Workflow Facebook Graph API :
-      1. Upload chaque image en mode `published=false` → récupère N `media_fbid`
-         children_urls doit contenir uniquement des .jpg/.png (cf. payload fb_children).
-         Les .mp4 sont skippés en safety net — ils ne devraient pas arriver ici.
-      2. Créer un post avec `attached_media[i]={"media_fbid": id}` + `message=caption`
+    Facebook n'a pas d'équivalent du carousel Instagram : un post multi-photos
+    (`attached_media`) est rendu en mosaïque recadrée, dont seules 4-5 tuiles
+    quasi carrées sont visibles. Nos slides sont portrait avec texte incrusté et
+    se lisent EN SÉQUENCE — dans cette mosaïque le texte est rogné, illisible, et
+    chaque post mange un bloc énorme du mur. On ne publie donc que le premier
+    slide, en photo simple : le texte complet vit déjà dans la légende.
+
+    children_urls doit contenir des .jpg/.png (cf. payload fb_children) ; les
+    .mp4 sont ignorés en safety net (l'endpoint /photos les rejetterait).
 
     Retourne (success: bool, post_id: str | None).
     """
-    media_fbids = []
-
-    # 1. Upload chaque slide en photo non-publiée (skip les .mp4)
-    photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
-    for i, url in enumerate(children_urls):
-        if url.lower().endswith(".mp4"):
-            print(f"  [SLIDE FB {i+1}/{len(children_urls)}] Ignoré (vidéo — non supporté dans carousel Facebook)")
-            continue
-        photo_params = {
-            "url":          url,
-            "published":    "false",
-            "access_token": access_token,
-        }
-        r = _post(photos_endpoint, data=photo_params)
-        r.raise_for_status()
-        fbid = r.json()["id"]
-        media_fbids.append(fbid)
-        print(f"  [SLIDE FB {i+1}/{len(children_urls)}] media_fbid={fbid}")
-
-    if not media_fbids:
-        print(f"  [WARN FB] Aucun slide image disponible (tous en .mp4 ?) — carousel Facebook ignoré")
+    cover = next((u for u in children_urls if not u.lower().endswith(".mp4")), None)
+    if not cover:
+        print(f"  [WARN FB] Aucun slide image disponible (tous en .mp4 ?) — post Facebook ignoré")
         return False, None
 
-    # 2. Créer le post avec les attached_media référencés
-    feed_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/feed"
-    feed_params = {
-        "message":      caption,
-        "access_token": access_token,
-    }
-    for i, fbid in enumerate(media_fbids):
-        feed_params[f"attached_media[{i}]"] = json.dumps({"media_fbid": fbid})
-
-    rp = _post(feed_endpoint, data=feed_params)
-    rp.raise_for_status()
-    post_id = rp.json().get("id", "")
-    print(f"  [POST FB] Carousel publié : {post_id}")
+    photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
+    r = _post(
+        photos_endpoint,
+        data={"url": cover, "caption": caption, "access_token": access_token},
+    )
+    r.raise_for_status()
+    post_id = r.json().get("post_id") or r.json().get("id", "")
+    print(f"  [POST FB] Photo de couverture publiée : {post_id}")
     return True, post_id
 
 
@@ -450,6 +495,9 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
 
     Utilise /video_reels et non /videos — /videos affiche les vidéos portrait
     avec des bandes noires car il ne les traite pas comme des Reels.
+
+    L'étape 3 ne fait qu'ACCEPTER la demande : la publication réelle est
+    confirmée par _poll_facebook_video (cf. son docstring).
 
     Retourne (success: bool).
     """
@@ -485,6 +533,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
         }
     )
     rp.raise_for_status()
+    _poll_facebook_video(video_id, access_token, label="Reel Facebook")
     print(f"  [OK] Reel Facebook publié")
     return True
 
@@ -678,25 +727,31 @@ for payload_file in payload_dir.glob("*.json"):
                 ).raise_for_status()
                 print(f"[{pub_id}] [OK] Post Facebook image publié")
             except Exception as e:
-                print(f"[{pub_id}] [WARN] Erreur Facebook image : {e}")
+                err = f"{folder}: Erreur Facebook image {pub_id} -> {e}"
+                errors.append(err)
+                print(f"[FAIL] {err}")
 
         elif media_type == "VIDEO" and media_url:
             try:
                 publish_video_facebook(facebook_id, access_token, media_url, caption)
                 print(f"[{pub_id}] [OK] Post Facebook vidéo publié")
             except Exception as e:
-                print(f"[{pub_id}] [WARN] Erreur Facebook vidéo : {e}")
+                err = f"{folder}: Erreur Facebook vidéo {pub_id} -> {e}"
+                errors.append(err)
+                print(f"[FAIL] {err}")
 
         elif media_type == "CAROUSEL":
             try:
                 children = payload.get("children", [])
                 # fb_children remplace children quand slide 0 est un .mp4 (musique muxée)
-                # — Facebook ne supporte pas les vidéos dans les carousels via l'API photos
+                # — l'endpoint /photos ne prend pas de vidéo
                 fb_children = payload.get("fb_children", children)
                 publish_carousel_facebook(facebook_id, access_token, fb_children, caption)
-                print(f"[{pub_id}] [OK] Post Facebook carousel publié ({len(fb_children)} photos)")
+                print(f"[{pub_id}] [OK] Post Facebook carousel publié (photo de couverture)")
             except Exception as e:
-                print(f"[{pub_id}] [WARN] Erreur Facebook carousel : {e}")
+                err = f"{folder}: Erreur Facebook carousel {pub_id} -> {e}"
+                errors.append(err)
+                print(f"[FAIL] {err}")
 
     # --- Publication Story Facebook ---
     if success_insta and facebook_id:
@@ -705,8 +760,12 @@ for payload_file in payload_dir.glob("*.json"):
                 publish_video_story_facebook(facebook_id, access_token, media_url)
                 print(f"[{pub_id}] [OK] Story vidéo Facebook publiée")
             except Exception as e:
-                # Non bloquant : les Reels longs (>60s) ne peuvent pas être en Story
-                print(f"[{pub_id}] [WARN] Story vidéo Facebook échouée (ignoré) : {e}")
+                # Non bloquant pour la publication (les Reels >60s ne peuvent pas
+                # être en Story), mais remonté au dashboard : une Story qui échoue
+                # en silence est indétectable autrement.
+                err = f"{folder}: Story vidéo Facebook {pub_id} -> {e}"
+                errors.append(err)
+                print(f"[FAIL] {err}")
 
     # --- Nettoyage si succès ---
     if success_insta:
