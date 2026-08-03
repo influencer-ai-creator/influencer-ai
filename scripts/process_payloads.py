@@ -925,6 +925,31 @@ def _poll_threads_container(container_id, access_token, max_wait=180, poll_every
     return False
 
 
+def publish_photo_story_facebook(facebook_id, access_token, image_url):
+    """
+    Publie une Story PHOTO sur une Page Facebook.
+
+    Deux étapes, comme pour le carousel Facebook : la photo est d'abord
+    téléversée **non publiée** (`published=false`) — sans quoi elle atterrirait
+    aussi dans le fil, en doublon du post — puis rattachée aux Stories par son id.
+
+    Le pendant vidéo est `publish_video_story_facebook` (workflow d'upload en
+    trois phases, incompatible avec celui-ci).
+    """
+    r = _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
+        data={"url": image_url, "published": "false", "access_token": access_token},
+    )
+    r.raise_for_status()
+    photo_id = r.json()["id"]
+    _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/photo_stories",
+        data={"photo_id": photo_id, "access_token": access_token},
+    ).raise_for_status()
+    print(f"  [OK] Story photo Facebook publiée ({photo_id})")
+    return True
+
+
 def _publish_ig_story(instagram_id, access_token, url, label="Story"):
     """
     Publie une Story Instagram depuis une URL publique (image ou vidéo).
@@ -1035,6 +1060,20 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
                                label=f"Slide {i}")
             for i, url in enumerate(children)
         ]
+
+        # Chaque enfant doit être FINISHED AVANT d'être référencé par le parent :
+        # Meta rejette sinon le conteneur carousel avec
+        #   « Invalid Carousel Children — invalid, nonexistent, or expired »
+        # (code 100, sous-code 4279004), sans dire que la cause est l'attente.
+        # Un slide vidéo (musique muxée, §5.12 M12) n'est jamais prêt à temps.
+        # Tous les enfants sont créés d'abord : leur traitement se recouvre côté
+        # Meta, le sondage ne paie donc que le plus lent — et comme il vérifie
+        # avant de dormir, un slide image déjà prêt ne coûte rien.
+        for i, cid in enumerate(child_ids):
+            if not _poll_threads_container(cid, access_token, label=f"Slide {i}"):
+                print(f"  [FAIL] Carousel Threads : slide {i} non exploitable")
+                return False
+
         container_id = _threads_container(
             threads_id, access_token,
             {"media_type": "CAROUSEL", "children": ",".join(child_ids), "text": text},
@@ -1163,11 +1202,26 @@ for payload_file in payload_dir.glob("*.json"):
         actions["instagram_story"] = lambda: _publish_ig_story(
             instagram_id, access_token, ig_story_url, "Story carousel")
 
+    # Source de la Story, IDENTIQUE à celle d'Instagram : le média pour un post
+    # simple, la story dérivée pour un carousel (§5.10 C11). Facebook n'avait
+    # jusqu'ici de Story que sur les vidéos, faute de fonction pour les photos —
+    # les posts image et carousel n'en produisaient aucune, en silence.
+    if media_type == "VIDEO":
+        fb_story_src = media_url
+    elif media_type == "IMAGE":
+        fb_story_src = image_url
+    else:
+        fb_story_src = ig_story_url
+
+    def _do_facebook_story():
+        if _is_video(fb_story_src):
+            return publish_video_story_facebook(facebook_id, access_token, fb_story_src)
+        return publish_photo_story_facebook(facebook_id, access_token, fb_story_src)
+
     if facebook_id and (media_type != "IMAGE" or image_url):
         actions["facebook"] = _do_facebook
-        if media_type == "VIDEO" and media_url:
-            actions["facebook_story"] = lambda: publish_video_story_facebook(
-                facebook_id, access_token, media_url)
+        if fb_story_src:
+            actions["facebook_story"] = _do_facebook_story
 
     if threads_token and threads_id:
         actions["threads"] = lambda: publish_threads(
