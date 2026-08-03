@@ -996,20 +996,30 @@ def _threads_check(r, what):
     raise RuntimeError(f"{what} → HTTP {r.status_code} : {detail}")
 
 
-def _truncate_utf8(text, limit):
+def _truncate_threads(text, limit):
     """
-    Tronque à `limit` OCTETS UTF-8, sur une frontière de mot.
+    Repli de troncature pour les payloads antérieurs à `threads_caption`.
 
-    Repli pour les payloads antérieurs à `threads_caption` : `text[:limit]`
-    coupait à 500 *caractères*, ce qui dépasse 500 octets dès que la légende
-    porte des accents (2 octets) ou des emojis (4) — soit toutes les nôtres.
+    Même métrique que `publishing/threads._tlen` : 1 par caractère, sauf les
+    emojis (hors plan de base, 4 octets) comptés selon leur longueur UTF-8.
+    Duplication assumée — ce script est autonome et ne peut rien importer du
+    projet ; s'il faut changer la règle, les deux copies doivent bouger.
+
+    Le chemin nominal reste `threads_caption`, tronquée à la mise en file, qui
+    coupe elle à la fin de phrase et préserve les hashtags.
     """
-    raw = (text or "").encode("utf-8")
-    if len(raw) <= limit:
-        return text or ""
-    cut   = raw[:limit].decode("utf-8", errors="ignore")
-    space = cut.rfind(" ")
-    return (cut[:space] if space > limit * 0.6 else cut).rstrip()
+    text = text or ""
+    cost = lambda ch: 4 if len(ch.encode("utf-8")) == 4 else 1
+    if sum(cost(c) for c in text) <= limit:
+        return text
+    used = 0
+    for i, ch in enumerate(text):
+        if used + cost(ch) > limit:
+            text = text[:i]
+            break
+        used += cost(ch)
+    space = text.rfind(" ")
+    return (text[:space] if space > len(text) * 0.6 else text).rstrip()
 
 
 def _threads_media_params(url):
@@ -1154,7 +1164,7 @@ for payload_file in payload_dir.glob("*.json"):
     # Le repli sert aux payloads antérieurs à `threads_caption` et doit compter
     # en octets lui aussi : `caption[:500]` laissait passer ~700 octets sur une
     # légende accentuée avec emojis, refusée en 400 par Meta.
-    threads_text = payload.get("threads_caption") or _truncate_utf8(caption, 500)
+    threads_text = payload.get("threads_caption") or _truncate_threads(caption, 500)
 
     def _do_instagram():
         if media_type == "VIDEO":
