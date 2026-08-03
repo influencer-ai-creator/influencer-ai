@@ -584,6 +584,121 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
 
 
 # ==========================================
+# THREADS
+# ==========================================
+
+_THREADS_BASE = "https://graph.threads.net/v1.0"
+
+# Nombre d'essais avant d'abandonner une plateforme SECONDAIRE (Facebook,
+# Threads). Instagram en est exempt (cf. boucle de publication).
+MAX_PLATFORM_ATTEMPTS = 3
+
+
+def _poll_threads_container(container_id, access_token, max_wait=180, poll_every=10, label=""):
+    """
+    Attend qu'un conteneur Threads passe en FINISHED.
+
+    Même nécessité que pour Instagram : publier un conteneur encore en cours de
+    transcodage renvoie une erreur peu explicite. Retourne True si prêt.
+    """
+    waited = 0
+    while waited < max_wait:
+        r = _get(
+            f"{_THREADS_BASE}/{container_id}",
+            params={"fields": "status,error_message", "access_token": access_token},
+        )
+        if r.status_code == 200:
+            data   = r.json()
+            status = data.get("status", "")
+            if status == "FINISHED":
+                return True
+            if status == "ERROR":
+                print(f"  [FAIL] {label} conteneur en erreur : {data.get('error_message', '')}")
+                return False
+        time.sleep(poll_every)
+        waited += poll_every
+    print(f"  [FAIL] {label} conteneur non prêt après {max_wait}s")
+    return False
+
+
+def _threads_container(threads_id, access_token, params, label=""):
+    """Crée un conteneur Threads et retourne son id."""
+    r = _post(f"{_THREADS_BASE}/{threads_id}/threads",
+              data={**params, "access_token": access_token})
+    r.raise_for_status()
+    cid = r.json()["id"]
+    print(f"  [PKG] {label} conteneur Threads : {cid}")
+    return cid
+
+
+def publish_threads(threads_id, access_token, media_type, media_url, children, text):
+    """
+    Publie sur Threads (image, vidéo ou carousel).
+
+    Threads consomme des URLs publiques comme Instagram — les assets GitHub
+    Release servent les deux, rien n'est ré-uploadé.
+
+    `text` est la légende DÉJÀ tronquée à la limite Threads côté dashboard
+    (publishing/threads.truncate_caption) : le script ne fait que la relayer,
+    avec une coupe de sécurité si un vieux payload n'en portait pas.
+
+    Retourne (success: bool).
+    """
+    if media_type == "CAROUSEL":
+        # Chaque item devient un conteneur enfant, puis un conteneur parent les
+        # agrège. Threads accepte 2 à 20 enfants — les carousels du projet sont
+        # plafonnés à 10 par l'API Instagram, donc toujours dans les clous.
+        child_ids = []
+        for i, url in enumerate(children):
+            is_video = str(url).lower().endswith(".mp4")
+            params   = {
+                "media_type":       "VIDEO" if is_video else "IMAGE",
+                "is_carousel_item": "true",
+            }
+            params["video_url" if is_video else "image_url"] = url
+            child_ids.append(
+                _threads_container(threads_id, access_token, params, label=f"Slide {i}")
+            )
+
+        if len(child_ids) < 2:
+            print("  [FAIL] Carousel Threads : moins de 2 items exploitables")
+            return False
+
+        container_id = _threads_container(
+            threads_id, access_token,
+            {"media_type": "CAROUSEL", "children": ",".join(child_ids), "text": text},
+            label="Carousel",
+        )
+
+    elif media_type == "VIDEO":
+        container_id = _threads_container(
+            threads_id, access_token,
+            {"media_type": "VIDEO", "video_url": media_url, "text": text},
+            label="Vidéo",
+        )
+
+    else:
+        container_id = _threads_container(
+            threads_id, access_token,
+            {"media_type": "IMAGE", "image_url": media_url, "text": text},
+            label="Image",
+        )
+
+    # Meta recommande explicitement 30 s d'attente avant de publier un conteneur
+    # Threads ; le polling qui suit couvre les médias plus lourds.
+    time.sleep(30)
+    if not _poll_threads_container(container_id, access_token, label=media_type):
+        return False
+
+    rp = _post(
+        f"{_THREADS_BASE}/{threads_id}/threads_publish",
+        data={"creation_id": container_id, "access_token": access_token},
+    )
+    rp.raise_for_status()
+    return True
+
+
+# ==========================================
 # BOUCLE DE PUBLICATION
 # ==========================================
 
@@ -616,9 +731,13 @@ for payload_file in payload_dir.glob("*.json"):
 
     # Secrets
     folder_upper = folder.upper()
-    access_token = os.environ.get(f"{folder_upper}_ACCESS_TOKEN")
-    instagram_id = os.environ.get(f"{folder_upper}_INSTAGRAM_ID")
-    facebook_id  = os.environ.get(f"{folder_upper}_FACEBOOK_ID")
+    access_token  = os.environ.get(f"{folder_upper}_ACCESS_TOKEN")
+    instagram_id  = os.environ.get(f"{folder_upper}_INSTAGRAM_ID")
+    facebook_id   = os.environ.get(f"{folder_upper}_FACEBOOK_ID")
+    # Threads : token PROPRE (l'app Meta est la même, le token ne l'est pas).
+    # Absents tant que le compte n'a pas activé Threads → bloc simplement sauté.
+    threads_token = os.environ.get(f"{folder_upper}_THREADS_TOKEN")
+    threads_id    = os.environ.get(f"{folder_upper}_THREADS_ID")
 
     if not access_token or not instagram_id:
         err = f"{folder}: Secrets manquants (TOKEN ou INSTA_ID)"
@@ -626,27 +745,62 @@ for payload_file in payload_dir.glob("*.json"):
         errors.append(err)
         continue
 
-    # --- Publication Instagram Feed ---
-    success_insta = False
-    try:
-        if media_type == "VIDEO":
-            print(f"[{pub_id}] [VID] Publication Reel Instagram...")
-            success_insta, _ = publish_video(instagram_id, access_token, media_url, caption)
-        elif media_type == "CAROUSEL":
-            children = payload.get("children", [])
-            print(f"[{pub_id}] [CAR] Publication Carousel Instagram ({len(children)} slides)...")
-            success_insta, _ = publish_carousel(instagram_id, access_token, children, caption)
+    # --- État par plateforme (reprise partielle) ---
+    # Persisté DANS le payload, recommité en fin de run (git add -A plus bas).
+    # Le payload n'est supprimé que lorsque toutes les plateformes visées sont
+    # réglées : un échec Threads seul le laisse en place, et le run suivant
+    # rejoue Threads UNIQUEMENT — Instagram et Facebook sont sautés parce que
+    # déjà marqués. Sans ça, un échec sur une plateforme secondaire imposait un
+    # choix perdant : jeter le post (perte définitive) ou tout republier (doublon).
+    done     = dict(payload.get("done") or {})
+    attempts = dict(payload.get("attempts") or {})
+
+    def _should_try(platform, capped=True):
+        if done.get(platform):
+            return False
+        return (not capped) or attempts.get(platform, 0) < MAX_PLATFORM_ATTEMPTS
+
+    def _record(platform, ok):
+        if ok:
+            done[platform] = True
         else:
-            print(f"[{pub_id}] [IMG] Publication image Instagram...")
-            success_insta, _ = publish_image(instagram_id, access_token, media_url, caption)
+            attempts[platform] = attempts.get(platform, 0) + 1
 
-        if success_insta:
-            print(f"[{pub_id}] [OK] Post Instagram publié ({media_type})")
+    # --- Publication Instagram Feed ---
+    # `success_insta` = publié À L'INSTANT (pilote les Stories, qui ne doivent
+    # pas repartir lors d'un retry ciblant une autre plateforme).
+    success_insta = False
+    # Instagram n'est PAS plafonné : c'est la plateforme principale, abandonner
+    # au bout de N essais reviendrait à perdre le post en silence. Facebook et
+    # Threads le sont (cf. MAX_PLATFORM_ATTEMPTS) — un échec permanent y est
+    # possible (Reel > 60 s en Story) et ne doit pas retenir le payload ni ses
+    # assets Release indéfiniment.
+    if _should_try("instagram", capped=False):
+        try:
+            if media_type == "VIDEO":
+                print(f"[{pub_id}] [VID] Publication Reel Instagram...")
+                success_insta, _ = publish_video(instagram_id, access_token, media_url, caption)
+            elif media_type == "CAROUSEL":
+                children = payload.get("children", [])
+                print(f"[{pub_id}] [CAR] Publication Carousel Instagram ({len(children)} slides)...")
+                success_insta, _ = publish_carousel(instagram_id, access_token, children, caption)
+            else:
+                print(f"[{pub_id}] [IMG] Publication image Instagram...")
+                success_insta, _ = publish_image(instagram_id, access_token, media_url, caption)
 
-    except Exception as e:
-        err = f"{folder}: Erreur Instagram Feed {pub_id} -> {e}"
-        errors.append(err)
-        print(f"[FAIL] {err}")
+            if success_insta:
+                print(f"[{pub_id}] [OK] Post Instagram publié ({media_type})")
+
+        except Exception as e:
+            err = f"{folder}: Erreur Instagram Feed {pub_id} -> {e}"
+            errors.append(err)
+            print(f"[FAIL] {err}")
+
+        _record("instagram", success_insta)
+
+    # Publié maintenant OU lors d'un run précédent : conditionne les plateformes
+    # secondaires, alors que `success_insta` (ce run seulement) pilote les Stories.
+    insta_ok = bool(done.get("instagram"))
 
     # --- Publication Story Instagram ---
     if success_insta:
@@ -717,7 +871,10 @@ for payload_file in payload_dir.glob("*.json"):
                 print(f"[{pub_id}] [WARN] Story carousel Instagram échouée (ignoré) : {e}")
 
     # --- Publication Facebook ---
-    if success_insta and facebook_id:
+    if insta_ok and facebook_id and _should_try("facebook"):
+        # True par défaut : un media_type sans branche Facebook est un no-op,
+        # pas un échec — le compter ferait boucler le retry pour rien.
+        fb_ok = True
         if media_type == "IMAGE" and image_url:
             try:
                 fb_url = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
@@ -727,6 +884,7 @@ for payload_file in payload_dir.glob("*.json"):
                 ).raise_for_status()
                 print(f"[{pub_id}] [OK] Post Facebook image publié")
             except Exception as e:
+                fb_ok = False
                 err = f"{folder}: Erreur Facebook image {pub_id} -> {e}"
                 errors.append(err)
                 print(f"[FAIL] {err}")
@@ -736,6 +894,7 @@ for payload_file in payload_dir.glob("*.json"):
                 publish_video_facebook(facebook_id, access_token, media_url, caption)
                 print(f"[{pub_id}] [OK] Post Facebook vidéo publié")
             except Exception as e:
+                fb_ok = False
                 err = f"{folder}: Erreur Facebook vidéo {pub_id} -> {e}"
                 errors.append(err)
                 print(f"[FAIL] {err}")
@@ -749,26 +908,90 @@ for payload_file in payload_dir.glob("*.json"):
                 publish_carousel_facebook(facebook_id, access_token, fb_children, caption)
                 print(f"[{pub_id}] [OK] Post Facebook carousel publié (photo de couverture)")
             except Exception as e:
+                fb_ok = False
                 err = f"{folder}: Erreur Facebook carousel {pub_id} -> {e}"
                 errors.append(err)
                 print(f"[FAIL] {err}")
 
-    # --- Publication Story Facebook ---
-    if success_insta and facebook_id:
-        if media_type == "VIDEO" and media_url:
+        _record("facebook", fb_ok)
+
+        # --- Publication Story Facebook ---
+        # Imbriquée dans la tentative Facebook : sur un retry ciblant Threads, le
+        # feed Facebook est déjà marqué `done`, donc la Story ne repart pas non
+        # plus. Elle reste best-effort et n'influe pas sur `fb_ok` (un Reel > 60 s
+        # ne peut pas être en Story — ça ne doit pas rejouer le post du feed).
+        if fb_ok and media_type == "VIDEO" and media_url:
             try:
                 publish_video_story_facebook(facebook_id, access_token, media_url)
                 print(f"[{pub_id}] [OK] Story vidéo Facebook publiée")
             except Exception as e:
-                # Non bloquant pour la publication (les Reels >60s ne peuvent pas
-                # être en Story), mais remonté au dashboard : une Story qui échoue
-                # en silence est indétectable autrement.
+                # Remonté au dashboard : une Story qui échoue en silence est
+                # indétectable autrement.
                 err = f"{folder}: Story vidéo Facebook {pub_id} -> {e}"
                 errors.append(err)
                 print(f"[FAIL] {err}")
 
-    # --- Nettoyage si succès ---
-    if success_insta:
+    # --- Publication Threads ---
+    # Conditionnée à `insta_ok` (et non à la réussite de CE run) : sur un retry
+    # ciblant Threads, Instagram est déjà marqué done et n'est pas republié.
+    if insta_ok and threads_token and threads_id and _should_try("threads"):
+        ok_threads = False
+        try:
+            print(f"[{pub_id}] [THR] Publication Threads ({media_type})...")
+            # Tronquée au moment de la mise en file (limite 500 côté Threads) ;
+            # repli défensif pour les payloads antérieurs à cette intégration.
+            threads_text = payload.get("threads_caption") or caption[:500]
+            ok_threads = publish_threads(
+                threads_id, threads_token, media_type,
+                media_url, payload.get("children", []), threads_text,
+            )
+            if ok_threads:
+                print(f"[{pub_id}] [OK] Post Threads publié ({media_type})")
+            else:
+                err = f"{folder}: Threads {pub_id} -> conteneur non publiable"
+                errors.append(err)
+                print(f"[FAIL] {err}")
+        except Exception as e:
+            err = f"{folder}: Erreur Threads {pub_id} -> {e}"
+            errors.append(err)
+            print(f"[FAIL] {err}")
+
+        _record("threads", ok_threads)
+
+    # --- Bilan : toutes les plateformes visées sont-elles réglées ? ---
+    targets = ["instagram"]
+    if facebook_id:
+        targets.append("facebook")
+    if threads_token and threads_id:
+        targets.append("threads")
+
+    def _settled(p):
+        return bool(done.get(p)) or attempts.get(p, 0) >= MAX_PLATFORM_ATTEMPTS
+
+    # Instagram n'étant pas plafonné, `_settled` n'y vaut True qu'une fois publié :
+    # tant qu'il échoue, rien n'est nettoyé (comportement historique préservé).
+    all_settled = all(_settled(p) for p in targets)
+
+    if not all_settled:
+        # Le payload RESTE en place, avec son état mis à jour : le run suivant
+        # ne rejouera que les plateformes non abouties. Les assets Release ne
+        # sont pas supprimés non plus — ils sont encore nécessaires.
+        payload["done"]     = done
+        payload["attempts"] = attempts
+        # encoding explicite : la légende porte accents et emojis, et `open`
+        # sans encodage suit la locale de la machine.
+        with open(payload_file, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2, ensure_ascii=False)
+        pending = [p for p in targets if not _settled(p)]
+        print(f"[{pub_id}] [WAIT] Reprise au prochain run : {', '.join(pending)}")
+        continue
+
+    # --- Nettoyage (toutes plateformes réglées) ---
+    # Condition volontairement `all_settled` et non `success_insta` : quand
+    # Instagram a réussi lors d'un run PRÉCÉDENT et qu'on vient de rattraper
+    # Threads, `success_insta` est False — s'y fier laisserait le payload sur
+    # disque à jamais, rejoué toutes les 15 minutes.
+    if all_settled:
         published.add(pub_id)
         with open(published_file, "w") as f:
             json.dump(sorted(list(published)), f, indent=2)
