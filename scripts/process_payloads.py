@@ -953,6 +953,40 @@ def _publish_ig_story(instagram_id, access_token, url, label="Story"):
     return True
 
 
+def _threads_check(r, what):
+    """
+    Lève une erreur PORTANT le message de Meta, pas seulement le code HTTP.
+
+    `raise_for_status()` ne produit que « 400 Client Error: Bad Request for url:
+    … » — inexploitable, alors que Meta décrit précisément le champ fautif dans
+    le corps de la réponse. Un 400 sur Threads est indiagnosticable sans lui.
+    """
+    if r.status_code < 400:
+        return
+    try:
+        payload = r.json()
+        detail  = json.dumps(payload.get("error", payload), ensure_ascii=False)
+    except Exception:
+        detail = (r.text or "")[:400]
+    raise RuntimeError(f"{what} → HTTP {r.status_code} : {detail}")
+
+
+def _truncate_utf8(text, limit):
+    """
+    Tronque à `limit` OCTETS UTF-8, sur une frontière de mot.
+
+    Repli pour les payloads antérieurs à `threads_caption` : `text[:limit]`
+    coupait à 500 *caractères*, ce qui dépasse 500 octets dès que la légende
+    porte des accents (2 octets) ou des emojis (4) — soit toutes les nôtres.
+    """
+    raw = (text or "").encode("utf-8")
+    if len(raw) <= limit:
+        return text or ""
+    cut   = raw[:limit].decode("utf-8", errors="ignore")
+    space = cut.rfind(" ")
+    return (cut[:space] if space > limit * 0.6 else cut).rstrip()
+
+
 def _threads_media_params(url):
     """Type de média + clé d'URL pour un conteneur Threads, dérivés de l'extension."""
     key = "video_url" if _is_video(url) else "image_url"
@@ -963,7 +997,10 @@ def _threads_container(threads_id, access_token, params, label=""):
     """Crée un conteneur Threads et retourne son id."""
     r = _post(f"{_THREADS_BASE}/{threads_id}/threads",
               data={**params, "access_token": access_token})
-    r.raise_for_status()
+    # Champs journalisés pour rendre un 400 lisible : le corps de la réponse dit
+    # QUEL champ est refusé, encore faut-il savoir ce qu'on a envoyé.
+    _threads_check(r, f"Conteneur {label} ({params.get('media_type')}, "
+                      f"texte {len((params.get('text') or '').encode('utf-8'))} octets)")
     cid = r.json()["id"]
     print(f"  [PKG] {label} conteneur Threads : {cid}")
     return cid
@@ -1017,7 +1054,7 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
         f"{_THREADS_BASE}/{threads_id}/threads_publish",
         data={"creation_id": container_id, "access_token": access_token},
     )
-    rp.raise_for_status()
+    _threads_check(rp, f"Publication {media_type}")
     return True
 
 
@@ -1074,9 +1111,11 @@ for payload_file in payload_dir.glob("*.json"):
     children     = payload.get("children", [])
     fb_children  = payload.get("fb_children", children)
     ig_story_url = payload.get("story_url")
-    # Légende tronquée à la mise en file (limite Threads) ; repli défensif pour
-    # les payloads antérieurs à l'intégration Threads.
-    threads_text = payload.get("threads_caption") or caption[:500]
+    # Légende tronquée à la mise en file (limite Threads, en OCTETS UTF-8).
+    # Le repli sert aux payloads antérieurs à `threads_caption` et doit compter
+    # en octets lui aussi : `caption[:500]` laissait passer ~700 octets sur une
+    # légende accentuée avec emojis, refusée en 400 par Meta.
+    threads_text = payload.get("threads_caption") or _truncate_utf8(caption, 500)
 
     def _do_instagram():
         if media_type == "VIDEO":
