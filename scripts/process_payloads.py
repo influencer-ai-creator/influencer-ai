@@ -432,6 +432,36 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
 
 
 # ==========================================
+# DÉCLARATION IA
+# ==========================================
+# Toutes les publications de ce projet sont générées par IA : la déclaration est
+# donc CONSTANTE et n'est jamais portée par le payload. Trois APIs, trois formes :
+#
+#   Instagram  → `is_ai_generated` sur le conteneur /media. Indisponible sur les
+#                ENFANTS de carousel (`is_carousel_item=true`) : la déclaration
+#                porte sur le conteneur CAROUSEL parent, et l'y ajouter aussi
+#                ferait rejeter les enfants.
+#   Facebook   → `is_ai_generated` sur /video_reels ; /photos ne connaît pas ce
+#                booléen et prend un objet `provenance_info` à la place.
+#   Threads    → RIEN. L'API (graph.threads.net v1.0) n'expose aucun champ de
+#                déclaration — vérifié le 15/08/2026. L'étiquetage n'y est
+#                possible qu'à la main dans l'app, ou par détection automatique
+#                des métadonnées C2PA/IPTC (que nos rendus ComfyUI n'ont pas).
+#
+# Le label est de la transparence, pas une pénalité : c'est l'ABSENCE de
+# déclaration sur du contenu synthétique qui est sanctionnée côté monétisation.
+
+AI_GENERATED = {"is_ai_generated": "true"}
+
+# provenance_type=EXPLICIT = déclaration explicite par l'auteur. Les autres
+# valeurs de l'enum désignent une provenance DÉDUITE (C2PA, IPTC, watermark
+# invisible) ou un outil d'édition Meta précis — aucune ne s'applique ici.
+AI_PROVENANCE = {
+    "provenance_info": json.dumps({"is_gen_ai": True, "provenance_type": "EXPLICIT"})
+}
+
+
+# ==========================================
 # HELPERS PUBLICATION
 # ==========================================
 
@@ -444,7 +474,8 @@ def publish_image(instagram_id, access_token, image_url, caption):
     media_params = {
         "image_url":    image_url,
         "caption":      caption,
-        "access_token": access_token
+        "access_token": access_token,
+        **AI_GENERATED,
     }
     r = _post(media_url, data=media_params)
     r.raise_for_status()
@@ -672,6 +703,9 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
         "children":     ",".join(item_ids),
         "caption":      caption,
         "access_token": access_token,
+        # La déclaration IA vit ICI et pas sur les items ci-dessus : elle n'est
+        # pas disponible sur les enfants de carousel.
+        **AI_GENERATED,
     }
     rc = _post(media_url_endpoint, data=container_params)
     rc.raise_for_status()
@@ -706,7 +740,8 @@ def publish_video(instagram_id, access_token, video_url, caption):
         "media_type":   "REELS",
         "video_url":    video_url,
         "caption":      caption,
-        "access_token": access_token
+        "access_token": access_token,
+        **AI_GENERATED,
     }
     r = _post(media_url, data=media_params)
     r.raise_for_status()
@@ -733,7 +768,8 @@ def publish_video_story(instagram_id, access_token, video_url):
     media_params = {
         "media_type":   "STORIES",
         "video_url":    video_url,
-        "access_token": access_token
+        "access_token": access_token,
+        **AI_GENERATED,
     }
     r = _post(media_url, data=media_params)
     r.raise_for_status()
@@ -769,7 +805,8 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
     photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
     r = _post(
         photos_endpoint,
-        data={"url": cover, "caption": caption, "access_token": access_token},
+        data={"url": cover, "caption": caption, "access_token": access_token,
+              **AI_PROVENANCE},
     )
     r.raise_for_status()
     post_id = r.json().get("post_id") or r.json().get("id", "")
@@ -823,6 +860,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
             "video_state":  "PUBLISHED",
             "description":  caption,
             "access_token": access_token,
+            **AI_GENERATED,
         }
     )
     rp.raise_for_status()
@@ -837,6 +875,12 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
 
     Même workflow 3 étapes que les Reels Facebook.
     Contrainte Meta : vidéo max 60 secondes.
+
+    Pas de déclaration IA ici : contrairement à /video_reels, /video_stories ne
+    documente aucun `is_ai_generated` (référence Graph absente au 15/08/2026).
+    Envoyer un paramètre non documenté ferait risquer un 400 sur une cible qui
+    n'a qu'UNE tentative (§Pb6ter) pour un gain nul — la Story dure 24 h et son
+    post durable, lui, est bien déclaré.
 
     Retourne (success: bool).
     """
@@ -938,7 +982,8 @@ def publish_photo_story_facebook(facebook_id, access_token, image_url):
     """
     r = _post(
         f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
-        data={"url": image_url, "published": "false", "access_token": access_token},
+        data={"url": image_url, "published": "false", "access_token": access_token,
+              **AI_PROVENANCE},
     )
     r.raise_for_status()
     photo_id = r.json()["id"]
@@ -962,7 +1007,8 @@ def _publish_ig_story(instagram_id, access_token, url, label="Story"):
     key      = "video_url" if is_video else "image_url"
     r = _post(
         f"https://graph.facebook.com/v25.0/{instagram_id}/media",
-        data={key: url, "media_type": "STORIES", "access_token": access_token},
+        data={key: url, "media_type": "STORIES", "access_token": access_token,
+              **AI_GENERATED},
     )
     r.raise_for_status()
     sm_id = r.json()["id"]
@@ -1191,7 +1237,8 @@ for payload_file in payload_dir.glob("*.json"):
             return publish_video_facebook(facebook_id, access_token, media_url, caption)
         _post(
             f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
-            data={"url": image_url, "caption": caption, "access_token": access_token},
+            data={"url": image_url, "caption": caption, "access_token": access_token,
+                  **AI_PROVENANCE},
         ).raise_for_status()
         return True
 
