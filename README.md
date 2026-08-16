@@ -1,13 +1,13 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 16/08/2026 21:11:37
+✅ **Dernier run sans erreur** — 16/08/2026 21:32:42
 
 📦 **Total publiés historiquement :** 3771
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
 | :--- | :---: | :--- | :--- | :---: | :---: |
-| CYBERPUNK | **42** | 17/08 10:25 | 13/09 22:00 | 28.0 j | 🎬 |
+| CYBERPUNK | **42** | 17/08 10:25 | 13/09 22:00 | 27.9 j | 🎬 |
 | INFLUENCER | **42** | 17/08 06:00 | 13/09 21:00 | 27.9 j | 🎬 |
 | MINIATURE | **4** | 17/08 17:00 | 20/08 20:00 | 3.9 j | 🎬 |
 | SUNDRESS | **74** | 17/08 02:10 | 23/09 02:10 | 37.1 j | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_1997.png' width='50'> |
