@@ -101,6 +101,32 @@ def _get(url, **kwargs):
     return requests.get(url, **kwargs)
 
 
+def _check(r, what):
+    """
+    `raise_for_status()` en CONSERVANT le corps de la réponse Meta.
+
+    Nu, il ne produit que « 400 Client Error: Bad Request for url: … » —
+    inexploitable, alors que Meta y nomme précisément le champ fautif. Deux
+    jours de rejets `/photos` ont été indiagnosticables faute de ce corps — la
+    leçon avait pourtant déjà été tirée, dans un helper cantonné à Threads.
+    D'où ce point unique : tout appel Meta qui publie passe par lui.
+
+    Le type d'exception reste `requests.HTTPError` : les boucles de retry et de
+    polling le rattrapent et relisent la réponse elles-mêmes — le remplacer par
+    un RuntimeError désarmerait le retry sur subcode 2207027.
+    """
+    if r.status_code < 400:
+        return r
+    try:
+        payload = r.json()
+        detail  = json.dumps(payload.get("error", payload), ensure_ascii=False)
+    except Exception:
+        detail = (r.text or "")[:400]
+    raise requests.HTTPError(
+        f"{what} → HTTP {r.status_code} : {detail}", response=r
+    )
+
+
 def _fail(msg):
     """
     Échec BLOQUANT : dashboard + issue GitHub (le workflow ouvre une issue quand
@@ -441,8 +467,14 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
 #                ENFANTS de carousel (`is_carousel_item=true`) : la déclaration
 #                porte sur le conteneur CAROUSEL parent, et l'y ajouter aussi
 #                ferait rejeter les enfants.
-#   Facebook   → `is_ai_generated` sur /video_reels ; /photos ne connaît pas ce
-#                booléen et prend un objet `provenance_info` à la place.
+#   Facebook   → `is_ai_generated` sur /video_reels UNIQUEMENT. `/photos` n'a
+#                RIEN pour l'instant : `provenance_info` y est documenté
+#                (`is_gen_ai` + `provenance_type=EXPLICIT`, les deux requis) mais
+#                l'envoyer a fait rejeter toutes les photos en 400 pendant deux
+#                jours, sur deux pages distinctes — première erreur au premier
+#                run suivant le déploiement, aucune la semaine d'avant. Retiré
+#                le 17/08/2026. Ne pas le réintroduire sans l'avoir validé sur un
+#                `/photos?published=false`, corps de réponse à l'appui.
 #   Threads    → RIEN. L'API (graph.threads.net v1.0) n'expose aucun champ de
 #                déclaration — vérifié le 15/08/2026. L'étiquetage n'y est
 #                possible qu'à la main dans l'app, ou par détection automatique
@@ -452,13 +484,6 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
 # déclaration sur du contenu synthétique qui est sanctionnée côté monétisation.
 
 AI_GENERATED = {"is_ai_generated": "true"}
-
-# provenance_type=EXPLICIT = déclaration explicite par l'auteur. Les autres
-# valeurs de l'enum désignent une provenance DÉDUITE (C2PA, IPTC, watermark
-# invisible) ou un outil d'édition Meta précis — aucune ne s'applique ici.
-AI_PROVENANCE = {
-    "provenance_info": json.dumps({"is_gen_ai": True, "provenance_type": "EXPLICIT"})
-}
 
 
 # ==========================================
@@ -478,14 +503,14 @@ def publish_image(instagram_id, access_token, image_url, caption):
         **AI_GENERATED,
     }
     r = _post(media_url, data=media_params)
-    r.raise_for_status()
+    _check(r, "IG /media (image)")
     media_id = r.json()["id"]
 
     publish_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
     publish_params = {"creation_id": media_id, "access_token": access_token}
     time.sleep(2)
     rp = _post(publish_url, data=publish_params)
-    rp.raise_for_status()
+    _check(rp, "IG /media_publish (image)")
     return True, media_id
 
 
@@ -685,7 +710,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
                 "access_token":     access_token,
             }
         r = _post(media_url_endpoint, data=params)
-        r.raise_for_status()
+        _check(r, "IG /media (item carousel)")
         item_id = r.json()["id"]
         item_ids.append(item_id)
         kind = "VIDEO" if is_video_child else "IMAGE"
@@ -708,7 +733,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
         **AI_GENERATED,
     }
     rc = _post(media_url_endpoint, data=container_params)
-    rc.raise_for_status()
+    _check(rc, "IG /media (conteneur CAROUSEL)")
     container_id = rc.json()["id"]
     print(f"  [CONTAINER] Carousel container créé : {container_id}")
 
@@ -744,7 +769,7 @@ def publish_video(instagram_id, access_token, video_url, caption):
         **AI_GENERATED,
     }
     r = _post(media_url, data=media_params)
-    r.raise_for_status()
+    _check(r, "IG /media (REELS)")
     creation_resp = r.json()
     print(f"  [PKG] Réponse création Reel : {creation_resp}")
     container_id = creation_resp["id"]
@@ -772,7 +797,7 @@ def publish_video_story(instagram_id, access_token, video_url):
         **AI_GENERATED,
     }
     r = _post(media_url, data=media_params)
-    r.raise_for_status()
+    _check(r, "IG /media (STORIES vidéo)")
     container_id = r.json()["id"]
     print(f"  [PKG] Conteneur Story vidéo créé : {container_id}")
 
@@ -805,10 +830,9 @@ def publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
     photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
     r = _post(
         photos_endpoint,
-        data={"url": cover, "caption": caption, "access_token": access_token,
-              **AI_PROVENANCE},
+        data={"url": cover, "caption": caption, "access_token": access_token},
     )
-    r.raise_for_status()
+    _check(r, "FB /photos (couverture carousel)")
     post_id = r.json().get("post_id") or r.json().get("id", "")
     print(f"  [POST FB] Photo de couverture publiée : {post_id}")
     return True, post_id
@@ -836,7 +860,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
         f"https://graph.facebook.com/v25.0/{facebook_id}/video_reels",
         data={"upload_phase": "start", "access_token": access_token}
     )
-    r.raise_for_status()
+    _check(r, "FB /video_reels (start)")
     video_id = r.json()["video_id"]
     print(f"  [PKG] Reel Facebook initialisé : {video_id}")
 
@@ -848,7 +872,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
             "file_url":      video_url,
         }
     )
-    ru.raise_for_status()
+    _check(ru, "FB rupload (reel)")
     print(f"  [UP] Vidéo transmise à Meta")
 
     # Étape 3 : Publier
@@ -863,7 +887,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
             **AI_GENERATED,
         }
     )
-    rp.raise_for_status()
+    _check(rp, "FB /video_reels (finish)")
     _poll_facebook_video(video_id, access_token, label="Reel Facebook")
     print(f"  [OK] Reel Facebook publié")
     return True
@@ -889,7 +913,7 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
         f"https://graph.facebook.com/v25.0/{facebook_id}/video_stories",
         data={"upload_phase": "start", "access_token": access_token}
     )
-    r.raise_for_status()
+    _check(r, "FB /video_stories (start)")
     data     = r.json()
     video_id = data["video_id"]
     # Meta retourne parfois une upload_url directe, sinon on construit la nôtre
@@ -904,7 +928,7 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
             "file_url":      video_url,
         }
     )
-    ru.raise_for_status()
+    _check(ru, "FB rupload (story)")
 
     # Étape 3 : Publier
     rp = _post(
@@ -915,7 +939,7 @@ def publish_video_story_facebook(facebook_id, access_token, video_url):
             "access_token": access_token,
         }
     )
-    rp.raise_for_status()
+    _check(rp, "FB /video_stories (finish)")
     print(f"  [OK] Story vidéo Facebook publiée")
     return True
 
@@ -982,15 +1006,17 @@ def publish_photo_story_facebook(facebook_id, access_token, image_url):
     """
     r = _post(
         f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
-        data={"url": image_url, "published": "false", "access_token": access_token,
-              **AI_PROVENANCE},
+        data={"url": image_url, "published": "false", "access_token": access_token},
     )
-    r.raise_for_status()
+    _check(r, "FB /photos (Story photo)")
     photo_id = r.json()["id"]
-    _post(
-        f"https://graph.facebook.com/v25.0/{facebook_id}/photo_stories",
-        data={"photo_id": photo_id, "access_token": access_token},
-    ).raise_for_status()
+    _check(
+        _post(
+            f"https://graph.facebook.com/v25.0/{facebook_id}/photo_stories",
+            data={"photo_id": photo_id, "access_token": access_token},
+        ),
+        "FB /photo_stories",
+    )
     print(f"  [OK] Story photo Facebook publiée ({photo_id})")
     return True
 
@@ -1010,36 +1036,21 @@ def _publish_ig_story(instagram_id, access_token, url, label="Story"):
         data={key: url, "media_type": "STORIES", "access_token": access_token,
               **AI_GENERATED},
     )
-    r.raise_for_status()
+    _check(r, "IG /media (STORIES)")
     sm_id = r.json()["id"]
     if is_video:
         _publish_video_with_retry(instagram_id, access_token, sm_id, label=label,
                                   first_sleep=30, poll_every=15, max_wait=120)
     else:
         time.sleep(5)
-        _post(
-            f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
-            data={"creation_id": sm_id, "access_token": access_token},
-        ).raise_for_status()
+        _check(
+            _post(
+                f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
+                data={"creation_id": sm_id, "access_token": access_token},
+            ),
+            "IG /media_publish (STORIES)",
+        )
     return True
-
-
-def _threads_check(r, what):
-    """
-    Lève une erreur PORTANT le message de Meta, pas seulement le code HTTP.
-
-    `raise_for_status()` ne produit que « 400 Client Error: Bad Request for url:
-    … » — inexploitable, alors que Meta décrit précisément le champ fautif dans
-    le corps de la réponse. Un 400 sur Threads est indiagnosticable sans lui.
-    """
-    if r.status_code < 400:
-        return
-    try:
-        payload = r.json()
-        detail  = json.dumps(payload.get("error", payload), ensure_ascii=False)
-    except Exception:
-        detail = (r.text or "")[:400]
-    raise RuntimeError(f"{what} → HTTP {r.status_code} : {detail}")
 
 
 def _truncate_threads(text, limit):
@@ -1080,7 +1091,7 @@ def _threads_container(threads_id, access_token, params, label=""):
               data={**params, "access_token": access_token})
     # Champs journalisés pour rendre un 400 lisible : le corps de la réponse dit
     # QUEL champ est refusé, encore faut-il savoir ce qu'on a envoyé.
-    _threads_check(r, f"Conteneur {label} ({params.get('media_type')}, "
+    _check(r, f"Conteneur {label} ({params.get('media_type')}, "
                       f"texte {len((params.get('text') or '').encode('utf-8'))} octets)")
     cid = r.json()["id"]
     print(f"  [PKG] {label} conteneur Threads : {cid}")
@@ -1149,7 +1160,7 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
         f"{_THREADS_BASE}/{threads_id}/threads_publish",
         data={"creation_id": container_id, "access_token": access_token},
     )
-    _threads_check(rp, f"Publication {media_type}")
+    _check(rp, f"Publication {media_type}")
     return True
 
 
@@ -1235,11 +1246,13 @@ for payload_file in payload_dir.glob("*.json"):
             return ok
         if media_type == "VIDEO":
             return publish_video_facebook(facebook_id, access_token, media_url, caption)
-        _post(
-            f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
-            data={"url": image_url, "caption": caption, "access_token": access_token,
-                  **AI_PROVENANCE},
-        ).raise_for_status()
+        _check(
+            _post(
+                f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
+                data={"url": image_url, "caption": caption, "access_token": access_token},
+            ),
+            "FB /photos (post image)",
+        )
         return True
 
     # Actions applicables à CE payload. Une cible absente de ce dict n'est ni
