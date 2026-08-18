@@ -1,10 +1,6 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 18/08/2026 20:41:27
-
-## ⚠️ Avertissements (best effort, non bloquants)
-
-- `cyberpunk: Story Instagram e4806eb7-7f61-4891-926a-bbd9ca67bd81 -> Erreur publication Story vidéo (code 400) : {'error': {'message': 'Fatal', 'type': 'OAuthException', 'code': -1, 'error_subcode': 2207077, 'is_transient': False, 'error_user_title': 'Erreur de serveur interne', 'error_user_msg': 'Erreur de serveur interne: An internal server error has occurred. Video download failed with: HTTP error code 500. Fwdproxy failed to fetch headers', 'fbtrace_id': 'Apt5IclZaix2Skf8S5PHqHr'}}`
+✅ **Dernier run sans erreur** — 18/08/2026 20:58:00
 
 📦 **Total publiés historiquement :** 3790
 
