@@ -1,6 +1,6 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 19/08/2026 17:20:36
+✅ **Dernier run sans erreur** — 19/08/2026 17:47:27
 
 📦 **Total publiés historiquement :** 3798
 
@@ -11,7 +11,7 @@
 | INFLUENCER | **36** | 20/08 06:00 | 13/09 21:00 | 25.1 j | 🎬 |
 | MINIATURE | **1** | 20/08 20:00 | 20/08 20:00 | ⚠️ **1.0 j** | 🎬 |
 | SUNDRESS | **68** | 20/08 02:10 | 23/09 02:10 | 34.3 j | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_2002.png' width='50'> |
-| UNIVERSITY | **34** | 20/08 05:11 | 13/09 23:11 | 25.2 j | 🎬 |
+| UNIVERSITY | **34** | 20/08 05:11 | 13/09 23:11 | 25.1 j | 🎬 |
 
 > ⚠️ **File bientôt vide** (moins de 3 jours de programmation) : **MINIATURE** (1.0 j) — pensez à générer de nouveaux posts.
 
