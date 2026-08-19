@@ -482,8 +482,17 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
 #
 # Le label est de la transparence, pas une pénalité : c'est l'ABSENCE de
 # déclaration sur du contenu synthétique qui est sanctionnée côté monétisation.
+#
+# La déclaration suit le MÉDIA, pas le compte : un post du mode photo publie une
+# photo fournie par l'utilisateur, qui n'est pas générée (la vidéo i2v qui
+# l'animerait, elle, l'est). Le payload porte donc `ai_generated: false` dans ce
+# seul cas ; la clé ABSENTE vaut déclaré — c'est tout l'existant, et c'est ce
+# qui rend la reprise d'un payload antérieur sûre. `AI_FLAGS` est réaffecté en
+# tête de chaque itération de la boucle de publication (script séquentiel, un
+# payload à la fois) et c'est LUI que les appels lisent, jamais AI_GENERATED.
 
 AI_GENERATED = {"is_ai_generated": "true"}
+AI_FLAGS     = AI_GENERATED
 
 
 # ==========================================
@@ -500,7 +509,7 @@ def publish_image(instagram_id, access_token, image_url, caption):
         "image_url":    image_url,
         "caption":      caption,
         "access_token": access_token,
-        **AI_GENERATED,
+        **AI_FLAGS,
     }
     r = _post(media_url, data=media_params)
     _check(r, "IG /media (image)")
@@ -730,7 +739,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
         "access_token": access_token,
         # La déclaration IA vit ICI et pas sur les items ci-dessus : elle n'est
         # pas disponible sur les enfants de carousel.
-        **AI_GENERATED,
+        **AI_FLAGS,
     }
     rc = _post(media_url_endpoint, data=container_params)
     _check(rc, "IG /media (conteneur CAROUSEL)")
@@ -766,7 +775,7 @@ def publish_video(instagram_id, access_token, video_url, caption):
         "video_url":    video_url,
         "caption":      caption,
         "access_token": access_token,
-        **AI_GENERATED,
+        **AI_FLAGS,
     }
     r = _post(media_url, data=media_params)
     _check(r, "IG /media (REELS)")
@@ -794,7 +803,7 @@ def publish_video_story(instagram_id, access_token, video_url):
         "media_type":   "STORIES",
         "video_url":    video_url,
         "access_token": access_token,
-        **AI_GENERATED,
+        **AI_FLAGS,
     }
     r = _post(media_url, data=media_params)
     _check(r, "IG /media (STORIES vidéo)")
@@ -884,7 +893,7 @@ def publish_video_facebook(facebook_id, access_token, video_url, caption):
             "video_state":  "PUBLISHED",
             "description":  caption,
             "access_token": access_token,
-            **AI_GENERATED,
+            **AI_FLAGS,
         }
     )
     _check(rp, "FB /video_reels (finish)")
@@ -1034,7 +1043,7 @@ def _publish_ig_story(instagram_id, access_token, url, label="Story"):
     r = _post(
         f"https://graph.facebook.com/v25.0/{instagram_id}/media",
         data={key: url, "media_type": "STORIES", "access_token": access_token,
-              **AI_GENERATED},
+              **AI_FLAGS},
     )
     _check(r, "IG /media (STORIES)")
     sm_id = r.json()["id"]
@@ -1213,6 +1222,9 @@ for payload_file in payload_dir.glob("*.json"):
 
     # --- État de publication (reprise partielle — voir TARGETS en tête) ---
     state = PayloadState(payload)
+
+    # Déclaration IA de CE payload (voir AI_GENERATED en tête).
+    AI_FLAGS = AI_GENERATED if payload.get("ai_generated", True) else {}
 
     children     = payload.get("children", [])
     fb_children  = payload.get("fb_children", children)
