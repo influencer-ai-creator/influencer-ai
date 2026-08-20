@@ -1,8 +1,8 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 20/08/2026 11:49:14
+✅ **Dernier run sans erreur** — 20/08/2026 12:29:15
 
-📦 **Total publiés historiquement :** 3803
+📦 **Total publiés historiquement :** 3804
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
@@ -10,9 +10,9 @@
 | CYBERPUNK | **35** | 20/08 22:25 | 14/09 23:00 | 25.4 j | 🎬 |
 | CYBERPUNK_STORY | **1** | 21/08 15:00 | 21/08 15:00 | ⚠️ **1.0 j** | 🎬 |
 | INFLUENCER | **35** | 20/08 18:00 | 13/09 21:00 | 24.3 j | 🎬 |
-| MINIATURE | **1** | 20/08 20:00 | 20/08 20:00 | ⚠️ **0.3 j** | 🎬 |
-| SUNDRESS | **67** | 20/08 14:10 | 23/09 02:10 | 33.5 j | 🎬 |
+| MINIATURE | **1** | 20/08 20:00 | 20/08 20:00 | ⚠️ **0.2 j** | 🎬 |
+| SUNDRESS | **66** | 21/08 02:10 | 23/09 02:10 | 33.5 j | <img src='https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_2004.png' width='50'> |
 | UNIVERSITY | **33** | 20/08 17:11 | 13/09 23:11 | 24.4 j | 🎬 |
 
-> ⚠️ **File bientôt vide** (moins de 3 jours de programmation) : **CYBERPUNK_STORY** (1.0 j), **MINIATURE** (0.3 j) — pensez à générer de nouveaux posts.
+> ⚠️ **File bientôt vide** (moins de 3 jours de programmation) : **CYBERPUNK_STORY** (1.0 j), **MINIATURE** (0.2 j) — pensez à générer de nouveaux posts.
 
