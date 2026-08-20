@@ -532,12 +532,12 @@
     </ul>
     <p><strong>Video:</strong></p>
     <ul class="feature-list">
-      <li><strong>MiniMax H3</strong> — My go-to for animation, and the biggest jump I've seen in this category. <strong>15-second clips with a synchronized audio track generated in the same pass</strong> — motion and sound come out together, no separate assembly step — and the warping and morphing artefacts that used to force a regeneration are largely gone. Fifteen seconds is also the point where one clip carries a whole post by itself.</li>
+      <li><strong>MiniMax H3</strong> — My go-to for animation, and the biggest jump I've seen in this category. <strong>15-second clips with a synchronized audio track generated in the same pass</strong> — motion and sound come out together, no separate assembly step — and the warping and morphing artefacts that used to force a regeneration are largely gone. Fifteen seconds is also the point where one clip carries a whole post by itself. Since August 2026 the <strong>4-step Turbo variant</strong> is my default: the same model distilled to 4 sampler steps, a 15-second clip in about <strong>8 minutes of GPU</strong> instead of 19 — the trade-off is reduced motion amplitude, so prompts plan more, smaller actions.</li>
       <li><strong>Wan 2.2</strong> — Still excellent for pure, silent motion: remarkable movement quality and temporal consistency, within the 5 seconds it was trained on. Ask for longer and you get two windows that don't agree at the seam.</li>
       <li><strong>LTX-2</strong> — What I used before MiniMax H3: 10 seconds, also with audio in the same pass. Still a sensible middle ground, but I had to regenerate it far more often.</li>
     </ul>
     <div class="callout">
-      <strong>How I actually use them:</strong> MiniMax H3 by default — I keep the full 15 seconds and its native audio, and add background music underneath it. The catch is time: roughly 19 minutes of GPU per clip on my 4070, so those jobs run overnight. When I need volume rather than polish I switch to Wan 2.2 (~3 minutes a clip); that clip is short and silent, so I mirror it into a ping-pong loop and the generated music becomes the only soundtrack.
+      <strong>How I actually use them:</strong> MiniMax H3 by default — I keep the full 15 seconds and its native audio, and add background music underneath it. With the 4-step Turbo variant that's roughly 8 minutes of GPU per clip on my 4070, so those jobs now run during the day; the non-Turbo pass (~19 minutes) stays for the rare generation that needs full quality. When I need volume rather than polish I switch to Wan 2.2 (~3 minutes a clip); that clip is short and silent, so I mirror it into a ping-pong loop and the generated music becomes the only soundtrack.
     </div>
 
     <h3>4. llama.cpp — Going Further</h3>
@@ -560,6 +560,8 @@
       <li><strong>Post-production</strong> — TTS voice-over, background music, karaoke subtitles, multi-shot reels (one image per paragraph, with transitions)</li>
       <li><strong>Publishing</strong> — scheduling, multi-account management, posting to Instagram, Facebook and Threads from the same payload, platform-adapted formats</li>
       <li><strong>News monitoring</strong> — source scraping → LLM summary → formatted post</li>
+      <li><strong>Serialized storytelling</strong> — a fictional account run as a serial: each post is the next chapter, with the world's memory kept between episodes (arc, scene and lore-update passes, canon decided at publish time)</li>
+      <li><strong>Photo-to-post</strong> — upload a photograph and the pipeline writes the caption, hashtags and an animated video around it, with a vision model that actually sees the image</li>
     </ul>
 
     <p>The whole pipeline runs without human intervention, 24/7.</p>
@@ -625,7 +627,7 @@
       <div class="card-icon icon-purple">🛠️</div>
       <div class="card-text">
         <div class="card-title">Full Pipeline Guide</div>
-        <div class="card-desc">Architecture, models, queue system, automated publishing — the complete blueprint · $27</div>
+        <div class="card-desc">Architecture, models, character LoRA training, serialized storytelling, photo-to-post, automated publishing — the complete 45-page blueprint · $27</div>
       </div>
       <div class="card-arrow">↗</div>
     </a>
