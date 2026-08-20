@@ -1,13 +1,13 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 20/08/2026 16:58:20
+✅ **Dernier run sans erreur** — 20/08/2026 17:26:18
 
 📦 **Total publiés historiquement :** 3806
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
 | :--- | :---: | :--- | :--- | :---: | :---: |
-| CYBERPUNK | **35** | 20/08 22:25 | 14/09 23:00 | 25.2 j | 🎬 |
+| CYBERPUNK | **35** | 20/08 22:25 | 14/09 23:00 | 25.1 j | 🎬 |
 | CYBERPUNK_STORY | **1** | 21/08 15:00 | 21/08 15:00 | ⚠️ **0.8 j** | 🎬 |
 | INFLUENCER | **34** | 21/08 06:00 | 13/09 21:00 | 24.1 j | 🎬 |
 | MINIATURE | **1** | 20/08 20:00 | 20/08 20:00 | ⚠️ **0.0 j** | 🎬 |
