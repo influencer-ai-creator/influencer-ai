@@ -1,1 +1,19 @@
-{"compte": "sundress", "pub_id": "92e2931c-291e-4bfa-9eff-837b4e1adf2a", "media_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_2032.png", "media_type": "IMAGE", "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_2032.png", "caption": "Strutting in 5-inch wedges and feeling impossible today 😏🌺\n#LatinVibes #SpringChic #WedgeHeels #SunnyDay #Confident", "next_time": 1787703019, "threads_caption": "Strutting in 5-inch wedges and feeling impossible today 😏🌺\n#LatinVibes #SpringChic #WedgeHeels #SunnyDay #Confident"}
+{
+  "compte": "sundress",
+  "pub_id": "92e2931c-291e-4bfa-9eff-837b4e1adf2a",
+  "media_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_2032.png",
+  "media_type": "IMAGE",
+  "image_url": "https://raw.githubusercontent.com/influencer-ai-creator/influencer-ai/main/sundress/to_publish/image_2032.png",
+  "caption": "Strutting in 5-inch wedges and feeling impossible today 😏🌺\n#LatinVibes #SpringChic #WedgeHeels #SunnyDay #Confident",
+  "next_time": 1787703019,
+  "threads_caption": "Strutting in 5-inch wedges and feeling impossible today 😏🌺\n#LatinVibes #SpringChic #WedgeHeels #SunnyDay #Confident",
+  "done": {
+    "instagram": true,
+    "instagram_story": true,
+    "facebook": true,
+    "facebook_story": true
+  },
+  "attempts": {
+    "threads": 1
+  }
+}
