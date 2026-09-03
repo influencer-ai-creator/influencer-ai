@@ -1,14 +1,14 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 03/09/2026 17:14:49
+✅ **Dernier run sans erreur** — 03/09/2026 19:49:06
 
 📦 **Total publiés historiquement :** 3905
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
 | :--- | :---: | :--- | :--- | :---: | :---: |
-| CYBERPUNK | **17** | 04/09 13:00 | 21/09 17:00 | 17.9 j | 🎬 |
-| INFLUENCER | **33** | 04/09 12:00 | 07/10 12:00 | 33.7 j | 🎬 |
-| SUNDRESS | **41** | 04/09 02:10 | 25/09 13:00 | 21.7 j | 🎬 |
-| UNIVERSITY | **22** | 04/09 14:11 | 26/09 14:00 | 22.8 j | 🎬 |
+| CYBERPUNK | **17** | 04/09 13:00 | 21/09 17:00 | 17.8 j | 🎬 |
+| INFLUENCER | **33** | 04/09 12:00 | 07/10 12:00 | 33.6 j | 🎬 |
+| SUNDRESS | **41** | 04/09 02:10 | 25/09 13:00 | 21.6 j | 🎬 |
+| UNIVERSITY | **22** | 04/09 14:11 | 26/09 14:00 | 22.7 j | 🎬 |
 
