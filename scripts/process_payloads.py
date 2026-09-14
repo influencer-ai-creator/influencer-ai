@@ -33,8 +33,8 @@ EXIGENCES TENUES ICI (référence : CLAUDE.md §5.6bis)
 
  5. Deux niveaux de signalement. `_fail` (bloquant) alimente le dashboard ET
     l'issue GitHub ouverte par le workflow ; `_warn` (best effort) n'alimente
-    que le dashboard — une Story refusée parce que le reel dépasse 60 s est
-    normale et ne doit pas ouvrir d'issue.
+    que le dashboard — une Story refusée ne remet pas en cause la publication
+    principale et ne doit pas ouvrir d'issue.
 
  6. Le dashboard (README du repo) est la seule fenêtre sur le runner. Il porte
     les erreurs, les avertissements, les tokens proches de l'échéance
@@ -59,9 +59,11 @@ import json
 import pathlib
 import requests
 import os
+import shutil
 import sys
 import time
 import subprocess
+import tempfile
 from datetime import datetime, timezone, timedelta
 
 # --- Configuration des chemins ---
@@ -69,6 +71,10 @@ base_dir = pathlib.Path(__file__).parent.parent
 payload_dir = base_dir / "instagram_payloads"
 payload_dir.mkdir(exist_ok=True)
 published_file = pathlib.Path(__file__).parent / "published.json"
+# {pub_id: {"instagram": id du média publié, "at": epoch}} — lu par 📈 Performances
+# côté programme pour relier une publication Instagram à son story JSON. Ni l'API
+# ni `published.json` ne gardent ce lien : sans ce fichier il se devine par la date.
+published_media_file = pathlib.Path(__file__).parent / "published_media.json"
 
 errors    = []   # bloquants  → dashboard + issue GitHub
 warn_msgs = []   # best effort → dashboard seulement (nom non `warnings` : module standard)
@@ -89,6 +95,8 @@ if DRY_RUN:
 # Actions jusqu'au kill à 6h (quota consommé). Tous les appels passent par
 # ces wrappers ; un timeout explicite passé par l'appelant reste prioritaire.
 API_TIMEOUT = 60  # secondes
+STORY_VIDEO_MAX_SECONDS = 59.5  # marge sous la limite Meta de 60 s
+STORY_VIDEO_FADE_SECONDS = 0.4
 
 
 def _post(url, **kwargs):
@@ -140,10 +148,10 @@ def _warn(msg):
     """
     Échec BEST EFFORT (Stories) : visible au dashboard, mais sans issue GitHub.
 
-    Une Story qui échoue est fréquente et légitime (un Reel de plus de 60 s ne
-    peut pas être publié en Story) — la remonter comme une erreur bloquante
-    ouvrirait une issue à chaque reel long. La taire complètement, à l'inverse,
-    la rendait indétectable : d'où ce niveau intermédiaire.
+    Une Story reste best effort (permission absente, traitement Meta refusé) :
+    la remonter comme une erreur bloquante ouvrirait une issue sans empêcher la
+    publication principale. La taire complètement, à l'inverse, la rendrait
+    indétectable : d'où ce niveau intermédiaire.
     """
     warn_msgs.append(msg)
     print(f"[WARN] {msg}")
@@ -168,9 +176,151 @@ def _write_payload_state(payload_file, payload, state):
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
 
+def _record_published_media(pub_id, media_id):
+    """Ajoute pub_id → id Instagram dans `published_media.json` (voir en tête)."""
+    try:
+        with open(published_media_file, encoding="utf-8") as f:
+            known = json.load(f)
+    except (OSError, ValueError):
+        known = {}
+    known[pub_id] = {"instagram": media_id, "at": int(time.time())}
+    with open(published_media_file, "w", encoding="utf-8") as f:
+        json.dump(known, f, indent=2, sort_keys=True)
+
+
 def _is_video(url) -> bool:
     """Un média est une vidéo si son URL se termine en .mp4 (convention du projet)."""
     return str(url or "").lower().endswith(".mp4")
+
+
+def _ensure_video_tools() -> None:
+    """Installe FFmpeg à la demande sur le runner si l'image ne le fournit pas."""
+    if shutil.which("ffmpeg") and shutil.which("ffprobe"):
+        return
+    if not sys.platform.startswith("linux"):
+        raise RuntimeError("ffmpeg/ffprobe absents du runner")
+    print("  [STORY] Installation de FFmpeg sur le runner...")
+    for command in (
+        ["sudo", "apt-get", "update"],
+        ["sudo", "apt-get", "install", "-y", "ffmpeg"],
+    ):
+        result = subprocess.run(command, capture_output=True, text=True, timeout=300)
+        if result.returncode != 0:
+            raise RuntimeError(f"installation FFmpeg échouée : {(result.stderr or '')[-1000:]}")
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        raise RuntimeError("ffmpeg/ffprobe introuvables après installation")
+
+
+def _video_duration(source: str) -> float:
+    """Durée d'une vidéo locale ou distante via ffprobe."""
+    _ensure_video_tools()
+    result = subprocess.run(
+        [
+            "ffprobe", "-v", "error", "-show_entries", "format=duration",
+            "-of", "default=noprint_wrappers=1:nokey=1", source,
+        ],
+        capture_output=True, text=True, timeout=90,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"ffprobe a échoué : {(result.stderr or '').strip()[-500:]}")
+    try:
+        return float(result.stdout.strip())
+    except ValueError as exc:
+        raise RuntimeError(f"durée vidéo illisible : {result.stdout!r}") from exc
+
+
+def _render_story_clip(source: str, output: str, max_seconds: float) -> None:
+    """Réencode le début de `source` sous la limite Story, avec un fondu final."""
+    fade_start = max(0.0, max_seconds - STORY_VIDEO_FADE_SECONDS)
+    result = subprocess.run(
+        [
+            "ffmpeg", "-y", "-i", source, "-t", f"{max_seconds:.3f}",
+            "-map", "0:v:0", "-map", "0:a:0?",
+            "-vf", f"fade=t=out:st={fade_start:.3f}:d={STORY_VIDEO_FADE_SECONDS:.3f}",
+            "-af", f"afade=t=out:st={fade_start:.3f}:d={STORY_VIDEO_FADE_SECONDS:.3f}",
+            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
+            "-movflags", "+faststart", output,
+        ],
+        capture_output=True, text=True, timeout=600,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg Story a échoué : {(result.stderr or '').strip()[-1000:]}")
+    rendered_duration = _video_duration(output)
+    if rendered_duration >= 60.0:
+        raise RuntimeError(f"Story produite trop longue ({rendered_duration:.3f} s)")
+
+
+def _upload_story_asset(local_path: str, asset_name: str) -> str:
+    """Téléverse idempotemment un clip Story dans la Release `media-storage`."""
+    token = os.environ.get("GITHUB_TOKEN", "")
+    repo  = os.environ.get("GITHUB_REPOSITORY", "")
+    if not token or not repo:
+        raise RuntimeError("GITHUB_TOKEN ou GITHUB_REPOSITORY absent")
+
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github+json",
+    }
+    release = _get(
+        f"https://api.github.com/repos/{repo}/releases/tags/media-storage",
+        headers=headers, timeout=30,
+    )
+    _check(release, "GitHub Release media-storage")
+    release_id = release.json()["id"]
+
+    assets_url = f"https://api.github.com/repos/{repo}/releases/{release_id}/assets?per_page=100"
+    existing = None
+    while assets_url:
+        response = _get(assets_url, headers=headers, timeout=30)
+        _check(response, "GitHub liste assets")
+        existing = next((a for a in response.json() if a.get("name") == asset_name), None)
+        if existing:
+            break
+        assets_url = None
+        for part in response.headers.get("Link", "").split(","):
+            if 'rel="next"' in part:
+                assets_url = part.split(";")[0].strip().strip("<>")
+                break
+
+    size = os.path.getsize(local_path)
+    if existing and existing.get("state") == "uploaded" and existing.get("size") == size:
+        print(f"  [STORY] Asset tronqué déjà présent : {asset_name}")
+        return existing["browser_download_url"]
+    if existing:
+        deleted = requests.delete(
+            f"https://api.github.com/repos/{repo}/releases/assets/{existing['id']}",
+            headers=headers, timeout=30,
+        )
+        if deleted.status_code not in (204, 404):
+            _check(deleted, "GitHub suppression ancien asset Story")
+
+    upload_headers = dict(headers)
+    upload_headers["Content-Type"] = "video/mp4"
+    with open(local_path, "rb") as body:
+        uploaded = _post(
+            f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets",
+            params={"name": asset_name}, headers=upload_headers, data=body, timeout=180,
+        )
+    _check(uploaded, "GitHub upload asset Story")
+    return uploaded.json()["browser_download_url"]
+
+
+def _story_video_url(source: str, folder: str, pub_id: str) -> str:
+    """Retourne la source si elle tient en Story, sinon une dérivée de 59,5 s."""
+    duration = _video_duration(source)
+    if duration <= STORY_VIDEO_MAX_SECONDS:
+        return source
+
+    print(
+        f"  [STORY] Vidéo de {duration:.2f} s : troncature à "
+        f"{STORY_VIDEO_MAX_SECONDS:.1f} s (Reel original conservé)"
+    )
+    asset_name = f"{folder}_{pub_id[:8]}_story.mp4"
+    with tempfile.TemporaryDirectory(prefix="story_clip_") as tmp_dir:
+        output = os.path.join(tmp_dir, asset_name)
+        _render_story_clip(source, output, STORY_VIDEO_MAX_SECONDS)
+        return _upload_story_asset(output, asset_name)
 
 
 # ==========================================
@@ -200,8 +350,8 @@ def _is_video(url) -> bool:
 # Instagram est volontairement ILLIMITÉ : c'est la publication principale.
 # L'abandonner au bout de N essais supprimerait le post sans l'avoir publié.
 # Facebook et Threads sont plafonnés car un échec permanent y est possible
-# (Reel > 60 s refusé en Story, permission révoquée) et ne doit pas retenir
-# indéfiniment le payload ni ses assets.
+# (permission révoquée, format refusé) et ne doit pas retenir indéfiniment le
+# payload ni ses assets.
 TARGETS = [
     # name,              label,               max_attempts, blocking, depends_on
     ("instagram",        "Instagram",         None,         True,     None),
@@ -520,7 +670,8 @@ def publish_image(instagram_id, access_token, image_url, caption):
     time.sleep(2)
     rp = _post(publish_url, data=publish_params)
     _check(rp, "IG /media_publish (image)")
-    return True, media_id
+    # L'id du MÉDIA PUBLIÉ (réponse de media_publish), pas celui du conteneur.
+    return True, rp.json().get("id", "")
 
 
 def _poll_instagram_container(container_id, access_token, max_wait=300, poll_every=10, label=""):
@@ -692,7 +843,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
       3. Attendre FINISHED (polling)
       4. media_publish
 
-    Retourne (success: bool, container_id: str | None).
+    Retourne (success: bool, id du média publié: str).
     """
     if len(children_urls) < 2 or len(children_urls) > 10:
         raise ValueError(f"Instagram carousel requires 2-10 slides (got {len(children_urls)})")
@@ -750,9 +901,9 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
     # Note : le polling GET /{container_id} retourne error_subcode 33 sur certains comptes
     # (même restriction que les Reels). On utilise media_publish avec retry sur subcode 2207027.
     # Les carousels image sont traités rapidement (~10-30s), d'où le first_sleep court.
-    _publish_video_with_retry(instagram_id, access_token, container_id,
+    published_id = _publish_video_with_retry(instagram_id, access_token, container_id,
                                label="Carousel Instagram", first_sleep=10, poll_every=10, max_wait=300)
-    return True, container_id
+    return True, published_id
 
 
 def publish_video(instagram_id, access_token, video_url, caption):
@@ -767,7 +918,7 @@ def publish_video(instagram_id, access_token, video_url, caption):
     sur certains comptes (restriction d'autorisation). On utilise directement media_publish
     avec retry sur subcode 2207027 (traitement en cours).
 
-    Retourne (success: bool, container_id: str).
+    Retourne (success: bool, id du média publié: str).
     """
     media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
     media_params = {
@@ -784,9 +935,9 @@ def publish_video(instagram_id, access_token, video_url, caption):
     container_id = creation_resp["id"]
     print(f"  [PKG] Conteneur Reel Instagram créé : {container_id}")
 
-    _publish_video_with_retry(instagram_id, access_token, container_id,
+    published_id = _publish_video_with_retry(instagram_id, access_token, container_id,
                                label="Reel Instagram", first_sleep=60, poll_every=20, max_wait=300)
-    return True, container_id
+    return True, published_id
 
 
 def publish_video_story(instagram_id, access_token, video_url):
@@ -1229,6 +1380,7 @@ for payload_file in payload_dir.glob("*.json"):
     children     = payload.get("children", [])
     fb_children  = payload.get("fb_children", children)
     ig_story_url = payload.get("story_url")
+    video_story_cache = {"url": ig_story_url if media_type == "VIDEO" else None}
     # Légende tronquée à la mise en file (limite Threads, en OCTETS UTF-8).
     # Le repli sert aux payloads antérieurs à `threads_caption` et doit compter
     # en octets lui aussi : `caption[:500]` laissait passer ~700 octets sur une
@@ -1238,13 +1390,17 @@ for payload_file in payload_dir.glob("*.json"):
     def _do_instagram():
         if media_type == "VIDEO":
             print(f"[{pub_id}] [VID] Publication Reel Instagram...")
-            ok, _ = publish_video(instagram_id, access_token, media_url, caption)
+            ok, media_id = publish_video(instagram_id, access_token, media_url, caption)
         elif media_type == "CAROUSEL":
             print(f"[{pub_id}] [CAR] Publication Carousel Instagram ({len(children)} slides)...")
-            ok, _ = publish_carousel(instagram_id, access_token, children, caption)
+            ok, media_id = publish_carousel(instagram_id, access_token, children, caption)
         else:
             print(f"[{pub_id}] [IMG] Publication image Instagram...")
-            ok, _ = publish_image(instagram_id, access_token, media_url, caption)
+            ok, media_id = publish_image(instagram_id, access_token, media_url, caption)
+        # Gardé dans le payload : il est persisté après chaque cible, donc survit à
+        # un runner tué avant la fin des autres réseaux (reprise au run suivant).
+        if media_id:
+            payload["instagram_media_id"] = media_id
         return ok
 
     def _do_facebook():
@@ -1267,6 +1423,19 @@ for payload_file in payload_dir.glob("*.json"):
         )
         return True
 
+    def _video_story_source():
+        """Crée au plus une dérivée Story et persiste son URL avant publication."""
+        if video_story_cache["url"]:
+            return video_story_cache["url"]
+        story_url = _story_video_url(media_url, folder, pub_id)
+        video_story_cache["url"] = story_url
+        if story_url != media_url:
+            payload["story_url"] = story_url
+            # Un runner interrompu après l'upload ne doit ni recréer ni perdre
+            # l'asset au prochain passage.
+            _write_payload_state(payload_file, payload, state)
+        return story_url
+
     # Actions applicables à CE payload. Une cible absente de ce dict n'est ni
     # tentée, ni comptée, et ne retient pas le nettoyage : « non applicable »
     # (identifiants manquants, format sans équivalent sur ce réseau) cesse d'être
@@ -1278,7 +1447,7 @@ for payload_file in payload_dir.glob("*.json"):
             instagram_id, access_token, image_url, "Story image")
     elif media_type == "VIDEO" and media_url:
         actions["instagram_story"] = lambda: publish_video_story(
-            instagram_id, access_token, media_url)
+            instagram_id, access_token, _video_story_source())
     elif media_type == "CAROUSEL" and ig_story_url:
         # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11).
         actions["instagram_story"] = lambda: _publish_ig_story(
@@ -1288,21 +1457,22 @@ for payload_file in payload_dir.glob("*.json"):
     # simple, la story dérivée pour un carousel (§5.10 C11). Facebook n'avait
     # jusqu'ici de Story que sur les vidéos, faute de fonction pour les photos —
     # les posts image et carousel n'en produisaient aucune, en silence.
-    if media_type == "VIDEO":
-        fb_story_src = media_url
-    elif media_type == "IMAGE":
+    if media_type == "IMAGE":
         fb_story_src = image_url
-    else:
+    elif media_type == "CAROUSEL":
         fb_story_src = ig_story_url
+    else:
+        fb_story_src = None
 
     def _do_facebook_story():
-        if _is_video(fb_story_src):
-            return publish_video_story_facebook(facebook_id, access_token, fb_story_src)
-        return publish_photo_story_facebook(facebook_id, access_token, fb_story_src)
+        source = _video_story_source() if media_type == "VIDEO" else fb_story_src
+        if _is_video(source):
+            return publish_video_story_facebook(facebook_id, access_token, source)
+        return publish_photo_story_facebook(facebook_id, access_token, source)
 
     if facebook_id and (media_type != "IMAGE" or image_url):
         actions["facebook"] = _do_facebook
-        if fb_story_src:
+        if media_type == "VIDEO" or fb_story_src:
             actions["facebook_story"] = _do_facebook_story
 
     if threads_token and threads_id:
@@ -1370,6 +1540,8 @@ for payload_file in payload_dir.glob("*.json"):
     published.add(pub_id)
     with open(published_file, "w") as f:
         json.dump(sorted(list(published)), f, indent=2)
+    if payload.get("instagram_media_id"):
+        _record_published_media(pub_id, payload["instagram_media_id"])
 
     # Supprimer payload
     payload_file.unlink()
@@ -1439,7 +1611,11 @@ for payload_file in payload_dir.glob("*.json"):
                 for u in urls_to_del:
                     _delete_release_asset_by_url(u)
             else:
-                _delete_release_asset_by_url(payload.get("media_url") or payload.get("image_url"))
+                primary_url = payload.get("media_url") or payload.get("image_url")
+                _delete_release_asset_by_url(primary_url)
+                story_url = payload.get("story_url")
+                if story_url and story_url != primary_url:
+                    _delete_release_asset_by_url(story_url)
         else:
             # --- Chemin legacy : supprimer les fichiers locaux dans to_publish/ ---
             if media_type == "CAROUSEL":
@@ -1453,11 +1629,15 @@ for payload_file in payload_dir.glob("*.json"):
                         child_local.unlink()
                         print(f"[DEL] Fichier local supprimé : {child_name}")
             else:
-                media_name  = pathlib.Path(media_url).name
-                media_local = base_dir / folder.lower() / "to_publish" / media_name
-                if media_local.exists():
-                    media_local.unlink()
-                    print(f"[DEL] Fichier média local supprimé : {media_name}")
+                urls = [media_url]
+                if payload.get("story_url") and payload["story_url"] != media_url:
+                    urls.append(payload["story_url"])
+                for url in urls:
+                    media_name  = pathlib.Path(url).name
+                    media_local = base_dir / folder.lower() / "to_publish" / media_name
+                    if media_local.exists():
+                        media_local.unlink()
+                        print(f"[DEL] Fichier média local supprimé : {media_name}")
     except Exception as _del_exc:
         print(f"[WARN] Erreur nettoyage média : {_del_exc}")
 
