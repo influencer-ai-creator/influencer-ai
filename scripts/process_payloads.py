@@ -10,6 +10,8 @@ RÉSEAUX COUVERTS
     Instagram   post image · carousel · reel      + Story
     Facebook    post image · carousel · reel      + Story
     Threads     post image · carousel · vidéo
+    TikTok      vidéo (via Buffer)
+    YouTube     vidéo — Shorts (via Buffer)
 
 EXIGENCES TENUES ICI (référence : CLAUDE.md §5.6bis)
 
@@ -53,6 +55,13 @@ EXIGENCES TENUES ICI (référence : CLAUDE.md §5.6bis)
  9. `DRY_RUN=1` rejoue toute l'orchestration sans appeler les APIs et sans rien
     modifier sur disque (payloads, published.json, assets Release, git). Seul
     moyen de valider la logique de reprise sur de vrais payloads sans publier.
+
+10. Une cible peut n'être NI publiée NI en échec (`TargetPending`) : une
+    publication Buffer attend que Buffer récupère le média, et la relire ne
+    coûte rien. Une attente ne consomme aucune tentative, ne bloque pas les
+    autres cibles et interdit le nettoyage — un `createPost` réussi n'est PAS
+    une publication terminée, l'asset Release doit rester en ligne jusqu'au
+    statut `sent`.
 """
 
 import json
@@ -359,7 +368,36 @@ TARGETS = [
     ("facebook",         "Facebook",          3,            True,     "instagram"),
     ("facebook_story",   "Story Facebook",    1,            False,    "facebook"),
     ("threads",          "Threads",           3,            True,     "instagram"),
+    # Buffer : une publication par channel, donc une cible par plateforme.
+    # Plafonnées comme Facebook et Threads (un refus permanent y est possible :
+    # channel déconnecté, format refusé) et dépendantes d'Instagram, qui reste
+    # la publication principale.
+    ("tiktok",           "TikTok",            3,            True,     "instagram"),
+    ("youtube",          "YouTube Shorts",    3,            True,     "instagram"),
 ]
+
+
+class TargetPending(Exception):
+    """Cible NON RÉGLÉE, sans échec : elle n'a pas abouti, personne n'a tort.
+
+    Une publication Buffer crée son post puis attend que Buffer récupère le
+    média ; le quota (429) et un appel au sort inconnu produisent la même
+    situation. Traiter ces cas comme un échec consommerait une tentative à
+    chaque run et abandonnerait en trois quarts d'heure une publication qui
+    n'attend que d'être relue.
+
+    Distincte d'`Exception` dans la boucle : la cible reste à reprendre (donc le
+    payload et ses assets aussi), aucun compteur ne bouge, et les autres cibles
+    sont quand même tentées — YouTube part même si TikTok patiente.
+
+    `alert=True` : attente qui demande une VÉRIFICATION HUMAINE (création au
+    sort inconnu, qu'on ne relancera jamais seul). Elle passe alors par `_fail`,
+    donc dashboard et issue GitHub.
+    """
+
+    def __init__(self, message, alert=False):
+        super().__init__(message)
+        self.alert = alert
 
 # Seuils d'alerte du dashboard.
 TOKEN_WARN_DAYS = 10   # token proche de l'échéance
@@ -1213,6 +1251,24 @@ def _publish_ig_story(instagram_id, access_token, url, label="Story"):
     return True
 
 
+def _publish_story_series(publish_one, urls, label):
+    """
+    Publie chaque URL en Story, dans l'ordre (mode « chaque slide en Story »
+    d'un carousel, §5.10 C11). Un échec n'arrête pas les suivantes : la cible
+    Story n'a qu'un essai (TARGETS), l'interrompre perdrait le reste de la série.
+    Renvoie True seulement si toutes sont parties.
+    """
+    failed = 0
+    for i, url in enumerate(urls, 1):
+        try:
+            if not publish_one(url):
+                raise RuntimeError("échec signalé")
+        except Exception as e:
+            failed += 1
+            print(f"  [WARN] {label} {i}/{len(urls)} : {e}")
+    return failed == 0
+
+
 def _truncate_threads(text, limit):
     """
     Repli de troncature pour les payloads antérieurs à `threads_caption`.
@@ -1325,6 +1381,254 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
 
 
 # ==========================================
+# BUFFER — TikTok & YouTube Shorts
+# ==========================================
+#
+# GitHub reste l'ORDONNANCEUR : le payload attend son `next_time` comme pour les
+# réseaux Meta, et la publication Buffer n'est créée qu'à l'échéance, en
+# `mode=shareNow`. La queue Buffer n'est jamais utilisée pour programmer — ce
+# serait une seconde source de vérité pour l'horaire, et son plafond de 10
+# publications programmées par channel se remplirait d'avance.
+#
+# UNE PUBLICATION PAR CHANNEL : TikTok et YouTube sont deux `createPost`
+# distincts, donc deux cibles de `TARGETS` qui se reprennent indépendamment.
+#
+# Tout ce dont ce bloc a besoin est transporté par le payload (drapeaux, textes
+# par plateforme, réglages YouTube, déclaration IA — figés à la validation) ou
+# par l'environnement (clé en SECRET, channel IDs en variables). La clé n'est
+# jamais globale : elle est lue par compte, ce qui permet de répartir les
+# channels sur plusieurs comptes Buffer sans toucher à ce script.
+
+BUFFER_URL = "https://api.buffer.com"
+BUFFER_LABELS = {"tiktok": "TikTok", "youtube": "YouTube"}
+BUFFER_TEXT_LIMITS = {"tiktok": 2200, "youtube": 5000}
+# Statuts Buffer qui veulent dire « pas encore parti, rien à reprocher ».
+BUFFER_WAITING = ("scheduled", "sending", "pending", "processing")
+
+_BUFFER_CREATE = """
+mutation createPost($input: CreatePostInput!) {
+  createPost(input: $input) {
+    __typename
+    ... on PostActionSuccess { post { id status } }
+    ... on MutationError { message }
+  }
+}
+"""
+
+_BUFFER_READ = """
+query($id: String!) {
+  post(input: {id: $id}) { id status }
+}
+"""
+
+
+class _BufferAmbiguous(Exception):
+    """Requête partie, sort INCONNU — une relance risquerait un doublon.
+
+    Distincte d'un échec franc : Buffer ne documente aucune clé d'idempotence
+    pour `createPost`, donc un timeout à la création ne peut pas être rejoué
+    automatiquement.
+    """
+
+
+def _buffer_call(api_key, query, variables, what):
+    """Appel GraphQL Buffer. Trois régimes d'erreur, et ils ne se valent pas :
+
+      • `TargetPending`     — quota (429) : attente, aucune tentative consommée.
+      • `_BufferAmbiguous`  — timeout, 5xx, corps illisible : sort inconnu.
+      • `RuntimeError`      — refus franc (4xx, erreurs GraphQL) : échec réel.
+
+    Les erreurs GraphQL arrivent en **HTTP 200** : les ignorer ferait passer un
+    refus pour un succès muet.
+    """
+    try:
+        r = _post(
+            BUFFER_URL,
+            headers={"Authorization": f"Bearer {api_key}",
+                     "Content-Type": "application/json"},
+            json={"query": query, "variables": variables},
+        )
+    except requests.RequestException as e:
+        raise _BufferAmbiguous(f"{what} : appel interrompu ({e})")
+
+    if r.status_code == 429:
+        retry = r.headers.get("Retry-After", "")
+        raise TargetPending(
+            f"{what} : quota Buffer atteint (429"
+            + (f", Retry-After {retry}s" if retry else "") + ") — reprise au prochain run"
+        )
+    if r.status_code >= 500:
+        raise _BufferAmbiguous(f"{what} : HTTP {r.status_code}")
+    if r.status_code >= 400:
+        raise RuntimeError(f"{what} -> HTTP {r.status_code} : {(r.text or '')[:300]}")
+    try:
+        body = r.json()
+    except ValueError:
+        raise _BufferAmbiguous(f"{what} : réponse illisible")
+    if body.get("errors"):
+        raise RuntimeError(
+            f"{what} -> " + "; ".join(str(e.get("message", e)) for e in body["errors"])
+        )
+    return body.get("data") or {}
+
+
+def _buffer_input(platform, payload, channel_id, media_url, pub_id):
+    """Corps de `createPost` pour une plateforme.
+
+    Champs communs d'abord, métadonnées spécifiques ensuite. Pas de
+    `metadata.tiktok.title` : ce champ est documenté pour les publications
+    PHOTO. Ni confidentialité, ni commentaires, ni duet/stitch : le schéma
+    GraphQL de Buffer ne les expose pas — c'est la configuration du channel qui
+    s'applique.
+    """
+    ai_generated = bool(payload.get("ai_generated", True))
+    text = payload.get("tiktok_text") if platform == "tiktok" else payload.get("youtube_description")
+    data = {
+        "channelId":      channel_id,
+        "schedulingType": "automatic",
+        "mode":           "shareNow",
+        "text":           (text or payload.get("caption") or "")[:BUFFER_TEXT_LIMITS[platform]],
+        "source":         f"influencer:{pub_id}:{platform}",
+        "assets":         [{"video": {"url": media_url,
+                                      "metadata": {"thumbnailOffset": 1000}}}],
+    }
+    if platform == "tiktok":
+        data["metadata"] = {"tiktok": {"isAiGenerated": ai_generated}}
+    else:
+        data["metadata"] = {"youtube": {
+            "title":             payload.get("youtube_title") or "",
+            "categoryId":        str(payload.get("youtube_category_id") or "27"),
+            "privacy":           payload.get("youtube_privacy") or "public",
+            "madeForKids":       bool(payload.get("youtube_made_for_kids", False)),
+            "notifySubscribers": bool(payload.get("youtube_notify_subscribers", True)),
+            "embeddable":        True,
+            "isAiGenerated":     ai_generated,
+        }}
+    return data
+
+
+def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, media_url):
+    """Machine d'état d'UNE destination Buffer. True = média réellement parti.
+
+    Deux situations, jamais confondues :
+
+      • pas encore de `post_id` — on crée, en marquant `creation_uncertain`
+        AVANT l'appel : un runner tué entre l'envoi et la réponse laisse la
+        trace de son doute, et rien ne sera relancé automatiquement.
+      • `post_id` connu — on relit le statut. Le succès de `createPost` ne vaut
+        PAS publication : Buffer récupère le média de façon asynchrone, et
+        l'asset Release doit rester en ligne jusqu'au `sent`.
+    """
+    label   = BUFFER_LABELS[platform]
+    api_key = os.environ.get(f"{folder.upper()}_BUFFER_API_KEY", "")
+    channel = os.environ.get(f"{folder.upper()}_BUFFER_{platform.upper()}_CHANNEL_ID", "")
+    if not api_key or not channel:
+        # Échec VISIBLE, jamais une omission silencieuse : une destination
+        # demandée puis ignorée ne partirait jamais sans que rien ne le dise.
+        raise RuntimeError(
+            f"{label} : clé Buffer ou channel ID absent — poussez les identifiants "
+            "vers GitHub (page Compte) puis redéployez le workflow"
+        )
+
+    st_buf = payload.setdefault("buffer_posts", {}).setdefault(
+        platform, {"post_id": None, "status": None, "creation_uncertain": False}
+    )
+
+    # --- 2. Publication déjà créée : on relit son statut ---
+    if st_buf.get("post_id"):
+        try:
+            data = _buffer_call(api_key, _BUFFER_READ, {"id": st_buf["post_id"]},
+                                f"post {label}")
+        except _BufferAmbiguous as e:
+            # Relire n'a aucun effet de bord : rien d'incertain ici, on attend.
+            raise TargetPending(str(e))
+        status = ((data.get("post") or {}).get("status") or "").lower()
+        st_buf["status"] = status
+        _write_payload_state(payload_file, payload, state)
+        if status == "sent":
+            return True
+        if status in BUFFER_WAITING:
+            raise TargetPending(f"{label} : statut {status} — publication en cours")
+        if status == "error":
+            return False
+        if status in ("draft", "needs_approval"):
+            raise RuntimeError(
+                f"{label} : statut {status} — ce channel n'est pas configuré pour "
+                "la publication automatique (approbation ou brouillon)"
+            )
+        raise RuntimeError(f"{label} : statut Buffer inattendu ({status or 'vide'})")
+
+    # --- 1. Pas de post_id : création ---
+    if st_buf.get("creation_uncertain"):
+        # On ne relance JAMAIS un createPost dont le sort est inconnu : Buffer
+        # ne documente pas de clé d'idempotence, une relance publierait peut-être
+        # deux fois. Le payload et ses assets restent en place jusqu'à décision
+        # humaine.
+        raise TargetPending(
+            f"{label} : création interrompue sans réponse exploitable — vérifiez "
+            f"dans Buffer si la publication de {pub_id[:8]} existe (aucune relance "
+            "automatique, risque de doublon)",
+            alert=True,
+        )
+
+    st_buf["creation_uncertain"] = True
+    _write_payload_state(payload_file, payload, state)
+    try:
+        data = _buffer_call(
+            api_key, _BUFFER_CREATE,
+            {"input": _buffer_input(platform, payload, channel, media_url, pub_id)},
+            f"createPost {label}",
+        )
+    except _BufferAmbiguous as e:
+        raise TargetPending(
+            f"{e} — vérifiez dans Buffer si la publication de {pub_id[:8]} existe "
+            "(aucune relance automatique, risque de doublon)",
+            alert=True,
+        )
+    except Exception:
+        # Refus franc ou quota : rien n'a été créé, le doute est levé.
+        st_buf["creation_uncertain"] = False
+        _write_payload_state(payload_file, payload, state)
+        raise
+
+    result   = (data.get("createPost") or {})
+    typename = result.get("__typename")
+
+    if typename == "PostActionSuccess":
+        post = result.get("post") or {}
+        post_id = post.get("id")
+        if not post_id:
+            # Succès annoncé sans identifiant : on ne peut ni suivre ni relancer.
+            raise TargetPending(
+                f"{label} : succès sans identifiant de publication — vérifiez dans "
+                "Buffer (aucune relance automatique, risque de doublon)",
+                alert=True,
+            )
+        st_buf["post_id"]            = post_id
+        st_buf["status"]             = (post.get("status") or "").lower()
+        st_buf["creation_uncertain"] = False
+        _write_payload_state(payload_file, payload, state)
+        if st_buf["status"] == "sent":
+            return True
+        raise TargetPending(
+            f"{label} : publication {post_id} créée (statut {st_buf['status'] or '?'}) — "
+            "Buffer récupère le média, l'asset reste en ligne"
+        )
+
+    if typename == "MutationError":
+        st_buf["creation_uncertain"] = False
+        _write_payload_state(payload_file, payload, state)
+        raise RuntimeError(f"{label} : {result.get('message') or 'MutationError sans message'}")
+
+    raise TargetPending(
+        f"{label} : réponse createPost inexploitable ({typename or 'sans __typename'}) — "
+        f"vérifiez dans Buffer si la publication de {pub_id[:8]} existe "
+        "(aucune relance automatique, risque de doublon)",
+        alert=True,
+    )
+
+
+# ==========================================
 # BOUCLE DE PUBLICATION
 # ==========================================
 
@@ -1380,6 +1684,7 @@ for payload_file in payload_dir.glob("*.json"):
     children     = payload.get("children", [])
     fb_children  = payload.get("fb_children", children)
     ig_story_url = payload.get("story_url")
+    story_slides = bool(payload.get("story_slides")) and bool(children)
     video_story_cache = {"url": ig_story_url if media_type == "VIDEO" else None}
     # Légende tronquée à la mise en file (limite Threads, en OCTETS UTF-8).
     # Le repli sert aux payloads antérieurs à `threads_caption` et doit compter
@@ -1448,6 +1753,11 @@ for payload_file in payload_dir.glob("*.json"):
     elif media_type == "VIDEO" and media_url:
         actions["instagram_story"] = lambda: publish_video_story(
             instagram_id, access_token, _video_story_source())
+    elif media_type == "CAROUSEL" and story_slides:
+        # Chaque slide en Story, dans l'ordre (cf. influencer/CLAUDE.md §5.10 C11).
+        actions["instagram_story"] = lambda: _publish_story_series(
+            lambda u: _publish_ig_story(instagram_id, access_token, u, "Story slide"),
+            children, "Story slide Instagram")
     elif media_type == "CAROUSEL" and ig_story_url:
         # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11).
         actions["instagram_story"] = lambda: _publish_ig_story(
@@ -1464,20 +1774,38 @@ for payload_file in payload_dir.glob("*.json"):
     else:
         fb_story_src = None
 
-    def _do_facebook_story():
-        source = _video_story_source() if media_type == "VIDEO" else fb_story_src
+    def _fb_story(source):
         if _is_video(source):
             return publish_video_story_facebook(facebook_id, access_token, source)
         return publish_photo_story_facebook(facebook_id, access_token, source)
 
+    def _do_facebook_story():
+        if media_type == "CAROUSEL" and story_slides:
+            return _publish_story_series(_fb_story, fb_children, "Story slide Facebook")
+        return _fb_story(_video_story_source() if media_type == "VIDEO" else fb_story_src)
+
     if facebook_id and (media_type != "IMAGE" or image_url):
         actions["facebook"] = _do_facebook
-        if media_type == "VIDEO" or fb_story_src:
+        if media_type == "VIDEO" or fb_story_src or (media_type == "CAROUSEL" and story_slides):
             actions["facebook_story"] = _do_facebook_story
 
     if threads_token and threads_id:
         actions["threads"] = lambda: publish_threads(
             threads_id, threads_token, media_type, media_url, children, threads_text)
+
+    # Buffer (TikTok / YouTube Shorts) : VIDEO uniquement — ni l'un ni l'autre
+    # n'a d'équivalent d'un post image ou d'un carousel. Les drapeaux ont été
+    # figés à la validation : un payload antérieur ne les porte pas, donc aucune
+    # action Buffer n'y est créée et son comportement est strictement inchangé.
+    # Une destination demandée sans clé ni channel ID n'est PAS omise en
+    # silence : l'action existe et échoue visiblement (cf. _buffer_publish).
+    if media_type == "VIDEO" and media_url:
+        if payload.get("publish_tiktok"):
+            actions["tiktok"] = lambda: _buffer_publish(
+                "tiktok", payload, payload_file, state, folder, pub_id, media_url)
+        if payload.get("publish_youtube"):
+            actions["youtube"] = lambda: _buffer_publish(
+                "youtube", payload, payload_file, state, folder, pub_id, media_url)
 
     # --- Orchestration : une seule boucle pour tous les réseaux ---
     for name, label, max_attempts, blocking, depends_on in TARGETS:
@@ -1501,6 +1829,18 @@ for payload_file in payload_dir.glob("*.json"):
                 # ou oubliant son `return` était compté comme publié, donc jamais
                 # réessayé. Ici un retour douteux vaut échec, donc reprise.
                 ok = bool(action())
+        except TargetPending as pending:
+            # NI succès NI échec : la cible reste à reprendre, aucune tentative
+            # consommée, aucun nettoyage autorisé — et la boucle CONTINUE, pour
+            # que YouTube parte même quand TikTok patiente.
+            if pending.alert:
+                _fail(f"{folder}: {label} {pub_id} -> {pending}")
+            else:
+                print(f"[{pub_id}] [WAIT] {label} : {pending}")
+            # L'état écrit par la cible (post_id, statut, doute) doit survivre à
+            # un runner tué juste après.
+            _write_payload_state(payload_file, payload, state)
+            continue
         except Exception as e:
             ok = False
             (_fail if blocking else _warn)(f"{folder}: {label} {pub_id} -> {e}")
