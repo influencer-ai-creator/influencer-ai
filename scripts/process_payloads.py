@@ -13,7 +13,7 @@ RÉSEAUX COUVERTS
     TikTok      vidéo (via Buffer)
     YouTube     vidéo — Shorts (via Buffer)
 
-EXIGENCES TENUES ICI (référence : CLAUDE.md §5.6bis)
+EXIGENCES TENUES ICI (référence : docs/rules/5.06-publishing-scheduling.md Pb6ter)
 
  1. Reprise INDÉPENDANTE par réseau. L'état vit dans le payload (`done` /
     `attempts`), recommité en fin de run. Un échec Threads ne republie jamais
@@ -336,7 +336,7 @@ def _story_video_url(source: str, folder: str, pub_id: str) -> str:
 # CIBLES DE PUBLICATION — reprise par plateforme
 # ==========================================
 #
-# EXIGENCES (voir aussi influencer/CLAUDE.md §5.6bis) :
+# EXIGENCES (voir aussi influencer/docs/rules/5.06-publishing-scheduling.md Pb6ter) :
 #   1. Chaque réseau a des tentatives INDÉPENDANTES. Un échec Threads ne
 #      republie jamais Instagram ni Facebook.
 #   2. Le payload (et ses assets Release) n'est nettoyé que lorsque toutes les
@@ -593,7 +593,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                 md += f"- ❌ **{compte}** — token Threads **EXPIRÉ** depuis {abs(days):.0f} j\n"
             else:
                 md += f"- ⚠️ **{compte}** — token Threads expire dans **{days:.0f} j**\n"
-        md += "\n> Renouveler dans 👤 Compte → 🔧 Actions Threads → ♻️ Prolonger de 60 jours, "
+        md += "\n> Renouveler dans 👤 Compte → 🔑 Connexion → 🧵 Threads → ♻️ Prolonger de 60 jours, "
         md += "puis 📤 Envoyer les IDs vers GitHub.\n\n"
 
     md += f"📦 **Total publiés historiquement :** {published_count}\n\n"
@@ -1527,7 +1527,7 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
         # demandée puis ignorée ne partirait jamais sans que rien ne le dise.
         raise RuntimeError(
             f"{label} : clé Buffer ou channel ID absent — poussez les identifiants "
-            "vers GitHub (page Compte) puis redéployez le workflow"
+            "vers GitHub (👤 Compte → 🔑 Connexion) puis redéployez le workflow"
         )
 
     st_buf = payload.setdefault("buffer_posts", {}).setdefault(
