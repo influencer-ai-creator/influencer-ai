@@ -3,7 +3,13 @@ name: Poster Instagram
 on:
   schedule:
     - cron: "*/15 * * * *"  # toutes les 15 minutes
-  workflow_dispatch:         # pour déclencher manuellement si besoin
+  workflow_dispatch:         # manuel + publication directe (sidebar ⚡)
+
+# Un run déclenché (publication directe) et un run du cron ne doivent jamais se
+# chevaucher : chacun publierait le même payload. Le second attend le premier…
+concurrency:
+  group: instagram-poster
+  cancel-in-progress: false
 
 jobs:
   post_instagram:
@@ -17,6 +23,9 @@ jobs:
         uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # … et relit la pointe de main (pas le commit du déclenchement) pour
+          # voir le published.json écrit par le premier.
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v5

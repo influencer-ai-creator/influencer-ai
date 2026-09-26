@@ -73,7 +73,12 @@ import sys
 import time
 import subprocess
 import tempfile
-from datetime import datetime, timezone, timedelta
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+# Heure affichée dans les logs et le dashboard : heure suisse, été comme hiver
+# (un `+ timedelta(hours=2)` fixe donnait une heure de trop de novembre à mars).
+_TZ_AFFICHAGE = ZoneInfo("Europe/Zurich")
 
 # --- Configuration des chemins ---
 base_dir = pathlib.Path(__file__).parent.parent
@@ -609,8 +614,8 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
         low_runway = []
         for compte in sorted(stats_comptes.keys()):
             s = stats_comptes[compte]
-            date_next = (datetime.fromtimestamp(s["first"], tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
-            date_last = (datetime.fromtimestamp(s["last"],  tz=timezone.utc) + timedelta(hours=2)).strftime('%d/%m %H:%M')
+            date_next = datetime.fromtimestamp(s["first"], tz=_TZ_AFFICHAGE).strftime('%d/%m %H:%M')
+            date_last = datetime.fromtimestamp(s["last"],  tz=_TZ_AFFICHAGE).strftime('%d/%m %H:%M')
             # Autonomie = temps couvert par la programmation restante. C'est LUI
             # qui dit s'il faut relancer une génération, pas le nombre de posts :
             # 3 posts espacés de 12 h tiennent plus longtemps que 6 espacés de 2 h.
@@ -1655,7 +1660,7 @@ for payload_file in payload_dir.glob("*.json"):
 
     # Vérifier si c'est le moment de publier
     if next_time > now:
-        swiss_time = datetime.fromtimestamp(next_time, tz=timezone.utc) + timedelta(hours=2)
+        swiss_time = datetime.fromtimestamp(next_time, tz=_TZ_AFFICHAGE)
         print(f"[{pub_id}] [WAIT] Programmation future : {swiss_time.strftime('%Y-%m-%d %H:%M:%S')}")
         continue
 
