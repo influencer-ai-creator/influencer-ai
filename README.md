@@ -1,8 +1,8 @@
 # 📊 Dashboard de Publication
 
-## ❌ Erreurs du dernier run (28/09/2026 15:55:10)
+## ❌ Erreurs du dernier run (28/09/2026 15:58:22)
 
-- `grace_story: Instagram f5d4a773-6057-4efb-892c-246183156610 -> Erreur publication Carousel Instagram (code 403) : {'error': {'message': 'Application request limit reached', 'type': 'OAuthException', 'is_transient': False, 'code': 4, 'error_subcode': 2207051, 'error_user_title': 'l’action est bloquée', 'error_user_msg': 'Nous restreignons certaines activités afin de protéger notre communauté. Si vous pensez que nous avons fait erreur, faites-le-nous savoir.', 'fbtrace_id': 'AN-Yo-LNvfP9oCbITwIdGhN'}}`
+- `grace_story: Instagram f5d4a773-6057-4efb-892c-246183156610 -> Erreur publication Carousel Instagram (code 403) : {'error': {'message': 'Application request limit reached', 'type': 'OAuthException', 'is_transient': False, 'code': 4, 'error_subcode': 2207051, 'error_user_title': 'l’action est bloquée', 'error_user_msg': 'Nous restreignons certaines activités afin de protéger notre communauté. Si vous pensez que nous avons fait erreur, faites-le-nous savoir.', 'fbtrace_id': 'AfZPuJqKmvhGamll7LWUaoR'}}`
 
 📦 **Total publiés historiquement :** 4025
 
@@ -18,7 +18,7 @@
 ### 🔁 Publications en cours de reprise
 | Compte | Pub | Tentatives échouées | Déjà publié sur |
 | :--- | :--- | :--- | :--- |
-| GRACE_STORY | `f5d4a773` | instagram×2 | — |
+| GRACE_STORY | `f5d4a773` | instagram×3 | — |
 
 > Chaque réseau est réessayé indépendamment : ce qui est déjà publié ne repart pas.
 
