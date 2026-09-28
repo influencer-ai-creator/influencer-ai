@@ -1,24 +1,15 @@
 # 📊 Dashboard de Publication
 
-## ❌ Erreurs du dernier run (28/09/2026 15:58:22)
+✅ **Dernier run sans erreur** — 28/09/2026 16:56:14
 
-- `grace_story: Instagram f5d4a773-6057-4efb-892c-246183156610 -> Erreur publication Carousel Instagram (code 403) : {'error': {'message': 'Application request limit reached', 'type': 'OAuthException', 'is_transient': False, 'code': 4, 'error_subcode': 2207051, 'error_user_title': 'l’action est bloquée', 'error_user_msg': 'Nous restreignons certaines activités afin de protéger notre communauté. Si vous pensez que nous avons fait erreur, faites-le-nous savoir.', 'fbtrace_id': 'AfZPuJqKmvhGamll7LWUaoR'}}`
-
-📦 **Total publiés historiquement :** 4025
+📦 **Total publiés historiquement :** 4026
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
 | :--- | :---: | :--- | :--- | :---: | :---: |
-| CYBERPUNK | **9** | 29/09 12:00 | 07/10 20:00 | 9.1 j | 🎬 |
-| GRACE_STORY | **9** | 28/09 16:30 | 04/10 17:45 | 6.0 j | <img src='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_f5d4a773_slide_065_01.jpg' width='50'> |
-| INFLUENCER | **9** | 29/09 12:00 | 07/10 12:00 | 8.8 j | 🎬 |
+| CYBERPUNK | **9** | 29/09 12:00 | 07/10 20:00 | 9.0 j | 🎬 |
+| GRACE_STORY | **8** | 29/09 10:45 | 04/10 17:45 | 6.0 j | <img src='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_c35fdb1b_slide_033_01.jpg' width='50'> |
+| INFLUENCER | **9** | 29/09 12:00 | 07/10 12:00 | 8.7 j | 🎬 |
 | SUNDRESS | **3** | 29/09 17:00 | 01/10 19:00 | 3.0 j | 🎬 |
 | UNIVERSITY | **12** | 29/09 17:00 | 11/10 16:00 | 12.9 j | 🎬 |
-
-### 🔁 Publications en cours de reprise
-| Compte | Pub | Tentatives échouées | Déjà publié sur |
-| :--- | :--- | :--- | :--- |
-| GRACE_STORY | `f5d4a773` | instagram×3 | — |
-
-> Chaque réseau est réessayé indépendamment : ce qui est déjà publié ne repart pas.
 
