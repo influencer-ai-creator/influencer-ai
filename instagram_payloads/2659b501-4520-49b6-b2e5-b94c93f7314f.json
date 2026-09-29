@@ -18,5 +18,12 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_2659b501_slide_032_03.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "bondi in late september.\n\nwatermelon and sparkling water on the grass.\n\nbest way to spend the golden hour.\n\n#bondi"
+  "threads_caption": "bondi in late september.\n\nwatermelon and sparkling water on the grass.\n\nbest way to spend the golden hour.\n\n#bondi",
+  "instagram_tried": true,
+  "done": {
+    "facebook": true,
+    "facebook_story": true,
+    "threads": true
+  },
+  "attempts": {}
 }
