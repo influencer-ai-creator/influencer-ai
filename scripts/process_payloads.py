@@ -17,7 +17,8 @@ EXIGENCES TENUES ICI (référence : docs/rules/5.06-publishing-scheduling.md Pb6
 
  1. Reprise INDÉPENDANTE par réseau. L'état vit dans le payload (`done` /
     `attempts`), recommité en fin de run. Un échec Threads ne republie jamais
-    Instagram ni Facebook ; seule la cible en échec est rejouée.
+    Instagram ni Facebook ; seule la cible en échec est rejouée. Aucun réseau
+    n'attend Instagram : seules les Stories attendent leur post.
 
  2. Nettoyage seulement quand TOUT est réglé. Le payload et ses assets Release
     ne sont supprimés que lorsque chaque cible bloquante est publiée ou à court
@@ -62,10 +63,15 @@ EXIGENCES TENUES ICI (référence : docs/rules/5.06-publishing-scheduling.md Pb6
     autres cibles et interdit le nettoyage — un `createPost` réussi n'est PAS
     une publication terminée, l'asset Release doit rester en ligne jusqu'au
     statut `sent`.
+
+11. Une limitation TEMPORAIRE de Meta (`_is_meta_throttle` : quota d'appels,
+    « action bloquée », plafond 24 h) est une attente, pas un échec : aucune
+    tentative consommée, dashboard seulement, pas d'issue GitHub.
 """
 
 import json
 import pathlib
+import re
 import requests
 import os
 import shutil
@@ -366,19 +372,24 @@ def _story_video_url(source: str, folder: str, pub_id: str) -> str:
 # Facebook et Threads sont plafonnés car un échec permanent y est possible
 # (permission révoquée, format refusé) et ne doit pas retenir indéfiniment le
 # payload ni ses assets.
+#
+# Aucun réseau ne dépend d'Instagram (Facebook, Threads, TikTok, YouTube) : un
+# Instagram en échec (403 « action bloquée » répété le 28/09/2026) les retenait
+# indéfiniment, puisqu'Instagram n'est jamais abandonné. Chacun part de son
+# côté ; le payload reste simplement en file tant qu'Instagram n'est pas réglé.
+# Seules les Stories attendent leur post.
 TARGETS = [
     # name,              label,               max_attempts, blocking, depends_on
     ("instagram",        "Instagram",         None,         True,     None),
     ("instagram_story",  "Story Instagram",   1,            False,    "instagram"),
-    ("facebook",         "Facebook",          3,            True,     "instagram"),
+    ("facebook",         "Facebook",          3,            True,     None),
     ("facebook_story",   "Story Facebook",    1,            False,    "facebook"),
-    ("threads",          "Threads",           3,            True,     "instagram"),
+    ("threads",          "Threads",           3,            True,     None),
     # Buffer : une publication par channel, donc une cible par plateforme.
     # Plafonnées comme Facebook et Threads (un refus permanent y est possible :
-    # channel déconnecté, format refusé) et dépendantes d'Instagram, qui reste
-    # la publication principale.
-    ("tiktok",           "TikTok",            3,            True,     "instagram"),
-    ("youtube",          "YouTube Shorts",    3,            True,     "instagram"),
+    # channel déconnecté, format refusé).
+    ("tiktok",           "TikTok",            3,            True,     None),
+    ("youtube",          "YouTube Shorts",    3,            True,     None),
 ]
 
 
@@ -403,6 +414,32 @@ class TargetPending(Exception):
     def __init__(self, message, alert=False):
         super().__init__(message)
         self.alert = alert
+
+
+# Limitations Meta qui se lèvent d'elles-mêmes : quotas d'appels (4 application,
+# 17 utilisateur, 32 Page, 613 horaire), « action bloquée » anti-spam (2207051),
+# plafond de publications sur 24 h (2207042). Ni le média ni le token ne sont en
+# cause : réessayer plus tard suffit.
+_META_THROTTLE_CODES    = {4, 17, 32, 613}
+_META_THROTTLE_SUBCODES = {2207042, 2207051}
+
+
+def _is_meta_throttle(exc):
+    """Vrai si `exc` est une limitation TEMPORAIRE de Meta (voir ci-dessus).
+
+    Les helpers remontent l'erreur Meta sous deux formes : `requests.HTTPError`
+    avec sa réponse (`_check`), ou `RuntimeError` dont le message embarque le
+    corps (dict repr ou JSON). On lit donc la réponse si elle existe, sinon le
+    texte — les deux formes citent `code` et `error_subcode`.
+    """
+    response = getattr(exc, "response", None)
+    if response is not None and response.status_code == 429:
+        return True
+    text = str(exc)
+    codes    = {int(c) for c in re.findall(r"""['"]code['"]\s*:\s*(\d+)""", text)}
+    subcodes = {int(c) for c in re.findall(r"""['"]error_subcode['"]\s*:\s*(\d+)""", text)}
+    return bool(codes & _META_THROTTLE_CODES or subcodes & _META_THROTTLE_SUBCODES
+                or re.search(r"""['"]is_transient['"]\s*:\s*(True|true)""", text))
 
 # Seuils d'alerte du dashboard.
 TOKEN_WARN_DAYS = 10   # token proche de l'échéance
@@ -715,6 +752,37 @@ def publish_image(instagram_id, access_token, image_url, caption):
     _check(rp, "IG /media_publish (image)")
     # L'id du MÉDIA PUBLIÉ (réponse de media_publish), pas celui du conteneur.
     return True, rp.json().get("id", "")
+
+
+def _find_published_instagram(instagram_id, access_token, caption, since):
+    """
+    Id du média déjà en ligne portant cette légende, publié après `since` ; None sinon.
+
+    Une erreur de `media_publish` ne prouve PAS que rien n'est parti : le
+    28/09/2026, un carousel de grace_story a reçu trois 403 (code 4, sous-code
+    2207051 « action bloquée ») et a été publié trois fois — chaque reprise crée
+    un conteneur neuf, et Instagram n'est jamais abandonné. D'où cette relecture
+    du compte avant toute nouvelle tentative.
+
+    La légende suffit à identifier le post : elle est unique par publication, et
+    `since` (l'horaire programmé) écarte tout ce qui précède. Un échec de cette
+    lecture ne bloque rien : on retombe sur la publication normale.
+    """
+    try:
+        r = _get(
+            f"https://graph.facebook.com/v25.0/{instagram_id}/media",
+            params={"fields": "id,caption", "since": since, "limit": 25,
+                    "access_token": access_token},
+        )
+        _check(r, "IG /media (recherche d'un doublon)")
+    except Exception as e:
+        print(f"  [WARN] Vérification d'une publication antérieure impossible : {e}")
+        return None
+    wanted = (caption or "").strip()
+    for media in r.json().get("data") or []:
+        if (media.get("caption") or "").strip() == wanted:
+            return media.get("id")
+    return None
 
 
 def _poll_instagram_container(container_id, access_token, max_wait=300, poll_every=10, label=""):
@@ -1698,6 +1766,17 @@ for payload_file in payload_dir.glob("*.json"):
     threads_text = payload.get("threads_caption") or _truncate_threads(caption, 500)
 
     def _do_instagram():
+        # Reprise après échec : Meta a pu publier malgré l'erreur (voir
+        # _find_published_instagram). Republier ferait un doublon.
+        # `instagram_tried` couvre la limitation Meta, qui ne compte pas de
+        # tentative (_is_meta_throttle) mais peut avoir publié quand même.
+        if state.attempts.get("instagram") or payload.get("instagram_tried"):
+            media_id = _find_published_instagram(instagram_id, access_token, caption, next_time)
+            if media_id:
+                print(f"[{pub_id}] [OK] Instagram déjà en ligne malgré l'échec précédent ({media_id})")
+                payload["instagram_media_id"] = media_id
+                return True
+        payload["instagram_tried"] = True
         if media_type == "VIDEO":
             print(f"[{pub_id}] [VID] Publication Reel Instagram...")
             ok, media_id = publish_video(instagram_id, access_token, media_url, caption)
@@ -1847,6 +1926,13 @@ for payload_file in payload_dir.glob("*.json"):
             _write_payload_state(payload_file, payload, state)
             continue
         except Exception as e:
+            if _is_meta_throttle(e):
+                # Limitation temporaire de Meta : attente, pas échec. Aucune
+                # tentative consommée, dashboard seulement (pas d'issue GitHub) —
+                # elle se lève seule, la notifier n'appelle aucune action.
+                _warn(f"{folder}: {label} {pub_id} -> limité par Meta, reprise au prochain run : {e}")
+                _write_payload_state(payload_file, payload, state)
+                continue
             ok = False
             (_fail if blocking else _warn)(f"{folder}: {label} {pub_id} -> {e}")
         else:
