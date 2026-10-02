@@ -20,5 +20,12 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_2183296f_slide_024_04.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "bondi at 7am.\n\niced coffee and a bit of salt.\n\nis the water actually warm enough yet?\n\n#bondi"
+  "threads_caption": "bondi at 7am.\n\niced coffee and a bit of salt.\n\nis the water actually warm enough yet?\n\n#bondi",
+  "instagram_tried": true,
+  "done": {
+    "facebook": true,
+    "facebook_story": true,
+    "threads": true
+  },
+  "attempts": {}
 }
