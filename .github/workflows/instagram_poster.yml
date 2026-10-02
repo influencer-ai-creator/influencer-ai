@@ -2,7 +2,8 @@ name: Poster Instagram
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # toutes les 15 minutes
+    # Minutes décalées : :00/:15/:30/:45 sont les créneaux que GitHub retarde le plus.
+    - cron: "7,22,37,52 * * * *"  # toutes les 15 minutes
   workflow_dispatch:         # manuel + publication directe (sidebar ⚡)
 
 # Un run déclenché (publication directe) et un run du cron ne doivent jamais se
