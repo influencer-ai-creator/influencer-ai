@@ -20,5 +20,12 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a5109f0b_slide_030_04.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "first swim of the season at bondi. \n\nthe water was freezing but the coffee is hitting just right. \n\nwho else feels like a literal popsicle right now?\n\n#bondi"
+  "threads_caption": "first swim of the season at bondi. \n\nthe water was freezing but the coffee is hitting just right. \n\nwho else feels like a literal popsicle right now?\n\n#bondi",
+  "instagram_tried": true,
+  "done": {
+    "facebook": true,
+    "facebook_story": true,
+    "threads": true
+  },
+  "attempts": {}
 }
