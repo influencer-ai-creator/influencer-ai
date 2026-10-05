@@ -18,5 +18,12 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_7e15090c_slide_034_03.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "paddington backyard.\nthe bruschetta is almost too good, but the wine is better. \nmy favorite way to spend a saturday.\n\n#sydney"
+  "threads_caption": "paddington backyard.\nthe bruschetta is almost too good, but the wine is better. \nmy favorite way to spend a saturday.\n\n#sydney",
+  "instagram_tried": true,
+  "done": {
+    "facebook": true,
+    "facebook_story": true,
+    "threads": true
+  },
+  "attempts": {}
 }
