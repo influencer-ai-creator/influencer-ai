@@ -20,5 +20,12 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_8e1b4687_slide_077_04.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "afternoon at the agnsw.\n\njust me and the textures today.\n\nit's the kind of art that makes everything else go quiet.\n\n#agnsw"
+  "threads_caption": "afternoon at the agnsw.\n\njust me and the textures today.\n\nit's the kind of art that makes everything else go quiet.\n\n#agnsw",
+  "instagram_tried": true,
+  "done": {
+    "facebook": true,
+    "facebook_story": true,
+    "threads": true
+  },
+  "attempts": {}
 }
