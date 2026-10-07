@@ -392,6 +392,21 @@ TARGETS = [
     ("youtube",          "YouTube Shorts",    3,            True,     None),
 ]
 
+STORY_TARGETS = ("instagram_story", "facebook_story")
+
+
+def _targets_for(payload):
+    """Cibles de CE payload. « Story seule » (`story_only`, posé à la validation) :
+    ni post, ni Threads, ni Buffer — seules les deux Stories. Elles sont alors la
+    publication : sans réseau à attendre, et bloquantes, pour qu'une limitation
+    Meta retienne le payload et qu'un échec soit signalé. Un seul essai, comme
+    toute Story : rejouer une série de slides republierait celles déjà parties.
+    """
+    if not payload.get("story_only"):
+        return TARGETS
+    return [(name, label, 1, True, None)
+            for name, label, _max, _blocking, _dep in TARGETS if name in STORY_TARGETS]
+
 
 class TargetPending(Exception):
     """Cible NON RÉGLÉE, sans échec : elle n'a pas abouti, personne n'a tort.
@@ -669,7 +684,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
         if low_runway:
             md += f"> ⚠️ **File bientôt vide** (moins de {QUEUE_WARN_DAYS} jours de programmation) : "
             md += ", ".join(f"**{c}** ({d:.1f} j)" for c, d in low_runway)
-            md += " — pensez à générer de nouveaux posts.\n\n"
+            md += " — pense à générer de nouveaux posts.\n\n"
 
     # --- Publications en cours de reprise ---
     stuck = _stuck_rows(payload_dir)
@@ -1599,8 +1614,8 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
         # Échec VISIBLE, jamais une omission silencieuse : une destination
         # demandée puis ignorée ne partirait jamais sans que rien ne le dise.
         raise RuntimeError(
-            f"{label} : clé Buffer ou channel ID absent — poussez les identifiants "
-            "vers GitHub (👤 Compte → 🔑 Connexion) puis redéployez le workflow"
+            f"{label} : clé Buffer ou channel ID absent — pousse les identifiants "
+            "vers GitHub (👤 Compte → 🔑 Connexion) puis redéploie le workflow"
         )
 
     st_buf = payload.setdefault("buffer_posts", {}).setdefault(
@@ -1638,7 +1653,7 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
         # deux fois. Le payload et ses assets restent en place jusqu'à décision
         # humaine.
         raise TargetPending(
-            f"{label} : création interrompue sans réponse exploitable — vérifiez "
+            f"{label} : création interrompue sans réponse exploitable — vérifie "
             f"dans Buffer si la publication de {pub_id[:8]} existe (aucune relance "
             "automatique, risque de doublon)",
             alert=True,
@@ -1654,7 +1669,7 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
         )
     except _BufferAmbiguous as e:
         raise TargetPending(
-            f"{e} — vérifiez dans Buffer si la publication de {pub_id[:8]} existe "
+            f"{e} — vérifie dans Buffer si la publication de {pub_id[:8]} existe "
             "(aucune relance automatique, risque de doublon)",
             alert=True,
         )
@@ -1673,7 +1688,7 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
         if not post_id:
             # Succès annoncé sans identifiant : on ne peut ni suivre ni relancer.
             raise TargetPending(
-                f"{label} : succès sans identifiant de publication — vérifiez dans "
+                f"{label} : succès sans identifiant de publication — vérifie dans "
                 "Buffer (aucune relance automatique, risque de doublon)",
                 alert=True,
             )
@@ -1695,7 +1710,7 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
 
     raise TargetPending(
         f"{label} : réponse createPost inexploitable ({typename or 'sans __typename'}) — "
-        f"vérifiez dans Buffer si la publication de {pub_id[:8]} existe "
+        f"vérifie dans Buffer si la publication de {pub_id[:8]} existe "
         "(aucune relance automatique, risque de doublon)",
         alert=True,
     )
@@ -1891,8 +1906,15 @@ for payload_file in payload_dir.glob("*.json"):
             actions["youtube"] = lambda: _buffer_publish(
                 "youtube", payload, payload_file, state, folder, pub_id, media_url)
 
+    # Story seule : les actions hors Stories sortent du dict, donc ne sont ni
+    # tentées ni attendues (même règle que « non applicable » ci-dessus).
+    targets = _targets_for(payload)
+    actions = {name: actions[name] for name, *_ in targets if name in actions}
+    if payload.get("story_only") and not actions:
+        _fail(f"{folder}: Story seule {pub_id} -> aucune Story publiable pour ce média")
+
     # --- Orchestration : une seule boucle pour tous les réseaux ---
-    for name, label, max_attempts, blocking, depends_on in TARGETS:
+    for name, label, max_attempts, blocking, depends_on in targets:
         action = actions.get(name)
         if action is None:
             continue
@@ -1949,7 +1971,7 @@ for payload_file in payload_dir.glob("*.json"):
     # Les cibles best effort (Stories) sont exclues : elles ont droit à un essai
     # et ne doivent jamais retenir le payload ni ses assets Release.
     pending = [
-        name for name, _lbl, max_attempts, blocking, _dep in TARGETS
+        name for name, _lbl, max_attempts, blocking, _dep in targets
         if blocking and name in actions and not state.settled(name, max_attempts)
     ]
 
