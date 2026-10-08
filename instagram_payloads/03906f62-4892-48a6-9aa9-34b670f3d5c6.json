@@ -1,0 +1,22 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "03906f62-4892-48a6-9aa9-34b670f3d5c6",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_03.jpg"
+  ],
+  "caption": "Out at the Old Industrial District for the projection show. Had way too many synthetic gins. Which photo is your favorite, 1 to 4?",
+  "next_time": 1792926000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_slide_2020_03.jpg"
+  ],
+  "story_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03906f62_story_2020.mp4",
+  "threads_caption": "Out at the Old Industrial District for the projection show. Had way too many synthetic gins. Which photo is your favorite, 1 to 4?"
+}
