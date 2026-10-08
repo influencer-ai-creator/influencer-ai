@@ -177,6 +177,39 @@ def _warn(msg):
     print(f"[WARN] {msg}")
 
 
+def _write_json_atomic(path, data, **dump_kwargs):
+    """
+    Écrit un JSON par fichier temporaire + remplacement.
+
+    Un runner tué en pleine écriture (timeout du job, annulation, OOM) laissait
+    un fichier tronqué, illisible au run suivant. Le `.tmp` ne finit pas en
+    `.json` : la boucle des payloads ne le voit pas.
+    """
+    tmp = f"{path}.tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(data, f, **dump_kwargs)
+    os.replace(tmp, path)
+
+
+def _read_payload(payload_file):
+    """
+    Lit un payload ; None s'il est illisible, après un échec bloquant.
+
+    Sans cela un seul fichier corrompu levait en pleine boucle : toutes les
+    publications de tous les comptes sautaient, dashboard et commit compris.
+    """
+    try:
+        with open(payload_file, encoding="utf-8") as f:
+            payload = json.load(f)
+    except (OSError, ValueError) as e:
+        _fail(f"Payload {payload_file.name} illisible, ignoré : {e}")
+        return None
+    if not isinstance(payload, dict):
+        _fail(f"Payload {payload_file.name} illisible, ignoré : racine non objet")
+        return None
+    return payload
+
+
 def _write_payload_state(payload_file, payload, state):
     """
     Persiste `done` / `attempts` dans le payload, sur disque, IMMÉDIATEMENT.
@@ -190,10 +223,7 @@ def _write_payload_state(payload_file, payload, state):
     if DRY_RUN:
         return
     state.save_into(payload)
-    # encoding explicite : la légende porte accents et emojis, et `open` sans
-    # encodage suit la locale de la machine.
-    with open(payload_file, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, ensure_ascii=False)
+    _write_json_atomic(payload_file, payload, indent=2, ensure_ascii=False)
 
 
 def _record_published_media(pub_id, media_id):
@@ -1722,8 +1752,9 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
 
 for payload_file in payload_dir.glob("*.json"):
     print(f"\n--- Traitement de {payload_file.name} ---")
-    with open(payload_file) as f:
-        payload = json.load(f)
+    payload = _read_payload(payload_file)
+    if payload is None:
+        continue
 
     folder    = payload["compte"]
     pub_id    = payload["pub_id"]
@@ -1774,10 +1805,10 @@ for payload_file in payload_dir.glob("*.json"):
     ig_story_url = payload.get("story_url")
     story_slides = bool(payload.get("story_slides")) and bool(children)
     video_story_cache = {"url": ig_story_url if media_type == "VIDEO" else None}
-    # Légende tronquée à la mise en file (limite Threads, en OCTETS UTF-8).
-    # Le repli sert aux payloads antérieurs à `threads_caption` et doit compter
-    # en octets lui aussi : `caption[:500]` laissait passer ~700 octets sur une
-    # légende accentuée avec emojis, refusée en 400 par Meta.
+    # Légende tronquée à la mise en file (limite Threads : 1 par caractère, les
+    # emojis hors plan de base comptant 4). Le repli sert aux payloads antérieurs
+    # à `threads_caption` et applique la même métrique : `caption[:500]` laissait
+    # passer une légende riche en emojis, refusée en 400 par Meta.
     threads_text = payload.get("threads_caption") or _truncate_threads(caption, 500)
 
     def _do_instagram():
@@ -1912,6 +1943,9 @@ for payload_file in payload_dir.glob("*.json"):
     actions = {name: actions[name] for name, *_ in targets if name in actions}
     if payload.get("story_only") and not actions:
         _fail(f"{folder}: Story seule {pub_id} -> aucune Story publiable pour ce média")
+        # Rien n'est parti : le payload reste, sinon le nettoyage l'archivait
+        # comme publié.
+        continue
 
     # --- Orchestration : une seule boucle pour tous les réseaux ---
     for name, label, max_attempts, blocking, depends_on in targets:
@@ -1991,8 +2025,7 @@ for payload_file in payload_dir.glob("*.json"):
         continue
 
     published.add(pub_id)
-    with open(published_file, "w") as f:
-        json.dump(sorted(list(published)), f, indent=2)
+    _write_json_atomic(published_file, sorted(list(published)), indent=2)
     if payload.get("instagram_media_id"):
         _record_published_media(pub_id, payload["instagram_media_id"])
 
