@@ -1,0 +1,22 @@
+{
+  "compte": "influencer",
+  "pub_id": "4de6a0c4-4eb5-48e5-bfd7-d8d29393f193",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_03.jpg"
+  ],
+  "caption": "Halloween night in Budapest. The energy was incredible. 🎃 Tell me which photo you prefer? 1, 2, 3, or 4?",
+  "next_time": 1793120400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_slide_2132_03.jpg"
+  ],
+  "story_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4de6a0c4_story_2132.mp4",
+  "threads_caption": "Halloween night in Budapest. The energy was incredible. 🎃 Tell me which photo you prefer? 1, 2, 3, or 4?"
+}
