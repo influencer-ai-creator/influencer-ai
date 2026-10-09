@@ -1,0 +1,24 @@
+{
+  "compte": "grace_story",
+  "pub_id": "a182aee6-c296-4ec4-8c80-e232340578ee",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_04.jpg"
+  ],
+  "caption": "studying at the quad.\nthe syllabus is winning. 🫠\n#sydneyuni #arthistory",
+  "next_time": 1792250100,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a182aee6_slide_104_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "studying at the quad.\nthe syllabus is winning.\n\n🫠 #sydneyuni"
+}
