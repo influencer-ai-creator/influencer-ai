@@ -1,0 +1,22 @@
+{
+  "compte": "university",
+  "pub_id": "02aec073-fb2c-46fc-b383-35d5478f0064",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_03.jpg"
+  ],
+  "caption": "Celebrating the Stone Orchard harvest in the Lithomancy tower. My students are exhausted, I’m just tired of watching them try to eat stone fruit. They’re actually quite proud of the weight of these. Which one do you prefer? 1, 2, 3, or 4?",
+  "next_time": 1793120400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_slide_2476_03.jpg"
+  ],
+  "story_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_02aec073_story_2476.mp4",
+  "threads_caption": "Celebrating the Stone Orchard harvest in the Lithomancy tower. My students are exhausted, I’m just tired of watching them try to eat stone fruit. They’re actually quite proud of the weight of these. Which one do you prefer? 1, 2, 3, or 4?"
+}
