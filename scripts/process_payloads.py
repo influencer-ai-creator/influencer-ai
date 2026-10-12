@@ -91,9 +91,10 @@ base_dir = pathlib.Path(__file__).parent.parent
 payload_dir = base_dir / "instagram_payloads"
 payload_dir.mkdir(exist_ok=True)
 published_file = pathlib.Path(__file__).parent / "published.json"
-# {pub_id: {"instagram": id du média publié, "at": epoch}} — lu par 📈 Performances
-# côté programme pour relier une publication Instagram à son story JSON. Ni l'API
-# ni `published.json` ne gardent ce lien : sans ce fichier il se devine par la date.
+# {pub_id: {"instagram": id du média publié, "threads": id du post, "at": epoch}} —
+# lu par 📈 Performances côté programme pour relier une publication Instagram ou
+# Threads à son story JSON. Ni l'API ni `published.json` ne gardent ce lien : sans
+# ce fichier il se devine par la date. Une clé par réseau réellement publié.
 published_media_file = pathlib.Path(__file__).parent / "published_media.json"
 
 errors    = []   # bloquants  → dashboard + issue GitHub
@@ -226,14 +227,21 @@ def _write_payload_state(payload_file, payload, state):
     _write_json_atomic(payload_file, payload, indent=2, ensure_ascii=False)
 
 
-def _record_published_media(pub_id, media_id):
-    """Ajoute pub_id → id Instagram dans `published_media.json` (voir en tête)."""
+def _published_media_entry(payload, at):
+    """Entrée `published_media.json` d'un payload : les ids que les réseaux ont rendus."""
+    ids = {net: payload[f"{net}_media_id"] for net in ("instagram", "threads")
+           if payload.get(f"{net}_media_id")}
+    return {**ids, "at": at} if ids else None
+
+
+def _record_published_media(pub_id, entry):
+    """Ajoute pub_id → ids des médias publiés dans `published_media.json` (voir en tête)."""
     try:
         with open(published_media_file, encoding="utf-8") as f:
             known = json.load(f)
     except (OSError, ValueError):
         known = {}
-    known[pub_id] = {"instagram": media_id, "at": int(time.time())}
+    known[pub_id] = entry
     with open(published_media_file, "w", encoding="utf-8") as f:
         json.dump(known, f, indent=2, sort_keys=True)
 
@@ -1443,14 +1451,14 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
     (publishing/threads.truncate_caption) : le script ne fait que la relayer,
     avec une coupe de sécurité si un vieux payload n'en portait pas.
 
-    Retourne True si publié.
+    Retourne (publié, id du post) — même contrat que les `publish_*` Instagram.
     """
     if media_type == "CAROUSEL":
         # Garde AVANT la boucle : la tester après aurait créé des conteneurs
         # pour rien, et consommé une tentative sur un payload voué à l'échec.
         if len(children) < 2:
             print(f"  [FAIL] Carousel Threads : {len(children)} item(s), minimum 2")
-            return False
+            return False, None
 
         # Chaque item devient un conteneur enfant, puis un conteneur parent les
         # agrège. Threads accepte 2 à 20 enfants — les carousels du projet sont
@@ -1473,7 +1481,7 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
         for i, cid in enumerate(child_ids):
             if not _poll_threads_container(cid, access_token, label=f"Slide {i}"):
                 print(f"  [FAIL] Carousel Threads : slide {i} non exploitable")
-                return False
+                return False, None
 
         container_id = _threads_container(
             threads_id, access_token,
@@ -1488,14 +1496,18 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
         )
 
     if not _poll_threads_container(container_id, access_token, label=media_type):
-        return False
+        return False, None
 
     rp = _post(
         f"{_THREADS_BASE}/{threads_id}/threads_publish",
         data={"creation_id": container_id, "access_token": access_token},
     )
     _check(rp, f"Publication {media_type}")
-    return True
+    # Publié quoi qu'il arrive : un corps sans id ne doit pas faire republier.
+    try:
+        return True, rp.json().get("id")
+    except ValueError:
+        return True, None
 
 
 # ==========================================
@@ -1919,9 +1931,16 @@ for payload_file in payload_dir.glob("*.json"):
         if media_type == "VIDEO" or fb_story_src or (media_type == "CAROUSEL" and story_slides):
             actions["facebook_story"] = _do_facebook_story
 
-    if threads_token and threads_id:
-        actions["threads"] = lambda: publish_threads(
+    def _do_threads():
+        ok, post_id = publish_threads(
             threads_id, threads_token, media_type, media_url, children, threads_text)
+        # Même raison que `instagram_media_id` : lu par 📈 Performances (§5.27 PF3).
+        if post_id:
+            payload["threads_media_id"] = post_id
+        return ok
+
+    if threads_token and threads_id:
+        actions["threads"] = _do_threads
 
     # Buffer (TikTok / YouTube Shorts) : VIDEO uniquement — ni l'un ni l'autre
     # n'a d'équivalent d'un post image ou d'un carousel. Les drapeaux ont été
@@ -2026,104 +2045,74 @@ for payload_file in payload_dir.glob("*.json"):
 
     published.add(pub_id)
     _write_json_atomic(published_file, sorted(list(published)), indent=2)
-    if payload.get("instagram_media_id"):
-        _record_published_media(pub_id, payload["instagram_media_id"])
+    media_entry = _published_media_entry(payload, int(time.time()))
+    if media_entry:
+        _record_published_media(pub_id, media_entry)
 
     # Supprimer payload
     payload_file.unlink()
 
-    # Supprimer les fichiers média
-    # Discriminant : storage="release" (ou URL contenant /releases/download/) = Release assets
-    # Sinon : chemin legacy (fichiers locaux dans to_publish/)
-    _is_release = (
-        payload.get("storage") == "release"
-        or "/releases/download/" in (payload.get("media_url") or "")
-        or any("/releases/download/" in u for u in payload.get("children", []))
-    )
+    # Supprimer les médias : assets de la Release `media-storage`, via l'API GitHub.
     try:
-        if _is_release:
-            # --- Nouveau chemin : supprimer les assets via API GitHub ---
-            _gh_token  = os.environ.get("GITHUB_TOKEN", "")
-            _gh_repo   = os.environ.get("GITHUB_REPOSITORY", "")
-            _rel_tag   = "media-storage"
-            _api_base  = "https://api.github.com"
-            _gh_hdrs   = {
-                "Authorization": f"token {_gh_token}",
-                "Accept": "application/vnd.github+json",
-            }
-            def _delete_release_asset_by_url(asset_url):
-                """Supprime le Release asset identifié par son browser_download_url."""
-                if not asset_url or not _gh_token or not _gh_repo:
-                    return
-                asset_name = pathlib.Path(asset_url).name
-                # Récupérer la release
-                r = _get(
-                    f"{_api_base}/repos/{_gh_repo}/releases/tags/{_rel_tag}",
-                    headers=_gh_hdrs, timeout=30
-                )
-                if r.status_code == 404:
-                    return
-                r.raise_for_status()
-                release_id = r.json()["id"]
-                # Lister les assets et supprimer celui dont le name correspond
-                assets_url = f"{_api_base}/repos/{_gh_repo}/releases/{release_id}/assets?per_page=100"
-                while assets_url:
-                    ra = _get(assets_url, headers=_gh_hdrs, timeout=30)
-                    ra.raise_for_status()
-                    for asset in ra.json():
-                        if asset["name"] == asset_name:
-                            requests.delete(
-                                f"{_api_base}/repos/{_gh_repo}/releases/assets/{asset['id']}",
-                                headers=_gh_hdrs, timeout=30
-                            )
-                            print(f"[DEL] Asset Release supprimé : {asset_name}")
-                            return
-                    link = ra.headers.get("Link", "")
-                    assets_url = None
-                    for part in link.split(","):
-                        if 'rel="next"' in part:
-                            assets_url = part.split(";")[0].strip().strip("<>")
-                            break
-            if media_type == "CAROUSEL":
-                urls_to_del = list(payload.get("children", []))
-                if payload.get("story_url"):
-                    urls_to_del.append(payload["story_url"])
-                # fb_children peut contenir des doublons de children -- skip les vus
-                seen = set()
-                for fb_u in payload.get("fb_children", []):
-                    if fb_u not in seen and fb_u not in urls_to_del:
-                        urls_to_del.append(fb_u)
-                    seen.add(fb_u)
-                for u in urls_to_del:
-                    _delete_release_asset_by_url(u)
-            else:
-                primary_url = payload.get("media_url") or payload.get("image_url")
-                _delete_release_asset_by_url(primary_url)
-                story_url = payload.get("story_url")
-                if story_url and story_url != primary_url:
-                    _delete_release_asset_by_url(story_url)
+        _gh_token  = os.environ.get("GITHUB_TOKEN", "")
+        _gh_repo   = os.environ.get("GITHUB_REPOSITORY", "")
+        _rel_tag   = "media-storage"
+        _api_base  = "https://api.github.com"
+        _gh_hdrs   = {
+            "Authorization": f"token {_gh_token}",
+            "Accept": "application/vnd.github+json",
+        }
+        def _delete_release_asset_by_url(asset_url):
+            """Supprime le Release asset identifié par son browser_download_url."""
+            if not asset_url or not _gh_token or not _gh_repo:
+                return
+            asset_name = pathlib.Path(asset_url).name
+            # Récupérer la release
+            r = _get(
+                f"{_api_base}/repos/{_gh_repo}/releases/tags/{_rel_tag}",
+                headers=_gh_hdrs, timeout=30
+            )
+            if r.status_code == 404:
+                return
+            r.raise_for_status()
+            release_id = r.json()["id"]
+            # Lister les assets et supprimer celui dont le name correspond
+            assets_url = f"{_api_base}/repos/{_gh_repo}/releases/{release_id}/assets?per_page=100"
+            while assets_url:
+                ra = _get(assets_url, headers=_gh_hdrs, timeout=30)
+                ra.raise_for_status()
+                for asset in ra.json():
+                    if asset["name"] == asset_name:
+                        requests.delete(
+                            f"{_api_base}/repos/{_gh_repo}/releases/assets/{asset['id']}",
+                            headers=_gh_hdrs, timeout=30
+                        )
+                        print(f"[DEL] Asset Release supprimé : {asset_name}")
+                        return
+                link = ra.headers.get("Link", "")
+                assets_url = None
+                for part in link.split(","):
+                    if 'rel="next"' in part:
+                        assets_url = part.split(";")[0].strip().strip("<>")
+                        break
+        if media_type == "CAROUSEL":
+            urls_to_del = list(payload.get("children", []))
+            if payload.get("story_url"):
+                urls_to_del.append(payload["story_url"])
+            # fb_children peut contenir des doublons de children -- skip les vus
+            seen = set()
+            for fb_u in payload.get("fb_children", []):
+                if fb_u not in seen and fb_u not in urls_to_del:
+                    urls_to_del.append(fb_u)
+                seen.add(fb_u)
+            for u in urls_to_del:
+                _delete_release_asset_by_url(u)
         else:
-            # --- Chemin legacy : supprimer les fichiers locaux dans to_publish/ ---
-            if media_type == "CAROUSEL":
-                urls = list(payload.get("children", []))
-                if payload.get("story_url"):
-                    urls.append(payload["story_url"])
-                for child_url in urls:
-                    child_name = pathlib.Path(child_url).name
-                    child_local = base_dir / folder.lower() / "to_publish" / child_name
-                    if child_local.exists():
-                        child_local.unlink()
-                        print(f"[DEL] Fichier local supprimé : {child_name}")
-            else:
-                urls = [media_url]
-                if payload.get("story_url") and payload["story_url"] != media_url:
-                    urls.append(payload["story_url"])
-                for url in urls:
-                    media_name  = pathlib.Path(url).name
-                    media_local = base_dir / folder.lower() / "to_publish" / media_name
-                    if media_local.exists():
-                        media_local.unlink()
-                        print(f"[DEL] Fichier média local supprimé : {media_name}")
+            primary_url = payload.get("media_url") or payload.get("image_url")
+            _delete_release_asset_by_url(primary_url)
+            story_url = payload.get("story_url")
+            if story_url and story_url != primary_url:
+                _delete_release_asset_by_url(story_url)
     except Exception as _del_exc:
         print(f"[WARN] Erreur nettoyage média : {_del_exc}")
 
