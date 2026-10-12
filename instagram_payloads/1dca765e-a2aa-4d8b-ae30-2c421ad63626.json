@@ -1,0 +1,22 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "1dca765e-a2aa-4d8b-ae30-2c421ad63626",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_02.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_03.jpg"
+  ],
+  "caption": "Out at Iron-Pipe Plaza. The amber lights make the old rust look way warmer than it is. Which one is your favorite? 1, 2, 3, or 4?",
+  "next_time": 1793286000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_slide_2037_03.jpg"
+  ],
+  "story_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1dca765e_story_2037.mp4",
+  "threads_caption": "Out at Iron-Pipe Plaza. The amber lights make the old rust look way warmer than it is. Which one is your favorite? 1, 2, 3, or 4?"
+}
