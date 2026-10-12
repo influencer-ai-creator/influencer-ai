@@ -1,0 +1,22 @@
+{
+  "compte": "university",
+  "pub_id": "c24191ba-f8e8-4e66-9c31-6e2bdf45a496",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_03.jpg"
+  ],
+  "caption": "The students managed to stay awake while we grew the briar wall in the Conservatory. A bit of a mess to clean up tomorrow. I’m mostly just ready for coffee and a nap, but the briars look decent. Which photo is your favorite, 1-4?",
+  "next_time": 1793444400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_slide_2488_03.jpg"
+  ],
+  "story_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c24191ba_story_2488.mp4",
+  "threads_caption": "The students managed to stay awake while we grew the briar wall in the Conservatory. A bit of a mess to clean up tomorrow. I’m mostly just ready for coffee and a nap, but the briars look decent. Which photo is your favorite, 1-4?"
+}
