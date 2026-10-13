@@ -1,15 +1,15 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 13/10/2026 01:36:23
+✅ **Dernier run sans erreur** — 13/10/2026 06:49:34
 
-📦 **Total publiés historiquement :** 4097
+📦 **Total publiés historiquement :** 4098
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
 | :--- | :---: | :--- | :--- | :---: | :---: |
-| CYBERPUNK | **19** | 13/10 13:00 | 01/11 19:00 | 19.7 j | 🎬 |
-| GRACE_STORY | **10** | 13/10 08:45 | 20/10 15:45 | 7.5 j | 🎬 |
-| INFLUENCER | **20** | 13/10 18:00 | 03/11 12:00 | 21.4 j | 🎬 |
-| SUNDRESS | **22** | 13/10 18:00 | 05/11 14:00 | 23.5 j | 🎬 |
-| UNIVERSITY | **19** | 13/10 18:00 | 31/10 22:00 | 18.8 j | 🎬 |
+| CYBERPUNK | **19** | 13/10 13:00 | 01/11 19:00 | 19.5 j | 🎬 |
+| GRACE_STORY | **9** | 14/10 14:30 | 20/10 15:45 | 7.3 j | <img src='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e7030324_slide_096_01.jpg' width='50'> |
+| INFLUENCER | **20** | 13/10 18:00 | 03/11 12:00 | 21.2 j | 🎬 |
+| SUNDRESS | **22** | 13/10 18:00 | 05/11 14:00 | 23.3 j | 🎬 |
+| UNIVERSITY | **19** | 13/10 18:00 | 31/10 22:00 | 18.6 j | 🎬 |
 
