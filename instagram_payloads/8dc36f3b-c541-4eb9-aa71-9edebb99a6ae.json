@@ -1,0 +1,22 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "8dc36f3b-c541-4eb9-aa71-9edebb99a6ae",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_03.jpg"
+  ],
+  "caption": "Finally heading out. My flat feels smaller every day. Which one should I wear? 1, 2, 3, or 4?",
+  "next_time": 1793646000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8dc36f3b_slide_2074_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Finally heading out. My flat feels smaller every day. Which one should I wear? 1, 2, 3, or 4?"
+}
