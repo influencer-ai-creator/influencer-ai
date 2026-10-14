@@ -499,6 +499,20 @@ TOKEN_WARN_DAYS = 10   # token proche de l'échéance
 QUEUE_WARN_DAYS = 3    # file d'attente bientôt vide
 
 
+def _days_covered(last, now, tz):
+    """Autonomie en jours ENTIERS : de la date du jour à celle de la dernière
+    publication programmée, par tranche de 24 h, sans virgule.
+
+    Même règle que `publishing/scheduling.days_covered` (Accueil du dashboard).
+    Duplication assumée — ce script est autonome et ne peut rien importer du
+    projet ; s'il faut changer la règle, les deux copies doivent bouger.
+    """
+    if last <= now:
+        return 0
+    return max((datetime.fromtimestamp(last, tz=tz).date()
+                - datetime.fromtimestamp(now, tz=tz).date()).days, 0)
+
+
 class PayloadState:
     """
     État de publication d'un payload, persisté dans le fichier lui-même.
@@ -688,7 +702,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                 md += f"- ❌ **{compte}** — token Threads **EXPIRÉ** depuis {abs(days):.0f} j\n"
             else:
                 md += f"- ⚠️ **{compte}** — token Threads expire dans **{days:.0f} j**\n"
-        md += "\n> Renouveler dans 👤 Compte → 🔑 Connexion → 🧵 Threads → ♻️ Prolonger de 60 jours, "
+        md += "\n> Renouveler dans 👤 Réglages → 🔑 Connexion → 🧵 Threads → ♻️ Prolonger de 60 jours, "
         md += "puis 📤 Envoyer les IDs vers GitHub.\n\n"
 
     md += f"📦 **Total publiés historiquement :** {published_count}\n\n"
@@ -709,19 +723,20 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
             # Autonomie = temps couvert par la programmation restante. C'est LUI
             # qui dit s'il faut relancer une génération, pas le nombre de posts :
             # 3 posts espacés de 12 h tiennent plus longtemps que 6 espacés de 2 h.
-            runway = (s["last"] - now) / 86400.0
+            # En jours entiers du calendrier, comme l'Accueil du dashboard.
+            runway = _days_covered(s["last"], now, _TZ_AFFICHAGE)
             if runway < QUEUE_WARN_DAYS:
                 low_runway.append((compte, runway))
-                runway_cell = f"⚠️ **{runway:.1f} j**"
+                runway_cell = f"⚠️ **{runway} j**"
             else:
-                runway_cell = f"{runway:.1f} j"
+                runway_cell = f"{runway} j"
             thumb = _thumb_cell(s["thumb"], s["thumb_type"])
             md += f"| {compte} | **{s['count']}** | {date_next} | {date_last} | {runway_cell} | {thumb} |\n"
 
         md += "\n"
         if low_runway:
             md += f"> ⚠️ **File bientôt vide** (moins de {QUEUE_WARN_DAYS} jours de programmation) : "
-            md += ", ".join(f"**{c}** ({d:.1f} j)" for c, d in low_runway)
+            md += ", ".join(f"**{c}** ({d} j)" for c, d in low_runway)
             md += " — pense à générer de nouveaux posts.\n\n"
 
     # --- Publications en cours de reprise ---
@@ -1657,7 +1672,7 @@ def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, medi
         # demandée puis ignorée ne partirait jamais sans que rien ne le dise.
         raise RuntimeError(
             f"{label} : clé Buffer ou channel ID absent — pousse les identifiants "
-            "vers GitHub (👤 Compte → 🔑 Connexion) puis redéploie le workflow"
+            "vers GitHub (👤 Réglages → 🔑 Connexion) puis redéploie le workflow"
         )
 
     st_buf = payload.setdefault("buffer_posts", {}).setdefault(
