@@ -577,10 +577,22 @@ def _thumb_url(data: dict) -> str:
     return data.get("image_url") or data.get("media_url", "")
 
 
-def _thumb_cell(thumb: str, media_type: str) -> str:
-    """Rendu HTML/emoji de la colonne Aperçu dans le README."""
+def _video_url(data: dict) -> str:
+    """URL du mp4 d'une publication vidéo, vide sinon — cible du lien 🎬."""
+    if data.get("media_type", "IMAGE").upper() != "VIDEO":
+        return ""
+    return data.get("video_url") or data.get("media_url") or ""
+
+
+def _thumb_cell(thumb: str, media_type: str, video_url: str = "") -> str:
+    """Rendu HTML/emoji de la colonne Aperçu dans le README.
+
+    Une vidéo n'a pas de miniature (un .mp4 ne s'affiche pas dans le Markdown
+    GitHub) : son icône 🎬 est un lien vers la vidéo."""
     if thumb:
         return f"<img src='{thumb}' width='50'>"
+    if video_url:
+        return f"<a href='{video_url}' target='_blank'>🎬</a>"
     icons = {"VIDEO": "🎬", "CAROUSEL": "🎠"}
     return icons.get(media_type, "N/A")
 
@@ -653,6 +665,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                 ts          = int(data["next_time"])
                 media_type  = data.get("media_type", "IMAGE").upper()
                 thumb       = _thumb_url(data)
+                video       = _video_url(data)
 
                 if compte not in stats_comptes:
                     stats_comptes[compte] = {
@@ -661,6 +674,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                         "last":       ts,
                         "thumb":      thumb,
                         "thumb_type": media_type,
+                        "video":      video,
                     }
 
                 stats_comptes[compte]["count"] += 1
@@ -668,6 +682,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                     stats_comptes[compte]["first"]      = ts
                     stats_comptes[compte]["thumb"]      = thumb
                     stats_comptes[compte]["thumb_type"] = media_type
+                    stats_comptes[compte]["video"]      = video
                 if ts > stats_comptes[compte]["last"]:
                     stats_comptes[compte]["last"] = ts
         except Exception:
@@ -730,7 +745,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                 runway_cell = f"⚠️ **{runway} j**"
             else:
                 runway_cell = f"{runway} j"
-            thumb = _thumb_cell(s["thumb"], s["thumb_type"])
+            thumb = _thumb_cell(s["thumb"], s["thumb_type"], s["video"])
             md += f"| {compte} | **{s['count']}** | {date_next} | {date_last} | {runway_cell} | {thumb} |\n"
 
         md += "\n"
