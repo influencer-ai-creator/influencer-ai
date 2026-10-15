@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "fc8720ca-448d-4aff-a436-62f0fdf8f1a1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_fc8720ca_video_109.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the sunflowers were a side quest. the ceramics actually won.\n\nthe market was way too good to just grab the blooms and leave. \n🌻\n#sydney #marketday",
+  "next_time": 1792829700,
+  "storage": "release",
+  "threads_caption": "the sunflowers were a side quest. the ceramics actually won.\n\nthe market was way too good to just grab the blooms and leave.\n\n🌻 #sydney",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
