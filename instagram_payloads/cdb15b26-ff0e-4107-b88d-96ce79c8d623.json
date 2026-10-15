@@ -1,0 +1,22 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "cdb15b26-ff0e-4107-b88d-96ce79c8d623",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_03.jpg"
+  ],
+  "caption": "Just got back to the flat. Trying to pick a fit for tonight. The city is calling but my closet is failing me. Which one?",
+  "next_time": 1793826000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Just got back to the flat. Trying to pick a fit for tonight. The city is calling but my closet is failing me. Which one?"
+}
