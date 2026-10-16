@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "6c3f07dd-507c-4c64-98bc-32a3670fdd95",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6c3f07dd_video_2030.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I just need to finish this load.",
+  "next_time": 1793916000,
+  "storage": "release",
+  "threads_caption": "I just need to finish this load.",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
