@@ -79,7 +79,7 @@ import sys
 import time
 import subprocess
 import tempfile
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 # Heure affichée dans les logs et le dashboard : heure suisse, été comme hiver
@@ -156,11 +156,23 @@ def _check(r, what):
     )
 
 
+# Copie de `core/http._SECRET_PARAM` (runner autonome, égalité gardée par
+# tests/test_process_payloads.py) : `str()` d'une ConnectionError recopie l'URL,
+# `access_token` compris — jamais tel quel dans le log Actions, le dashboard
+# commité ni l'issue (audit 16/10 F34).
+_SECRET_PARAM = re.compile(r"(\w*(?:token|secret)=)[^&\s'\")]+", re.IGNORECASE)
+
+
+def _redact(msg):
+    return _SECRET_PARAM.sub(r"\1***", str(msg))
+
+
 def _fail(msg):
     """
     Échec BLOQUANT : dashboard + issue GitHub (le workflow ouvre une issue quand
     le script sort en erreur).
     """
+    msg = _redact(msg)
     errors.append(msg)
     print(f"[FAIL] {msg}")
 
@@ -174,6 +186,7 @@ def _warn(msg):
     publication principale. La taire complètement, à l'inverse, la rendrait
     indétectable : d'où ce niveau intermédiaire.
     """
+    msg = _redact(msg)
     warn_msgs.append(msg)
     print(f"[WARN] {msg}")
 
@@ -499,9 +512,27 @@ TOKEN_WARN_DAYS = 10   # token proche de l'échéance
 QUEUE_WARN_DAYS = 3    # file d'attente bientôt vide
 
 
-def _days_covered(last, now, tz):
-    """Autonomie en jours ENTIERS : de la date du jour à celle de la dernière
-    publication programmée, par tranche de 24 h, sans virgule.
+def _apply_quiet_hours(ts, start, end, tz):
+    """Copie de `publishing/scheduling.apply_quiet_hours` : un horaire tombé dans
+    la plage silencieuse glisse à sa fin."""
+    if start == end:
+        return ts
+    dt = datetime.fromtimestamp(ts, tz=tz)
+    h = dt.hour
+    if not ((start < end and start <= h < end) or (start >= end and (h >= start or h < end))):
+        return ts
+    end_dt = dt.replace(hour=end, minute=0, second=0, microsecond=0)
+    if start >= end and h >= start:
+        end_dt = (dt + timedelta(days=1)).replace(hour=end, minute=0, second=0, microsecond=0)
+    return int(end_dt.timestamp())
+
+
+def _days_covered(last, now, schedule, tz):
+    """Autonomie en jours ENTIERS, de minuit à minuit : les jours à partir de
+    demain dont toutes les publications sont programmées. Le jour de la dernière
+    (`last`) ne compte que s'il est complet — son créneau suivant, d'après la règle
+    d'horaire du compte que porte son payload (`schedule`), tombe le lendemain.
+    Payload sans règle (écrit avant elle) : ce dernier jour ne compte pas.
 
     Même règle que `publishing/scheduling.days_covered` (Accueil du dashboard).
     Duplication assumée — ce script est autonome et ne peut rien importer du
@@ -509,8 +540,20 @@ def _days_covered(last, now, tz):
     """
     if last <= now:
         return 0
-    return max((datetime.fromtimestamp(last, tz=tz).date()
-                - datetime.fromtimestamp(now, tz=tz).date()).days, 0)
+    if schedule and schedule.get("timezone"):
+        try:
+            tz = ZoneInfo(schedule["timezone"])
+        except Exception:
+            pass
+    last_day = datetime.fromtimestamp(last, tz=tz).date()
+    nxt = None
+    if schedule and schedule.get("delay_hours"):
+        nxt = int(last + float(schedule["delay_hours"]) * 3600)
+        if schedule.get("quiet_hours"):
+            nxt = _apply_quiet_hours(nxt, *schedule["quiet_hours"], tz)
+    if nxt is None or datetime.fromtimestamp(nxt, tz=tz).date() <= last_day:
+        last_day -= timedelta(days=1)
+    return max((last_day - datetime.fromtimestamp(now, tz=tz).date()).days, 0)
 
 
 class PayloadState:
@@ -672,6 +715,7 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                         "count":      0,
                         "first":      ts,
                         "last":       ts,
+                        "schedule":   data.get("schedule"),
                         "thumb":      thumb,
                         "thumb_type": media_type,
                         "video":      video,
@@ -684,7 +728,8 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
                     stats_comptes[compte]["thumb_type"] = media_type
                     stats_comptes[compte]["video"]      = video
                 if ts > stats_comptes[compte]["last"]:
-                    stats_comptes[compte]["last"] = ts
+                    stats_comptes[compte]["last"]     = ts
+                    stats_comptes[compte]["schedule"] = data.get("schedule")
         except Exception:
             continue
 
@@ -738,8 +783,8 @@ def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnin
             # Autonomie = temps couvert par la programmation restante. C'est LUI
             # qui dit s'il faut relancer une génération, pas le nombre de posts :
             # 3 posts espacés de 12 h tiennent plus longtemps que 6 espacés de 2 h.
-            # En jours entiers du calendrier, comme l'Accueil du dashboard.
-            runway = _days_covered(s["last"], now, _TZ_AFFICHAGE)
+            # En jours complets, de minuit à minuit, comme l'Accueil du dashboard.
+            runway = _days_covered(s["last"], now, s["schedule"], _TZ_AFFICHAGE)
             if runway < QUEUE_WARN_DAYS:
                 low_runway.append((compte, runway))
                 runway_cell = f"⚠️ **{runway} j**"
@@ -859,7 +904,7 @@ def _find_published_instagram(instagram_id, access_token, caption, since):
         )
         _check(r, "IG /media (recherche d'un doublon)")
     except Exception as e:
-        print(f"  [WARN] Vérification d'une publication antérieure impossible : {e}")
+        print(f"  [WARN] Vérification d'une publication antérieure impossible : {_redact(e)}")
         return None
     wanted = (caption or "").strip()
     for media in r.json().get("data") or []:
@@ -1421,7 +1466,7 @@ def _publish_story_series(publish_one, urls, label):
                 raise RuntimeError("échec signalé")
         except Exception as e:
             failed += 1
-            print(f"  [WARN] {label} {i}/{len(urls)} : {e}")
+            print(f"  [WARN] {label} {i}/{len(urls)} : {_redact(e)}")
     return failed == 0
 
 
@@ -1562,6 +1607,7 @@ def publish_threads(threads_id, access_token, media_type, media_url, children, t
 BUFFER_URL = "https://api.buffer.com"
 BUFFER_LABELS = {"tiktok": "TikTok", "youtube": "YouTube"}
 BUFFER_TEXT_LIMITS = {"tiktok": 2200, "youtube": 5000}
+YOUTUBE_TITLE_LIMIT = 100
 # Statuts Buffer qui veulent dire « pas encore parti, rien à reprocher ».
 BUFFER_WAITING = ("scheduled", "sending", "pending", "processing")
 
@@ -1656,7 +1702,7 @@ def _buffer_input(platform, payload, channel_id, media_url, pub_id):
         data["metadata"] = {"tiktok": {"isAiGenerated": ai_generated}}
     else:
         data["metadata"] = {"youtube": {
-            "title":             payload.get("youtube_title") or "",
+            "title":             (payload.get("youtube_title") or "")[:YOUTUBE_TITLE_LIMIT],
             "categoryId":        str(payload.get("youtube_category_id") or "27"),
             "privacy":           payload.get("youtube_privacy") or "public",
             "madeForKids":       bool(payload.get("youtube_made_for_kids", False)),
