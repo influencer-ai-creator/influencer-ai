@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "ecf11ffc-3d3e-40fa-a452-aa3ba8ac322a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_ecf11ffc_video_19378.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Golden hour in Lisbon hits different. 🌅✨ #Lisbon #PortugalTravel #GoldenHour",
+  "next_time": 1793973600,
+  "storage": "release",
+  "threads_caption": "Golden hour in Lisbon hits different.\n\n🌅✨ #Lisbon",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}

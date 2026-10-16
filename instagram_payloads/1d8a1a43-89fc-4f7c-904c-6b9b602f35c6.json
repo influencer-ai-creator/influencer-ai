@@ -1,0 +1,30 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "1d8a1a43-89fc-4f7c-904c-6b9b602f35c6",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_03.jpg"
+  ],
+  "caption": "Found a dusty spot in the Cobalt-Solder Arcade. Spent my night trying to beat the high scores and getting zero wins. Which photo you prefer? Give me the number.",
+  "next_time": 1794139200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Found a dusty spot in the Cobalt-Solder Arcade. Spent my night trying to beat the high scores and getting zero wins. Which photo you prefer? Give me the number.",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
