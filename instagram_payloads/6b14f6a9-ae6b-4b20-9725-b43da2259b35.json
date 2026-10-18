@@ -1,0 +1,30 @@
+{
+  "compte": "influencer",
+  "pub_id": "6b14f6a9-ae6b-4b20-9725-b43da2259b35",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_03.jpg"
+  ],
+  "caption": "We’re in Iceland at Reynisfjara! 🇮🇸 Let’s play a game: one spot, one pose, four different vibes. Who held the pose best? Let us know your favorite number! 👇 #IcelandTravel #Reynisfjara #TravelGame #SquadGoals",
+  "next_time": 1794063600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "We’re in Iceland at Reynisfjara! 🇮🇸 Let’s play a game: one spot, one pose, four different vibes. Who held the pose best? Let us know your favorite number!\n\n👇 #IcelandTravel",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
