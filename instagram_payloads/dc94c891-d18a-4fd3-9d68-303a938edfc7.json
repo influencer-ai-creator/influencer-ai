@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "dc94c891-d18a-4fd3-9d68-303a938edfc7",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_dc94c891_video_19338.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Savoring every second of this Venetian dream. There's something about a cappuccino in the sun that just feels like magic. 🇮🇹✨ #VeniceVibes #ItalianSummer #TravelDiary",
+  "next_time": 1794063600,
+  "storage": "release",
+  "threads_caption": "Savoring every second of this Venetian dream. There's something about a cappuccino in the sun that just feels like magic.\n\n🇮🇹✨ #VeniceVibes",
+  "schedule": {
+    "delay_hours": 14.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
