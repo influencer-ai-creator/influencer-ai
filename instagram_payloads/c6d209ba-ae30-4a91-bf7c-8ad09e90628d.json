@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "c6d209ba-ae30-4a91-bf7c-8ad09e90628d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_c6d209ba_video_125.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "saw my campaign in the wild.\n\nproperly weird seeing my face on a rack, but i'll take it before the library calls me back. 🥂",
+  "next_time": 1793112300,
+  "storage": "release",
+  "threads_caption": "saw my campaign in the wild.\n\nproperly weird seeing my face on a rack, but i'll take it before the library calls me back. 🥂",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
