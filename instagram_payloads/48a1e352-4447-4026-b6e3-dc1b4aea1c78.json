@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "48a1e352-4447-4026-b6e3-dc1b4aea1c78",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_48a1e352_video_19368.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Feeling the Mediterranean breeze on my skin tonight. ✨🌊 #SantoriniMagic #IslandLife",
+  "next_time": 1794139200,
+  "storage": "release",
+  "threads_caption": "Feeling the Mediterranean breeze on my skin tonight.\n\n✨🌊 #SantoriniMagic",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
