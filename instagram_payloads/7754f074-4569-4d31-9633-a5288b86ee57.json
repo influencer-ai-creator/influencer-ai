@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "7754f074-4569-4d31-9633-a5288b86ee57",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7754f074_video_2197.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Found myself chasing horizons that shouldn't exist. ✈️ Every turn reveals a new impossible world and a stunning muse to share the ride. These memories are pure magic. ✨ #TravelDream #ImpossibleWorlds #AdventureAwaits #HiddenParadise #ExplorerLife #Wanderlust",
+  "next_time": 1794153600,
+  "storage": "release",
+  "threads_caption": "Found myself chasing horizons that shouldn't exist. ✈️ Every turn reveals a new impossible world and a stunning muse to share the ride. These memories are pure magic.\n\n✨ #TravelDream",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
