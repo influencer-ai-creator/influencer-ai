@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "f3c21248-a881-446e-8ccc-56f998c59a33",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f3c21248_video_2468.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "literally just witnessed the weirdest day.\n🫠💧🧪\ni still haven't recovered lol.",
+  "next_time": 1794153600,
+  "storage": "release",
+  "threads_caption": "literally just witnessed the weirdest day.\n🫠💧🧪\ni still haven't recovered lol.",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
