@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "fb2aa8b2-d0a4-4a81-b568-b1fc6dbb1986",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fb2aa8b2_video_2072.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Tried to do a 'main character' glide through this gorgeous palace, but the floor clearly had other plans for my dignity. 💃💦 #palacelife #spaintravel #influencerfail #travelhumor #gracefulmess #vacationvibes",
+  "next_time": 1794243600,
+  "storage": "release",
+  "threads_caption": "Tried to do a 'main character' glide through this gorgeous palace, but the floor clearly had other plans for my dignity.\n\n💃💦 #palacelife",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}

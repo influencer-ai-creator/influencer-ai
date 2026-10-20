@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "e69c2593-6914-466c-8843-75b1db721cd6",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_e69c2593_video_19432.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Venice vibes. This local thought he could interrupt my flow, but I had a little trick up my sleeve. ✨🪄 #VeniceDiaries #MagicMoments",
+  "next_time": 1794225600,
+  "storage": "release",
+  "threads_caption": "Venice vibes. This local thought he could interrupt my flow, but I had a little trick up my sleeve.\n\n✨🪄 #VeniceDiaries",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

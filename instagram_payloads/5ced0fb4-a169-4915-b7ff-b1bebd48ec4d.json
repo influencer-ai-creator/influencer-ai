@@ -1,0 +1,32 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "5ced0fb4-a169-4915-b7ff-b1bebd48ec4d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_04.jpg"
+  ],
+  "caption": "Back at the tower. Still can't decide what to wear out for the night. Which one should I go with? Tell me the number.",
+  "next_time": 1794229200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Back at the tower. Still can't decide what to wear out for the night. Which one should I go with? Tell me the number.",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
