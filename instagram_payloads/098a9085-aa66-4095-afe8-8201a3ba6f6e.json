@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "098a9085-aa66-4095-afe8-8201a3ba6f6e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_098a9085_video_2460.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "omg she's trying so hard to be professional lol\ni'm actually dying at the bread situation 💀🥖\ntag a friend who'd mess this up.",
+  "next_time": 1794243600,
+  "storage": "release",
+  "threads_caption": "omg she's trying so hard to be professional lol\ni'm actually dying at the bread situation 💀🥖\ntag a friend who'd mess this up.",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
