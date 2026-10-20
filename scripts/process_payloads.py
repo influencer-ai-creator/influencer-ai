@@ -913,61 +913,6 @@ def _find_published_instagram(instagram_id, access_token, caption, since):
     return None
 
 
-def _poll_instagram_container(container_id, access_token, max_wait=300, poll_every=10, label=""):
-    """
-    Attend que le conteneur Instagram passe au statut FINISHED.
-    Lève une exception si ERROR, EXPIRED ou timeout.
-
-    Note : seul 'status_code' est utilisé — le champ 'status' est invalide pour
-    cet endpoint en API v25.0 et provoque un 400 immédiat.
-    Les erreurs HTTP transitoires (400/5xx) sont retentées jusqu'à MAX_HTTP_ERR fois.
-    """
-    status_url    = f"https://graph.facebook.com/v25.0/{container_id}"
-    status_params = {
-        "fields":       "status_code",
-        "access_token": access_token
-    }
-    elapsed      = 0
-    http_errors  = 0
-    MAX_HTTP_ERR = 3
-
-    while elapsed < max_wait:
-        time.sleep(poll_every)
-        elapsed += poll_every
-        try:
-            rs = _get(status_url, params=status_params)
-            rs.raise_for_status()
-            http_errors = 0
-        except requests.HTTPError:
-            http_errors += 1
-            try:
-                body = rs.json()
-            except Exception:
-                body = rs.text
-            print(f"  [WARN] Erreur HTTP {rs.status_code} polling {label} ({elapsed}s) : {body}")
-            if http_errors >= MAX_HTTP_ERR:
-                raise RuntimeError(
-                    f"Polling {label} : {MAX_HTTP_ERR} erreurs HTTP consécutives "
-                    f"(code {rs.status_code}) — dernier body : {body}"
-                )
-            continue
-
-        status_data = rs.json()
-        status_code = status_data.get("status_code", "")
-        print(f"  [WAIT] Statut {label} ({elapsed}s) : {status_code}")
-
-        if status_code == "FINISHED":
-            return
-        elif status_code in ("ERROR", "EXPIRED"):
-            raise RuntimeError(
-                f"Traitement {label} échoué côté Meta : {status_code}"
-            )
-
-    raise TimeoutError(
-        f"Délai dépassé ({max_wait}s) — le conteneur {label} n'est pas passé à FINISHED."
-    )
-
-
 def _publish_video_with_retry(instagram_id, access_token, container_id, label,
                                first_sleep=60, poll_every=20, max_wait=300):
     """
@@ -1115,7 +1060,7 @@ def publish_carousel(instagram_id, access_token, children_urls, caption):
         kind = "VIDEO" if is_video_child else "IMAGE"
         print(f"  [SLIDE {i+1}/{len(children_urls)}] Item {kind} créé : {item_id}")
         if is_video_child:
-            # Attente fixe : _poll_instagram_container peut retourner subcode 33 sur certains
+            # Attente fixe : le polling GET du conteneur peut retourner subcode 33 sur certains
             # comptes (même restriction que le container final). L'item n'a pas de media_publish,
             # donc on ne peut pas utiliser _publish_video_with_retry ici — on attend 90s.
             print(f"  [WAIT] Attente 90s pour le traitement de la slide vidéo {i+1}...")
@@ -1892,6 +1837,10 @@ for payload_file in payload_dir.glob("*.json"):
     fb_children  = payload.get("fb_children", children)
     ig_story_url = payload.get("story_url")
     story_slides = bool(payload.get("story_slides")) and bool(children)
+    # Compte scraping : version 9:16 à bandes noires de chaque slide, rendue à la
+    # mise en file — même source pour les Stories Instagram et Facebook. Absente
+    # (autres comptes, payload antérieur) : les slides du post partent tels quels.
+    story_children = payload.get("story_children")
     video_story_cache = {"url": ig_story_url if media_type == "VIDEO" else None}
     # Légende tronquée à la mise en file (limite Threads : 1 par caractère, les
     # emojis hors plan de base comptant 4). Le repli sert aux payloads antérieurs
@@ -1975,7 +1924,7 @@ for payload_file in payload_dir.glob("*.json"):
         # Chaque slide en Story, dans l'ordre (cf. influencer/CLAUDE.md §5.10 C11).
         actions["instagram_story"] = lambda: _publish_story_series(
             lambda u: _publish_ig_story(instagram_id, access_token, u, "Story slide"),
-            children, "Story slide Instagram")
+            story_children or children, "Story slide Instagram")
     elif media_type == "CAROUSEL" and ig_story_url:
         # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11).
         actions["instagram_story"] = lambda: _publish_ig_story(
@@ -1999,7 +1948,8 @@ for payload_file in payload_dir.glob("*.json"):
 
     def _do_facebook_story():
         if media_type == "CAROUSEL" and story_slides:
-            return _publish_story_series(_fb_story, fb_children, "Story slide Facebook")
+            return _publish_story_series(
+                _fb_story, story_children or fb_children, "Story slide Facebook")
         return _fb_story(_video_story_source() if media_type == "VIDEO" else fb_story_src)
 
     if facebook_id and (media_type != "IMAGE" or image_url):
@@ -2175,6 +2125,7 @@ for payload_file in payload_dir.glob("*.json"):
             urls_to_del = list(payload.get("children", []))
             if payload.get("story_url"):
                 urls_to_del.append(payload["story_url"])
+            urls_to_del += payload.get("story_children") or []
             # fb_children peut contenir des doublons de children -- skip les vus
             seen = set()
             for fb_u in payload.get("fb_children", []):
