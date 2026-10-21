@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "59feda83-512a-4298-b5d7-6a74e27a6b80",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_59feda83_video_1993.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Tonight's ride is a bit of a bumpy one.\nThree districts, three tantrums 😤⚙️\nWhich piece of city tech is the most annoying today?",
+  "next_time": 1794319200,
+  "storage": "release",
+  "threads_caption": "Tonight's ride is a bit of a bumpy one.\nThree districts, three tantrums 😤⚙️\nWhich piece of city tech is the most annoying today?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
