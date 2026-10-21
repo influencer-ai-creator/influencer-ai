@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "d4e31f32-6072-441b-aae2-09959410c76c",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_03.jpg"
+  ],
+  "caption": "Hey everyone! I'm in Florence and I'm having a total crisis. I can't decide which dress to keep! Help me pick? 👗✨\n\nWhich number is your favorite? 1, 2, 3, or 4?",
+  "next_time": 1794312000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_d4e31f32_slide_19366_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Hey everyone! I'm in Florence and I'm having a total crisis. I can't decide which dress to keep! Help me pick? 👗✨\n\nWhich number is your favorite? 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

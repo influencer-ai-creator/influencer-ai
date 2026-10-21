@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "2a6e529e-e9ec-4dcd-8e03-fabd5213abf2",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_2a6e529e_video_19409.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just had the closest encounter with a royal guardian. Still my heart is racing... 🐉✨ #DragonKingdom #FantasyTravel",
+  "next_time": 1794398400,
+  "storage": "release",
+  "threads_caption": "Just had the closest encounter with a royal guardian. Still my heart is racing...\n\n🐉✨ #DragonKingdom",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

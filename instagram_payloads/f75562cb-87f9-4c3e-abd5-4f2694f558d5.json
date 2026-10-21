@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "f75562cb-87f9-4c3e-abd5-4f2694f558d5",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_f75562cb_video_19415.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Marrakech has my heart. There’s something about this golden light that just feels like magic. ✨💛 #MarrakechMoments #TravelGram #GoldenHour",
+  "next_time": 1794427200,
+  "storage": "release",
+  "threads_caption": "Marrakech has my heart. There’s something about this golden light that just feels like magic.\n\n✨💛 #MarrakechMoments",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

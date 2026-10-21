@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "f537ad78-e111-493e-a427-05c56006aa82",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f537ad78_video_2560.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "oops.\nmy room is a mess now 🫠☕.\nanyone know how to fix a mercury flood?",
+  "next_time": 1794333600,
+  "storage": "release",
+  "threads_caption": "oops.\nmy room is a mess now 🫠☕.\nanyone know how to fix a mercury flood?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
