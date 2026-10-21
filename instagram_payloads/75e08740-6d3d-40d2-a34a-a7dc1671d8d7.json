@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "75e08740-6d3d-40d2-a34a-a7dc1671d8d7",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_75e08740_video_19374.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The Amalfi breeze is no joke today! 🌬️ Just me, the waves, and a whole lot of hair-tossing chaos. Feeling absolutely radiant. ✨ #AmalfiCoast #ItalyTravel #GoldenHourVibes",
+  "next_time": 1794139200,
+  "storage": "release",
+  "threads_caption": "The Amalfi breeze is no joke today! 🌬️ Just me, the waves, and a whole lot of hair-tossing chaos. Feeling absolutely radiant.\n\n✨ #AmalfiCoast",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
