@@ -1,0 +1,34 @@
+{
+  "compte": "influencer",
+  "pub_id": "8d8866bf-c577-4cce-a482-7b258899b803",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_05.jpg"
+  ],
+  "caption": "Sun-kissed skin and spring breezes are my favorite aesthetic. Feeling so free and radiant exploring these hidden corners... who wants to join me for a drink? ☀️🌸 #springtravel #goldenhour #islandlife",
+  "next_time": 1794333600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_05.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Sun-kissed skin and spring breezes are my favorite aesthetic. Feeling so free and radiant exploring these hidden corners... who wants to join me for a drink?\n\n☀️🌸 #springtravel",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
