@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "9933c03e-ab8a-46b3-bb5f-97bb1176f8cf",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_9933c03e_video_19418.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just felt the ground shake... guess the castle's old guardian is waking up. 🏰✨ #FantasyTravels #CastleLife #MagicRealms",
+  "next_time": 1794168000,
+  "storage": "release",
+  "threads_caption": "Just felt the ground shake... guess the castle's old guardian is waking up.\n\n🏰✨ #FantasyTravels",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

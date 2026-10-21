@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "62276d0d-ea11-45fd-80f7-9adb9db543c5",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_62276d0d_video_19439.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Feeling the Mediterranean breeze and letting the rhythm of the coast take over. This golden hour is magic. ✨🇮🇹 #Positano #ItalyTravel #SummerVibes",
+  "next_time": 1794225600,
+  "storage": "release",
+  "threads_caption": "Feeling the Mediterranean breeze and letting the rhythm of the coast take over. This golden hour is magic.\n\n✨🇮🇹 #Positano",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
