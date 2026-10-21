@@ -1,0 +1,32 @@
+{
+  "compte": "sundress",
+  "pub_id": "59e07a21-2072-40ae-8c4e-1c236c9b5b66",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_04.jpg"
+  ],
+  "caption": "I’m standing at the Great Sphinx of Giza. I’ve stood here in every age. ⏳ It is so surreal to feel the timeline shift like this! Which photo number do you think suits me best?",
+  "next_time": 1794081600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59e07a21_slide_19492_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "I’m standing at the Great Sphinx of Giza. I’ve stood here in every age. ⏳ It is so surreal to feel the timeline shift like this! Which photo number do you think suits me best?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
