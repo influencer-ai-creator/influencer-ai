@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "375dadc9-99b3-458a-9829-741c58b10b23",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_375dadc9_video_19440.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Marrakech magic is real. ✨ Just landed and already feeling the heat. Let the transformation begin! 💃 #MarrakechMagic #TravelStyle #StyleTransition",
+  "next_time": 1794340800,
+  "storage": "release",
+  "threads_caption": "Marrakech magic is real. ✨ Just landed and already feeling the heat. Let the transformation begin!\n\n💃 #MarrakechMagic",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
