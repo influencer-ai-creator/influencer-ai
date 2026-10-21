@@ -304,18 +304,6 @@
     <div class="card-arrow">↗</div>
   </a>
 
-  <!-- Special Requests -->
-  <div class="section-label">Special requests</div>
-
-  <a href="#" onclick="openAgeGate(); return false;" class="link-card">
-    <div class="card-icon icon-purple">🔞</div>
-    <div class="card-text">
-      <div class="card-title">Exclusive AI Content</div>
-      <div class="card-desc">LocalAIGirls — adults only</div>
-    </div>
-    <div class="card-arrow">↗</div>
-  </a>
-
   <!-- Resources -->
   <div class="section-label">Support &amp; resources</div>
 
@@ -378,34 +366,6 @@
   </footer>
 
 </div>
-
-<!-- Age gate modal -->
-<div class="age-overlay" id="ageOverlay">
-  <div class="age-modal">
-    <h2>Adults only</h2>
-    <p>This content is intended for adults aged 18 and over.<br>By continuing, you confirm you are of legal age.</p>
-    <div class="age-buttons">
-      <button class="btn-confirm" onclick="confirmAge()">I am 18+</button>
-      <button class="btn-cancel" onclick="closeAgeGate()">Go back</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  function openAgeGate() {
-    document.getElementById('ageOverlay').classList.add('open');
-  }
-  function closeAgeGate() {
-    document.getElementById('ageOverlay').classList.remove('open');
-  }
-  function confirmAge() {
-    window.open('https://www.fanvue.com/localaigirls', '_blank', 'noopener');
-    closeAgeGate();
-  }
-  document.getElementById('ageOverlay').addEventListener('click', function(e) {
-    if (e.target === this) closeAgeGate();
-  });
-</script>
 
 </body>
 </html>
