@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "a3c97d20-1dec-46e7-a8bd-1a628e718c0b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a3c97d20_video_19373.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The wind here is absolutely wild, but I’m just living for it. 🌬️✨ #cappadocia #travelvibes #goldenhour",
+  "next_time": 1794340800,
+  "storage": "release",
+  "threads_caption": "The wind here is absolutely wild, but I’m just living for it.\n\n🌬️✨ #cappadocia",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
