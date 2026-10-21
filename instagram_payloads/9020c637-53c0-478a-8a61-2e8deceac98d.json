@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "9020c637-53c0-478a-8a61-2e8deceac98d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_9020c637_video_19391.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Feeling like I'm floating above the world in Cappadocia. This view is everything. ✨💖 #Cappadocia #TravelDiaries #GoldenHour",
+  "next_time": 1794254400,
+  "storage": "release",
+  "threads_caption": "Feeling like I'm floating above the world in Cappadocia. This view is everything.\n\n✨💖 #Cappadocia",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
