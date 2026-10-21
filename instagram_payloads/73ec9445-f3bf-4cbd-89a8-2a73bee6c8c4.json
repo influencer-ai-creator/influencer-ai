@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "73ec9445-f3bf-4cbd-89a8-2a73bee6c8c4",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_03.jpg"
+  ],
+  "caption": "Lunch by the water in Positano was everything I hoped for! 🍋 The pasta was incredible and the view even better. Which photo is your favorite? 1, 2, 3, or 4?",
+  "next_time": 1793908800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_73ec9445_slide_19309_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Lunch by the water in Positano was everything I hoped for! 🍋 The pasta was incredible and the view even better. Which photo is your favorite? 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "04822ab7-a916-4c48-b6d4-2ac3db57718f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_04822ab7_video_19331.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Finding my center in Kyoto. 🌿 There’s something so grounding about the ritual of matcha. ✨ #KyotoVibes #TravelJournal #ZenMoment",
+  "next_time": 1793995200,
+  "storage": "release",
+  "threads_caption": "Finding my center in Kyoto. 🌿 There’s something so grounding about the ritual of matcha.\n\n✨ #KyotoVibes",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

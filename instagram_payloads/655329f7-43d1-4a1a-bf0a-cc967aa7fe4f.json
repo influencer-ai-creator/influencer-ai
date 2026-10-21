@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "655329f7-43d1-4a1a-bf0a-cc967aa7fe4f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_655329f7_video_19377.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Savoring the golden hour in the heart of Cartagena. The warmth is perfect and I’m just taking it all in, one step at a time. ✨🌴 #Cartagena #TravelDiaries #SummerSoul",
+  "next_time": 1793966400,
+  "storage": "release",
+  "threads_caption": "Savoring the golden hour in the heart of Cartagena. The warmth is perfect and I’m just taking it all in, one step at a time.\n\n✨🌴 #Cartagena",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

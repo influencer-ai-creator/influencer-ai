@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "afb94747-ea10-4c28-bc0d-caece642eb86",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_afb94747_video_19167.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Living for the views and the vibe ✨ Today’s adventure brought me to this hidden gem where every corner feels like a runway. Feeling fierce in my flowy sundress and ready for anything! 🌴 #TravelInfluencer #Wanderlust #FashionOnTheGo #SummerVibes #ExoticGetaway",
+  "next_time": 1793880000,
+  "storage": "release",
+  "threads_caption": "Living for the views and the vibe ✨ Today’s adventure brought me to this hidden gem where every corner feels like a runway. Feeling fierce in my flowy sundress and ready for anything!\n\n🌴 #TravelInfluencer",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
