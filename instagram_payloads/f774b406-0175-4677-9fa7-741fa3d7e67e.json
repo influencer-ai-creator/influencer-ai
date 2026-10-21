@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "f774b406-0175-4677-9fa7-741fa3d7e67e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_f774b406_video_19277.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I’m starting to think my fan might be haunted.\nJust trying to survive this Greek heat! ☀️🇬🇷\nDoes anyone know if this is a known manufacturing defect or should I just call the manufacturer?\n#Santorini #Oia #Greece #TravelFail #SummerVibes #Unexpected #Magic #SummerHeat #TravelGram #Vacation",
+  "next_time": 1793822400,
+  "storage": "release",
+  "threads_caption": "I’m starting to think my fan might be haunted.\nJust trying to survive this Greek heat! ☀️🇬🇷\nDoes anyone know if this is a known manufacturing defect or should I just call the manufacturer?\n\n#Santorini",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
