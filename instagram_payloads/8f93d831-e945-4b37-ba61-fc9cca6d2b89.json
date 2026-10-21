@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "8f93d831-e945-4b37-ba61-fc9cca6d2b89",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_8f93d831_video_19389.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Letting the ocean breeze take control for a moment. 🌊 There’s something about this rhythm that feels like magic. ✨ #RioVibes #TravelGram #SwingLife",
+  "next_time": 1793649600,
+  "storage": "release",
+  "threads_caption": "Letting the ocean breeze take control for a moment. 🌊 There’s something about this rhythm that feels like magic.\n\n✨ #RioVibes",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

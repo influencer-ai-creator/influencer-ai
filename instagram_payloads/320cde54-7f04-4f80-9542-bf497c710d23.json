@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "320cde54-7f04-4f80-9542-bf497c710d23",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_320cde54_video_19402.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Finally touched down in paradise. 🌴 There is something so magical about the Bali heat. ✨ #BaliBound #IslandVibes #TravelMagic",
+  "next_time": 1793736000,
+  "storage": "release",
+  "threads_caption": "Finally touched down in paradise. 🌴 There is something so magical about the Bali heat.\n\n✨ #BaliBound",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

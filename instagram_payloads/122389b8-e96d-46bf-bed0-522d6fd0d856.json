@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "122389b8-e96d-46bf-bed0-522d6fd0d856",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_122389b8_video_19408.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think I found my new favorite corner of the city... watching the gardens breathe is a whole vibe. ✨🌿 #NeonGarden #2093Dreams",
+  "next_time": 1793793600,
+  "storage": "release",
+  "threads_caption": "I think I found my new favorite corner of the city... watching the gardens breathe is a whole vibe.\n\n✨🌿 #NeonGarden",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
