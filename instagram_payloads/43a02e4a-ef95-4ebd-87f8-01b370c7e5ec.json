@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "43a02e4a-ef95-4ebd-87f8-01b370c7e5ec",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_43a02e4a_video_19425.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just finding my zen in Kyoto. ⛩️ Someone tried to break my focus, but I handled it. ✨ #KyotoVibes #MagicMoments #TravelInfluencer",
+  "next_time": 1793707200,
+  "storage": "release",
+  "threads_caption": "Just finding my zen in Kyoto. ⛩️ Someone tried to break my focus, but I handled it.\n\n✨ #KyotoVibes",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
