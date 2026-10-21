@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "c5759554-58cf-4d8d-ae80-d83693435d8e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_c5759554_video_19445.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just keeping the vibes steady at the Taj. ✨ A little distraction tried to ruin the moment, but I handle things with grace. 🪄 #TajMahal #MagicMoments",
+  "next_time": 1794312000,
+  "storage": "release",
+  "threads_caption": "Just keeping the vibes steady at the Taj. ✨ A little distraction tried to ruin the moment, but I handle things with grace.\n\n🪄 #TajMahal",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
