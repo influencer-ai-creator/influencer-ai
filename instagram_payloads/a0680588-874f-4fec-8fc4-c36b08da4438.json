@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "a0680588-874f-4fec-8fc4-c36b08da4438",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_03.jpg"
+  ],
+  "caption": "Hey everyone! I'm currently in Prague and I honestly can't decide which dress to take home. Each one is so cute, but my suitcase space is limited. Which number should I keep?",
+  "next_time": 1794052800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a0680588_slide_19367_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Hey everyone! I'm currently in Prague and I honestly can't decide which dress to take home. Each one is so cute, but my suitcase space is limited. Which number should I keep?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
