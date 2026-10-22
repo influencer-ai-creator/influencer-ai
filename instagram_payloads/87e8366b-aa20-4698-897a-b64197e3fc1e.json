@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "87e8366b-aa20-4698-897a-b64197e3fc1e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_87e8366b_video_2061.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "My commute is more of a rollercoaster than a ride.\n🎢🚇\nDoes anyone else just zone out to this?",
+  "next_time": 1794409200,
+  "storage": "release",
+  "threads_caption": "My commute is more of a rollercoaster than a ride.\n🎢🚇\nDoes anyone else just zone out to this?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
