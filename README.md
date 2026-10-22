@@ -1,13 +1,6 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 22/10/2026 20:10:41
-
-## ⚠️ Avertissements (best effort, non bloquants)
-
-- `cyberpunk: Story Instagram 1920cf1d-d08c-41d8-8ccb-29bbf5a9a55b -> Command '['sudo', 'apt-get', 'install', '-y', 'ffmpeg']' timed out after 300 seconds`
-- `cyberpunk: Story Facebook 1920cf1d-d08c-41d8-8ccb-29bbf5a9a55b -> installation FFmpeg échouée : E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2489 (apt-get)
-E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
-`
+✅ **Dernier run sans erreur** — 22/10/2026 20:11:01
 
 📦 **Total publiés historiquement :** 4148
 
