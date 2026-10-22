@@ -1,13 +1,6 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 22/10/2026 11:09:55
-
-## ⚠️ Avertissements (best effort, non bloquants)
-
-- `sundress: Story Instagram c1e4c99e-a69a-4791-9c62-a6696845179c -> Command '['sudo', 'apt-get', 'update']' timed out after 300 seconds`
-- `sundress: Story Facebook c1e4c99e-a69a-4791-9c62-a6696845179c -> installation FFmpeg échouée : E: Could not get lock /var/lib/apt/lists/lock. It is held by process 2153 (apt-get)
-E: Unable to lock directory /var/lib/apt/lists/
-`
+✅ **Dernier run sans erreur** — 22/10/2026 11:45:09
 
 📦 **Total publiés historiquement :** 4144
 
