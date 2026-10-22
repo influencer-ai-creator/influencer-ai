@@ -184,6 +184,17 @@
     transform: translateY(-1px);
   }
 
+  .hw-card-disabled {
+    cursor: default;
+    opacity: .72;
+    border-style: dashed;
+  }
+
+  .hw-card-disabled:hover {
+    border-color: var(--border);
+    transform: none;
+  }
+
   .hw-label {
     font-size: .68rem;
     font-weight: 600;
@@ -459,24 +470,18 @@
         <div class="hw-sub">16 GB VRAM</div>
         <span class="hw-badge badge-green">Best value</span>
       </a>
-      <a href="https://amzn.to/4wYEW0s" class="hw-card" target="_blank" rel="noopener">
-        <div class="hw-label">Entry Level</div>
-        <div class="hw-title">RTX 3060</div>
-        <div class="hw-sub">12 GB VRAM</div>
-        <span class="hw-badge badge-green">Start here</span>
-      </a>
     </div>
 
-    <p style="font-size:.82rem; color:var(--muted); margin-top:.25rem;">All links are Amazon affiliate — price is identical for you.</p>
+    <p style="font-size:.82rem; color:var(--muted); margin-top:.25rem;">All links are Amazon affiliate — price is identical for you. The RTX 5090 is no longer sold directly by NVIDIA; street prices have been 3.7–4.3× MSRP, so treat it as a halo card, not a value buy.</p>
 
     <h3>RAM</h3>
     <div class="hw-grid">
-      <a href="https://amzn.to/4dUT2Hu" class="hw-card" target="_blank" rel="noopener">
+      <div class="hw-card hw-card-disabled" aria-disabled="true">
         <div class="hw-label">Optimal</div>
-        <div class="hw-title">64 GB DDR5</div>
-        <div class="hw-sub">AI config</div>
-        <span class="hw-badge badge-green">Recommended</span>
-      </a>
+        <div class="hw-title">32 GB DDR5</div>
+        <div class="hw-sub">AI config · link pending</div>
+        <span class="hw-badge badge-amber">Link pending</span>
+      </div>
       <a href="https://amzn.to/4wZYaCO" class="hw-card" target="_blank" rel="noopener">
         <div class="hw-label">Budget</div>
         <div class="hw-title">32 GB DDR4</div>
@@ -484,6 +489,7 @@
         <span class="hw-badge badge-amber">Minimum</span>
       </a>
     </div>
+    <p style="font-size:.82rem; color:var(--muted); margin-top:.25rem;">2026 memory shortage: 32 GB is the sweet spot for this pipeline. Go 64 GB only for large LLMs or many models at once.</p>
 
     <h3>Storage</h3>
     <div class="hw-grid">
@@ -497,7 +503,7 @@
     <p>Model checkpoints weigh 5–20 GB each. A fast SSD drastically reduces load times between model switches.</p>
 
     <div class="callout">
-      <strong>Power supply:</strong> A high-end RTX draws up to 300–450W under load. Plan for an <strong>850W PSU minimum</strong>, 1000W to stay comfortable.
+      <strong>Power supply:</strong> 850W minimum for the RTX 5060 Ti. If you go RTX 5090, plan 1000–1200W.
     </div>
   </section>
 

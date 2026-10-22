@@ -153,6 +153,17 @@
     transform: translateY(-1px);
   }
 
+  .hw-card-disabled {
+    cursor: default;
+    opacity: .72;
+    border-style: dashed;
+  }
+
+  .hw-card-disabled:hover {
+    border-color: var(--border);
+    transform: none;
+  }
+
   .hw-label {
     font-size: .68rem;
     font-weight: 600;
@@ -332,18 +343,12 @@
       <div class="hw-sub">32 GB VRAM</div>
       <span class="hw-badge badge-amber">No limits</span>
     </a>
-    <a href="https://amzn.to/4wYEW0s" class="hw-card" target="_blank" rel="noopener">
-      <div class="hw-label">GPU — Entry</div>
-      <div class="hw-title">RTX 3060</div>
-      <div class="hw-sub">12 GB VRAM</div>
-      <span class="hw-badge badge-green">Get started</span>
-    </a>
-    <a href="https://amzn.to/4dUT2Hu" class="hw-card" target="_blank" rel="noopener">
+    <div class="hw-card hw-card-disabled" aria-disabled="true">
       <div class="hw-label">RAM</div>
-      <div class="hw-title">64 Go DDR5</div>
-      <div class="hw-sub">Optimal config</div>
-      <span class="hw-badge badge-green">Recommended</span>
-    </a>
+      <div class="hw-title">32 Go DDR5</div>
+      <div class="hw-sub">Optimal config · link pending</div>
+      <span class="hw-badge badge-amber">Link pending</span>
+    </div>
     <a href="https://amzn.to/4wZYaCO" class="hw-card" target="_blank" rel="noopener">
       <div class="hw-label">RAM — Budget</div>
       <div class="hw-title">32 Go DDR4</div>
@@ -357,6 +362,7 @@
       <span class="hw-badge badge-green">Must-have</span>
     </a>
   </div>
+  <p style="font-size:.8rem; color:var(--muted); margin-top:.5rem;">The RTX 5090 is no longer sold directly by NVIDIA (street price 3.7–4.3× MSRP), and the 2026 memory shortage makes 32 GB DDR5 the sweet spot. Go 64 GB only for large LLMs.</p>
 
   <hr class="divider">
 
