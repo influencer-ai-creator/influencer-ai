@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "dd5dd930-1308-4a85-86c3-f390bf241b3f",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_04.jpg"
+  ],
+  "caption": "Spent the day exploring the honey-colored limestone of Oxford. The vibe here is unmatched! Which photo is your favorite? 1-5? \n\n#OxfordUni #StudyGram #CampusLife #ArchitectureLovers",
+  "next_time": 1794513600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Spent the day exploring the honey-colored limestone of Oxford. The vibe here is unmatched! Which photo is your favorite? 1-5?\n\n#OxfordUni",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
