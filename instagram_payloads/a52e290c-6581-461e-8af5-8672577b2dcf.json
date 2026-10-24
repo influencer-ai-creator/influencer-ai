@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "a52e290c-6581-461e-8af5-8672577b2dcf",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_a52e290c_video_2108.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just another midnight run through the skeleton of the city.\nIf I don't crash, the landlord can't raise the rent again. 🏍️💨\nWhat’s your favorite route when the neon hits the wet pavement?",
+  "next_time": 1794589200,
+  "storage": "release",
+  "threads_caption": "Just another midnight run through the skeleton of the city.\nIf I don't crash, the landlord can't raise the rent again. 🏍️💨\nWhat’s your favorite route when the neon hits the wet pavement?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
