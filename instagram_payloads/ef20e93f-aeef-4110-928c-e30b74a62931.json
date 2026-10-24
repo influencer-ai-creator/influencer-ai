@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "ef20e93f-aeef-4110-928c-e30b74a62931",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ef20e93f_video_2205.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I thought I'd found the ultimate secret spot, but my camera had other plans... 😅 Found this hidden turquoise oasis and honestly, it took my breath away. Then, the camera had a little \"personality\" of its own. Oops! 🌊✨ #hiddenparadise #travelfail #lagoonlife #adventureseeker #wanderlust #naturelovers",
+  "next_time": 1794603600,
+  "storage": "release",
+  "threads_caption": "I thought I'd found the ultimate secret spot, but my camera had other plans... 😅 Found this hidden turquoise oasis and honestly, it took my breath away. Then, the camera had a little \"personality\" of its own. Oops!\n\n🌊✨ #hiddenparadise",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
