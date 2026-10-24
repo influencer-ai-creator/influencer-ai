@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "eb7193ea-bf43-455b-a66e-9564b4bcbe95",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_03.jpg"
+  ],
+  "caption": "Student (ARC-94) 🪄 Honestly, Madame Valerine is making hydro-alchemy way too easy... or maybe I'm just distracted by her. ✨\n\n#MagicLife #LAcademieDEther #AlchemyClass",
+  "next_time": 1794603600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Student (ARC-94) 🪄 Honestly, Madame Valerine is making hydro-alchemy way too easy... or maybe I'm just distracted by her.\n\n✨ #MagicLife",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
