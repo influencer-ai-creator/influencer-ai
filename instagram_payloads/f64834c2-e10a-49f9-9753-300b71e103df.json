@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "f64834c2-e10a-49f9-9753-300b71e103df",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_f64834c2_video_2234.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Wonder Woman.\n\nJust a quick snap of my fingers and the magic happens! ✨\n\n#SalarDeUyuni #TravelInfluencer #WonderWoman",
+  "next_time": 1794679200,
+  "storage": "release",
+  "threads_caption": "Wonder Woman.\n\nJust a quick snap of my fingers and the magic happens!\n\n✨ #SalarDeUyuni",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
