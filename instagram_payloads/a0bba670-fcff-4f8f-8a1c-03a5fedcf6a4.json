@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "a0bba670-fcff-4f8f-8a1c-03a5fedcf6a4",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a0bba670_video_2230.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "When the beat drops, the rest of the world just fades out. 🎶 Just me, my reflection, and some serious main character energy. ✨ Who knew a hairbrush could be my favorite microphone? 😉🔥 #MirrorMagic #VibeCheck #DanceItOut #MusicLover #SelfLove",
+  "next_time": 1794661200,
+  "storage": "release",
+  "threads_caption": "When the beat drops, the rest of the world just fades out. 🎶 Just me, my reflection, and some serious main character energy. ✨ Who knew a hairbrush could be my favorite microphone?\n\n😉🔥 #MirrorMagic",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

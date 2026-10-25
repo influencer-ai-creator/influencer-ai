@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "4135ea0a-e0a2-4bd6-a183-0ddfbe77da04",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_4135ea0a_video_2109.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Orbit has a much better view than my old apartment.",
+  "next_time": 1794679200,
+  "storage": "release",
+  "threads_caption": "Orbit has a much better view than my old apartment.",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
