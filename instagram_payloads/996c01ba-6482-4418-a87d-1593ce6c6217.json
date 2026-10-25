@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "996c01ba-6482-4418-a87d-1593ce6c6217",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_996c01ba_video_19531.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just me, my mirror, and this beat... 🎶✨ Honestly, sometimes the best performances are the ones nobody sees. Feeling like a total main character today. 💃🔥 #MirrorVibes #DanceItOut #ConfidenceIsKey #OOTD",
+  "next_time": 1794686400,
+  "storage": "release",
+  "threads_caption": "Just me, my mirror, and this beat... 🎶✨ Honestly, sometimes the best performances are the ones nobody sees. Feeling like a total main character today.\n\n💃🔥 #MirrorVibes",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
