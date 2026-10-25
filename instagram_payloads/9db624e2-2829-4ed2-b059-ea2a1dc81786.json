@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "9db624e2-2829-4ed2-b059-ea2a1dc81786",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_9db624e2_video_134.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "surry hills at 2am.\n\nfeet are protesting but the bass is winning.\n\n#surryhills",
+  "next_time": 1793582100,
+  "storage": "release",
+  "threads_caption": "surry hills at 2am.\n\nfeet are protesting but the bass is winning.\n\n#surryhills",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}

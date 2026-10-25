@@ -1,0 +1,27 @@
+{
+  "compte": "grace_story",
+  "pub_id": "6aad5cb6-541e-4279-820c-ca20ccb09c15",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_03.jpg"
+  ],
+  "caption": "hunter valley.\n\nthe golden hour is hitting everything perfectly.\n\nmaking this a regular thing from now on.\n\n🍷",
+  "next_time": 1793551500,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6aad5cb6_slide_136_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "hunter valley.\n\nthe golden hour is hitting everything perfectly.\n\nmaking this a regular thing from now on.\n\n🍷",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
