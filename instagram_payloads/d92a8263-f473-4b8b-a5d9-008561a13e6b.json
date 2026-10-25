@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "d92a8263-f473-4b8b-a5d9-008561a13e6b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_04.jpg"
+  ],
+  "caption": "My week in five suits in Lyon. 🏛️✨ A little Monday to Friday series for my favorite people.\n\nJust a little something to share from the halls of my university. \n\nWhich day was the best dressed? \n\n#UniversityStyle #Lyon #WorkWear #SuitStyle",
+  "next_time": 1794693600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d92a8263_slide_2513_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "My week in five suits in Lyon. 🏛️✨ A little Monday to Friday series for my favorite people.\n\nJust a little something to share from the halls of my university. \n\nWhich day was the best dressed?\n\n#UniversityStyle",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
