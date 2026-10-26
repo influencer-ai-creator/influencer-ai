@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "cbb1fbb9-e3f6-4f96-bf08-a1d1cc4f89a9",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_cbb1fbb9_video_2579.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I just couldn't wait anymore. I ran straight down the aisle and just grabbed her. She looked so shocked for a second, but then she totally melted into it. Best day of my life. #Prague #UniLife #Secret",
+  "next_time": 1794826800,
+  "storage": "release",
+  "threads_caption": "I just couldn't wait anymore. I ran straight down the aisle and just grabbed her. She looked so shocked for a second, but then she totally melted into it. Best day of my life.\n\n#Prague",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}

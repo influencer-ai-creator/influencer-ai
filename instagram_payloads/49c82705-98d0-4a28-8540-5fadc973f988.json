@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "49c82705-98d0-4a28-8540-5fadc973f988",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49c82705_video_19278.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think I just broke the laws of physics.\nJust trying to find a little shade in the Italian sun 🍋✨\nWould you have pressed that button a second time?\n#AmalfiCoast #SummerVibes #WaitForIt #MagicMoment #ItalyTravel #BeachDay #SunDazed #Unexpected #TravelGram #Summer2024",
+  "next_time": 1794744000,
+  "storage": "release",
+  "threads_caption": "I think I just broke the laws of physics.\nJust trying to find a little shade in the Italian sun 🍋✨\nWould you have pressed that button a second time?\n\n#AmalfiCoast",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

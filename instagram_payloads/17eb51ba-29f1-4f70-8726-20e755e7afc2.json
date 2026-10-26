@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "17eb51ba-29f1-4f70-8726-20e755e7afc2",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_02.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_03.jpg"
+  ],
+  "caption": "Spent the most magical afternoon on a boat in Koh Samui, Thailand 🇹🇭. The water was so warm! Which photo is your favorite, 1, 2, 3, or 4?",
+  "next_time": 1794772800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_17eb51ba_slide_19328_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Spent the most magical afternoon on a boat in Koh Samui, Thailand 🇹🇭. The water was so warm! Which photo is your favorite, 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
