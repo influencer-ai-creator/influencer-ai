@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "d7aa38ef-f19c-4ca7-b4ee-c4211bf565ec",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_d7aa38ef_video_2206.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Found a secret sanctuary hidden by the vines... This jungle heat feels amazing against my skin, and this dress is everything. ✨🐍 #junglesecrets #hiddenparadise #travelreels #exploretheunknown #goldenhour",
+  "next_time": 1794765600,
+  "storage": "release",
+  "threads_caption": "Found a secret sanctuary hidden by the vines... This jungle heat feels amazing against my skin, and this dress is everything.\n\n✨🐍 #junglesecrets",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

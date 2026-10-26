@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "bdfaf7f7-82fa-42c3-bed4-23d91757900f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_bdfaf7f7_video_2259.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I was just admiring the ceramics and then... BAM. 😱\n\nShe really knows how to make an entrance! 💋✨\n\n#Kyoto",
+  "next_time": 1794747600,
+  "storage": "release",
+  "threads_caption": "I was just admiring the ceramics and then... BAM. 😱\n\nShe really knows how to make an entrance!\n\n💋✨ #Kyoto",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
