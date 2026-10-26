@@ -1,0 +1,30 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "cf3d13fa-7041-4ef9-bf83-2da4d3fb9aa2",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_03.jpg"
+  ],
+  "caption": "Toured the Foundry Sump tonight. It’s loud and smells like burnt metal, but the architecture is a mood. Which door are we opening? 12, 44, 09, or 88?",
+  "next_time": 1794769200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cf3d13fa_slide_2057_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Toured the Foundry Sump tonight. It’s loud and smells like burnt metal, but the architecture is a mood. Which door are we opening? 12, 44, 09, or 88?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}

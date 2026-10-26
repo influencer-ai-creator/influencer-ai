@@ -1,0 +1,27 @@
+{
+  "compte": "grace_story",
+  "pub_id": "e85e69a0-7058-49b6-9401-f2606934ed48",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_03.jpg"
+  ],
+  "caption": "the swimwear campaign is live.\n\nshot this at bondi a few weeks back. \nso happy with how the shots turned out.\n\nthe white bikini was a bit of a mission to keep in place lol\n\n#bondibeach #swimwear",
+  "next_time": 1793695500,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e85e69a0_slide_141_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "the swimwear campaign is live.\n\nshot this at bondi a few weeks back. \nso happy with how the shots turned out.\n\nthe white bikini was a bit of a mission to keep in place lol\n\n#bondibeach",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
