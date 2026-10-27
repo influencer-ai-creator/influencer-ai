@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "24bb8da6-3ece-4912-a131-e28f9c0809bb",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_24bb8da6_video_2121.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "View from the rafters is better than any penthouse.\nThe air is thin up here and my heart is racing. 🏙️🌀\nWould you dare to take this step?",
+  "next_time": 1794949200,
+  "storage": "release",
+  "threads_caption": "View from the rafters is better than any penthouse.\nThe air is thin up here and my heart is racing. 🏙️🌀\nWould you dare to take this step?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  }
+}
