@@ -1,0 +1,32 @@
+{
+  "compte": "influencer",
+  "pub_id": "b2cd2a84-3735-4dd5-8ae4-da8dc61ff8f6",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_04.jpg"
+  ],
+  "caption": "Uluwatu, Bali. 🥥 Still dreaming about that pool water and the Bali heat. Which photo is your fave, 1, 2, 3, 4, or 5? \n\n#bali #uluwatu #beachclub #summervibes",
+  "next_time": 1794852000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b2cd2a84_slide_2177_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Uluwatu, Bali. 🥥 Still dreaming about that pool water and the Bali heat. Which photo is your fave, 1, 2, 3, 4, or 5?\n\n#bali",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
