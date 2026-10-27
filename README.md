@@ -1,13 +1,6 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 27/10/2026 18:10:03
-
-## ⚠️ Avertissements (best effort, non bloquants)
-
-- `sundress: Story Instagram 2f134782-c0ec-4fda-93a1-85613c677b5e -> Command '['sudo', 'apt-get', 'install', '-y', 'ffmpeg']' timed out after 300 seconds`
-- `sundress: Story Facebook 2f134782-c0ec-4fda-93a1-85613c677b5e -> installation FFmpeg échouée : E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2539 (apt-get)
-E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
-`
+✅ **Dernier run sans erreur** — 27/10/2026 18:14:56
 
 📦 **Total publiés historiquement :** 4177
 
