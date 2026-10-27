@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "637fc2ad-7036-44d4-af4d-a5ef27de3730",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_637fc2ad_video_2277.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think I just broke the most expensive dinner in Russia. 💃✨\n\nThe shocked faces of the billionaires are my new favorite view. 😱🥂\n\n#GalaNight #StPetersburg #MidnightMove #BoredomNoMore",
+  "next_time": 1794834000,
+  "storage": "release",
+  "threads_caption": "I think I just broke the most expensive dinner in Russia. 💃✨\n\nThe shocked faces of the billionaires are my new favorite view.\n\n😱🥂 #GalaNight",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

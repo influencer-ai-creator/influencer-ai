@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "8791569b-2ba9-4c77-9d1a-584ffe218c36",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_8791569b_video_19546.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I’m literally still shaking... I was just minding my business and then BAM. 💋 Someone just claimed me in front of my man. I think I like it. 🔥 #StreetMagic #Unexpected #Coyoacan",
+  "next_time": 1794830400,
+  "storage": "release",
+  "threads_caption": "I’m literally still shaking... I was just minding my business and then BAM. 💋 Someone just claimed me in front of my man. I think I like it.\n\n🔥 #StreetMagic",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
