@@ -1,0 +1,20 @@
+{
+  "compte": "sundress",
+  "pub_id": "da242c5f-de74-4d7b-a3ac-c16fa5d00d4b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_da242c5f_video_19550.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "He thought I was just a pretty picture on a shelf... until he pressed that button. 😉💋 #DollBoutique #SweetSurprise #TokyoNights",
+  "next_time": 1794916800,
+  "storage": "release",
+  "threads_caption": "He thought I was just a pretty picture on a shelf... until he pressed that button.\n\n😉💋 #DollBoutique",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  },
+  "story_only": true
+}

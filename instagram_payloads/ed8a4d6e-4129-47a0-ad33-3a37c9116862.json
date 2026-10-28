@@ -1,0 +1,20 @@
+{
+  "compte": "university",
+  "pub_id": "ed8a4d6e-4129-47a0-ad33-3a37c9116862",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ed8a4d6e_video_2543.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "she really just did that\nthe mercury is literally floating everywhere now 😭\nwho's going to have to clean this up tomorrow?",
+  "next_time": 1794916800,
+  "storage": "release",
+  "threads_caption": "she really just did that\nthe mercury is literally floating everywhere now 😭\nwho's going to have to clean this up tomorrow?",
+  "schedule": {
+    "delay_hours": 25.0,
+    "quiet_hours": [
+      0,
+      12
+    ],
+    "timezone": ""
+  },
+  "story_only": true
+}

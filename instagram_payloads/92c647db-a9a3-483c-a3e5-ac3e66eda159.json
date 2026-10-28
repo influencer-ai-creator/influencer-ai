@@ -1,0 +1,20 @@
+{
+  "compte": "sundress",
+  "pub_id": "92c647db-a9a3-483c-a3e5-ac3e66eda159",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_92c647db_video_19443.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Letting the tropical wind do its thing while I keep my cool. Bali, you’re a dream. 🌴✨ #BaliDays #IslandSoul #GoldenHour",
+  "next_time": 1794945600,
+  "storage": "release",
+  "threads_caption": "Letting the tropical wind do its thing while I keep my cool. Bali, you’re a dream.\n\n🌴✨ #BaliDays",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  },
+  "story_only": true
+}
