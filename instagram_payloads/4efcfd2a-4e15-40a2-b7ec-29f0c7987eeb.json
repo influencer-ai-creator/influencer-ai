@@ -1,0 +1,38 @@
+{
+  "compte": "influencer",
+  "pub_id": "4efcfd2a-4e15-40a2-b7ec-29f0c7987eeb",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_07.jpg"
+  ],
+  "caption": "Madrid nights at L'Atelier were everything! 💃 Still processing the vibes from last night. Which photo is your fave? 1-8? #MadridNightlife #LAtelier #GirlsNightOut",
+  "next_time": 1794938400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4efcfd2a_slide_2150_07.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Madrid nights at L'Atelier were everything! 💃 Still processing the vibes from last night. Which photo is your fave? 1-8?\n\n#MadridNightlife",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
