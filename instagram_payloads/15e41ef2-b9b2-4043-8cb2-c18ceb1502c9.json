@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "15e41ef2-b9b2-4043-8cb2-c18ceb1502c9",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_15e41ef2_video_2518.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "She looked right at us and said, 'If you study hard enough, you might survive the reaction.' I don't think any of us heard a single word after that. #Chemistry #Prague #University",
+  "next_time": 1794942000,
+  "storage": "release",
+  "threads_caption": "She looked right at us and said, 'If you study hard enough, you might survive the reaction.' I don't think any of us heard a single word after that.\n\n#Chemistry",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
