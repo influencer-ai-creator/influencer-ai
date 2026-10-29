@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "7811ed7e-2383-4c60-9a76-cffd00ddb7c9",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_7811ed7e_video_19554.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just grabbing a coffee. ☕️✨ #summerdays #outfitsoftheday #mediterraneanvibes",
+  "next_time": 1795003200,
+  "storage": "release",
+  "threads_caption": "Just grabbing a coffee.\n\n☕️✨ #summerdays",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

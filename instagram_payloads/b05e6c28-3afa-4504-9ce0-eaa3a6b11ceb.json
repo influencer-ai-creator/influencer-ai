@@ -1,0 +1,28 @@
+{
+  "compte": "university",
+  "pub_id": "b05e6c28-3afa-4504-9ce0-eaa3a6b11ceb",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b05e6c28_slide_2504_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b05e6c28_slide_2504_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b05e6c28_slide_2504_02.jpg"
+  ],
+  "caption": "OMG... I am actually stunned. 😱 This outfit is NEXT LEVEL! I can barely focus on the lecture! What would you guys have said if you saw her in my class today? #UniversityLife #ClassroomStyle #PragueDays",
+  "next_time": 1795093200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b05e6c28_slide_2504_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b05e6c28_slide_2504_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b05e6c28_slide_2504_02.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "OMG... I am actually stunned. 😱 This outfit is NEXT LEVEL! I can barely focus on the lecture! What would you guys have said if you saw her in my class today?\n\n#UniversityLife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

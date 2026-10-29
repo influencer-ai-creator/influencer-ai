@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "51b7591d-04cc-4672-b308-e419bbb194fb",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_51b7591d_video_19429.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Watching the knights train by the fire tonight. The sparks look almost as hot as the atmosphere here... 🔥✨ #KingdomMagic #FantasyTravels #CastleNights",
+  "next_time": 1795032000,
+  "storage": "release",
+  "threads_caption": "Watching the knights train by the fire tonight. The sparks look almost as hot as the atmosphere here...\n\n🔥✨ #KingdomMagic",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

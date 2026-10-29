@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "67139e81-7aae-40c4-9431-79408aede48a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_67139e81_video_2605.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I left my phone recording on the desk and just saw what happened after I left. I can't believe she stayed behind with him... that look in her eyes is insane. #universitylife #caughtoncamera #secret",
+  "next_time": 1795006800,
+  "storage": "release",
+  "threads_caption": "I left my phone recording on the desk and just saw what happened after I left. I can't believe she stayed behind with him... that look in her eyes is insane.\n\n#universitylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
