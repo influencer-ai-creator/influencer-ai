@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "29600843-bc64-4388-8799-6a5b22df6d40",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_29600843_video_2297.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Heading out to grab some groceries in this look.\n\nThat look in my eyes at the end says it all... 😉✨\n\n#BerlinNights #OutAndAbout #CityStyle",
+  "next_time": 1795006800,
+  "storage": "release",
+  "threads_caption": "Heading out to grab some groceries in this look.\n\nThat look in my eyes at the end says it all...\n\n😉✨ #BerlinNights",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

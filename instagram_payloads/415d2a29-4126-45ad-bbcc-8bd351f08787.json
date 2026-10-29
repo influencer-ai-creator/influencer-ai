@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "415d2a29-4126-45ad-bbcc-8bd351f08787",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_03.jpg"
+  ],
+  "caption": "Caught the baddest in the building during Renaissance Art. 🥵 Honestly, I can't focus on the frescoes when she's right there. Which one is your fav? 1, 2, 3, or 4? \n#BolognaUni #ArtHistory #HotProf #SecretCampusLife",
+  "next_time": 1795032000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_415d2a29_slide_2522_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Caught the baddest in the building during Renaissance Art. 🥵 Honestly, I can't focus on the frescoes when she's right there. Which one is your fav? 1, 2, 3, or 4?\n\n#BolognaUni",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

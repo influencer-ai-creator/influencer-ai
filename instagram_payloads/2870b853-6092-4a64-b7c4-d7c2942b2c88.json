@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "2870b853-6092-4a64-b7c4-d7c2942b2c88",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_2870b853_video_2133.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "This rain hits different tonight.\nIt stings the metal and my skin 🌧️⚡\nWhat's your favorite spot to hide out in?",
+  "next_time": 1795003200,
+  "storage": "release",
+  "threads_caption": "This rain hits different tonight.\nIt stings the metal and my skin 🌧️⚡\nWhat's your favorite spot to hide out in?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

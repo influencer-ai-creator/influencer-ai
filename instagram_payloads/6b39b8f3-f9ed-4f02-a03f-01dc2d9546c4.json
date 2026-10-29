@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "6b39b8f3-f9ed-4f02-a03f-01dc2d9546c4",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b39b8f3_video_2228.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just taking a little break where the air gets thin and the view gets wild. 🌊 One wrong move and I’m basically a bird now! 🕊️✨\n\n#AmalfiCoast #CliffsideMagic #LivingOnTheEdge",
+  "next_time": 1795024800,
+  "storage": "release",
+  "threads_caption": "Just taking a little break where the air gets thin and the view gets wild. 🌊 One wrong move and I’m basically a bird now!\n\n🕊️✨ #AmalfiCoast",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

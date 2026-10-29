@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "e52d60a0-fa3a-490e-b97d-e54ddedff0a5",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e52d60a0_video_139.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "wine's gone, the cheese is barely touched. we aren't moving until the fairy lights run out of juice. 🥂\n\n#bondi #lateoctober",
+  "next_time": 1793994300,
+  "storage": "release",
+  "threads_caption": "wine's gone, the cheese is barely touched. we aren't moving until the fairy lights run out of juice.\n\n🥂 #bondi",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
