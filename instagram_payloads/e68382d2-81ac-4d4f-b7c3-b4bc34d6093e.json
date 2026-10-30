@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "e68382d2-81ac-4d4f-b7c3-b4bc34d6093e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e68382d2_video_2173.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Hidden secrets and ancient echoes... 🕯️✨ Exploring these secret caves feels like stepping into another world. This place is magic. #cappadocia #caveexplorer #hiddenbeauty #traveldiaries #secretspots #europeantravel",
+  "next_time": 1795111200,
+  "storage": "release",
+  "threads_caption": "Hidden secrets and ancient echoes... 🕯️✨ Exploring these secret caves feels like stepping into another world. This place is magic.\n\n#cappadocia",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

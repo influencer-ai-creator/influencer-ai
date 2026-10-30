@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "93206782-e715-4f92-8bec-8421076a78fc",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_93206782_video_2009.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "My wings are getting heavier.\nThe wind is a bit much tonight. 💨🌃\nDo these pods look ready?",
+  "next_time": 1795114800,
+  "storage": "release",
+  "threads_caption": "My wings are getting heavier.\nThe wind is a bit much tonight. 💨🌃\nDo these pods look ready?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
