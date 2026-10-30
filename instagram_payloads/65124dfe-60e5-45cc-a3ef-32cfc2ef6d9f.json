@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "65124dfe-60e5-45cc-a3ef-32cfc2ef6d9f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_65124dfe_video_19392.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Finding my rhythm in the Italian coast... the view is almost as breathtaking as the breeze. 🌿✨ #AmalfiCoast #RavelloMoments #TravelDiaries",
+  "next_time": 1795089600,
+  "storage": "release",
+  "threads_caption": "Finding my rhythm in the Italian coast... the view is almost as breathtaking as the breeze.\n\n🌿✨ #AmalfiCoast",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

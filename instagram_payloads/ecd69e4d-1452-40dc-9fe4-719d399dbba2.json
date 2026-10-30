@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "ecd69e4d-1452-40dc-9fe4-719d399dbba2",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ecd69e4d_video_2281.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Walking through Diagon Alley feels like a literal dream. ✨ Ollivander just handed me a wand that feels like it has a soul of its own! 🪄\n\n#HarryPotter",
+  "next_time": 1795093200,
+  "storage": "release",
+  "threads_caption": "Walking through Diagon Alley feels like a literal dream. ✨ Ollivander just handed me a wand that feels like it has a soul of its own!\n\n🪄 #HarryPotter",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

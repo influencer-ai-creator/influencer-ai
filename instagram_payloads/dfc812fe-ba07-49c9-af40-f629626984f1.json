@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "dfc812fe-ba07-49c9-af40-f629626984f1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_dfc812fe_video_1934.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Laundry day is a mood.\nHigh-tech machines still can't figure out how to handle my laundry pile. 🧺💨\nWho else hates laundry?\n#cyberpunk2077 #neoncity #techwear #streetstyle #futurelife #laundryday",
+  "next_time": 1795089600,
+  "storage": "release",
+  "threads_caption": "Laundry day is a mood.\nHigh-tech machines still can't figure out how to handle my laundry pile. 🧺💨\nWho else hates laundry?\n\n#cyberpunk2077",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

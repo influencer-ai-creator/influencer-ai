@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "fb6f4db1-7fef-4711-afd5-659acd44cae8",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_fb6f4db1_video_19414.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Chasing the last bit of golden light in Oia. This view is even better than I imagined. ✨💛 #santorini #greeksummer",
+  "next_time": 1795118400,
+  "storage": "release",
+  "threads_caption": "Chasing the last bit of golden light in Oia. This view is even better than I imagined.\n\n✨💛 #santorini",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
