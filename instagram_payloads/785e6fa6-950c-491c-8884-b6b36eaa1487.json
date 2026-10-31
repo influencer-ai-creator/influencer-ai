@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "785e6fa6-950c-491c-8884-b6b36eaa1487",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_785e6fa6_video_2013.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just trying to find this one copper wire.\n🔌🔧\nAnyone else have a mountain of junk to sort through?",
+  "next_time": 1795176000,
+  "storage": "release",
+  "threads_caption": "Just trying to find this one copper wire.\n🔌🔧\nAnyone else have a mountain of junk to sort through?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "a2ac8400-2002-4708-9c36-6babc504cb72",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a2ac8400_video_2185.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Timothée Chalamet literally stopped in his tracks and gave me the look of a lifetime. \n\nI am actually shaking right now, someone please pinch me! 😭✨ \n\nShould I post the selfie or keep it as my little secret? \n\n#Paris #TimotheeChalamet #TravelVlog",
+  "next_time": 1795179600,
+  "storage": "release",
+  "threads_caption": "Timothée Chalamet literally stopped in his tracks and gave me the look of a lifetime. \n\nI am actually shaking right now, someone please pinch me! 😭✨ \n\nShould I post the selfie or keep it as my little secret?\n\n#Paris",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

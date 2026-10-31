@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "b04ffaa2-53a5-4178-9443-967778bdf2f6",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_b04ffaa2_video_19461.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The golden hour in Seville hits different. ✨ Feeling like a queen on these cobblestones. 🧡 #SevilleStyle #GoldenHourMagic #TravelDiaries",
+  "next_time": 1795204800,
+  "storage": "release",
+  "threads_caption": "The golden hour in Seville hits different. ✨ Feeling like a queen on these cobblestones.\n\n🧡 #SevilleStyle",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

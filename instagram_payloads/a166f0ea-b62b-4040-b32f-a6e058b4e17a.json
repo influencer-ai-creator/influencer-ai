@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "a166f0ea-b62b-4040-b32f-a6e058b4e17a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a166f0ea_video_137.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "almost took a dive into the harbour. luckily the board stayed under me.\n\n#sydney #paddleboard",
+  "next_time": 1794131100,
+  "storage": "release",
+  "threads_caption": "almost took a dive into the harbour. luckily the board stayed under me.\n\n#sydney",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}

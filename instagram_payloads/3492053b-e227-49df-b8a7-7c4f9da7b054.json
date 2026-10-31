@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "3492053b-e227-49df-b8a7-7c4f9da7b054",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3492053b_video_19336.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I'm finding my rhythm in the hidden courtyards of Marrakech. This courtyard is my secret sanctuary for the afternoon. 🌿✨ #MarrakechMoments #HiddenGem",
+  "next_time": 1795176000,
+  "storage": "release",
+  "threads_caption": "I'm finding my rhythm in the hidden courtyards of Marrakech. This courtyard is my secret sanctuary for the afternoon.\n\n🌿✨ #MarrakechMoments",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
