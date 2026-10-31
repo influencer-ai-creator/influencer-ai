@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "74c7bd97-465c-4e33-bced-e5ad361d5664",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_74c7bd97_video_138.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "got lost on a coastal detour.\n\nthe map is useless but the ocean is perfect.\n#sydney",
+  "next_time": 1794062700,
+  "storage": "release",
+  "threads_caption": "got lost on a coastal detour.\n\nthe map is useless but the ocean is perfect.\n\n#sydney",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}

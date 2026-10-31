@@ -1,0 +1,38 @@
+{
+  "compte": "university",
+  "pub_id": "0b2e06e4-24b8-4f91-8530-8f4cd0aa54d6",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_07.jpg"
+  ],
+  "caption": "I teach at the Parthenon, and my class has met there in every age. TIME IS LITERALLY FLIPPING. Which uniform looks best on her? 1-8? #Parthenon #TimeTravel #History",
+  "next_time": 1795204800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_0b2e06e4_slide_2572_07.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "I teach at the Parthenon, and my class has met there in every age. TIME IS LITERALLY FLIPPING. Which uniform looks best on her? 1-8?\n\n#Parthenon",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

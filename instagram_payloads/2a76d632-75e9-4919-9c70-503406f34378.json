@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "2a76d632-75e9-4919-9c70-503406f34378",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a76d632_video_2174.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Mila here. 🌸 There is something about the Mediterranean breeze and the sun hitting my skin that makes me feel absolutely unstoppable. Just soaking up every second of this freedom. ✨ #SpringGetaway #SunKissed #TravelGirl",
+  "next_time": 1795197600,
+  "storage": "release",
+  "threads_caption": "Mila here. 🌸 There is something about the Mediterranean breeze and the sun hitting my skin that makes me feel absolutely unstoppable. Just soaking up every second of this freedom.\n\n✨ #SpringGetaway",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

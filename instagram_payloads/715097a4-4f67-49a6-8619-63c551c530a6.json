@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "715097a4-4f67-49a6-8619-63c551c530a6",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_715097a4_video_2085.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just the usual commute to the top.\nElevator's a bit of a speed demon tonight, but my glow-up can't wait 🚀✨\nWhich part of the look is hitting hardest?",
+  "next_time": 1795201200,
+  "storage": "release",
+  "threads_caption": "Just the usual commute to the top.\nElevator's a bit of a speed demon tonight, but my glow-up can't wait 🚀✨\nWhich part of the look is hitting hardest?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
