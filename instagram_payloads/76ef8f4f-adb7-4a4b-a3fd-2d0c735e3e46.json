@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "76ef8f4f-adb7-4a4b-a3fd-2d0c735e3e46",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_03.jpg"
+  ],
+  "caption": "Me and the squad in V428. Honestly, our teacher makes Architectural History the best part of my day! 🏛️✨ #MelbourneUni #ArchHistory",
+  "next_time": 1795266000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_76ef8f4f_slide_2610_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Me and the squad in V428. Honestly, our teacher makes Architectural History the best part of my day!\n\n🏛️✨ #MelbourneUni",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
