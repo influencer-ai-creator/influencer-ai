@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "f216a94d-62c1-4543-a3ae-56c781d2a81f",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_04.jpg"
+  ],
+  "caption": "Student 1 · KRM-37\nFinally getting through the botanical binding module with the best teacher ever! She makes the complex stuff look so easy. 🌿✨\n#magiclife #botanicalbinding #krm37 #schoolofmagic",
+  "next_time": 1795291200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f216a94d_slide_2611_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Student 1 · KRM-37\nFinally getting through the botanical binding module with the best teacher ever! She makes the complex stuff look so easy.\n\n🌿✨ #magiclife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
