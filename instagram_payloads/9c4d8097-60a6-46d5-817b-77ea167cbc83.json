@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "9c4d8097-60a6-46d5-817b-77ea167cbc83",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_04.jpg"
+  ],
+  "caption": "My week in five suits in Coimbra 🇵🇹✨\n\nJust a little change of scenery for my favorite people. I'm loving the history of these old walls.\n\nWhich day was the best dressed?\n\n#Coimbra #UniversityLife #OOTD #WorkStyle #TailoredSuits",
+  "next_time": 1795118400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "My week in five suits in Coimbra 🇵🇹✨\n\nJust a little change of scenery for my favorite people. I'm loving the history of these old walls.\n\nWhich day was the best dressed?\n\n#Coimbra",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

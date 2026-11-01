@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "acf5d694-148c-46fc-8ace-f9e5a5c3ad0d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_03.jpg"
+  ],
+  "caption": "I'm your teacher for L509. My students in Kraków are absolute gems—so sharp and dedicated. ✨ #Krakow #UniversityLife #L509",
+  "next_time": 1795032000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "I'm your teacher for L509. My students in Kraków are absolute gems—so sharp and dedicated.\n\n✨ #Krakow",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

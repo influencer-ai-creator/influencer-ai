@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "50ae6105-0051-4779-a52b-d7721fa924af",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_04.jpg"
+  ],
+  "caption": "literally lost my mind in IR today... she's a goddess 😭 which one is the vibe? 1-5? #utrechtuni #studygram",
+  "next_time": 1794859200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_50ae6105_slide_2512_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "literally lost my mind in IR today... she's a goddess 😭 which one is the vibe? 1-5?\n\n#utrechtuni",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

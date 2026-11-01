@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "fc48a5f3-bb3f-440a-ab76-1304fedbcaf0",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_fc48a5f3_video_2570.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "oops.\nclassroom is basically a spike pit now 💀🌵\nshould i tell her it was your fault?",
+  "next_time": 1794945600,
+  "storage": "release",
+  "threads_caption": "oops.\nclassroom is basically a spike pit now 💀🌵\nshould i tell her it was your fault?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

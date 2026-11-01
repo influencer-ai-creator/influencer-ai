@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "3aac0483-22dc-4d79-a612-6166ab0a9356",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_03.jpg"
+  ],
+  "caption": "I CANNOT BELIEVE she showed up in that metallic silver bodysuit today. That neckline is just... WOW. 🙊 What do we think? #UniversityLife #StudentStyle",
+  "next_time": 1794920400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3aac0483_slide_2523_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "I CANNOT BELIEVE she showed up in that metallic silver bodysuit today. That neckline is just... WOW. 🙊 What do we think?\n\n#UniversityLife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
