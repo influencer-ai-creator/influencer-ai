@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "94b39929-04e2-447f-a7ba-b2cba17a20bd",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_94b39929_video_2303.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I couldn't stop tugging at this oversized sweater, but I knew exactly what would happen when I finally let it go.\n\nThat look at the end says it all... 😉✨\n\n#ProvenceVibes #StyleReveal #CozyToClassy",
+  "next_time": 1795111200,
+  "storage": "release",
+  "threads_caption": "I couldn't stop tugging at this oversized sweater, but I knew exactly what would happen when I finally let it go.\n\nThat look at the end says it all...\n\n😉✨ #ProvenceVibes",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
