@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_03.jpg"
   ],
   "caption": "Found a dusty spot in the Cobalt-Solder Arcade. Spent my night trying to beat the high scores and getting zero wins. Which photo you prefer? Give me the number.",
-  "next_time": 1794139200,
+  "next_time": 1793818800,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d8a1a43_slide_2054_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "Found a dusty spot in the Cobalt-Solder Arcade. Spent my night trying to beat the high scores and getting zero wins. Which photo you prefer? Give me the number.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

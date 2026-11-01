@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I just need to finish this load.",
-  "next_time": 1793916000,
+  "next_time": 1793732400,
   "storage": "release",
   "threads_caption": "I just need to finish this load.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

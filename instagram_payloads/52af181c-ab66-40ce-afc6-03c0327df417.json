@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just another commute to the clouds.\nAt least I don't have to deal with the street traffic 🌌🏙️.\nHow do you handle the high-rise life?",
-  "next_time": 1794049200,
+  "next_time": 1793793600,
   "storage": "release",
   "threads_caption": "Just another commute to the clouds.\nAt least I don't have to deal with the street traffic 🌌🏙️.\nHow do you handle the high-rise life?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

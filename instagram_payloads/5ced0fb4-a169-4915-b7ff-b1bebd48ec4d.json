@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_04.jpg"
   ],
   "caption": "Back at the tower. Still can't decide what to wear out for the night. Which one should I go with? Tell me the number.",
-  "next_time": 1794229200,
+  "next_time": 1793880000,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5ced0fb4_slide_2060_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "Back at the tower. Still can't decide what to wear out for the night. Which one should I go with? Tell me the number.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Living in the future doesn't mean the plumbing actually works.\nMy attempt to be a DIY hero just turned this leak into a literal flood. 🙄💦\nTell me I'm not the only one who thinks they can fix city infrastructure?",
-  "next_time": 1794499200,
+  "next_time": 1793991600,
   "storage": "release",
   "threads_caption": "Living in the future doesn't mean the plumbing actually works.\nMy attempt to be a DIY hero just turned this leak into a literal flood. 🙄💦\nTell me I'm not the only one who thinks they can fix city infrastructure?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

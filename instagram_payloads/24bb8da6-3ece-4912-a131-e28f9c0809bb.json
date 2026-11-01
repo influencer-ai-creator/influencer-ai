@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "View from the rafters is better than any penthouse.\nThe air is thin up here and my heart is racing. 🏙️🌀\nWould you dare to take this step?",
-  "next_time": 1794949200,
+  "next_time": 1794225600,
   "storage": "release",
   "threads_caption": "View from the rafters is better than any penthouse.\nThe air is thin up here and my heart is racing. 🏙️🌀\nWould you dare to take this step?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

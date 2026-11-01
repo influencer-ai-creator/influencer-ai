@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Tonight's ride is a bit of a bumpy one.\nThree districts, three tantrums 😤⚙️\nWhich piece of city tech is the most annoying today?",
-  "next_time": 1794319200,
+  "next_time": 1793905200,
   "storage": "release",
   "threads_caption": "Tonight's ride is a bit of a bumpy one.\nThree districts, three tantrums 😤⚙️\nWhich piece of city tech is the most annoying today?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }
