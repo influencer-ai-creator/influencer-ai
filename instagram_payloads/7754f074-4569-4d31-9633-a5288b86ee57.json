@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Found myself chasing horizons that shouldn't exist. ✈️ Every turn reveals a new impossible world and a stunning muse to share the ride. These memories are pure magic. ✨ #TravelDream #ImpossibleWorlds #AdventureAwaits #HiddenParadise #ExplorerLife #Wanderlust",
-  "next_time": 1794153600,
+  "next_time": 1793883600,
   "storage": "release",
   "threads_caption": "Found myself chasing horizons that shouldn't exist. ✈️ Every turn reveals a new impossible world and a stunning muse to share the ride. These memories are pure magic.\n\n✨ #TravelDream",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }

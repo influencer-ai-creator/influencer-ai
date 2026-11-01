@@ -5,7 +5,15 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Hold onto your seats, because we’re breaking every rule of geography today. 🌌 I took the camera on a little trip through places that shouldn't exist, but honestly, they look way too real. We hit the Ivory Orchard—so hauntingly beautiful—and caught a couple lost in a kiss until I got way too close. 🤫 They didn't take it well! Then we dove into a sea of liquid mercury and jagged glass, only to be chased off by another pair of lovers who were just as heated. Finally, we hit the Obsidian Spire Forest, where the ground practically glows. These girls have no chill when they get caught on camera, but the view? Absolutely priceless. ✨💃\n\n#ImpossibleWorlds #DroneRide #Dreamscapes #TravelGram #VisualVibe",
-  "next_time": 1793703600,
+  "next_time": 1793642400,
   "storage": "release",
-  "threads_caption": "Hold onto your seats, because we’re breaking every rule of geography today. 🌌 I took the camera on a little trip through places that shouldn't exist, but honestly, they look way too real. We hit the Ivory Orchard—so hauntingly beautiful—and caught a couple lost in a kiss until I got way too close. 🤫 They didn't take it well! Then we dove into a sea of liquid mercury and jagged glass, only to be chased off by another pair of lovers who were just as heated.\n\n✨💃 #ImpossibleWorlds"
+  "threads_caption": "Hold onto your seats, because we’re breaking every rule of geography today. 🌌 I took the camera on a little trip through places that shouldn't exist, but honestly, they look way too real. We hit the Ivory Orchard—so hauntingly beautiful—and caught a couple lost in a kiss until I got way too close. 🤫 They didn't take it well! Then we dove into a sea of liquid mercury and jagged glass, only to be chased off by another pair of lovers who were just as heated.\n\n✨💃 #ImpossibleWorlds",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
 }

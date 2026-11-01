@@ -11,7 +11,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_158589f1_slide_2182_05.jpg"
   ],
   "caption": "Finally feeling that spring warmth on my skin. ☀️ There’s something so liberating about getting lost in the Italian coast with nothing but the sun and a little bit of confidence. Living my best life, one sip at a time. 🍹 #SpringTravel #ItalianCoast #SunKissed #TravelVibes",
-  "next_time": 1793973600,
+  "next_time": 1793797200,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_158589f1_slide_2182_00.jpg",
@@ -24,10 +24,10 @@
   "story_slides": true,
   "threads_caption": "Finally feeling that spring warmth on my skin. ☀️ There’s something so liberating about getting lost in the Italian coast with nothing but the sun and a little bit of confidence. Living my best life, one sip at a time.\n\n🍹 #SpringTravel",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }

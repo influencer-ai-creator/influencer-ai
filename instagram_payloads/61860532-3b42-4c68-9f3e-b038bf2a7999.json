@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_61860532_slide_2145_03.jpg"
   ],
   "caption": "In Iceland 🇮🇸 trying this pose challenge at the basalt columns! Who holds the pose best? 1, 2, 3, or 4? \n\n#Iceland #TravelGram #PoseChallenge #Adventure",
-  "next_time": 1793883600,
+  "next_time": 1793728800,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_61860532_slide_2145_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "In Iceland 🇮🇸 trying this pose challenge at the basalt columns! Who holds the pose best? 1, 2, 3, or 4?\n\n#Iceland",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }

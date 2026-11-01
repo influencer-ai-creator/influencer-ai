@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_03.jpg"
   ],
   "caption": "We’re in Iceland at Reynisfjara! 🇮🇸 Let’s play a game: one spot, one pose, four different vibes. Who held the pose best? Let us know your favorite number! 👇 #IcelandTravel #Reynisfjara #TravelGame #SquadGoals",
-  "next_time": 1794063600,
+  "next_time": 1793815200,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6b14f6a9_slide_2171_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "We’re in Iceland at Reynisfjara! 🇮🇸 Let’s play a game: one spot, one pose, four different vibes. Who held the pose best? Let us know your favorite number!\n\n👇 #IcelandTravel",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }
