@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "she really just did that\nthe mercury is literally floating everywhere now 😭\nwho's going to have to clean this up tomorrow?",
-  "next_time": 1794916800,
+  "next_time": 1794229200,
   "storage": "release",
   "threads_caption": "she really just did that\nthe mercury is literally floating everywhere now 😭\nwho's going to have to clean this up tomorrow?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   },

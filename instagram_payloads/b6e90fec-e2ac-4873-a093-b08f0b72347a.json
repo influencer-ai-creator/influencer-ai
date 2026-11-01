@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6e90fec_slide_2511_03.jpg"
   ],
   "caption": "Caught the hottest prof in Warsaw doing her thing 🥵 Political Theory is basically just a vibe now. Which pic is your fav? 1, 2, 3, or 4? \n\n#universitylife #warsaw #campuslife #candid #profbeauty",
-  "next_time": 1793703600,
+  "next_time": 1793649600,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6e90fec_slide_2511_00.jpg",
@@ -18,5 +18,13 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6e90fec_slide_2511_03.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "Caught the hottest prof in Warsaw doing her thing 🥵 Political Theory is basically just a vibe now. Which pic is your fav? 1, 2, 3, or 4?\n\n#universitylife"
+  "threads_caption": "Caught the hottest prof in Warsaw doing her thing 🥵 Political Theory is basically just a vibe now. Which pic is your fav? 1, 2, 3, or 4?\n\n#universitylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
 }
