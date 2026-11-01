@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "351a1e3a-a443-41df-a1a8-cdf00f01ef3b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_351a1e3a_video_2541.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "alchemy lab today lol\n\nshe literally almost took out the whole front row... 💀😭\n\nwhat would you do if this happened?",
+  "next_time": 1795266000,
+  "storage": "release",
+  "threads_caption": "alchemy lab today lol\n\nshe literally almost took out the whole front row... 💀😭\n\nwhat would you do if this happened?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

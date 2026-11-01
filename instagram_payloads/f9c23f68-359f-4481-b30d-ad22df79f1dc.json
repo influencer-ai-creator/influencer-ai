@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "f9c23f68-359f-4481-b30d-ad22df79f1dc",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_f9c23f68_video_2651.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i'm actually moving to another country after this\ni think i just ended my career... look at her face 😭\ntell me i'm not getting expelled lol",
+  "next_time": 1795204800,
+  "storage": "release",
+  "threads_caption": "i'm actually moving to another country after this\ni think i just ended my career... look at her face 😭\ntell me i'm not getting expelled lol",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
