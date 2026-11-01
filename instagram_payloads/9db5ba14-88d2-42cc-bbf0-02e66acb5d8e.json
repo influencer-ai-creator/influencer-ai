@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "9db5ba14-88d2-42cc-bbf0-02e66acb5d8e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9db5ba14_video_2659.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think I’m getting faster, but my neighbors probably disagree.\nThe neighbors are definitely going to complain about the noise today 🙄🧹.\nDo you think I should start a broom delivery service?",
+  "next_time": 1795179600,
+  "storage": "release",
+  "threads_caption": "I think I’m getting faster, but my neighbors probably disagree.\nThe neighbors are definitely going to complain about the noise today 🙄🧹.\nDo you think I should start a broom delivery service?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
