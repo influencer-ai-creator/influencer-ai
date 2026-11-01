@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "7ef6febb-379a-409b-ba3e-5ddf5c47bc9b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_7ef6febb_video_19481.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just feeling the rhythm of the ancients. 🏺✨ Someone tried to ruin my flow, but I had to keep the energy pure. Moving on. #Luxor #MagicVibes #TravelInfluencer",
+  "next_time": 1795291200,
+  "storage": "release",
+  "threads_caption": "Just feeling the rhythm of the ancients. 🏺✨ Someone tried to ruin my flow, but I had to keep the energy pure. Moving on.\n\n#Luxor",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
