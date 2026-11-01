@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "2a841ee4-2539-42ec-8d20-fbdf312f12f7",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_2a841ee4_video_2122.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just a little peek from the roof.\nThe ground is a million miles away 🏙️✨.\nWould you jump or stay?",
+  "next_time": 1794855600,
+  "storage": "release",
+  "threads_caption": "Just a little peek from the roof.\nThe ground is a million miles away 🏙️✨.\nWould you jump or stay?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

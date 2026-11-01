@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "8d7381ca-d41f-4cf0-a634-60340df41149",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_8d7381ca_video_2134.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The sky is melting into the pavement again.\nThat orange mist tastes like copper and electricity 🧡⚡\nCan you feel the heat through the screen?",
+  "next_time": 1794942000,
+  "storage": "release",
+  "threads_caption": "The sky is melting into the pavement again.\nThat orange mist tastes like copper and electricity 🧡⚡\nCan you feel the heat through the screen?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

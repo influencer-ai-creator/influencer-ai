@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "5bb0a5b2-6e3a-4b98-9ca4-af00b3ee8515",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5bb0a5b2_video_1940.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just trying to grab a quick synth-noodle before my shift starts.\nThis district's 'smart' infrastructure is clearly having a mid-life crisis again. 🙄💥\nTell me your favorite spot to hide when the grid starts glitching.\n#2077life #neoncity #techwear #dailyvlog #cityglitch #cybercity",
+  "next_time": 1795003200,
+  "storage": "release",
+  "threads_caption": "Just trying to grab a quick synth-noodle before my shift starts.\nThis district's 'smart' infrastructure is clearly having a mid-life crisis again. 🙄💥\nTell me your favorite spot to hide when the grid starts glitching.\n\n#2077life",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
