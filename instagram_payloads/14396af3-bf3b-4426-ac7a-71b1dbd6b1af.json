@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "14396af3-bf3b-4426-ac7a-71b1dbd6b1af",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_14396af3_video_2271.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I was literally just minding my business when a complete stranger decided to claim my lips in the middle of the street. 😲\n\nMy heart is still racing, but honestly? I’m not even mad about it. 🫦✨\n\n#MarrakeshMagic #UnexpectedMoments #StreetLove #Morocco",
+  "next_time": 1795197600,
+  "storage": "release",
+  "threads_caption": "I was literally just minding my business when a complete stranger decided to claim my lips in the middle of the street. 😲\n\nMy heart is still racing, but honestly? I’m not even mad about it.\n\n🫦✨ #MarrakeshMagic",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

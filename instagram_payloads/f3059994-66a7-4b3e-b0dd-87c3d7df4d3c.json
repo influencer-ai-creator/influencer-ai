@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "f3059994-66a7-4b3e-b0dd-87c3d7df4d3c",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f3059994_video_2150.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "At least the seams hold.",
+  "next_time": 1795089600,
+  "storage": "release",
+  "threads_caption": "At least the seams hold.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

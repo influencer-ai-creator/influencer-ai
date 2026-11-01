@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "909c1510-f0b4-46f3-9b24-21798039d588",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_909c1510_video_2125.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Chasing the dusk glow tonight.\nAmber, Magenta, and Violet stops. 🏗️✨💜\nWhich district had the best vibe?",
+  "next_time": 1795262400,
+  "storage": "release",
+  "threads_caption": "Chasing the dusk glow tonight.\nAmber, Magenta, and Violet stops. 🏗️✨💜\nWhich district had the best vibe?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
