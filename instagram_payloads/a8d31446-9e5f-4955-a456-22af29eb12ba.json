@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Cleaning up the lower levels again.",
-  "next_time": 1794859200,
+  "next_time": 1794164400,
   "storage": "release",
   "threads_caption": "Cleaning up the lower levels again.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

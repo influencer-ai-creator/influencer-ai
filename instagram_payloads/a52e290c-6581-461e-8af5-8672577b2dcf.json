@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just another midnight run through the skeleton of the city.\nIf I don't crash, the landlord can't raise the rent again. 🏍️💨\nWhat’s your favorite route when the neon hits the wet pavement?",
-  "next_time": 1794589200,
+  "next_time": 1794052800,
   "storage": "release",
   "threads_caption": "Just another midnight run through the skeleton of the city.\nIf I don't crash, the landlord can't raise the rent again. 🏍️💨\nWhat’s your favorite route when the neon hits the wet pavement?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

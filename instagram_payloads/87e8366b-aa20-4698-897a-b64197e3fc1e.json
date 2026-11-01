@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "My commute is more of a rollercoaster than a ride.\n🎢🚇\nDoes anyone else just zone out to this?",
-  "next_time": 1794409200,
+  "next_time": 1793966400,
   "storage": "release",
   "threads_caption": "My commute is more of a rollercoaster than a ride.\n🎢🚇\nDoes anyone else just zone out to this?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }

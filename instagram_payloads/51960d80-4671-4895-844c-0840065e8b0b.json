@@ -5,7 +5,15 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just another night on the express.\nTrying to keep my face on while the tracks try to shake it off 🎢💨.\nAnyone else find this ride as boring as I do?",
-  "next_time": 1793736000,
+  "next_time": 1793646000,
   "storage": "release",
-  "threads_caption": "Just another night on the express.\nTrying to keep my face on while the tracks try to shake it off 🎢💨.\nAnyone else find this ride as boring as I do?"
+  "threads_caption": "Just another night on the express.\nTrying to keep my face on while the tracks try to shake it off 🎢💨.\nAnyone else find this ride as boring as I do?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
 }

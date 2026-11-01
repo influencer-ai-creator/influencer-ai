@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_03.jpg"
   ],
   "caption": "Just got back to the flat. Trying to pick a fit for tonight. The city is calling but my closet is failing me. Which one?",
-  "next_time": 1793826000,
+  "next_time": 1793707200,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_00.jpg",
@@ -18,5 +18,13 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cdb15b26_slide_2073_03.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "Just got back to the flat. Trying to pick a fit for tonight. The city is calling but my closet is failing me. Which one?"
+  "threads_caption": "Just got back to the flat. Trying to pick a fit for tonight. The city is calling but my closet is failing me. Which one?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
 }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Orbit has a much better view than my old apartment.",
-  "next_time": 1794679200,
+  "next_time": 1794078000,
   "storage": "release",
   "threads_caption": "Orbit has a much better view than my old apartment.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      13
     ],
     "timezone": ""
   }
