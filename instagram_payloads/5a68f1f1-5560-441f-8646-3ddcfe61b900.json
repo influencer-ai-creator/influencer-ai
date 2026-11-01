@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "5a68f1f1-5560-441f-8646-3ddcfe61b900",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_5a68f1f1_video_2021.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "My legs are still shaking from that drop.\nBut the paycheck covers the caffeine I'll need now. ☕️💸\nWhat's your preferred way to avoid the stairs?",
+  "next_time": 1794916800,
+  "storage": "release",
+  "threads_caption": "My legs are still shaking from that drop.\nBut the paycheck covers the caffeine I'll need now. ☕️💸\nWhat's your preferred way to avoid the stairs?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

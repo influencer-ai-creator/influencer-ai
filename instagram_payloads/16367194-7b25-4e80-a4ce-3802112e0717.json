@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "16367194-7b25-4e80-a4ce-3802112e0717",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_16367194_video_2151.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Honestly, I think this shirt is just holding on for dear life.\nIt’s doing its best to be a floor, but I’m not helping. 🙄🧥\nDoes your laundry ever have this much attitude?",
+  "next_time": 1794769200,
+  "storage": "release",
+  "threads_caption": "Honestly, I think this shirt is just holding on for dear life.\nIt’s doing its best to be a floor, but I’m not helping. 🙄🧥\nDoes your laundry ever have this much attitude?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
