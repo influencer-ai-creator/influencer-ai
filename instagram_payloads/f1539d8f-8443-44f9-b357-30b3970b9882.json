@@ -1,0 +1,30 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "f1539d8f-8443-44f9-b357-30b3970b9882",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_03.jpg"
+  ],
+  "caption": "Wandered through the Marrow-Well. It smells like copper and old ozone today. Which door would you push? 03, 18, 42, or 67?",
+  "next_time": 1794744000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f1539d8f_slide_2058_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Wandered through the Marrow-Well. It smells like copper and old ozone today. Which door would you push? 03, 18, 42, or 67?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "2957df03-2373-4dfd-8e0f-cd08df60ea8d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_2957df03_video_2110.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Orbit has its own kind of nightlife.\nJust me, the station hum, and a very expensive view. 🌌✨\nWhere would you rather watch the sunrise from?",
+  "next_time": 1794682800,
+  "storage": "release",
+  "threads_caption": "Orbit has its own kind of nightlife.\nJust me, the station hum, and a very expensive view. 🌌✨\nWhere would you rather watch the sunrise from?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

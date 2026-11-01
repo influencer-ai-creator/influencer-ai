@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "72faba2b-a315-4f60-bdff-33403ed8306b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_72faba2b_video_2265.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "When the playlist hits just right, the room becomes a sold-out stadium. 🎤✨ No one’s watching, but I’m giving it my all! Who else has a 'main character' moment every single night? 💃🔥 #HomeStudio #MusicVibes #MainCharacterEnergy #OOTD #Mood",
+  "next_time": 1795024800,
+  "storage": "release",
+  "threads_caption": "When the playlist hits just right, the room becomes a sold-out stadium. 🎤✨ No one’s watching, but I’m giving it my all! Who else has a 'main character' moment every single night?\n\n💃🔥 #HomeStudio",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

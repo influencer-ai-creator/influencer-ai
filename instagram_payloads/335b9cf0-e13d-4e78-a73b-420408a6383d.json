@@ -1,0 +1,28 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "335b9cf0-e13d-4e78-a73b-420408a6383d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_335b9cf0_slide_2047_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_335b9cf0_slide_2047_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_335b9cf0_slide_2047_02.jpg"
+  ],
+  "caption": "Grabbing a drink at the Saffron-Mist Alley. The spice is real tonight. Which one is your fave? 1, 2, or 3?",
+  "next_time": 1794510000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_335b9cf0_slide_2047_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_335b9cf0_slide_2047_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_335b9cf0_slide_2047_02.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Grabbing a drink at the Saffron-Mist Alley. The spice is real tonight. Which one is your fave? 1, 2, or 3?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

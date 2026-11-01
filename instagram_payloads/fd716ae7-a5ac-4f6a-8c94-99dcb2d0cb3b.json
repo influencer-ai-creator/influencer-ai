@@ -1,0 +1,30 @@
+{
+  "compte": "influencer",
+  "pub_id": "fd716ae7-a5ac-4f6a-8c94-99dcb2d0cb3b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_03.jpg"
+  ],
+  "caption": "Finally made it to the rose-red city of Petra! 🇯🇴 The desert sun was everything we imagined. Which photo is your favorite? \n\n#Petra #Jordan #DesertGirls #TravelDiaries",
+  "next_time": 1794765600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd716ae7_slide_2144_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Finally made it to the rose-red city of Petra! 🇯🇴 The desert sun was everything we imagined. Which photo is your favorite?\n\n#Petra",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

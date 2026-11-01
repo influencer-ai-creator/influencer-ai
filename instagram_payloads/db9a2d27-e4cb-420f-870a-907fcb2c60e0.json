@@ -1,0 +1,34 @@
+{
+  "compte": "influencer",
+  "pub_id": "db9a2d27-e4cb-420f-870a-907fcb2c60e0",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_05.jpg"
+  ],
+  "caption": "Sun-drenched afternoons in Mallorca feel like a dream. ☀️ There’s something about the spring heat on my skin that just makes me feel so free. Letting the weekend take me wherever it wants to go. 🌺 #MallorcaVibes #SpringTravel #GoldenHour",
+  "next_time": 1794852000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_db9a2d27_slide_2187_05.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Sun-drenched afternoons in Mallorca feel like a dream. ☀️ There’s something about the spring heat on my skin that just makes me feel so free. Letting the weekend take me wherever it wants to go.\n\n🌺 #MallorcaVibes",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "compte": "influencer",
+  "pub_id": "5b3930ed-0df4-4e3e-9c43-b8c3898745ec",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_03.jpg"
+  ],
+  "caption": "Finally made it to see Christ the Redeemer! 🇧🇷 It was so much more majestic in person than on my feed. Which slide is your fave? 1, 2, 3, or 4? ✨\n\n#RioDeJaneiro #BrazilTravel #ChristTheRedeemer #TravelDiary",
+  "next_time": 1794938400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5b3930ed_slide_2176_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Finally made it to see Christ the Redeemer! 🇧🇷 It was so much more majestic in person than on my feed. Which slide is your fave? 1, 2, 3, or 4?\n\n✨ #RioDeJaneiro",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
