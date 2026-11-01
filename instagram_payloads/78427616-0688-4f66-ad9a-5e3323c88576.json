@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "78427616-0688-4f66-ad9a-5e3323c88576",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_78427616_video_2301.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I kept trying to pull this T-shirt down but it just wouldn't budge... until it did! \n\nThat look at the end though... 😉✨\n\n#MagicStyle #OOTD #BrooklynVibes #Transformation",
+  "next_time": 1793550639,
+  "storage": "release",
+  "threads_caption": "I kept trying to pull this T-shirt down but it just wouldn't budge... until it did! \n\nThat look at the end though...\n\n😉✨ #MagicStyle",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
