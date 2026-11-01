@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_dc89d017_slide_2140_03.jpg"
   ],
   "caption": "Found ourselves lost in the magic of Samarkand! 🕌✨ Exploring the ancient tiles of Uzbekistan was a dream. Which slide is your favorite? 1, 2, 3, or 4?\n\n#Uzbekistan #Samarkand #TravelGram",
-  "next_time": 1793793600,
+  "next_time": 1793710800,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_dc89d017_slide_2140_00.jpg",
@@ -18,5 +18,13 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_dc89d017_slide_2140_03.jpg"
   ],
   "story_slides": true,
-  "threads_caption": "Found ourselves lost in the magic of Samarkand! 🕌✨ Exploring the ancient tiles of Uzbekistan was a dream. Which slide is your favorite? 1, 2, 3, or 4?\n\n#Uzbekistan"
+  "threads_caption": "Found ourselves lost in the magic of Samarkand! 🕌✨ Exploring the ancient tiles of Uzbekistan was a dream. Which slide is your favorite? 1, 2, 3, or 4?\n\n#Uzbekistan",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
 }

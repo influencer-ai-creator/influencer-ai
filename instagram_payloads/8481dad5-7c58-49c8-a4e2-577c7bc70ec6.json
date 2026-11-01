@@ -11,7 +11,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8481dad5_slide_2203_05.jpg"
   ],
   "caption": "I’m at the Acropolis in Greece! 🇬🇷 I’ve somehow managed to visit this spot in every single era of time.\n\nIt feels like I’m living my best life through the centuries! From primitive vibes to the neon future, I’ve seen it all. Tell me, in which photo number did I suit the vibe of the age best?\n\n#travelgram #timetravel #athens #acropolis #history",
-  "next_time": 1794423600,
+  "next_time": 1793988000,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8481dad5_slide_2203_00.jpg",
@@ -24,10 +24,10 @@
   "story_slides": true,
   "threads_caption": "I’m at the Acropolis in Greece! 🇬🇷 I’ve somehow managed to visit this spot in every single era of time.\n\nIt feels like I’m living my best life through the centuries! From primitive vibes to the neon future, I’ve seen it all. Tell me, in which photo number did I suit the vibe of the age best?\n\n#travelgram",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }

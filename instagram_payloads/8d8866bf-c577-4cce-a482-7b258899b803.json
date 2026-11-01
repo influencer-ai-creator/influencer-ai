@@ -11,7 +11,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_05.jpg"
   ],
   "caption": "Sun-kissed skin and spring breezes are my favorite aesthetic. Feeling so free and radiant exploring these hidden corners... who wants to join me for a drink? ☀️🌸 #springtravel #goldenhour #islandlife",
-  "next_time": 1794333600,
+  "next_time": 1793970000,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8d8866bf_slide_2186_00.jpg",
@@ -24,10 +24,10 @@
   "story_slides": true,
   "threads_caption": "Sun-kissed skin and spring breezes are my favorite aesthetic. Feeling so free and radiant exploring these hidden corners... who wants to join me for a drink?\n\n☀️🌸 #springtravel",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }

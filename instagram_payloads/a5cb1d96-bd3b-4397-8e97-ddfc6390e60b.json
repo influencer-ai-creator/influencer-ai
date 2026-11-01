@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a5cb1d96_slide_2167_04.jpg"
   ],
   "caption": "Eiffel Tower vibes 🗼 We spent the sunset laughing and taking too many photos. Which snap is your fave? 1, 2, 3, 4, or 5? #ParisTravel #EiffelTower #TravelBesties",
-  "next_time": 1794513600,
+  "next_time": 1794056400,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a5cb1d96_slide_2167_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "Eiffel Tower vibes 🗼 We spent the sunset laughing and taking too many photos. Which snap is your fave? 1, 2, 3, 4, or 5?\n\n#ParisTravel",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 5.0,
     "quiet_hours": [
-      0,
-      12
+      23,
+      14
     ],
     "timezone": ""
   }

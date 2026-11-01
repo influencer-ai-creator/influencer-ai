@@ -5,7 +5,15 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I decided to take a shortcut through reality today, and let’s just say the scenery (and the company) was absolutely breathtaking. 🌅✨ From floating amber isles to shimmering crystal deserts, every turn felt like a fever dream. Those smiles were the highlight of the journey. #DreamTravel #AmberIslands #CrystalDesert #BioluminescentForest #SurrealVibes #TravelDiary",
-  "next_time": 1793570400,
+  "next_time": 1793624400,
   "storage": "release",
-  "threads_caption": "I decided to take a shortcut through reality today, and let’s just say the scenery (and the company) was absolutely breathtaking. 🌅✨ From floating amber isles to shimmering crystal deserts, every turn felt like a fever dream. Those smiles were the highlight of the journey.\n\n#DreamTravel"
+  "threads_caption": "I decided to take a shortcut through reality today, and let’s just say the scenery (and the company) was absolutely breathtaking. 🌅✨ From floating amber isles to shimmering crystal deserts, every turn felt like a fever dream. Those smiles were the highlight of the journey.\n\n#DreamTravel",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
 }
