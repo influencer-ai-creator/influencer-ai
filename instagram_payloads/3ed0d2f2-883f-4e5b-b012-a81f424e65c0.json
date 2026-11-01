@@ -1,0 +1,32 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "3ed0d2f2-883f-4e5b-b012-a81f424e65c0",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_04.jpg"
+  ],
+  "caption": "Stuck in my room trying to decide on a look for the club. Which one is the move? Tell me the number below.",
+  "next_time": 1794571200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3ed0d2f2_slide_2065_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Stuck in my room trying to decide on a look for the club. Which one is the move? Tell me the number below.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "d789fb23-736f-4669-ba6e-a3508e144f1e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_d789fb23_video_2138.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Ready for a ride? 🚁 I'm taking you to places that shouldn't exist. I caught some very heated moments at every stop... they definitely didn't want to be filmed! 😉✨ #ImpossibleWorlds #DroneRide #SecretEscapes",
+  "next_time": 1794747600,
+  "storage": "release",
+  "threads_caption": "Ready for a ride? 🚁 I'm taking you to places that shouldn't exist. I caught some very heated moments at every stop... they definitely didn't want to be filmed!\n\n😉✨ #ImpossibleWorlds",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

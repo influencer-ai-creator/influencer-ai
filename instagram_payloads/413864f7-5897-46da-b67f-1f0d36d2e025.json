@@ -1,0 +1,30 @@
+{
+  "compte": "influencer",
+  "pub_id": "413864f7-5897-46da-b67f-1f0d36d2e025",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_03.jpg"
+  ],
+  "caption": "We’re in Namibia’s Sossusvlei, playing a game of one spot, one pose. 🏜️✨ Each of us took a turn.\n\nIt’s a bit surreal being this far out, but we had to capture the vibe of this empty horizon. We’re trying to see who can channel that model energy the best. Who holds the pose best? Tell us by her photo number! 👇\n\n#Sossusvlei #Namibia #TravelDiaries #DesertVibes",
+  "next_time": 1794834000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_413864f7_slide_2166_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "We’re in Namibia’s Sossusvlei, playing a game of one spot, one pose. 🏜️✨ Each of us took a turn.\n\nIt’s a bit surreal being this far out, but we had to capture the vibe of this empty horizon. We’re trying to see who can channel that model energy the best. Who holds the pose best? Tell us by her photo number!\n\n👇 #Sossusvlei",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "7da47c75-6b03-49d6-9863-f616d48a1708",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7da47c75_video_2235.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Natasha Romanoff mode: ON. 🕷️\n\nA little snap and a flash—who knew I had a secret identity? ✨\n\n#BlackWidow #DanakilDepression #TravelMagic",
+  "next_time": 1795093200,
+  "storage": "release",
+  "threads_caption": "Natasha Romanoff mode: ON. 🕷️\n\nA little snap and a flash—who knew I had a secret identity?\n\n✨ #BlackWidow",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

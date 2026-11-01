@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "b307f24c-84e5-4750-99df-004f11eb4b87",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b307f24c_video_2207.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Finally found the most secret turquoise oasis tucked deep inside these towering red rocks... 🌿 Honestly thought I'd nail the perfect aesthetic shot, but my camera decided we were getting way too cozy! 😂 \n\n#travelgram #hiddenoasis #adventure #travelinfluencer #canyonvibes #naturelover",
+  "next_time": 1795006800,
+  "storage": "release",
+  "threads_caption": "Finally found the most secret turquoise oasis tucked deep inside these towering red rocks... 🌿 Honestly thought I'd nail the perfect aesthetic shot, but my camera decided we were getting way too cozy!\n\n😂 #travelgram",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
