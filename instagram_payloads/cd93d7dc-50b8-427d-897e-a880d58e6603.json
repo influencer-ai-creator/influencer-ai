@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "cd93d7dc-50b8-427d-897e-a880d58e6603",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_cd93d7dc_video_2582.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "She just went for it. I watched her run down the aisle and just... grab her. The teacher looked so shocked for a second, but then she completely melted into it. Best class ever. #EdinburghUni #Surprise #LectureHall",
+  "next_time": 1793551029,
+  "storage": "release",
+  "threads_caption": "She just went for it. I watched her run down the aisle and just... grab her. The teacher looked so shocked for a second, but then she completely melted into it. Best class ever.\n\n#EdinburghUni",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
