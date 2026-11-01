@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_04.jpg"
   ],
   "caption": "Spent the day exploring the honey-colored limestone of Oxford. The vibe here is unmatched! Which photo is your favorite? 1-5? \n\n#OxfordUni #StudyGram #CampusLife #ArchitectureLovers",
-  "next_time": 1794513600,
+  "next_time": 1794056400,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd5dd930_slide_2491_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "Spent the day exploring the honey-colored limestone of Oxford. The vibe here is unmatched! Which photo is your favorite? 1-5?\n\n#OxfordUni",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   }

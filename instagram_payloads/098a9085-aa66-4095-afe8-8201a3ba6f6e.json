@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "omg she's trying so hard to be professional lol\ni'm actually dying at the bread situation 💀🥖\ntag a friend who'd mess this up.",
-  "next_time": 1794243600,
+  "next_time": 1793908800,
   "storage": "release",
   "threads_caption": "omg she's trying so hard to be professional lol\ni'm actually dying at the bread situation 💀🥖\ntag a friend who'd mess this up.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   }

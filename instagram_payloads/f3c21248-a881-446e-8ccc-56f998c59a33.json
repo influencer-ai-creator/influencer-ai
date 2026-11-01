@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "literally just witnessed the weirdest day.\n🫠💧🧪\ni still haven't recovered lol.",
-  "next_time": 1794153600,
+  "next_time": 1793883600,
   "storage": "release",
   "threads_caption": "literally just witnessed the weirdest day.\n🫠💧🧪\ni still haven't recovered lol.",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   }

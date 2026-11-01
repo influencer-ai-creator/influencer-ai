@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I just couldn't wait anymore. I ran straight down the aisle and just grabbed her. She looked so shocked for a second, but then she totally melted into it. Best day of my life. #Prague #UniLife #Secret",
-  "next_time": 1794826800,
+  "next_time": 1794168000,
   "storage": "release",
   "threads_caption": "I just couldn't wait anymore. I ran straight down the aisle and just grabbed her. She looked so shocked for a second, but then she totally melted into it. Best day of my life.\n\n#Prague",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   }

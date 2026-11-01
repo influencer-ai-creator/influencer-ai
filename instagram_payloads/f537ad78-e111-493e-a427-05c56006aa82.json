@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "oops.\nmy room is a mess now 🫠☕.\nanyone know how to fix a mercury flood?",
-  "next_time": 1794333600,
+  "next_time": 1793970000,
   "storage": "release",
   "threads_caption": "oops.\nmy room is a mess now 🫠☕.\nanyone know how to fix a mercury flood?",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   }

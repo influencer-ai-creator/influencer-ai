@@ -5,7 +5,15 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "She whispered, 'I hope you're ready to feel the pull of gravity,' and suddenly I couldn't think about anything but her. #astrophysics #athens #lecturehall",
-  "next_time": 1793570400,
+  "next_time": 1793624400,
   "storage": "release",
-  "threads_caption": "She whispered, 'I hope you're ready to feel the pull of gravity,' and suddenly I couldn't think about anything but her.\n\n#astrophysics"
+  "threads_caption": "She whispered, 'I hope you're ready to feel the pull of gravity,' and suddenly I couldn't think about anything but her.\n\n#astrophysics",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
 }

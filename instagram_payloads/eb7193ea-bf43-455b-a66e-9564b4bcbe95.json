@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_03.jpg"
   ],
   "caption": "Student (ARC-94) 🪄 Honestly, Madame Valerine is making hydro-alchemy way too easy... or maybe I'm just distracted by her. ✨\n\n#MagicLife #LAcademieDEther #AlchemyClass",
-  "next_time": 1794603600,
+  "next_time": 1794081600,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_eb7193ea_slide_2556_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "Student (ARC-94) 🪄 Honestly, Madame Valerine is making hydro-alchemy way too easy... or maybe I'm just distracted by her.\n\n✨ #MagicLife",
   "schedule": {
-    "delay_hours": 25.0,
+    "delay_hours": 7.0,
     "quiet_hours": [
-      0,
-      12
+      22,
+      14
     ],
     "timezone": ""
   }
