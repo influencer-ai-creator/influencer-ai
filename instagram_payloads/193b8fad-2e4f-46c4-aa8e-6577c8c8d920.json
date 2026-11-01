@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "193b8fad-2e4f-46c4-aa8e-6577c8c8d920",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_193b8fad_video_2307.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "she has just found this clip of herself at a rooftop bar in madrid, and she remembers the moment she felt someone looking at her.\n\nmaybe she was telling me about her new job... 🥂\n\nwhat do you think she was telling me?\n\n#madridnights #rooftopvibes #candidmoment",
+  "next_time": 1795179600,
+  "storage": "release",
+  "threads_caption": "she has just found this clip of herself at a rooftop bar in madrid, and she remembers the moment she felt someone looking at her.\n\nmaybe she was telling me about her new job... 🥂\n\nwhat do you think she was telling me?\n\n#madridnights",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

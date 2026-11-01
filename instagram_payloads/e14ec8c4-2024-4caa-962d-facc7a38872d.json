@@ -1,0 +1,30 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "e14ec8c4-2024-4caa-962d-facc7a38872d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_03.jpg"
+  ],
+  "caption": "Out at the Steam Exchange tonight. It was hotter than I expected. Which photo do you prefer by number?",
+  "next_time": 1795176000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e14ec8c4_slide_2083_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Out at the Steam Exchange tonight. It was hotter than I expected. Which photo do you prefer by number?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

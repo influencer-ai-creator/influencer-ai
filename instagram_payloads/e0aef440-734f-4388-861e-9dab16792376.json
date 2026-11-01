@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "e0aef440-734f-4388-861e-9dab16792376",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e0aef440_video_2213.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Found a hidden paradise where the turquoise water meets the burning sun. This oasis is my new favorite secret. ✨💃 #desertoasis #hiddenparadise #travelgram #wanderlust #goldenhour #solotravel",
+  "next_time": 1795266000,
+  "storage": "release",
+  "threads_caption": "Found a hidden paradise where the turquoise water meets the burning sun. This oasis is my new favorite secret.\n\n✨💃 #desertoasis",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

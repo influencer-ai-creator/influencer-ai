@@ -1,0 +1,30 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "aef8f458-6690-4066-9e5d-b17d5fd88cd0",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_03.jpg"
+  ],
+  "caption": "Stuck in the tower trying to pick an outfit for tonight. The city's already screaming. Which one are you feeling? 1, 2, 3, or 4?",
+  "next_time": 1795201200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aef8f458_slide_2072_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Stuck in the tower trying to pick an outfit for tonight. The city's already screaming. Which one are you feeling? 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

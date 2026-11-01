@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "aa0de626-6b8c-4934-a9c9-40c1f87bcc1e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_aa0de626_video_2146.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The usual commute to the stars.\nAt least the elevator has better lighting than the street. ✨💅\nWhere should I head tonight?",
+  "next_time": 1795114800,
+  "storage": "release",
+  "threads_caption": "The usual commute to the stars.\nAt least the elevator has better lighting than the street. ✨💅\nWhere should I head tonight?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

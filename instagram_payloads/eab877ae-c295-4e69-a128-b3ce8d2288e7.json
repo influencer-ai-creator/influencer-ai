@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "eab877ae-c295-4e69-a128-b3ce8d2288e7",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_eab877ae_video_2064.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The commute is basically an extreme sport, but I’m just trying to stay put.\n🎢🏙️\nAnyone else’s commute feel like a rollercoaster today?",
+  "next_time": 1795287600,
+  "storage": "release",
+  "threads_caption": "The commute is basically an extreme sport, but I’m just trying to stay put.\n🎢🏙️\nAnyone else’s commute feel like a rollercoaster today?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "3de9d34d-d844-42e9-9d88-2abe228ddca9",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_3de9d34d_video_2270.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The caviar was exquisite, but the energy was lacking, so I had to step in. \n\nThe look of absolute bewilderment on their faces is my new favorite accessory. 😲✨\n#VersaillesNight #GalaLife #DancingInTheDark",
+  "next_time": 1795284000,
+  "storage": "release",
+  "threads_caption": "The caviar was exquisite, but the energy was lacking, so I had to step in. \n\nThe look of absolute bewilderment on their faces is my new favorite accessory.\n\n😲✨ #VersaillesNight",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "e6f2d957-fc77-4560-8075-aceb6435be08",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e6f2d957_video_2158.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i just found this clip of myself at the rooftop lounge, and i remember the moment i felt someone looking at me.\nshe was probably telling me how to spot a high-end data dealer 🍸.\nwhat do you think she was saying?",
+  "next_time": 1795028400,
+  "storage": "release",
+  "threads_caption": "i just found this clip of myself at the rooftop lounge, and i remember the moment i felt someone looking at me.\nshe was probably telling me how to spot a high-end data dealer 🍸.\nwhat do you think she was saying?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
