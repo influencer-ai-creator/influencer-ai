@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "3c2b4c2b-c039-4bf2-ace0-78d3ecd1e044",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_04.jpg"
+  ],
+  "caption": "ITA-55: Professor Valeriana is honestly a literal goddess. I can barely focus on these vials with her standing there... ✨\n#MagicSchool #ITA55 #AromaticInfusion #PalazzoDiAlchimia",
+  "next_time": 1795093200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c2b4c2b_slide_2617_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "ITA-55: Professor Valeriana is honestly a literal goddess. I can barely focus on these vials with her standing there...\n\n✨ #MagicSchool",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

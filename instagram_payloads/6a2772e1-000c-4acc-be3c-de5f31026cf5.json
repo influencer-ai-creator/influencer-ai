@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "6a2772e1-000c-4acc-be3c-de5f31026cf5",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_6a2772e1_video_2613.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I totally forgot my phone was still recording after the lecture. I just got home and saw what happened when I stayed behind. I'm speechless. #tokyouniversity #architecture #caughtoncamera",
+  "next_time": 1794834000,
+  "storage": "release",
+  "threads_caption": "I totally forgot my phone was still recording after the lecture. I just got home and saw what happened when I stayed behind. I'm speechless.\n\n#tokyouniversity",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

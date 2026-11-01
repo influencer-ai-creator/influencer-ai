@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "3c099b6d-b51a-4735-807c-d8e43b3ccc07",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3c099b6d_video_2569.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "When she turned around and said, 'Perhaps you can find your place in the quantum field,' the whole room just... stopped. I honestly don't remember a single equation she wrote before that. #BolognaUniversity #QuantumMechanics #LectureDay",
+  "next_time": 1794772800,
+  "storage": "release",
+  "threads_caption": "When she turned around and said, 'Perhaps you can find your place in the quantum field,' the whole room just... stopped. I honestly don't remember a single equation she wrote before that.\n\n#BolognaUniversity",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "9695cf28-b8ed-46db-8bf9-6e51fbca8263",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9695cf28_video_2550.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "it happened.\ni actually can’t believe she let that happen 💀\nwho else saw the desk start floating?",
+  "next_time": 1794747600,
+  "storage": "release",
+  "threads_caption": "it happened.\ni actually can’t believe she let that happen 💀\nwho else saw the desk start floating?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
