@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "0ab32bf8-707c-4f09-8fbc-78b8e4d1584a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_0ab32bf8_video_19454.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Cartagena vibes are hitting different today. ✨ Just landed and feeling the magic of this place already. 🌴 #Cartagena #TravelMagic #SummerVibes",
+  "next_time": 1795262400,
+  "storage": "release",
+  "threads_caption": "Cartagena vibes are hitting different today. ✨ Just landed and feeling the magic of this place already.\n\n🌴 #Cartagena",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
