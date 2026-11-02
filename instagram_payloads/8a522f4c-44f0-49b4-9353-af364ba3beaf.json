@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "8a522f4c-44f0-49b4-9353-af364ba3beaf",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a522f4c_video_2587.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "She told us to handle the heat, and honestly, I haven't been able to focus on a single equation since. #LisbonUniversity #Thermodynamics",
+  "next_time": 1795377600,
+  "storage": "release",
+  "threads_caption": "She told us to handle the heat, and honestly, I haven't been able to focus on a single equation since.\n\n#LisbonUniversity",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

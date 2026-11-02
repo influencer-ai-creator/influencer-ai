@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "ac6b7883-0934-4ea7-be74-e9a6373ffc12",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ac6b7883_video_2552.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "omg did you see that\n\nshe literally almost took out the ceiling lol 💀\n\nwho else thinks we’re gonna get evicted after this?",
+  "next_time": 1795352400,
+  "storage": "release",
+  "threads_caption": "omg did you see that\n\nshe literally almost took out the ceiling lol 💀\n\nwho else thinks we’re gonna get evicted after this?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
