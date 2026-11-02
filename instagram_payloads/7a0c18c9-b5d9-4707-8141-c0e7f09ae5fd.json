@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "7a0c18c9-b5d9-4707-8141-c0e7f09ae5fd",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_7a0c18c9_video_19428.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Found a ghost in the machine... 🤖 This old tech bazaar has some secrets. Stay spicy. 😉 #2093Vibes #CyberCity",
+  "next_time": 1795377600,
+  "storage": "release",
+  "threads_caption": "Found a ghost in the machine... 🤖 This old tech bazaar has some secrets. Stay spicy.\n\n😉 #2093Vibes",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

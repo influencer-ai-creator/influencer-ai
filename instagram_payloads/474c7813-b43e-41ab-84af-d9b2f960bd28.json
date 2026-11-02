@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "474c7813-b43e-41ab-84af-d9b2f960bd28",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_474c7813_video_19561.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i just found this clip of myself at a rooftop bar in santorini, and i remember feeling someone's eyes on me the whole time.\nmy friend was probably telling me about her crazy flight home ✈️\nwhat do you think she was saying?\n#santorini #rooftoppar #traveldiaries #greeksummer",
+  "next_time": 1795348800,
+  "storage": "release",
+  "threads_caption": "i just found this clip of myself at a rooftop bar in santorini, and i remember feeling someone's eyes on me the whole time.\nmy friend was probably telling me about her crazy flight home ✈️\nwhat do you think she was saying?\n\n#santorini",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
