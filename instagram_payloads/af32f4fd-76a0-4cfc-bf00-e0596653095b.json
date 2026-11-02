@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "af32f4fd-76a0-4cfc-bf00-e0596653095b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_af32f4fd_video_2614.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I can't believe what I just found on my phone's recording... I thought I left it alone, but she stayed behind with him. 😳 #universitylife #caughtoncamera #lecturehall",
+  "next_time": 1795438800,
+  "storage": "release",
+  "threads_caption": "I can't believe what I just found on my phone's recording... I thought I left it alone, but she stayed behind with him.\n\n😳 #universitylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

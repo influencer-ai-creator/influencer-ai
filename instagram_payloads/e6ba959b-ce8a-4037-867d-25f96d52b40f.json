@@ -1,0 +1,28 @@
+{
+  "compte": "university",
+  "pub_id": "e6ba959b-ce8a-4037-867d-25f96d52b40f",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_02.jpg"
+  ],
+  "caption": "I CANNOT believe how she's wearing the uniform today... that bustier is doing ALL the work. 😳 What do we think?\n\n#universitylife #campusfashion #Strasbourg",
+  "next_time": 1795525200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_02.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "I CANNOT believe how she's wearing the uniform today... that bustier is doing ALL the work. 😳 What do we think?\n\n#universitylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

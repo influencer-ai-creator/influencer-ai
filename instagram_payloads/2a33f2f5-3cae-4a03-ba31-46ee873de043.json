@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "2a33f2f5-3cae-4a03-ba31-46ee873de043",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_03.jpg"
+  ],
+  "caption": "Caught my fave prof looking like a literal snack in Comp Lit today 🥵 honestly how is she real?\n\nWhich one is your fav? 1, 2, 3, or 4?\n\n#uni #lecture #fitcheck #vienna",
+  "next_time": 1795464000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2a33f2f5_slide_2520_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Caught my fave prof looking like a literal snack in Comp Lit today 🥵 honestly how is she real?\n\nWhich one is your fav? 1, 2, 3, or 4?\n\n#uni",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
