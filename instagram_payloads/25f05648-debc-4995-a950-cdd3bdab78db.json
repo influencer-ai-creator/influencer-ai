@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "25f05648-debc-4995-a950-cdd3bdab78db",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_25f05648_video_2082.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Living in the future doesn't mean the plumbing works any better.\nI just wanted a sip of water, not a free shower. 🚿🙄\nHas your city's tech ever betrayed you like this?",
+  "next_time": 1795348800,
+  "storage": "release",
+  "threads_caption": "Living in the future doesn't mean the plumbing works any better.\nI just wanted a sip of water, not a free shower. 🚿🙄\nHas your city's tech ever betrayed you like this?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

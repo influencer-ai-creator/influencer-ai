@@ -1,0 +1,30 @@
+{
+  "compte": "influencer",
+  "pub_id": "a736b43a-21e0-489c-9f86-0d5ec5b11b41",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_03.jpg"
+  ],
+  "caption": "Dubai, you have my heart 🇦🇪 Spent the day lounging by the pool and honestly, I never want to leave. Which slide is your favorite? 1, 2, 3, or 4? ✨\n\n#DubaiLife #PoolDay #TravelDiaries",
+  "next_time": 1795352400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_a736b43a_slide_2245_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Dubai, you have my heart 🇦🇪 Spent the day lounging by the pool and honestly, I never want to leave. Which slide is your favorite? 1, 2, 3, or 4?\n\n✨ #DubaiLife",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

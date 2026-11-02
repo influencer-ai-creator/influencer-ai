@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "b956bf7d-905d-4914-9061-e7f5b0c3a1e1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b956bf7d_video_2128.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just another night navigating the overflow.\nMy bike's starting to complain about the puddles 💧🚲.\nAnyone else find the wet asphalt harder to handle?",
+  "next_time": 1795374000,
+  "storage": "release",
+  "threads_caption": "Just another night navigating the overflow.\nMy bike's starting to complain about the puddles 💧🚲.\nAnyone else find the wet asphalt harder to handle?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
