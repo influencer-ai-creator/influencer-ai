@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "77293b72-2bfd-41d6-884f-b55cb7bcf9a1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_77293b72_video_2294.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I didn't let him stay a stranger for long once he pressed my button. 🫦\n\nHe looked completely mesmerized, like he’d finally found exactly what he was looking for. ✨💖\n\n#HarajukuSecrets #TokyoBoutique",
+  "next_time": 1795370400,
+  "storage": "release",
+  "threads_caption": "I didn't let him stay a stranger for long once he pressed my button. 🫦\n\nHe looked completely mesmerized, like he’d finally found exactly what he was looking for.\n\n✨💖 #HarajukuSecrets",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

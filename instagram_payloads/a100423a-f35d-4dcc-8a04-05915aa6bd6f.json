@@ -1,0 +1,27 @@
+{
+  "compte": "grace_story",
+  "pub_id": "a100423a-f35d-4dcc-8a04-05915aa6bd6f",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_03.jpg"
+  ],
+  "caption": "submitted my major research paper today, october 19.\n\nfinally a second to breathe before the exams at the end of the month.\n\njust some wine, olives, and a silk dress in surry hills. 🍷",
+  "next_time": 1794348900,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a100423a_slide_144_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "submitted my major research paper today, october 19.\n\nfinally a second to breathe before the exams at the end of the month.\n\njust some wine, olives, and a silk dress in surry hills. 🍷",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
