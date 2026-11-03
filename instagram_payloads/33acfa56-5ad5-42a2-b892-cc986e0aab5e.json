@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "33acfa56-5ad5-42a2-b892-cc986e0aab5e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_33acfa56_video_2111.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just tweaking the signal since the comms are acting up again.\nThe view is great, but this wrench is heavy. 🛠️✨\nCan you see the city lights from here?",
+  "next_time": 1795435200,
+  "storage": "release",
+  "threads_caption": "Just tweaking the signal since the comms are acting up again.\nThe view is great, but this wrench is heavy. 🛠️✨\nCan you see the city lights from here?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

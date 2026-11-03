@@ -1,0 +1,30 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "07ba8145-089e-4717-bb2b-9db578718a1f",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_03.jpg"
+  ],
+  "caption": "Went to The Gilded Spigot tonight. It’s a mess of smells and chemical fumes. Here’s a tour of the local spots. Which door number should I push?",
+  "next_time": 1795460400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Went to The Gilded Spigot tonight. It’s a mess of smells and chemical fumes. Here’s a tour of the local spots. Which door number should I push?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
