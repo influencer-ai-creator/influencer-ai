@@ -1,0 +1,36 @@
+{
+  "compte": "influencer",
+  "pub_id": "0e1f8aab-4dd7-473d-8aec-44c3ccdd4634",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_06.jpg"
+  ],
+  "caption": "Berlin nights at Watergate Rooftop 🌙✨ We still haven't processed how good last night was. Which photo is your fave, 1-7? #BerlinNightlife #GirlsNightOut #Watergate",
+  "next_time": 1795456800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_06.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Berlin nights at Watergate Rooftop 🌙✨ We still haven't processed how good last night was. Which photo is your fave, 1-7?\n\n#BerlinNightlife",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
