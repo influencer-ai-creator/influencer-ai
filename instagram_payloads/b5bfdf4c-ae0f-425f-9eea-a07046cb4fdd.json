@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "b5bfdf4c-ae0f-425f-9eea-a07046cb4fdd",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_b5bfdf4c_video_2308.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "just waiting for the express to get home, it's such a vibe. ✨\n#tokyovibes #subwaylife #goldenhour",
+  "next_time": 1795438800,
+  "storage": "release",
+  "threads_caption": "just waiting for the express to get home, it's such a vibe.\n\n✨ #tokyovibes",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
