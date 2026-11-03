@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "6236fdea-d69e-412d-a49c-ffdfae277cc2",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_03.jpg"
+  ],
+  "caption": "In Prague, but I’m stuck in this suite! 🇨🇿 I can’t decide which dress to keep for tonight. Help me pick!\n\nWhich one is your favorite? 1, 2, 3, or 4? Let me know below! ✨",
+  "next_time": 1795435200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6236fdea_slide_19393_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "In Prague, but I’m stuck in this suite! 🇨🇿 I can’t decide which dress to keep for tonight. Help me pick!\n\nWhich one is your favorite? 1, 2, 3, or 4? Let me know below! ✨",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
