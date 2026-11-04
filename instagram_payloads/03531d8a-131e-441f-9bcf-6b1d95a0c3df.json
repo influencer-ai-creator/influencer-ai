@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "03531d8a-131e-441f-9bcf-6b1d95a0c3df",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03531d8a_video_2154.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just testing if this old thing is still hanging on.\nIt's stubborn as ever. 🧶😤\nWhich one would you wear to a rooftop party?",
+  "next_time": 1795546800,
+  "storage": "release",
+  "threads_caption": "Just testing if this old thing is still hanging on.\nIt's stubborn as ever. 🧶😤\nWhich one would you wear to a rooftop party?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

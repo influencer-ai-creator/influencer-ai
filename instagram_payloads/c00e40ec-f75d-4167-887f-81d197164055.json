@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "c00e40ec-f75d-4167-887f-81d197164055",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_c00e40ec_video_2300.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just getting the mail dressed like this... 💅\nThat mischievous look at the end is my favorite part. 😉✨\n#CotswoldsLife #ReadyToGo #EveningVibes",
+  "next_time": 1795543200,
+  "storage": "release",
+  "threads_caption": "Just getting the mail dressed like this... 💅\nThat mischievous look at the end is my favorite part.\n\n😉✨ #CotswoldsLife",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
