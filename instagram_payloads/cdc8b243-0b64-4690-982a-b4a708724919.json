@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "cdc8b243-0b64-4690-982a-b4a708724919",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_cdc8b243_video_157.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "nearly lost a taste bud for these. the market is buzzing but my mouth is currently on fire.\n\n#sydneyeats #streetfood",
+  "next_time": 1794516300,
+  "storage": "release",
+  "threads_caption": "nearly lost a taste bud for these. the market is buzzing but my mouth is currently on fire.\n\n#sydneyeats",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}

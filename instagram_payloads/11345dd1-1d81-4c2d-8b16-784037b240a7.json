@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "11345dd1-1d81-4c2d-8b16-784037b240a7",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_11345dd1_video_152.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "lost my voice by 2am. my feet are going to hate me tomorrow.\n\n✨",
+  "next_time": 1794620700,
+  "storage": "release",
+  "threads_caption": "lost my voice by 2am. my feet are going to hate me tomorrow.\n\n✨",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
