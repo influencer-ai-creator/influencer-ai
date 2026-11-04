@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "bf6da76b-0660-4982-a4f4-46fba9ece552",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_02.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_03.jpg"
+  ],
+  "caption": "Spent the most perfect afternoon sipping lemonade in Amalfi. 🍋 Which photo is your favorite, 1, 2, 3, or 4?",
+  "next_time": 1795521600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Spent the most perfect afternoon sipping lemonade in Amalfi. 🍋 Which photo is your favorite, 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

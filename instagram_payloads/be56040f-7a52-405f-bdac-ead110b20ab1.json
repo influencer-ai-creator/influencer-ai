@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "be56040f-7a52-405f-bdac-ead110b20ab1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_be56040f_video_19280.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think I just broke the laws of physics with my morning caffeine. \n\nHonestly, I'm still staring at the table in disbelief ☕️✨. \n\nWould you have stopped after the first time or would you have tried it again like I did?",
+  "next_time": 1795550400,
+  "storage": "release",
+  "threads_caption": "I think I just broke the laws of physics with my morning caffeine. \n\nHonestly, I'm still staring at the table in disbelief ☕️✨. \n\nWould you have stopped after the first time or would you have tried it again like I did?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

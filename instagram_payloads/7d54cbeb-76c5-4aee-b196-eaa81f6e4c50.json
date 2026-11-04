@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "7d54cbeb-76c5-4aee-b196-eaa81f6e4c50",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_7d54cbeb_video_2176.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Living in 2077 is mostly just fighting the city's attitude.\nOne tiny spark led to a full-blown light show. ⚡️😵\nTell me how you'd fix this.",
+  "next_time": 1795521600,
+  "storage": "release",
+  "threads_caption": "Living in 2077 is mostly just fighting the city's attitude.\nOne tiny spark led to a full-blown light show. ⚡️😵\nTell me how you'd fix this.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

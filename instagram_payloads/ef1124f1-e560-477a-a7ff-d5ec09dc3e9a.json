@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "ef1124f1-e560-477a-a7ff-d5ec09dc3e9a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ef1124f1_video_2676.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i think i actually stopped breathing for a second when her eyes met the lens, it felt like she knew exactly what i was doing. did she see me or was it just my imagination? 😳 #universitylife #lecturehall #caught",
+  "next_time": 1795550400,
+  "storage": "release",
+  "threads_caption": "i think i actually stopped breathing for a second when her eyes met the lens, it felt like she knew exactly what i was doing. did she see me or was it just my imagination?\n\n😳 #universitylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
