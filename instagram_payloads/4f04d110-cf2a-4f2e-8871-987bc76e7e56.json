@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "4f04d110-cf2a-4f2e-8871-987bc76e7e56",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_4f04d110_video_19529.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Can’t stop this vibe! 🎶✨ There’s something about this song that just makes me want to lose myself in the mirror. Feeling so powerful today! 🔥💖 #MusicLover #DanceVibes #ConfidenceIsQueen #MirrorMagic",
+  "next_time": 1795608000,
+  "storage": "release",
+  "threads_caption": "Can’t stop this vibe! 🎶✨ There’s something about this song that just makes me want to lose myself in the mirror. Feeling so powerful today!\n\n🔥💖 #MusicLover",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

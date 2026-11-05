@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "2312968e-957e-4503-81f6-f09baa0e4ee4",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2312968e_video_2571.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "oops.\nThe botanical lab is basically a jungle now 🌿🌳\nWho's gonna tell her?",
+  "next_time": 1795611600,
+  "storage": "release",
+  "threads_caption": "oops.\nThe botanical lab is basically a jungle now 🌿🌳\nWho's gonna tell her?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
