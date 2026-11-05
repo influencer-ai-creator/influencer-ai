@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "3d489b67-66f8-465a-999e-15447929a8f6",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3d489b67_video_2160.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Roof duty.",
+  "next_time": 1795608000,
+  "storage": "release",
+  "threads_caption": "Roof duty.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
