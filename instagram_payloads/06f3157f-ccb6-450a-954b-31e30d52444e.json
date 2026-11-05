@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "06f3157f-ccb6-450a-954b-31e30d52444e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_06f3157f_video_2022.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just another drop to the green zone.\nThe vials are getting heavier every week. 🧪🙄\nYou prefer the heights or the landing?",
+  "next_time": 1795633200,
+  "storage": "release",
+  "threads_caption": "Just another drop to the green zone.\nThe vials are getting heavier every week. 🧪🙄\nYou prefer the heights or the landing?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

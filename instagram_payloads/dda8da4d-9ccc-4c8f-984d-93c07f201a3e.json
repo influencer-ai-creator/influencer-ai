@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "dda8da4d-9ccc-4c8f-984d-93c07f201a3e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_dda8da4d_video_2223.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Living on the edge... literally. 🏔️\n\nMy heart is racing faster than the wind up here! 💨😱\n\n#AlpsAdventure #CliffEdge #MountainGirl #SwissAlps #AdrenalineJunkie",
+  "next_time": 1795611600,
+  "storage": "release",
+  "threads_caption": "Living on the edge... literally. 🏔️\n\nMy heart is racing faster than the wind up here!\n\n💨😱 #AlpsAdventure",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
