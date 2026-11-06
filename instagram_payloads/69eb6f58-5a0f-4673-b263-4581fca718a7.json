@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "69eb6f58-5a0f-4673-b263-4581fca718a7",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_03.jpg"
+  ],
+  "caption": "Me and my K214 favorites. These girls make my lectures so much more interesting. 🥂✨ #UppsalaUniversity #ClassK214 #AcademicLife",
+  "next_time": 1795698000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_69eb6f58_slide_2526_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Me and my K214 favorites. These girls make my lectures so much more interesting.\n\n🥂✨ #UppsalaUniversity",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "96c8129c-df72-4b40-b04a-cd4698da0aab",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_96c8129c_video_2114.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just another night in the fast lane.\nMy gloss has to stay perfect even at escape velocity. 💄✨\nWhere would you go if the elevator didn't stop at the clouds?",
+  "next_time": 1795719600,
+  "storage": "release",
+  "threads_caption": "Just another night in the fast lane.\nMy gloss has to stay perfect even at escape velocity. 💄✨\nWhere would you go if the elevator didn't stop at the clouds?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

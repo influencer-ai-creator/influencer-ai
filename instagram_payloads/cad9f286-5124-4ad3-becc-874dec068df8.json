@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "cad9f286-5124-4ad3-becc-874dec068df8",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_cad9f286_video_19437.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I thought the legends were just stories... until the air turned hot and the hall began to glow. Witnessing this was everything. ✨🔥 #MagicKingdom #TravelDiaries #HighFantasy",
+  "next_time": 1795723200,
+  "storage": "release",
+  "threads_caption": "I thought the legends were just stories... until the air turned hot and the hall began to glow. Witnessing this was everything.\n\n✨🔥 #MagicKingdom",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}

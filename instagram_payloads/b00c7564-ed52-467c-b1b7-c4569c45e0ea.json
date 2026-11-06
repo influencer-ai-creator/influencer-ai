@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "b00c7564-ed52-467c-b1b7-c4569c45e0ea",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_b00c7564_video_19549.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "He thought I was just a pretty display until he pressed that button. 🫦 Now he's mine for the moment. Oops. #ExoticFinds #Unboxed #Surprise",
+  "next_time": 1795694400,
+  "storage": "release",
+  "threads_caption": "He thought I was just a pretty display until he pressed that button. 🫦 Now he's mine for the moment. Oops.\n\n#ExoticFinds",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
