@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "d9389589-4e84-4741-b479-a811bf9d2c4e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_d9389589_video_2282.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Feeling like a total rebel in the salty air of Port Royal... 🏴‍☠️\n\nCaptain Jack Sparrow just handed me a gold doubloon with that wild, crooked grin of his! 🏴‍☠️🪙\n\n#PiratesOfTheCaribbean",
+  "next_time": 1795698000,
+  "storage": "release",
+  "threads_caption": "Feeling like a total rebel in the salty air of Port Royal... 🏴‍☠️\n\nCaptain Jack Sparrow just handed me a gold doubloon with that wild, crooked grin of his!\n\n🏴‍☠️🪙 #PiratesOfTheCaribbean",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

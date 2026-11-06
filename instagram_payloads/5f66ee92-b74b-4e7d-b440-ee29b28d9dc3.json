@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "5f66ee92-b74b-4e7d-b440-ee29b28d9dc3",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5f66ee92_video_2190.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I’m pretty sure I just broke Cillian Murphy because he stopped everything to look at me like I was the main character of his next movie 😭.\n\nMy soul has officially left my body. 🫠✨\n\nTell me I’m not dreaming! Tag someone who’d pass out!\n\n#Tokyo",
+  "next_time": 1795716000,
+  "storage": "release",
+  "threads_caption": "I’m pretty sure I just broke Cillian Murphy because he stopped everything to look at me like I was the main character of his next movie 😭.\n\nMy soul has officially left my body. 🫠✨\n\nTell me I’m not dreaming! Tag someone who’d pass out!\n\n#Tokyo",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "bcddeed7-b92c-4910-b505-cda2abd40915",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_bcddeed7_video_2129.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just checking in from the high-rise.\nThe drop is quite a bit today 🏙️🌀.\nCan you handle the view?",
+  "next_time": 1795694400,
+  "storage": "release",
+  "threads_caption": "Just checking in from the high-rise.\nThe drop is quite a bit today 🏙️🌀.\nCan you handle the view?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}

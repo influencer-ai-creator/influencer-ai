@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "2c7d9cfc-de49-4df2-aa3f-bbd6bfa5d1e8",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_03.jpg"
+  ],
+  "caption": "Me, DEU-12. Honestly, Professor Hauer is making us work so hard today, but I don’t mind it at all. 🪄✨\n\n#KaiserSchloss #GravitationalAnchoring #MagicSchool",
+  "next_time": 1795723200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_2c7d9cfc_slide_2622_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Me, DEU-12. Honestly, Professor Hauer is making us work so hard today, but I don’t mind it at all.\n\n🪄✨ #KaiserSchloss",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
