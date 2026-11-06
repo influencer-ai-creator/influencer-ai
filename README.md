@@ -1,6 +1,10 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 06/11/2026 14:57:54
+✅ **Dernier run sans erreur** — 06/11/2026 18:07:41
+
+## ⚠️ Avertissements (best effort, non bloquants)
+
+- `influencer: Threads 8481dad5-7c58-49c8-a4e2-577c7bc70ec6 -> limité par Meta, reprise au prochain run : Conteneur Slide 3 (IMAGE, texte 0 octets) → HTTP 500 : {"message": "An unexpected error has occurred. Please retry your request later.", "type": "OAuthException", "is_transient": true, "code": 2, "fbtrace_id": "Afx_y9mOWu-LM6vFwkq4lH8"}`
 
 📦 **Total publiés historiquement :** 4246
 
