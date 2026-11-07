@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "877ccbeb-8ee5-4c85-9252-9174d3551a72",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_877ccbeb_video_2137.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The city always feels like a bath.\nThe rain feels like needles of cold light. 🌧️💎\nCan you hear the hum of the towers?",
+  "next_time": 1795806000,
+  "storage": "release",
+  "threads_caption": "The city always feels like a bath.\nThe rain feels like needles of cold light. 🌧️💎\nCan you hear the hum of the towers?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
