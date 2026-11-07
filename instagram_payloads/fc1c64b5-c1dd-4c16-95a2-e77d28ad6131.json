@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "fc1c64b5-c1dd-4c16-95a2-e77d28ad6131",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_fc1c64b5_video_2631.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "holy shit\nshe definitely didn't mean to do that 💀\nshould i tell anyone or just let it stay like that?",
+  "next_time": 1795870800,
+  "storage": "release",
+  "threads_caption": "holy shit\nshe definitely didn't mean to do that 💀\nshould i tell anyone or just let it stay like that?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
