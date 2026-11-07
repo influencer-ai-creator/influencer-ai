@@ -1,0 +1,32 @@
+{
+  "compte": "university",
+  "pub_id": "1abeb339-cf7a-44e0-98eb-21fcea01cf72",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_04.jpg"
+  ],
+  "caption": "A week in five suits at the University of Bologna. 🏛️✨ I finally got my favorites from the old corridors. Which day is your best dressed look? 👠\n\n#Bologna #UniversityStyle #WorkWear #TailoredSuits",
+  "next_time": 1795784400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_04.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "A week in five suits at the University of Bologna. 🏛️✨ I finally got my favorites from the old corridors. Which day is your best dressed look?\n\n👠 #Bologna",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
