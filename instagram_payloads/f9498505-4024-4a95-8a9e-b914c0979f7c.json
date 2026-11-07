@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "f9498505-4024-4a95-8a9e-b914c0979f7c",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_f9498505_video_19422.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Taking the scenic route today... some places are just meant to be felt. ✨🔥 #MarrakechMagic #SummerVibes #TravelDiaries",
+  "next_time": 1795780800,
+  "storage": "release",
+  "threads_caption": "Taking the scenic route today... some places are just meant to be felt.\n\n✨🔥 #MarrakechMagic",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
