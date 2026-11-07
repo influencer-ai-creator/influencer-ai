@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "1b1ed7d7-6121-45ad-8256-afd0b825cbfb",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1b1ed7d7_video_2697.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just tested my vertical limits today.\nMy broom almost gave up on me, but we're still friends 🧹✨\nWho's joining me for the next flight?",
+  "next_time": 1795809600,
+  "storage": "release",
+  "threads_caption": "Just tested my vertical limits today.\nMy broom almost gave up on me, but we're still friends 🧹✨\nWho's joining me for the next flight?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
