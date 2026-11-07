@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "81a39cfb-b3b9-4b62-b2be-b894cbdaebf9",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_81a39cfb_video_19337.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Waking up in a cave and feeling like a queen. The spice of the air is almost as intoxicating as the view. 🇹🇷✨ #Cappadocia #TurkishMagic #TravelInspo",
+  "next_time": 1795809600,
+  "storage": "release",
+  "threads_caption": "Waking up in a cave and feeling like a queen. The spice of the air is almost as intoxicating as the view.\n\n🇹🇷✨ #Cappadocia",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
