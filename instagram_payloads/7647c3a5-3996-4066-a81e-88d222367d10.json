@@ -1,0 +1,30 @@
+{
+  "compte": "influencer",
+  "pub_id": "7647c3a5-3996-4066-a81e-88d222367d10",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_03.jpg"
+  ],
+  "caption": "We’re in Cappadocia! 🇹🇷 One spot, one pose. Who held the vibe best? Let us know your favorite number below! #Cappadocia #TravelSquad #GoldenHour",
+  "next_time": 1795784400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7647c3a5_slide_2216_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "We’re in Cappadocia! 🇹🇷 One spot, one pose. Who held the vibe best? Let us know your favorite number below!\n\n#Cappadocia",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
