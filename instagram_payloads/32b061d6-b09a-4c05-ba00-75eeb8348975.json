@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "32b061d6-b09a-4c05-ba00-75eeb8348975",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_32b061d6_video_1945.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "When the city's automated delivery network decides to get personal.\nJust trying to film a quick update without a drone trying to join my stream 🙄💥\nHas your neighborhood AI started acting this spicy yet?\n#citylife #2077 #techwear #neon #dailygrind #glitch",
+  "next_time": 1795867200,
+  "storage": "release",
+  "threads_caption": "When the city's automated delivery network decides to get personal.\nJust trying to film a quick update without a drone trying to join my stream 🙄💥\nHas your neighborhood AI started acting this spicy yet?\n\n#citylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
