@@ -1,0 +1,34 @@
+{
+  "compte": "influencer",
+  "pub_id": "62aabe83-9357-40ff-af7c-3da7cf75544e",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_05.jpg"
+  ],
+  "caption": "Nothing beats that golden spring sun hitting my skin. ☀️ Feeling so free, reckless, and just completely myself today. Who wants to come along for the next stop? 🌸 #springtravel #goldenhour #islandvibes #sunkissed",
+  "next_time": 1795870800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_62aabe83_slide_2192_05.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Nothing beats that golden spring sun hitting my skin. ☀️ Feeling so free, reckless, and just completely myself today. Who wants to come along for the next stop?\n\n🌸 #springtravel",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
