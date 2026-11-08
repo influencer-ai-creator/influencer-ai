@@ -28,5 +28,16 @@
       14
     ],
     "timezone": ""
+  },
+  "instagram_tried": true,
+  "instagram_media_id": "18137522155736841",
+  "done": {
+    "instagram": true,
+    "facebook": true
+  },
+  "attempts": {
+    "instagram_story": 1,
+    "facebook_story": 1,
+    "threads": 1
   }
 }
