@@ -12,5 +12,12 @@
     "delay_hours": 5.0,
     "quiet_hours": null,
     "timezone": ""
+  },
+  "instagram_tried": true,
+  "done": {},
+  "attempts": {
+    "instagram": 1,
+    "facebook": 1,
+    "threads": 1
   }
 }
