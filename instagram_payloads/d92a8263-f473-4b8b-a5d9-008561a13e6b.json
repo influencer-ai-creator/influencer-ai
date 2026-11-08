@@ -39,5 +39,8 @@
     "instagram_story": 1,
     "facebook_story": 1,
     "threads": 1
+  },
+  "fetch_wait_since": {
+    "threads": 1794143861
   }
 }
