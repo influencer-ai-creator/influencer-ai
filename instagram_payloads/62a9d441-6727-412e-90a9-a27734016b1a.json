@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "62a9d441-6727-412e-90a9-a27734016b1a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_62a9d441_video_2655.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i'm literally shaking right now.\nI think I just ended my career... look at what happened to her 💀\nShould I just move to another country or can I still pass?",
+  "next_time": 1795896000,
+  "storage": "release",
+  "threads_caption": "i'm literally shaking right now.\nI think I just ended my career... look at what happened to her 💀\nShould I just move to another country or can I still pass?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
