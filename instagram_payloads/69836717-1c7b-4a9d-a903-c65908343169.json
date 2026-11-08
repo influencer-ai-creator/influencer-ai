@@ -1,0 +1,28 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "69836717-1c7b-4a9d-a903-c65908343169",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_02.jpg"
+  ],
+  "caption": "Hit up the Rust-Pipe Alley for some skewers and watched the local drone-races. Which shot is your favorite? 1, 2, or 3?",
+  "next_time": 1795892400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_02.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Hit up the Rust-Pipe Alley for some skewers and watched the local drone-races. Which shot is your favorite? 1, 2, or 3?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
