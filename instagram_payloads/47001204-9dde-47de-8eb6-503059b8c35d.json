@@ -1,0 +1,30 @@
+{
+  "compte": "sundress",
+  "pub_id": "47001204-9dde-47de-8eb6-503059b8c35d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_03.jpg"
+  ],
+  "caption": "Spending the day in Rio de Janeiro! 🇧🇷 The beach is beautiful today. Which photo do you prefer? 1, 2, 3, or 4?",
+  "next_time": 1795896000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_47001204_slide_19330_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Spending the day in Rio de Janeiro! 🇧🇷 The beach is beautiful today. Which photo do you prefer? 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
