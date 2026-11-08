@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "9c20c6db-0cad-4ca7-902c-4aa27aa00066",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_9c20c6db_video_19566.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just a quick errand before it gets too hot outside. 🥖✨ #tuscany #summerdays #villagevibes",
+  "next_time": 1795867200,
+  "storage": "release",
+  "threads_caption": "Just a quick errand before it gets too hot outside.\n\n🥖✨ #tuscany",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
