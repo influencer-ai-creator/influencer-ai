@@ -1,0 +1,27 @@
+{
+  "compte": "grace_story",
+  "pub_id": "eca559bc-816a-4978-8bd7-0cecac6c5f3b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_03.jpg"
+  ],
+  "caption": "a day at the races. 🥂\n\nsunshine, bubbles and nowhere else to be.\n\nthe coral silk dress was a non-negotiable for the mood.\n",
+  "next_time": 1794840300,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_eca559bc_slide_150_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "a day at the races. 🥂\n\nsunshine, bubbles and nowhere else to be.\n\nthe coral silk dress was a non-negotiable for the mood.",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
