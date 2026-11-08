@@ -26,5 +26,11 @@
       13
     ],
     "timezone": ""
+  },
+  "instagram_tried": true,
+  "done": {},
+  "attempts": {
+    "instagram": 1,
+    "threads": 1
   }
 }

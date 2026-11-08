@@ -15,5 +15,14 @@
       13
     ],
     "timezone": ""
+  },
+  "instagram_tried": true,
+  "done": {
+    "facebook": true
+  },
+  "attempts": {
+    "instagram": 1,
+    "facebook_story": 1,
+    "threads": 1
   }
 }
