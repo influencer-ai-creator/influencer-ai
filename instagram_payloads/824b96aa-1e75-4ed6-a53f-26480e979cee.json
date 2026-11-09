@@ -1,0 +1,25 @@
+{
+  "compte": "grace_story",
+  "pub_id": "824b96aa-1e75-4ed6-a53f-26480e979cee",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_824b96aa_slide_151_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_824b96aa_slide_151_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_824b96aa_slide_151_02.jpg"
+  ],
+  "caption": "trying to decode the metal monster at the bondi sculpture fest.\n\nit’s weirdly impressive but i’m still not sure if it’s a whale or a cry for help.\n\nsculpture fest, today. \nfinally out of the studio and into the sun. \n\n#bondisculture #artfest",
+  "next_time": 1794926700,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_824b96aa_slide_151_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_824b96aa_slide_151_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_824b96aa_slide_151_02.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "trying to decode the metal monster at the bondi sculpture fest.\n\nit’s weirdly impressive but i’m still not sure if it’s a whale or a cry for help.\n\nsculpture fest, today. \nfinally out of the studio and into the sun.\n\n#bondisculture",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
