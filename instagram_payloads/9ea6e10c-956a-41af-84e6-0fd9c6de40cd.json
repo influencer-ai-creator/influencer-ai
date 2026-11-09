@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "9ea6e10c-956a-41af-84e6-0fd9c6de40cd",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_9ea6e10c_video_2112.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just a quick patch before my shift starts.\nWho knew plumbing in zero-G was this much of a workout? 🛠️🛰️\nWhat's your favorite way to spend a morning in orbit?",
+  "next_time": 1795978800,
+  "storage": "release",
+  "threads_caption": "Just a quick patch before my shift starts.\nWho knew plumbing in zero-G was this much of a workout? 🛠️🛰️\nWhat's your favorite way to spend a morning in orbit?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
