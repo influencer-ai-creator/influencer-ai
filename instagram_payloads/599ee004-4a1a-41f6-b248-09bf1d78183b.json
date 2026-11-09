@@ -1,0 +1,30 @@
+{
+  "compte": "university",
+  "pub_id": "599ee004-4a1a-41f6-b248-09bf1d78183b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_03.jpg"
+  ],
+  "caption": "Caught my prof being a total snack in Neuro today 🥵 I'm actually feral. Which slide is your fave? 1, 2, 3, or 4? #UniLife #HotProf",
+  "next_time": 1795982400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_03.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "Caught my prof being a total snack in Neuro today 🥵 I'm actually feral. Which slide is your fave? 1, 2, 3, or 4?\n\n#UniLife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
