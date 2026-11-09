@@ -1,0 +1,28 @@
+{
+  "compte": "university",
+  "pub_id": "c7e791b8-5df3-4d01-8ae5-eef724d0c09e",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_02.jpg"
+  ],
+  "caption": "I honestly can't believe she showed up today... that deep navy neckline is just so much. Does she know how distracting she is? 😉\n\n#OsloUniversity #EnvSci #StudentStyle",
+  "next_time": 1796043600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_02.jpg"
+  ],
+  "story_slides": true,
+  "threads_caption": "I honestly can't believe she showed up today... that deep navy neckline is just so much. Does she know how distracting she is?\n\n😉 #OsloUniversity",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
