@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "59bf895f-c23e-4a7a-ab5d-023817c61297",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_59bf895f_video_19581.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i actually thought i was about to fall into a giant well in the middle of marrakech... 😱🏺\n\n#marrakech #travelfail #streetart #funny",
+  "next_time": 1795953600,
+  "storage": "release",
+  "threads_caption": "i actually thought i was about to fall into a giant well in the middle of marrakech...\n\n😱🏺 #marrakech",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
