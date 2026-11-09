@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "e915702b-ee02-4610-b556-8f3ae2ac3a94",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_e915702b_video_19433.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Found a glitch in the market's food-holograms tonight. It's absolutely mesmerizing. 🐙✨ #CityOf2093 #CyberNeon #NightVibes",
+  "next_time": 1795982400,
+  "storage": "release",
+  "threads_caption": "Found a glitch in the market's food-holograms tonight. It's absolutely mesmerizing.\n\n🐙✨ #CityOf2093",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
