@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "7615f531-737d-4a55-9fe0-3245193d081a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7615f531_video_2363.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i actually thought i was about to drop into a neon subway station. 😱💀 #barcelona #streetart #fail",
+  "next_time": 1795957200,
+  "storage": "release",
+  "threads_caption": "i actually thought i was about to drop into a neon subway station.\n\n😱💀 #barcelona",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
