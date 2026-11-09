@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "1d44cc80-b808-4b43-8338-678f36cb9f0e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1d44cc80_video_2168.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "she has just found this clip of herself at a noodle counter, and she remembers the moment she felt someone looking at her.\nmy friend was probably just telling me about the new district upgrades. 🍜\nwhat do you think she was telling me?",
+  "next_time": 1795953600,
+  "storage": "release",
+  "threads_caption": "she has just found this clip of herself at a noodle counter, and she remembers the moment she felt someone looking at her.\nmy friend was probably just telling me about the new district upgrades. 🍜\nwhat do you think she was telling me?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
