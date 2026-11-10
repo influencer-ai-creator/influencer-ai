@@ -1,0 +1,31 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "37b4dd80-7a3c-4360-b4a6-6601a859319d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_03.jpg"
+  ],
+  "caption": "Stuck in my tower. Can't decide on an outfit for the club. Help a girl out? Which number should I go in?",
+  "next_time": 1796040000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_fb_reel_2191.mp4",
+  "story_slides": true,
+  "threads_caption": "Stuck in my tower. Can't decide on an outfit for the club. Help a girl out? Which number should I go in?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
