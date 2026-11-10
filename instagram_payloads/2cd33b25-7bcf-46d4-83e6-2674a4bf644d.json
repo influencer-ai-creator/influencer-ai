@@ -1,0 +1,31 @@
+{
+  "compte": "influencer",
+  "pub_id": "2cd33b25-7bcf-46d4-83e6-2674a4bf644d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_03.jpg"
+  ],
+  "caption": "Finally made it to Rome and had to do a little photoshoot at the Colosseum! 🇮🇹 It was honestly such a vibe. Which photo is your fave, 1, 2, 3, or 4? #RomeTravels #Colosseum #ItalyVibes",
+  "next_time": 1796043600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_slide_2314_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2cd33b25_fb_reel_2314.mp4",
+  "story_slides": true,
+  "threads_caption": "Finally made it to Rome and had to do a little photoshoot at the Colosseum! 🇮🇹 It was honestly such a vibe. Which photo is your fave, 1, 2, 3, or 4?\n\n#RomeTravels",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
