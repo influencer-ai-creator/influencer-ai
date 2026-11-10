@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "7c14ad3d-9e3f-4df1-95bb-fc98ed3b2080",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_7c14ad3d_video_19404.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I really thought it was just a bit sticky.\n\nMy afternoon in Mykonos just got a lot more dramatic! ☀️🌊\n\nWould you have tried to fix it or just walked away?",
+  "next_time": 1796068800,
+  "storage": "release",
+  "threads_caption": "I really thought it was just a bit sticky.\n\nMy afternoon in Mykonos just got a lot more dramatic! ☀️🌊\n\nWould you have tried to fix it or just walked away?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
