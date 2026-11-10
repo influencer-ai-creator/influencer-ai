@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "2ef72ff5-3c2b-437f-b2fa-7e97c6c5c95f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_2ef72ff5_video_19588.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i'm starting to think my mirror has a mind of its own... 😳✨\n#glitch #mirror",
+  "next_time": 1796155200,
+  "storage": "release",
+  "threads_caption": "i'm starting to think my mirror has a mind of its own...\n\n😳✨ #glitch",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
