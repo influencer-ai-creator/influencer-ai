@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "09dd4a66-a2a7-4116-a65e-89995968228d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_09dd4a66_video_19587.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Sipping on something sweet while the sun dips below the karst. 🥥✨ #PalawanParadise #IslandVibes #GoldenHour",
+  "next_time": 1796126400,
+  "storage": "release",
+  "threads_caption": "Sipping on something sweet while the sun dips below the karst.\n\n🥥✨ #PalawanParadise",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
