@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "3899007d-3ea5-4876-b3cc-3b17fa466a9f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3899007d_video_2091.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just another night dodging the tilt on the 10-line.\nMy inner ear is basically a survivalist at this point. 🎢🌀\nWhere are you heading tonight?",
+  "next_time": 1796065200,
+  "storage": "release",
+  "threads_caption": "Just another night dodging the tilt on the 10-line.\nMy inner ear is basically a survivalist at this point. 🎢🌀\nWhere are you heading tonight?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
