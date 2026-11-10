@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "49700659-a9e2-4059-9cb2-405367192328",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_49700659_video_2323.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i just found this clip my friend sent me of us at a hotel lounge in prague and i remember the moment i felt someone watching me from across the room.\nshe was probably telling me about her crazy date from the night before 🍸\nwhat do you think she was telling me?\n#prague #candid #hotelvibes #caughtoncamera",
+  "next_time": 1796061600,
+  "storage": "release",
+  "threads_caption": "i just found this clip my friend sent me of us at a hotel lounge in prague and i remember the moment i felt someone watching me from across the room.\nshe was probably telling me about her crazy date from the night before 🍸\nwhat do you think she was telling me?\n\n#prague",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
