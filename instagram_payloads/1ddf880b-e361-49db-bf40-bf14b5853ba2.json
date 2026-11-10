@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "1ddf880b-e361-49db-bf40-bf14b5853ba2",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1ddf880b_video_2615.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I'm literally shaking. I left my phone recording and just saw what happened after class. She totally just went over to him... 😳 #caughtoncamera #lecturehall #universitylife",
+  "next_time": 1796068800,
+  "storage": "release",
+  "threads_caption": "I'm literally shaking. I left my phone recording and just saw what happened after class. She totally just went over to him...\n\n😳 #caughtoncamera",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
