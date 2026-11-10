@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "75615b04-5e4b-466e-9bd2-7ce5488cb608",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_75615b04_video_19206.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Lost in the streets of Paris, finding magic in every corner. 🗼✨ #ParisVibes #TravelDiaries #SummerStyle #Wanderlust #CityEscape #GoldenHour #InstaTravel #Beauty #Lifestyle #ExploreMore",
+  "next_time": 1796040000,
+  "storage": "release",
+  "threads_caption": "Lost in the streets of Paris, finding magic in every corner.\n\n🗼✨ #ParisVibes",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
