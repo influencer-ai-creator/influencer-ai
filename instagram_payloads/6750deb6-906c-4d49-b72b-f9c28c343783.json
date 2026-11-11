@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "6750deb6-906c-4d49-b72b-f9c28c343783",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6750deb6_video_2118.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Another night, another orbital commute.\n🚀🌌\nWho else prefers the express lift to the penthouse?",
+  "next_time": 1796151600,
+  "storage": "release",
+  "threads_caption": "Another night, another orbital commute.\n🚀🌌\nWho else prefers the express lift to the penthouse?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
