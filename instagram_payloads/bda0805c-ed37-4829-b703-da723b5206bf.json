@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "bda0805c-ed37-4829-b703-da723b5206bf",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_bda0805c_video_2273.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Still processing what just happened in the streets of Lisbon... \n\nLet’s just say I’m not complaining about this kind of surprise. 😉\n\n#Lisbon #Alfama #StreetMagic #Unexpected",
+  "next_time": 1796148000,
+  "storage": "release",
+  "threads_caption": "Still processing what just happened in the streets of Lisbon... \n\nLet’s just say I’m not complaining about this kind of surprise.\n\n😉 #Lisbon",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
