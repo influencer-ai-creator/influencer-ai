@@ -1,0 +1,17 @@
+{
+  "compte": "grace_story",
+  "pub_id": "9fdc1d79-99d1-44a2-8705-3da6e2947c0e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_9fdc1d79_video_160.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "one last proper dinner out before finals.\n\nsydney looks good tonight. 🥂",
+  "next_time": 1795209300,
+  "storage": "release",
+  "threads_caption": "one last proper dinner out before finals.\n\nsydney looks good tonight. 🥂",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  },
+  "story_only": true
+}
