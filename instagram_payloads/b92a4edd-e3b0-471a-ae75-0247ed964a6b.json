@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "b92a4edd-e3b0-471a-ae75-0247ed964a6b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b92a4edd_video_2736.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think my mirror is starting to get a bit too cheeky with me.\n🔮✨\nDoes your furniture have a personality too?",
+  "next_time": 1796130000,
+  "storage": "release",
+  "threads_caption": "I think my mirror is starting to get a bit too cheeky with me.\n🔮✨\nDoes your furniture have a personality too?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
