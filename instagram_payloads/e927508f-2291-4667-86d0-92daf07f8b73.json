@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "e927508f-2291-4667-86d0-92daf07f8b73",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e927508f_video_2368.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i'm starting to think this mirror has a mind of its own... 🫣✨ #glitch #mirrormagic #home",
+  "next_time": 1796130000,
+  "storage": "release",
+  "threads_caption": "i'm starting to think this mirror has a mind of its own...\n\n🫣✨ #glitch",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
