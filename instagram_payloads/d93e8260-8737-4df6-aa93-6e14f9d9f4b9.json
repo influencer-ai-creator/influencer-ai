@@ -1,0 +1,28 @@
+{
+  "compte": "grace_story",
+  "pub_id": "d93e8260-8737-4df6-aa93-6e14f9d9f4b9",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_03.jpg"
+  ],
+  "caption": "the light at bondi was perfect today. the sand is warm and my friends are already hunting for snacks in the bag, but i'm staying right here for a bit longer. ☀️",
+  "next_time": 1795189500,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_slide_156_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_d93e8260_fb_reel_156.mp4",
+  "story_slides": true,
+  "threads_caption": "the light at bondi was perfect today. the sand is warm and my friends are already hunting for snacks in the bag, but i'm staying right here for a bit longer. ☀️",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
