@@ -1,0 +1,17 @@
+{
+  "compte": "grace_story",
+  "pub_id": "a38ad684-752c-48e8-bc62-6b47a34516fa",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_a38ad684_video_158.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "pre-exam clarity.\njust needed a minute of quiet before the books take over.\n#botanicgardens",
+  "next_time": 1795017000,
+  "storage": "release",
+  "threads_caption": "pre-exam clarity.\njust needed a minute of quiet before the books take over.\n\n#botanicgardens",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  },
+  "story_only": true
+}
