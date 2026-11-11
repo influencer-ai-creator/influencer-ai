@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "1fcceb2e-6ef2-4b81-b8d1-22fddaf2c890",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_1fcceb2e_video_171.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the skyline is melting into the water.\n\nrosé tastes better when the sun is actually doing its thing.\n\n#sydney",
+  "next_time": 1795282920,
+  "storage": "release",
+  "threads_caption": "the skyline is melting into the water.\n\nrosé tastes better when the sun is actually doing its thing.\n\n#sydney",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
