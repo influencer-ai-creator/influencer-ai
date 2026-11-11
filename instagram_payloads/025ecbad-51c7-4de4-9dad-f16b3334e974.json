@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "025ecbad-51c7-4de4-9dad-f16b3334e974",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_025ecbad_video_2222.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "My mirror is starting to develop a sense of humor.\nI think it's trying to tell me I need a wardrobe upgrade. 🤨✨\nHas your tech ever started acting up like this?",
+  "next_time": 1796126400,
+  "storage": "release",
+  "threads_caption": "My mirror is starting to develop a sense of humor.\nI think it's trying to tell me I need a wardrobe upgrade. 🤨✨\nHas your tech ever started acting up like this?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
