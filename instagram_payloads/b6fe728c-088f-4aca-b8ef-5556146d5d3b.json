@@ -1,0 +1,39 @@
+{
+  "compte": "university",
+  "pub_id": "b6fe728c-088f-4aca-b8ef-5556146d5d3b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_07.jpg"
+  ],
+  "caption": "MY CLASS HAS MET IN EVERY AGE, FROM THE STONE AGE TO THE FAR FUTURE. Honestly, I love the vibes of all of them. Which age did my students look best in, by photo number? #history #education #timeless",
+  "next_time": 1796155200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_07.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_fb_reel_2640.mp4",
+  "story_slides": true,
+  "threads_caption": "MY CLASS HAS MET IN EVERY AGE, FROM THE STONE AGE TO THE FAR FUTURE. Honestly, I love the vibes of all of them. Which age did my students look best in, by photo number?\n\n#history",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
