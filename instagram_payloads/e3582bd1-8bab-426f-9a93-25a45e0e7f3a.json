@@ -1,0 +1,31 @@
+{
+  "compte": "influencer",
+  "pub_id": "e3582bd1-8bab-426f-9a93-25a45e0e7f3a",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_03.jpg"
+  ],
+  "caption": "Ibiza days are everything 🌴☀️ Finally found my favorite spot by the water! Soaking up every second of this sunshine. Which photo is your favorite? 1, 2, 3, or 4? #ibiza #poolside #summerVibes",
+  "next_time": 1796216400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_slide_2248_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_e3582bd1_fb_reel_2248.mp4",
+  "story_slides": true,
+  "threads_caption": "Ibiza days are everything 🌴☀️ Finally found my favorite spot by the water! Soaking up every second of this sunshine. Which photo is your favorite? 1, 2, 3, or 4?\n\n#ibiza",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}

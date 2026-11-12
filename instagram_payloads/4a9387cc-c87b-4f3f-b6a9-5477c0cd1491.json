@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "4a9387cc-c87b-4f3f-b6a9-5477c0cd1491",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4a9387cc_video_2325.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "He pressed the button, and I didn't give him a choice but to be swept off his feet.\n\nHe looked like he finally found exactly what he was searching for 🫠\n\n#PragueMagic #DollBoutique #SuddenKiss",
+  "next_time": 1796234400,
+  "storage": "release",
+  "threads_caption": "He pressed the button, and I didn't give him a choice but to be swept off his feet.\n\nHe looked like he finally found exactly what he was searching for\n\n🫠 #PragueMagic",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
