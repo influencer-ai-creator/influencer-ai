@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "7fefb4b5-c257-471c-aedc-5adbb5914395",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_7fefb4b5_video_19592.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I’m still shaking... 😳 I was just browsing a boutique window when she literally snatched my breath away. Best surprise of my life. 🔥 #LisbonMoments #UnexpectedKiss #StreetMagic",
+  "next_time": 1796212800,
+  "storage": "release",
+  "threads_caption": "I’m still shaking... 😳 I was just browsing a boutique window when she literally snatched my breath away. Best surprise of my life.\n\n🔥 #LisbonMoments",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
