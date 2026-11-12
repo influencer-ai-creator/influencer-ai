@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "e4985201-90eb-4e2e-8afa-8ebe3a3d380f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e4985201_video_2626.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I just couldn't wait for class to end. I ran down the aisle and kissed her, and she actually kissed me back. I'm still shaking. #Bologna #CaughtOnCamera",
+  "next_time": 1796241600,
+  "storage": "release",
+  "threads_caption": "I just couldn't wait for class to end. I ran down the aisle and kissed her, and she actually kissed me back. I'm still shaking.\n\n#Bologna",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
