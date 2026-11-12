@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "dcec37de-002d-42ff-a23a-0e7537d91604",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dcec37de_video_2643.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "oh my god\nshe actually let it hit the wall... 💀\nwho else saw the ceiling start to crack?",
+  "next_time": 1796216400,
+  "storage": "release",
+  "threads_caption": "oh my god\nshe actually let it hit the wall... 💀\nwho else saw the ceiling start to crack?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
