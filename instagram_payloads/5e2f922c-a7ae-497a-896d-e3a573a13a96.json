@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "5e2f922c-a7ae-497a-896d-e3a573a13a96",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_5e2f922c_video_2686.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i thought i was being so sneaky but the moment her eyes locked onto my phone my heart nearly stopped. how did i get so lucky? 😳\n#universitylife #secretrecording #arthistory",
+  "next_time": 1796302800,
+  "storage": "release",
+  "threads_caption": "i thought i was being so sneaky but the moment her eyes locked onto my phone my heart nearly stopped. how did i get so lucky?\n\n😳 #universitylife",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
