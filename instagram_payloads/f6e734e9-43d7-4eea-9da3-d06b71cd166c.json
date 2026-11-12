@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "f6e734e9-43d7-4eea-9da3-d06b71cd166c",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_f6e734e9_video_19590.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just finishing my little task here at the ruins. A little visitor tried to interrupt my vibe, so I gave them a permanent seat. ✨🤫 #MachuPicchu #MagicMoments",
+  "next_time": 1796241600,
+  "storage": "release",
+  "threads_caption": "Just finishing my little task here at the ruins. A little visitor tried to interrupt my vibe, so I gave them a permanent seat.\n\n✨🤫 #MachuPicchu",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
