@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "b00507b8-eec1-4e17-b4e5-fc3db5069e18",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b00507b8_video_2132.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Late night patrol felt a bit smoother tonight.\nThe bike is starting to feel like an extension of my own spine 🏍️✨\nWhere do you think I'm heading?",
+  "next_time": 1796212800,
+  "storage": "release",
+  "threads_caption": "Late night patrol felt a bit smoother tonight.\nThe bike is starting to feel like an extension of my own spine 🏍️✨\nWhere do you think I'm heading?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
