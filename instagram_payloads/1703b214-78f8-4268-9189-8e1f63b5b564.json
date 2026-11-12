@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "1703b214-78f8-4268-9189-8e1f63b5b564",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_1703b214_video_2163.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Cleaning up the lower levels again.",
+  "next_time": 1796238000,
+  "storage": "release",
+  "threads_caption": "Cleaning up the lower levels again.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
