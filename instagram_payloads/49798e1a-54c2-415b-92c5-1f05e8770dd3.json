@@ -1,0 +1,35 @@
+{
+  "compte": "sundress",
+  "pub_id": "49798e1a-54c2-415b-92c5-1f05e8770dd3",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_04.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_05.jpg"
+  ],
+  "caption": "time to tell you something 🌼 none of these girls exist. every photo here is written and generated on one computer at home, then checked by a person before it goes out. no hashtag tuning: every post is measured, and the numbers tell which prompt works.\n\nwant to run your own? the whole method is in the guide: https://influencer-ai-creator.github.io/influencer-ai/\n\n#aiart #sundress #behindthescenes",
+  "next_time": 1794562864,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_slide_19595_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_49798e1a_fb_reel_19595.mp4",
+  "story_slides": true,
+  "threads_caption": "time to tell you something 🌼 none of these girls exist. every photo here is written and generated on one computer at home, then checked by a person before it goes out. no hashtag tuning: every post is measured, and the numbers tell which prompt works.\n\nwant to run your own? the whole method is in the guide: https://influencer-ai-creator.github.io/influencer-ai/\n\n#aiart",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
