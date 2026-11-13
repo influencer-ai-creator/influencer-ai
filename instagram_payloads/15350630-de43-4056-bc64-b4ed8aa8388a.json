@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "15350630-de43-4056-bc64-b4ed8aa8388a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_15350630_video_19573.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "caught a vibe at a café terrace in Paris and then saw her.\nShe was clearly telling her friend about her favorite pastry 🥐\nWhat do you think she was saying?\n#paristravel #cafeterrace #cityvibes #traveldiaries",
+  "next_time": 1796328000,
+  "storage": "release",
+  "threads_caption": "caught a vibe at a café terrace in Paris and then saw her.\nShe was clearly telling her friend about her favorite pastry 🥐\nWhat do you think she was saying?\n\n#paristravel",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
