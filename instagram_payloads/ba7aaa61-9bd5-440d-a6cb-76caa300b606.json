@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "ba7aaa61-9bd5-440d-a6cb-76caa300b606",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_ba7aaa61_video_19462.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Chasing the sunset in Lisbon. 🌅 There's something about this city that feels like a dream. I love finding new corners of the world to get lost in. ✨ #LisbonDiaries #TravelMagic #GoldenHour",
+  "next_time": 1796299200,
+  "storage": "release",
+  "threads_caption": "Chasing the sunset in Lisbon. 🌅 There's something about this city that feels like a dream. I love finding new corners of the world to get lost in.\n\n✨ #LisbonDiaries",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
