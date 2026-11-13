@@ -1,0 +1,29 @@
+{
+  "compte": "influencer",
+  "pub_id": "2a3b5cb0-53d2-4d16-bba9-6f717caf6f2d",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_02.jpg"
+  ],
+  "caption": "We're in M'hamid El Ghizlane, Morocco! 🏜️ Playing a game of one spot, one pose. Who did it best? Tell us by her number! #Morocco #Sahara #TravelDiaries",
+  "next_time": 1796320800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_02.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_fb_reel_2321.mp4",
+  "story_slides": true,
+  "threads_caption": "We're in M'hamid El Ghizlane, Morocco! 🏜️ Playing a game of one spot, one pose. Who did it best? Tell us by her number!\n\n#Morocco",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
