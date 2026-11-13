@@ -1,0 +1,35 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "79cfef2e-8370-49f0-9a43-ae3e9a5b154a",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_04.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_05.jpg"
+  ],
+  "caption": "plot twist 🌃 she isn't real. neither is the city. every photo here is written and generated on one computer at home, then checked by a person before it goes out. no hashtag tuning: every post is measured, and the numbers tell which prompt works.\n\nwant to run your own? the whole method is in the guide: https://influencer-ai-creator.github.io/influencer-ai/\n\n#aiart #aigirl #behindthescenes",
+  "next_time": 1794567985,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_slide_2238_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_79cfef2e_fb_reel_2238.mp4",
+  "story_slides": true,
+  "threads_caption": "plot twist 🌃 she isn't real. neither is the city. every photo here is written and generated on one computer at home, then checked by a person before it goes out. no hashtag tuning: every post is measured, and the numbers tell which prompt works.\n\nwant to run your own? the whole method is in the guide: https://influencer-ai-creator.github.io/influencer-ai/\n\n#aiart",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
