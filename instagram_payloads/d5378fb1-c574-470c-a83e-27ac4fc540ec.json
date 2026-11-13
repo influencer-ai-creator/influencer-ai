@@ -1,0 +1,33 @@
+{
+  "compte": "university",
+  "pub_id": "d5378fb1-c574-470c-a83e-27ac4fc540ec",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_04.jpg"
+  ],
+  "caption": "My week in five suits at the University of Salamanca. 🏛️✨ Just a little 'academic chic' for your feed. Which day is the best dressed?",
+  "next_time": 1796328000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_04.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_fb_reel_2574.mp4",
+  "story_slides": true,
+  "threads_caption": "My week in five suits at the University of Salamanca. 🏛️✨ Just a little 'academic chic' for your feed. Which day is the best dressed?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
