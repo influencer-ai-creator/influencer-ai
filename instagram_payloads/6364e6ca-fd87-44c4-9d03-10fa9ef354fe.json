@@ -1,0 +1,31 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "6364e6ca-fd87-44c4-9d03-10fa9ef354fe",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_03.jpg"
+  ],
+  "caption": "Just wandering through the Sump-Garden for a bit of green. It's humid and smells like wet soil. Which door would you push, by its number?",
+  "next_time": 1796299200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_slide_2116_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_6364e6ca_fb_reel_2116.mp4",
+  "story_slides": true,
+  "threads_caption": "Just wandering through the Sump-Garden for a bit of green. It's humid and smells like wet soil. Which door would you push, by its number?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
