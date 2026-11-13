@@ -1,0 +1,38 @@
+{
+  "compte": "grace_story",
+  "pub_id": "4fc81162-81db-499f-aa99-7b4316a5edbe",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_05.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_07.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_08.jpg"
+  ],
+  "caption": "making-of 🎬 people keep asking who grace is. she's a story: written, generated, then checked by a person before anything goes out. the beach is real though.\n\nwant to run your own? the world bible, the showrunner, the face model, the videos: it's all in the Story guide: https://influencer-ai-creator.github.io/influencer-ai/ (or tap the 📖 guide highlight)\n\n#aiart #makingof #sydney",
+  "next_time": 1794583737,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_07.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_slide_183_08.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4fc81162_fb_reel_183.mp4",
+  "story_slides": true,
+  "threads_caption": "making-of 🎬 people keep asking who grace is. she's a story: written, generated, then checked by a person before anything goes out. the beach is real though.\n\nwant to run your own? the world bible, the showrunner, the face model, the videos: it's all in the Story guide: https://influencer-ai-creator.github.io/influencer-ai/ (or tap the 📖 guide highlight)\n\n#aiart",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
