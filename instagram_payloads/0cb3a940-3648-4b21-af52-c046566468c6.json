@@ -1,0 +1,35 @@
+{
+  "compte": "influencer",
+  "pub_id": "0cb3a940-3648-4b21-af52-c046566468c6",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_04.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_05.jpg"
+  ],
+  "caption": "confession time ✨ none of these girls exist, and neither do the trips. every photo here is written and generated on one computer at home, then checked by a person before it goes out. no hashtag tuning: every post is measured, and the numbers tell which prompt works.\n\nwant to run your own? the whole method is in the guide: https://influencer-ai-creator.github.io/influencer-ai/\n\n#aiart #aiinfluencer #behindthescenes",
+  "next_time": 1794562813,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_slide_2376_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0cb3a940_fb_reel_2376.mp4",
+  "story_slides": true,
+  "threads_caption": "confession time ✨ none of these girls exist, and neither do the trips. every photo here is written and generated on one computer at home, then checked by a person before it goes out. no hashtag tuning: every post is measured, and the numbers tell which prompt works.\n\nwant to run your own? the whole method is in the guide: https://influencer-ai-creator.github.io/influencer-ai/\n\n#aiart",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
