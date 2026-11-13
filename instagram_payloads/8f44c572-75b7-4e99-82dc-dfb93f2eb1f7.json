@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "8f44c572-75b7-4e99-82dc-dfb93f2eb1f7",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8f44c572_video_2311.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "just grabbing a few things for dinner 🍎\n\n#madrid #supermarket #shopping",
+  "next_time": 1796302800,
+  "storage": "release",
+  "threads_caption": "just grabbing a few things for dinner\n\n🍎 #madrid",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
