@@ -1,0 +1,31 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "b2480fae-49d6-40f0-ac2f-c09791eb710b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_03.jpg"
+  ],
+  "caption": "Stuck in the tower again. Trying to pick an outfit for the bar downstairs. Help me choose? 1, 2, 3, or 4?",
+  "next_time": 1796324400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_fb_reel_2225.mp4",
+  "story_slides": true,
+  "threads_caption": "Stuck in the tower again. Trying to pick an outfit for the bar downstairs. Help me choose? 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
