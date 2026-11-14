@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "dd3f6a5d-d641-4341-ac8e-caa10a75d993",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_dd3f6a5d_video_2751.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "caught her in the hall lol\nshe really just turned him into a gold bar like it was nothing 😂\nshould she leave him there for the rest of the semester?",
+  "next_time": 1796414400,
+  "storage": "release",
+  "threads_caption": "caught her in the hall lol\nshe really just turned him into a gold bar like it was nothing 😂\nshould she leave him there for the rest of the semester?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
