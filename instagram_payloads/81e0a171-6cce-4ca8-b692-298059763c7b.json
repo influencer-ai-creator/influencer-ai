@@ -1,0 +1,29 @@
+{
+  "compte": "university",
+  "pub_id": "81e0a171-6cce-4ca8-b692-298059763c7b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_02.jpg"
+  ],
+  "caption": "I can't believe how she’s wearing that uniform today. THAT BUSTIER is everything. 😍 Who else could pull this off?\n\n#DublinUniversity #ClassroomStyle #MythologyLecture #StudentFashion",
+  "next_time": 1796389200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_02.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_fb_reel_2528.mp4",
+  "story_slides": true,
+  "threads_caption": "I can't believe how she’s wearing that uniform today. THAT BUSTIER is everything. 😍 Who else could pull this off?\n\n#DublinUniversity",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
