@@ -1,0 +1,35 @@
+{
+  "compte": "influencer",
+  "pub_id": "056c4370-3a9e-4e4d-bac4-78fca6168bcf",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_05.jpg"
+  ],
+  "caption": "Spring is finally here and I’m soaking up every single drop of this golden sun. ☀️ There is nothing like feeling the breeze on my skin and just letting myself be free. Who wants to join me for a drink? 🍹 #springtravel #goldenhour #islandvibes #traveldiaries",
+  "next_time": 1796407200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_slide_2193_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_056c4370_fb_reel_2193.mp4",
+  "story_slides": true,
+  "threads_caption": "Spring is finally here and I’m soaking up every single drop of this golden sun. ☀️ There is nothing like feeling the breeze on my skin and just letting myself be free. Who wants to join me for a drink?\n\n🍹 #springtravel",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
