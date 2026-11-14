@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "be624cce-01c6-419a-9016-d41875ca52bb",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_be624cce_video_19217.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Feeling like a desert queen in these sun-drenched ruins 🌹✨. #travelgram #morocco #fashiondiaries #sundressseason #wanderlust",
+  "next_time": 1796414400,
+  "storage": "release",
+  "threads_caption": "Feeling like a desert queen in these sun-drenched ruins\n\n🌹✨. #travelgram",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
