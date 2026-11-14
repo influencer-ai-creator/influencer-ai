@@ -1,0 +1,31 @@
+{
+  "compte": "sundress",
+  "pub_id": "3689781e-a223-4eba-93e9-8b97efcfd47a",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_03.jpg"
+  ],
+  "caption": "I'm in Palma de Mallorca and I honestly cannot decide which one to keep! 🥺 Help me pick my favorite dress for the weekend? Let me know the number in the comments! ✨",
+  "next_time": 1796385600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_slide_19396_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3689781e_fb_reel_19396.mp4",
+  "story_slides": true,
+  "threads_caption": "I'm in Palma de Mallorca and I honestly cannot decide which one to keep! 🥺 Help me pick my favorite dress for the weekend? Let me know the number in the comments! ✨",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
