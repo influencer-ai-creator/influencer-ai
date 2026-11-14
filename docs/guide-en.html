@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behind the scenes — AI Girl Studio</title>
+<meta name="description" content="How four AI girl accounts post every day from one home computer: the recipes and the image and video models behind them.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #fdf6f3;
+    --card: #ffffff;
+    --ink: #2b1d24;
+    --soft: #7a6470;
+    --rose: #d9577e;
+    --rose-soft: #fbe3ea;
+    --line: #f0dde3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1a1216; --card: #241a1f; --ink: #f6eaee; --soft: #b89fab; --rose: #f07fa0; --rose-soft: #3a2029; --line: #3a2a31; }
+  }
+  body { font-family: 'Georgia', 'Iowan Old Style', serif; background: var(--bg); color: var(--ink); line-height: 1.7; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 2.5rem 1rem 2rem; }
+  .back { font-family: system-ui, sans-serif; font-size: .82rem; color: var(--rose); text-decoration: none; }
+  header { margin: 1.5rem 0 2.5rem; }
+  .eyebrow { font-family: system-ui, sans-serif; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--rose); }
+  h1 { font-size: 2.2rem; font-style: italic; font-weight: 400; line-height: 1.25; margin: .4rem 0 .8rem; }
+  header p { color: var(--soft); font-size: 1.05rem; }
+  section { margin-bottom: 2.4rem; }
+  h2 { font-size: 1.4rem; font-style: italic; font-weight: 400; margin-bottom: .7rem; }
+  h2 .n { font-family: system-ui, sans-serif; font-style: normal; font-size: .75rem; color: var(--rose); letter-spacing: .1em; display: block; margin-bottom: .2rem; }
+  p + p { margin-top: .8rem; }
+  ul { margin: .8rem 0 0 1.1rem; }
+  li { margin-bottom: .4rem; }
+  a { color: var(--rose); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 1.1rem 1.2rem; margin-top: 1rem; }
+  .card b { color: var(--rose); font-weight: 400; font-style: italic; }
+  .steps { counter-reset: s; list-style: none; margin-left: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 2.2rem; margin-bottom: .8rem; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: .1rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--rose-soft); color: var(--rose); font-family: system-ui, sans-serif; font-size: .8rem; display: flex; align-items: center; justify-content: center; }
+  .model { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: .9rem 1.1rem; margin-top: .7rem; }
+  .model b { display: block; font-size: 1.05rem; }
+  .model span { color: var(--soft); font-size: .92rem; display: block; }
+  .model .get { font-family: system-ui, sans-serif; font-size: .8rem; margin-top: .4rem; }
+  .model .get a { margin-right: .7rem; }
+  .note { background: var(--rose-soft); border-radius: 18px; padding: 1.1rem 1.2rem; }
+  .note code { font-family: system-ui, sans-serif; background: var(--card); color: var(--rose); padding: .05rem .4rem; border-radius: 6px; }
+  footer { text-align: center; color: var(--soft); font-size: .8rem; font-family: system-ui, sans-serif; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← Meet the girls</a>
+
+  <header>
+    <div class="eyebrow">AI Girl Studio · Behind the scenes</div>
+    <h1>Four accounts, one computer, no subscription</h1>
+    <p>Every picture, every video and every sound on these accounts is made on a single home computer, with open models anyone can download. Here is how — in plain words.</p>
+  </header>
+
+  <section>
+    <h2><span class="n">01</span>Each account runs on recipes</h2>
+    <p>An account is not one prompt typed over and over. It has a dozen or more <em>recipes</em>: a small scene with its rules — a summer dress caught by the wind, a mirror that does not behave, a surprise kiss, a walk that turns strange.</p>
+    <p>For each post, the machine picks a recipe and writes everything at once: the caption, the description of the first picture, and what happens in the video. Recipes take turns, and the ones people watch the most come back more often.</p>
+    <div class="card"><b>What makes people stay:</b> the first three seconds of the video, not the caption or the hashtags. The first picture has to promise something — the viewer stays to see it happen.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>From a recipe to a post</h2>
+    <ol class="steps">
+      <li><strong>The words</strong> — caption and descriptions, written by a language model running on the same computer.</li>
+      <li><strong>The first picture</strong> — and sometimes the last one too, so the video knows where it ends.</li>
+      <li><strong>The video</strong> — 15 seconds, animated from that picture, with its own sound.</li>
+      <li><strong>Or a carousel</strong> — several pictures, the first one gently animated.</li>
+      <li><strong>A human says yes</strong> — nothing goes out without a person looking at it, then it is scheduled.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>The models we use</h2>
+    <p>Two image models, chosen per recipe because they do not draw the same girls:</p>
+
+    <div class="model">
+      <b>Krea 2 Turbo</b>
+      <span>Fast, and keeps the same face from one picture to the next in a carousel.</span>
+    </div>
+
+    <div class="model">
+      <b>MOSS-Image</b>
+      <span>More varied faces, and stays photographic even in impossible places.</span>
+    </div>
+
+    <p style="margin-top:1.2rem">And for movement:</p>
+
+    <div class="model">
+      <b>MiniMax H3</b>
+      <span>Turns the first picture into a 15-second video with its own sound — voices, music, ambience.</span>
+    </div>
+
+    <div class="model">
+      <b>Wan 2.2</b>
+      <span>Animates the first slide of a carousel.</span>
+    </div>
+
+    <p style="margin-top:1rem">Everything runs in ComfyUI. The models, and the add-ons (LoRAs) that give each account its look, are shared by the community on <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> and <a href="https://civitai.com" target="_blank" rel="noopener">CivitAI</a>. Each one has its own licence — read it before using it, especially for anything you earn money with.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>One computer, overnight</h2>
+    <p>All of it runs on one home computer with a gaming graphics card (12 GB of video memory). No monthly AI subscription, and no online service sees the pictures before they are posted. A video takes several minutes, so most of the work happens at night; during the day, a person only chooses what goes out.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>The honest part</h2>
+    <ul>
+      <li>Every post is labelled as AI. None of these girls is a real person, and none is made to look like one.</li>
+      <li>Each platform has its own rules on suggestive content — they apply, AI or not.</li>
+      <li>It is not passive income. It is a craft: the machine does the hours, a person still decides.</li>
+    </ul>
+  </section>
+
+  <section class="note">
+    <p><strong>Want to make your own AI girl?</strong> We are thinking about opening a small corner to show how. If you would join, send <code>studio</code> in a DM to any of the accounts — we will tell you when it opens.</p>
+  </section>
+
+  <footer>AI Girl Studio · every person shown is AI-generated</footer>
+
+</div>
+</body>
+</html>

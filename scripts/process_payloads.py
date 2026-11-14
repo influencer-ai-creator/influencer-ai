@@ -1,0 +1,2287 @@
+"""
+process_payloads.py — publication multi-réseaux, exécutée par GitHub Actions.
+
+Script AUTONOME : il tourne sur le runner, copié dans le repo de publication par
+`push_scripts_to_repo`. Il ne peut importer AUCUN module du projet — toute
+factorisation doit rester interne à ce fichier (c'est l'une des quatre exceptions
+à la règle « pas de print() » de CLAUDE.md §2).
+
+RÉSEAUX COUVERTS
+    Instagram   post image · carousel · reel      + Story
+    Facebook    post image · carousel · reel      + Story
+    Threads     post image · carousel · vidéo
+    TikTok      vidéo (via Buffer)
+    YouTube     vidéo — Shorts (via Buffer)
+
+EXIGENCES TENUES ICI (référence : docs/rules/5.06-publishing-scheduling.md Pb6ter)
+
+ 1. Reprise INDÉPENDANTE par réseau. L'état vit dans le payload (`done` /
+    `attempts`), recommité en fin de run. Un échec Threads ne republie jamais
+    Instagram ni Facebook ; seule la cible en échec est rejouée. Aucun réseau
+    n'attend Instagram : seules les Stories attendent leur post.
+
+ 2. Nettoyage seulement quand TOUT est réglé. Le payload et ses assets Release
+    ne sont supprimés que lorsque chaque cible bloquante est publiée ou à court
+    de tentatives. Les Stories, best effort, ne retiennent jamais rien.
+
+ 3. Instagram n'est JAMAIS abandonné (`max_attempts = None`). Le plafonner
+    supprimerait un post sans l'avoir publié — c'est exactement la régression
+    qu'une première version avait introduite.
+
+ 4. Une seule table décrit les cibles (`TARGETS`) et une seule boucle les
+    exécute. Ajouter un réseau = une ligne dans TARGETS + une entrée dans
+    `actions`. Les blocs par réseau copiés-collés, chacun avec son drapeau et
+    son format d'erreur, ont été supprimés : c'est ce qui garantit que les
+    règles 1 à 3 vaudront aussi pour le prochain réseau.
+
+ 5. Deux niveaux de signalement. `_fail` (bloquant) alimente le dashboard ET
+    l'issue GitHub ouverte par le workflow ; `_warn` (best effort) n'alimente
+    que le dashboard — une Story refusée ne remet pas en cause la publication
+    principale et ne doit pas ouvrir d'issue.
+
+ 6. Le dashboard (README du repo) est la seule fenêtre sur le runner. Il porte
+    les erreurs, les avertissements, les tokens proches de l'échéance
+    (TOKEN_WARN_DAYS), l'autonomie de chaque file (QUEUE_WARN_DAYS) et les
+    publications en cours de reprise.
+
+ 7. Stabilité : tout appel HTTP a un timeout (API_TIMEOUT), les sondages
+    abandonnent après MAX_HTTP_ERR erreurs consécutives au lieu d'épuiser leur
+    budget en silence, et les sondages vérifient AVANT de dormir.
+
+ 8. L'état est persisté APRÈS CHAQUE CIBLE, pas en fin de traitement. Entre la
+    publication Instagram et la fin de Threads il s'écoule parfois plusieurs
+    minutes (transcodage côté Meta) : un runner tué dans cet intervalle perdait
+    tout l'état, et le run suivant republiait Instagram.
+
+ 9. `DRY_RUN=1` rejoue toute l'orchestration sans appeler les APIs et sans rien
+    modifier sur disque (payloads, published.json, assets Release, git). Seul
+    moyen de valider la logique de reprise sur de vrais payloads sans publier.
+
+10. Une cible peut n'être NI publiée NI en échec (`TargetPending`) : une
+    publication Buffer attend que Buffer récupère le média, et la relire ne
+    coûte rien. Une attente ne consomme aucune tentative, ne bloque pas les
+    autres cibles et interdit le nettoyage — un `createPost` réussi n'est PAS
+    une publication terminée, l'asset Release doit rester en ligne jusqu'au
+    statut `sent`.
+
+11. Une limitation TEMPORAIRE de Meta (`_is_meta_throttle` : quota d'appels,
+    « action bloquée », plafond 24 h) est une attente, pas un échec : aucune
+    tentative consommée, dashboard seulement, pas d'issue GitHub.
+
+12. Meta qui ne sait pas télécharger un média (2207052, 2207077, 504, conteneur
+    Threads `UNKNOWN`) : le runner relit le média lui-même (`_media_readable`).
+    Lisible → échec imputé à Meta, attente sans tentative, dashboard seulement,
+    au plus FETCH_WAIT_MAX_S (24 h, `fetch_wait_since`). Illisible, ou erreur de
+    token / permission → vrai échec, compté.
+
+13. Un échec n'est signalé qu'UNE fois par cible et par publication
+    (`_first_alert`, marque `alerted`) : seul le premier fait échouer le run, donc
+    le mail de GitHub ; les suivants restent au dashboard. Un succès efface la
+    marque.
+"""
+
+import json
+import pathlib
+import re
+import requests
+import os
+import shutil
+import sys
+import time
+import subprocess
+import tempfile
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+
+# Heure affichée dans les logs et le dashboard : heure suisse, été comme hiver
+# (un `+ timedelta(hours=2)` fixe donnait une heure de trop de novembre à mars).
+_TZ_AFFICHAGE = ZoneInfo("Europe/Zurich")
+
+# --- Configuration des chemins ---
+base_dir = pathlib.Path(__file__).parent.parent
+payload_dir = base_dir / "instagram_payloads"
+payload_dir.mkdir(exist_ok=True)
+published_file = pathlib.Path(__file__).parent / "published.json"
+# {pub_id: {"instagram": id du média publié, "threads": id du post, "at": epoch}} —
+# lu par 📈 Performances côté programme pour relier une publication Instagram ou
+# Threads à son story JSON. Ni l'API ni `published.json` ne gardent ce lien : sans
+# ce fichier il se devine par la date. Une clé par réseau réellement publié.
+published_media_file = pathlib.Path(__file__).parent / "published_media.json"
+
+errors    = []   # bloquants  → dashboard + issue GitHub
+warn_msgs = []   # best effort → dashboard seulement (nom non `warnings` : module standard)
+now = int(time.time())
+
+# --- Mode simulation ---
+# `DRY_RUN=1` exécute toute l'orchestration — sélection des cibles, comptage des
+# tentatives, décision de nettoyage, dashboard — SANS appeler les APIs et SANS
+# rien modifier sur disque (payloads, published.json, assets Release, git).
+# C'est le seul moyen de valider la logique de reprise sur de vrais payloads
+# sans publier pour de bon.
+DRY_RUN = os.environ.get("DRY_RUN", "").strip().lower() in ("1", "true", "yes", "on")
+if DRY_RUN:
+    print("[DRY] Mode simulation : aucune publication, aucune écriture.")
+
+# --- HTTP avec timeout par défaut ---
+# Sans timeout, un hang réseau (Graph API, GitHub) pend le workflow GitHub
+# Actions jusqu'au kill à 6h (quota consommé). Tous les appels passent par
+# ces wrappers ; un timeout explicite passé par l'appelant reste prioritaire.
+API_TIMEOUT = 60  # secondes
+STORY_VIDEO_MAX_SECONDS = 59.5  # marge sous la limite Meta de 60 s
+STORY_VIDEO_FADE_SECONDS = 0.4
+
+
+def _post(url, **kwargs):
+    kwargs.setdefault("timeout", API_TIMEOUT)
+    return requests.post(url, **kwargs)
+
+
+def _get(url, **kwargs):
+    kwargs.setdefault("timeout", API_TIMEOUT)
+    return requests.get(url, **kwargs)
+
+
+def _check(r, what):
+    """
+    `raise_for_status()` en CONSERVANT le corps de la réponse Meta.
+
+    Nu, il ne produit que « 400 Client Error: Bad Request for url: … » —
+    inexploitable, alors que Meta y nomme précisément le champ fautif. Deux
+    jours de rejets `/photos` ont été indiagnosticables faute de ce corps — la
+    leçon avait pourtant déjà été tirée, dans un helper cantonné à Threads.
+    D'où ce point unique : tout appel Meta qui publie passe par lui.
+
+    Le type d'exception reste `requests.HTTPError` : les boucles de retry et de
+    polling le rattrapent et relisent la réponse elles-mêmes — le remplacer par
+    un RuntimeError désarmerait le retry sur subcode 2207027.
+    """
+    if r.status_code < 400:
+        return r
+    try:
+        payload = r.json()
+        detail  = json.dumps(payload.get("error", payload), ensure_ascii=False)
+    except Exception:
+        detail = (r.text or "")[:400]
+    raise requests.HTTPError(
+        f"{what} → HTTP {r.status_code} : {detail}", response=r
+    )
+
+
+# Copie de `core/http._SECRET_PARAM` (runner autonome, égalité gardée par
+# tests/test_process_payloads.py) : `str()` d'une ConnectionError recopie l'URL,
+# `access_token` compris — jamais tel quel dans le log Actions, le dashboard
+# commité ni l'issue (audit 16/10 F34).
+_SECRET_PARAM = re.compile(r"(\w*(?:token|secret)=)[^&\s'\")]+", re.IGNORECASE)
+
+
+def _redact(msg):
+    return _SECRET_PARAM.sub(r"\1***", str(msg))
+
+
+def _fail(msg):
+    """
+    Échec BLOQUANT : dashboard + issue GitHub (le workflow ouvre une issue quand
+    le script sort en erreur).
+    """
+    msg = _redact(msg)
+    errors.append(msg)
+    print(f"[FAIL] {msg}")
+
+
+def _warn(msg):
+    """
+    Échec BEST EFFORT (Stories) : visible au dashboard, mais sans issue GitHub.
+
+    Une Story reste best effort (permission absente, traitement Meta refusé) :
+    la remonter comme une erreur bloquante ouvrirait une issue sans empêcher la
+    publication principale. La taire complètement, à l'inverse, la rendrait
+    indétectable : d'où ce niveau intermédiaire.
+    """
+    msg = _redact(msg)
+    warn_msgs.append(msg)
+    print(f"[WARN] {msg}")
+
+
+def _write_json_atomic(path, data, **dump_kwargs):
+    """
+    Écrit un JSON par fichier temporaire + remplacement.
+
+    Un runner tué en pleine écriture (timeout du job, annulation, OOM) laissait
+    un fichier tronqué, illisible au run suivant. Le `.tmp` ne finit pas en
+    `.json` : la boucle des payloads ne le voit pas.
+    """
+    tmp = f"{path}.tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(data, f, **dump_kwargs)
+    os.replace(tmp, path)
+
+
+def _read_payload(payload_file):
+    """
+    Lit un payload ; None s'il est illisible, après un échec bloquant.
+
+    Sans cela un seul fichier corrompu levait en pleine boucle : toutes les
+    publications de tous les comptes sautaient, dashboard et commit compris.
+    """
+    try:
+        with open(payload_file, encoding="utf-8") as f:
+            payload = json.load(f)
+    except (OSError, ValueError) as e:
+        _fail(f"Payload {payload_file.name} illisible, ignoré : {e}")
+        return None
+    if not isinstance(payload, dict):
+        _fail(f"Payload {payload_file.name} illisible, ignoré : racine non objet")
+        return None
+    return payload
+
+
+def _write_payload_state(payload_file, payload, state):
+    """
+    Persiste `done` / `attempts` dans le payload, sur disque, IMMÉDIATEMENT.
+
+    Appelé après CHAQUE cible et non en fin de traitement : entre la publication
+    Instagram et la fin de Threads il peut s'écouler plusieurs minutes (une vidéo
+    est transcodée côté Meta), et un runner tué dans cet intervalle — timeout du
+    job, annulation, OOM — perdait tout l'état. Le run suivant republiait alors
+    Instagram : précisément le doublon que ce mécanisme existe pour empêcher.
+    """
+    if DRY_RUN:
+        return
+    state.save_into(payload)
+    _write_json_atomic(payload_file, payload, indent=2, ensure_ascii=False)
+
+
+def _published_media_entry(payload, at):
+    """Entrée `published_media.json` d'un payload : les ids que les réseaux ont rendus."""
+    ids = {net: payload[f"{net}_media_id"] for net in ("instagram", "threads")
+           if payload.get(f"{net}_media_id")}
+    return {**ids, "at": at} if ids else None
+
+
+def _record_published_media(pub_id, entry):
+    """Ajoute pub_id → ids des médias publiés dans `published_media.json` (voir en tête)."""
+    try:
+        with open(published_media_file, encoding="utf-8") as f:
+            known = json.load(f)
+    except (OSError, ValueError):
+        known = {}
+    known[pub_id] = entry
+    with open(published_media_file, "w", encoding="utf-8") as f:
+        json.dump(known, f, indent=2, sort_keys=True)
+
+
+def _is_video(url) -> bool:
+    """Un média est une vidéo si son URL se termine en .mp4 (convention du projet)."""
+    return str(url or "").lower().endswith(".mp4")
+
+
+def _ensure_video_tools() -> None:
+    """Installe FFmpeg à la demande sur le runner si l'image ne le fournit pas."""
+    if shutil.which("ffmpeg") and shutil.which("ffprobe"):
+        return
+    if not sys.platform.startswith("linux"):
+        raise RuntimeError("ffmpeg/ffprobe absents du runner")
+    print("  [STORY] Installation de FFmpeg sur le runner...")
+    for command in (
+        ["sudo", "apt-get", "update"],
+        ["sudo", "apt-get", "install", "-y", "ffmpeg"],
+    ):
+        result = subprocess.run(command, capture_output=True, text=True, timeout=300)
+        if result.returncode != 0:
+            raise RuntimeError(f"installation FFmpeg échouée : {(result.stderr or '')[-1000:]}")
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"):
+        raise RuntimeError("ffmpeg/ffprobe introuvables après installation")
+
+
+def _video_duration(source: str) -> float:
+    """Durée d'une vidéo locale ou distante via ffprobe."""
+    _ensure_video_tools()
+    result = subprocess.run(
+        [
+            "ffprobe", "-v", "error", "-show_entries", "format=duration",
+            "-of", "default=noprint_wrappers=1:nokey=1", source,
+        ],
+        capture_output=True, text=True, timeout=90,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"ffprobe a échoué : {(result.stderr or '').strip()[-500:]}")
+    try:
+        return float(result.stdout.strip())
+    except ValueError as exc:
+        raise RuntimeError(f"durée vidéo illisible : {result.stdout!r}") from exc
+
+
+def _render_story_clip(source: str, output: str, max_seconds: float) -> None:
+    """Réencode le début de `source` sous la limite Story, avec un fondu final."""
+    fade_start = max(0.0, max_seconds - STORY_VIDEO_FADE_SECONDS)
+    result = subprocess.run(
+        [
+            "ffmpeg", "-y", "-i", source, "-t", f"{max_seconds:.3f}",
+            "-map", "0:v:0", "-map", "0:a:0?",
+            "-vf", f"fade=t=out:st={fade_start:.3f}:d={STORY_VIDEO_FADE_SECONDS:.3f}",
+            "-af", f"afade=t=out:st={fade_start:.3f}:d={STORY_VIDEO_FADE_SECONDS:.3f}",
+            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
+            "-movflags", "+faststart", output,
+        ],
+        capture_output=True, text=True, timeout=600,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg Story a échoué : {(result.stderr or '').strip()[-1000:]}")
+    rendered_duration = _video_duration(output)
+    if rendered_duration >= 60.0:
+        raise RuntimeError(f"Story produite trop longue ({rendered_duration:.3f} s)")
+
+
+def _upload_story_asset(local_path: str, asset_name: str) -> str:
+    """Téléverse idempotemment un clip Story dans la Release `media-storage`."""
+    token = os.environ.get("GITHUB_TOKEN", "")
+    repo  = os.environ.get("GITHUB_REPOSITORY", "")
+    if not token or not repo:
+        raise RuntimeError("GITHUB_TOKEN ou GITHUB_REPOSITORY absent")
+
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github+json",
+    }
+    release = _get(
+        f"https://api.github.com/repos/{repo}/releases/tags/media-storage",
+        headers=headers, timeout=30,
+    )
+    _check(release, "GitHub Release media-storage")
+    release_id = release.json()["id"]
+
+    assets_url = f"https://api.github.com/repos/{repo}/releases/{release_id}/assets?per_page=100"
+    existing = None
+    while assets_url:
+        response = _get(assets_url, headers=headers, timeout=30)
+        _check(response, "GitHub liste assets")
+        existing = next((a for a in response.json() if a.get("name") == asset_name), None)
+        if existing:
+            break
+        assets_url = None
+        for part in response.headers.get("Link", "").split(","):
+            if 'rel="next"' in part:
+                assets_url = part.split(";")[0].strip().strip("<>")
+                break
+
+    size = os.path.getsize(local_path)
+    if existing and existing.get("state") == "uploaded" and existing.get("size") == size:
+        print(f"  [STORY] Asset tronqué déjà présent : {asset_name}")
+        return existing["browser_download_url"]
+    if existing:
+        deleted = requests.delete(
+            f"https://api.github.com/repos/{repo}/releases/assets/{existing['id']}",
+            headers=headers, timeout=30,
+        )
+        if deleted.status_code not in (204, 404):
+            _check(deleted, "GitHub suppression ancien asset Story")
+
+    upload_headers = dict(headers)
+    upload_headers["Content-Type"] = "video/mp4"
+    with open(local_path, "rb") as body:
+        uploaded = _post(
+            f"https://uploads.github.com/repos/{repo}/releases/{release_id}/assets",
+            params={"name": asset_name}, headers=upload_headers, data=body, timeout=180,
+        )
+    _check(uploaded, "GitHub upload asset Story")
+    return uploaded.json()["browser_download_url"]
+
+
+def _story_video_url(source: str, folder: str, pub_id: str) -> str:
+    """Retourne la source si elle tient en Story, sinon une dérivée de 59,5 s."""
+    duration = _video_duration(source)
+    if duration <= STORY_VIDEO_MAX_SECONDS:
+        return source
+
+    print(
+        f"  [STORY] Vidéo de {duration:.2f} s : troncature à "
+        f"{STORY_VIDEO_MAX_SECONDS:.1f} s (Reel original conservé)"
+    )
+    asset_name = f"{folder}_{pub_id[:8]}_story.mp4"
+    with tempfile.TemporaryDirectory(prefix="story_clip_") as tmp_dir:
+        output = os.path.join(tmp_dir, asset_name)
+        _render_story_clip(source, output, STORY_VIDEO_MAX_SECONDS)
+        return _upload_story_asset(output, asset_name)
+
+
+# ==========================================
+# CIBLES DE PUBLICATION — reprise par plateforme
+# ==========================================
+#
+# EXIGENCES (voir aussi influencer/docs/rules/5.06-publishing-scheduling.md Pb6ter) :
+#   1. Chaque réseau a des tentatives INDÉPENDANTES. Un échec Threads ne
+#      republie jamais Instagram ni Facebook.
+#   2. Le payload (et ses assets Release) n'est nettoyé que lorsque toutes les
+#      cibles BLOQUANTES sont réglées — publiées, ou à court de tentatives.
+#   3. L'état vit DANS le payload (`done` / `attempts`), recommité en fin de run.
+#      Il survit donc aux redémarrages du runner.
+#
+# Une cible est décrite ici et NULLE PART ailleurs : ajouter un réseau = une
+# ligne dans TARGETS + une entrée dans `_build_actions`. Les trois anciens blocs
+# copiés-collés (chacun avec son drapeau, son try/except et son format d'erreur)
+# ont disparu — c'est ce qui garantit que la règle 1 vaut aussi pour le suivant.
+#
+#   name        clé dans done/attempts
+#   label       libellé humain (logs, dashboard)
+#   max_attempts nombre d'essais avant abandon ; None = illimité
+#   blocking    True  → retient le nettoyage tant qu'il n'est pas réglé
+#               False → best effort (Stories), n'empêche jamais le nettoyage
+#   depends_on  cible qui doit être `done` avant d'essayer celle-ci
+#
+# Instagram est volontairement ILLIMITÉ : c'est la publication principale.
+# L'abandonner au bout de N essais supprimerait le post sans l'avoir publié.
+# Facebook et Threads sont plafonnés car un échec permanent y est possible
+# (permission révoquée, format refusé) et ne doit pas retenir indéfiniment le
+# payload ni ses assets.
+#
+# Aucun réseau ne dépend d'Instagram (Facebook, Threads, TikTok, YouTube) : un
+# Instagram en échec (403 « action bloquée » répété le 28/09/2026) les retenait
+# indéfiniment, puisqu'Instagram n'est jamais abandonné. Chacun part de son
+# côté ; le payload reste simplement en file tant qu'Instagram n'est pas réglé.
+# Seules les Stories attendent leur post.
+TARGETS = [
+    # name,              label,               max_attempts, blocking, depends_on
+    ("instagram",        "Instagram",         None,         True,     None),
+    ("instagram_story",  "Story Instagram",   1,            False,    "instagram"),
+    ("facebook",         "Facebook",          3,            True,     None),
+    ("facebook_story",   "Story Facebook",    1,            False,    "facebook"),
+    ("threads",          "Threads",           3,            True,     None),
+    # Buffer : une publication par channel, donc une cible par plateforme.
+    # Plafonnées comme Facebook et Threads (un refus permanent y est possible :
+    # channel déconnecté, format refusé).
+    ("tiktok",           "TikTok",            3,            True,     None),
+    ("youtube",          "YouTube Shorts",    3,            True,     None),
+]
+
+STORY_TARGETS = ("instagram_story", "facebook_story")
+
+
+def _targets_for(payload):
+    """Cibles de CE payload. « Story seule » (`story_only`, posé à la validation) :
+    ni post, ni Threads, ni Buffer — seules les deux Stories. Elles sont alors la
+    publication : sans réseau à attendre, et bloquantes, pour qu'une limitation
+    Meta retienne le payload et qu'un échec soit signalé. Un seul essai, comme
+    toute Story : rejouer une série de slides republierait celles déjà parties.
+    """
+    if not payload.get("story_only"):
+        return TARGETS
+    return [(name, label, 1, True, None)
+            for name, label, _max, _blocking, _dep in TARGETS if name in STORY_TARGETS]
+
+
+class TargetPending(Exception):
+    """Cible NON RÉGLÉE, sans échec : elle n'a pas abouti, personne n'a tort.
+
+    Une publication Buffer crée son post puis attend que Buffer récupère le
+    média ; le quota (429) et un appel au sort inconnu produisent la même
+    situation. Traiter ces cas comme un échec consommerait une tentative à
+    chaque run et abandonnerait en trois quarts d'heure une publication qui
+    n'attend que d'être relue.
+
+    Distincte d'`Exception` dans la boucle : la cible reste à reprendre (donc le
+    payload et ses assets aussi), aucun compteur ne bouge, et les autres cibles
+    sont quand même tentées — YouTube part même si TikTok patiente.
+
+    `alert=True` : attente qui demande une VÉRIFICATION HUMAINE (création au
+    sort inconnu, qu'on ne relancera jamais seul). Elle passe alors par `_fail`,
+    donc dashboard et issue GitHub.
+    """
+
+    def __init__(self, message, alert=False):
+        super().__init__(message)
+        self.alert = alert
+
+
+# Limitations Meta qui se lèvent d'elles-mêmes : quotas d'appels (4 application,
+# 17 utilisateur, 32 Page, 613 horaire), « action bloquée » anti-spam (2207051),
+# plafond de publications sur 24 h (2207042). Ni le média ni le token ne sont en
+# cause : réessayer plus tard suffit.
+_META_THROTTLE_CODES    = {4, 17, 32, 613}
+_META_THROTTLE_SUBCODES = {2207042, 2207051}
+
+
+def _is_meta_throttle(exc):
+    """Vrai si `exc` est une limitation TEMPORAIRE de Meta (voir ci-dessus).
+
+    Les helpers remontent l'erreur Meta sous deux formes : `requests.HTTPError`
+    avec sa réponse (`_check`), ou `RuntimeError` dont le message embarque le
+    corps (dict repr ou JSON). On lit donc la réponse si elle existe, sinon le
+    texte — les deux formes citent `code` et `error_subcode`.
+    """
+    response = getattr(exc, "response", None)
+    if response is not None and response.status_code == 429:
+        return True
+    text = str(exc)
+    codes    = {int(c) for c in re.findall(r"""['"]code['"]\s*:\s*(\d+)""", text)}
+    subcodes = {int(c) for c in re.findall(r"""['"]error_subcode['"]\s*:\s*(\d+)""", text)}
+    return bool(codes & _META_THROTTLE_CODES or subcodes & _META_THROTTLE_SUBCODES
+                or re.search(r"""['"]is_transient['"]\s*:\s*(True|true)""", text))
+
+
+# Échec de téléchargement côté Meta (08/11/2026 : 2207052 « l'URI ne répond pas à
+# nos exigences », 2207077 « Fatal », 504 FileUrlProcessingError, conteneur Threads
+# `UNKNOWN` — sur des médias parfaitement présents). Meta ne dit pas si c'est lui
+# ou notre fichier : le runner relit donc lui-même le média. Lisible → l'échec est
+# imputé à Meta, la cible attend sans consommer de tentative, au plus
+# FETCH_WAIT_MAX_S (un format que Meta refuserait toujours finit par compter).
+# Illisible → vrai échec, compté comme avant.
+_MEDIA_FIELDS    = ("media_url", "image_url", "children", "fb_children", "story_children")
+FETCH_WAIT_MAX_S = 24 * 3600
+# Token expiré (190) ou permission manquante (10, 200-299) : rien à voir avec le
+# média, l'alerte doit partir tout de suite.
+_AUTH_CODES = {10, 190} | set(range(200, 300))
+
+
+def _payload_media_urls(payload):
+    """URL des médias que Meta doit télécharger pour ce payload, sans doublon."""
+    urls = []
+    for field in _MEDIA_FIELDS:
+        value = payload.get(field)
+        for url in (value if isinstance(value, list) else [value]):
+            if isinstance(url, str) and url.startswith("http") and url not in urls:
+                urls.append(url)
+    return urls
+
+
+def _media_magic_ok(head):
+    """Vrai si les premiers octets sont ceux d'un JPEG, d'un PNG ou d'un MP4."""
+    return (head[:3] == b"\xff\xd8\xff" or head[:8] == b"\x89PNG\r\n\x1a\n"
+            or head[4:8] == b"ftyp")
+
+
+def _media_readable(url):
+    """Relit les 16 premiers octets du média : réponse 200/206, fichier non vide
+    et en-tête d'image ou de vidéo. Toute erreur réseau vaut « illisible »."""
+    try:
+        r = _get(url, headers={"Range": "bytes=0-15"}, timeout=30)
+        if r.status_code not in (200, 206):
+            return False
+        total = (r.headers.get("Content-Range") or "").rpartition("/")[2]
+        if total.isdigit() and int(total) == 0:
+            return False
+        return _media_magic_ok(r.content[:16])
+    except Exception:
+        return False
+
+
+def _is_auth_error(exc):
+    text = str(exc) if exc is not None else ""
+    codes = {int(c) for c in re.findall(r"""['"]code['"]\s*:\s*(\d+)""", text)}
+    return bool(codes & _AUTH_CODES)
+
+
+def _first_alert(payload, name):
+    """Vrai la première fois que la cible `name` de ce payload échoue : seul ce
+    premier échec fait échouer le run (donc le mail de GitHub). Les suivants
+    restent au dashboard ; un succès efface la marque (`alerted`)."""
+    alerted = payload.setdefault("alerted", {})
+    if alerted.get(name):
+        return False
+    alerted[name] = True
+    return True
+
+
+def _fetch_wait(payload, name, media_ok, now):
+    """Décide si l'échec de la cible `name` est imputé à Meta (True : attente,
+    aucune tentative consommée). Note dans le payload (`fetch_wait_since`)
+    depuis quand la cible attend ; au-delà de FETCH_WAIT_MAX_S, ou si le média
+    est illisible pour nous, l'échec compte normalement."""
+    waits = payload.setdefault("fetch_wait_since", {})
+    if not media_ok:
+        waits.pop(name, None)
+        return False
+    since = waits.setdefault(name, now)
+    return now - since < FETCH_WAIT_MAX_S
+
+# Seuils d'alerte du dashboard.
+TOKEN_WARN_DAYS = 10   # token proche de l'échéance
+QUEUE_WARN_DAYS = 3    # file d'attente bientôt vide
+
+
+def _apply_quiet_hours(ts, start, end, tz):
+    """Copie de `publishing/scheduling.apply_quiet_hours` : un horaire tombé dans
+    la plage silencieuse glisse à sa fin."""
+    if start == end:
+        return ts
+    dt = datetime.fromtimestamp(ts, tz=tz)
+    h = dt.hour
+    if not ((start < end and start <= h < end) or (start >= end and (h >= start or h < end))):
+        return ts
+    end_dt = dt.replace(hour=end, minute=0, second=0, microsecond=0)
+    if start >= end and h >= start:
+        end_dt = (dt + timedelta(days=1)).replace(hour=end, minute=0, second=0, microsecond=0)
+    return int(end_dt.timestamp())
+
+
+def _days_covered(last, now, schedule, tz):
+    """Autonomie en jours ENTIERS, de minuit à minuit : les jours à partir de
+    demain dont toutes les publications sont programmées. Le jour de la dernière
+    (`last`) ne compte que s'il est complet — son créneau suivant, d'après la règle
+    d'horaire du compte que porte son payload (`schedule`), tombe le lendemain.
+    Payload sans règle (écrit avant elle) : ce dernier jour ne compte pas.
+
+    Même règle que `publishing/scheduling.days_covered` (Accueil du dashboard).
+    Duplication assumée — ce script est autonome et ne peut rien importer du
+    projet ; s'il faut changer la règle, les deux copies doivent bouger.
+    """
+    if last <= now:
+        return 0
+    if schedule and schedule.get("timezone"):
+        try:
+            tz = ZoneInfo(schedule["timezone"])
+        except Exception:
+            pass
+    last_day = datetime.fromtimestamp(last, tz=tz).date()
+    nxt = None
+    if schedule and schedule.get("delay_hours"):
+        nxt = int(last + float(schedule["delay_hours"]) * 3600)
+        if schedule.get("quiet_hours"):
+            nxt = _apply_quiet_hours(nxt, *schedule["quiet_hours"], tz)
+    if nxt is None or datetime.fromtimestamp(nxt, tz=tz).date() <= last_day:
+        last_day -= timedelta(days=1)
+    return max((last_day - datetime.fromtimestamp(now, tz=tz).date()).days, 0)
+
+
+class PayloadState:
+    """
+    État de publication d'un payload, persisté dans le fichier lui-même.
+
+    `done`     : {cible: True} — publié, définitivement.
+    `attempts` : {cible: n}    — essais consommés, pour le plafond.
+
+    Objet plutôt que closures : l'ancienne version redéfinissait trois fonctions
+    par itération de boucle, et sa règle de plafond était écrite à deux endroits
+    qui avaient déjà divergé — Instagram était exempté à l'essai mais plafonné au
+    bilan, donc trois échecs suffisaient à supprimer un post jamais publié.
+    """
+
+    def __init__(self, payload):
+        self.done     = dict(payload.get("done") or {})
+        self.attempts = dict(payload.get("attempts") or {})
+
+    def settled(self, name, max_attempts):
+        """Réglée = publiée, ou à court de tentatives (jamais si illimitée)."""
+        if self.done.get(name):
+            return True
+        if max_attempts is None:
+            return False
+        return self.attempts.get(name, 0) >= max_attempts
+
+    def should_try(self, name, max_attempts):
+        return not self.settled(name, max_attempts)
+
+    def record(self, name, ok):
+        if ok:
+            self.done[name] = True
+        else:
+            self.attempts[name] = self.attempts.get(name, 0) + 1
+
+    def save_into(self, payload):
+        payload["done"]     = self.done
+        payload["attempts"] = self.attempts
+
+# --- Charger l'état des posts déjà publiés ---
+if published_file.exists():
+    with open(published_file) as f:
+        published = set(json.load(f))
+else:
+    published = set()
+
+
+def _thumb_url(data: dict) -> str:
+    """Extrait la meilleure URL de miniature selon le type de média.
+
+    - IMAGE   → image_url ou media_url
+    - CAROUSEL → premier enfant non-vidéo (children[0] si .jpg/.png)
+    - VIDEO    → vide (les .mp4 ne s'affichent pas dans Markdown GitHub)
+    """
+    media_type = data.get("media_type", "IMAGE").upper()
+    if media_type == "CAROUSEL":
+        return next(
+            (u for u in data.get("children", []) if not u.lower().endswith(".mp4")),
+            ""
+        )
+    if media_type == "VIDEO":
+        return ""
+    return data.get("image_url") or data.get("media_url", "")
+
+
+def _video_url(data: dict) -> str:
+    """URL du mp4 d'une publication vidéo, vide sinon — cible du lien 🎬."""
+    if data.get("media_type", "IMAGE").upper() != "VIDEO":
+        return ""
+    return data.get("video_url") or data.get("media_url") or ""
+
+
+def _thumb_cell(thumb: str, media_type: str, video_url: str = "") -> str:
+    """Rendu HTML/emoji de la colonne Aperçu dans le README.
+
+    Une vidéo n'a pas de miniature (un .mp4 ne s'affiche pas dans le Markdown
+    GitHub) : son icône 🎬 est un lien vers la vidéo."""
+    if thumb:
+        return f"<img src='{thumb}' width='50'>"
+    if video_url:
+        return f"<a href='{video_url}' target='_blank'>🎬</a>"
+    icons = {"VIDEO": "🎬", "CAROUSEL": "🎠"}
+    return icons.get(media_type, "N/A")
+
+
+def _token_expiry_rows():
+    """
+    Échéances de token connues, lues dans les variables du repo.
+
+    Le runner ne peut pas DEVINER la date d'expiration : l'API Threads n'expose
+    pas d'endpoint de debug, et sonder le token ne dirait que « valide / plus
+    valide » — trop tard pour prévenir. Le dashboard pousse donc l'échéance en
+    variable `{COMPTE}_THREADS_TOKEN_EXPIRES` au moment où il l'obtient, et le
+    script se contente de la lire.
+
+    Le token Facebook/Instagram est un Page access token permanent (§Pb4) : il
+    n'a pas d'échéance à surveiller.
+    """
+    rows = []
+    for key, value in os.environ.items():
+        if not key.endswith("_THREADS_TOKEN_EXPIRES"):
+            continue
+        compte = key[: -len("_THREADS_TOKEN_EXPIRES")]
+        try:
+            expires_at = int(value)
+        except (TypeError, ValueError):
+            continue
+        if expires_at <= 0:
+            continue
+        rows.append((compte, (expires_at - now) / 86400.0))
+    return sorted(rows)
+
+
+def _stuck_rows(payload_dir):
+    """Payloads ayant déjà consommé au moins une tentative sur une cible."""
+    rows = []
+    for p_file in payload_dir.glob("*.json"):
+        try:
+            with open(p_file, encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            continue
+        attempts = data.get("attempts") or {}
+        if not attempts:
+            continue
+        done = [k for k, v in (data.get("done") or {}).items() if v]
+        rows.append((
+            data.get("compte", "?").upper(),
+            data.get("pub_id", "?")[:8],
+            ", ".join(f"{k}×{v}" for k, v in sorted(attempts.items())),
+            ", ".join(sorted(done)) or "—",
+        ))
+    return sorted(rows)
+
+
+def generate_dashboard(payload_dir, published_count, run_errors=None, run_warnings=None):
+    """
+    Génère le dashboard (README du repo) : état des files, échéances de tokens,
+    publications en cours de reprise, erreurs et avertissements du run.
+
+    Le README est la SEULE fenêtre sur ce qui se passe côté runner — tout ce qui
+    n'y figure pas est invisible tant qu'on ne lit pas les logs Actions.
+    """
+    stats_comptes = {}
+
+    for p_file in payload_dir.glob("*.json"):
+        try:
+            with open(p_file, encoding="utf-8") as f:
+                data = json.load(f)
+                compte      = data["compte"].upper()
+                ts          = int(data["next_time"])
+                media_type  = data.get("media_type", "IMAGE").upper()
+                thumb       = _thumb_url(data)
+                video       = _video_url(data)
+
+                if compte not in stats_comptes:
+                    stats_comptes[compte] = {
+                        "count":      0,
+                        "first":      ts,
+                        "last":       ts,
+                        "schedule":   data.get("schedule"),
+                        "thumb":      thumb,
+                        "thumb_type": media_type,
+                        "video":      video,
+                    }
+
+                stats_comptes[compte]["count"] += 1
+                if ts < stats_comptes[compte]["first"]:
+                    stats_comptes[compte]["first"]      = ts
+                    stats_comptes[compte]["thumb"]      = thumb
+                    stats_comptes[compte]["thumb_type"] = media_type
+                    stats_comptes[compte]["video"]      = video
+                if ts > stats_comptes[compte]["last"]:
+                    stats_comptes[compte]["last"]     = ts
+                    stats_comptes[compte]["schedule"] = data.get("schedule")
+        except Exception:
+            continue
+
+    now_str = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    md = "# 📊 Dashboard de Publication\n\n"
+
+    # --- Erreurs bloquantes (ouvrent une issue GitHub) ---
+    if run_errors:
+        md += f"## ❌ Erreurs du dernier run ({now_str})\n\n"
+        for err in run_errors:
+            md += f"- `{err}`\n"
+        md += "\n"
+    else:
+        md += f"✅ **Dernier run sans erreur** — {now_str}\n\n"
+
+    # --- Avertissements best effort (Stories) ---
+    if run_warnings:
+        md += "## ⚠️ Avertissements (best effort, non bloquants)\n\n"
+        for w in run_warnings:
+            md += f"- `{w}`\n"
+        md += "\n"
+
+    # --- Échéances de tokens ---
+    token_rows = _token_expiry_rows()
+    expiring   = [(c, d) for c, d in token_rows if d < TOKEN_WARN_DAYS]
+    if expiring:
+        md += "## 🔑 Tokens à renouveler\n\n"
+        for compte, days in expiring:
+            if days < 0:
+                md += f"- ❌ **{compte}** — token Threads **EXPIRÉ** depuis {abs(days):.0f} j\n"
+            else:
+                md += f"- ⚠️ **{compte}** — token Threads expire dans **{days:.0f} j**\n"
+        md += "\n> Renouveler dans 👤 Réglages → 🔑 Connexion → 🧵 Threads → ♻️ Prolonger de 60 jours, "
+        md += "puis 📤 Envoyer les IDs vers GitHub.\n\n"
+
+    md += f"📦 **Total publiés historiquement :** {published_count}\n\n"
+
+    # --- Files d'attente ---
+    if not stats_comptes:
+        md += "### 🎉 Toutes les files d'attente sont vides !\n\n"
+    else:
+        md += "### 📱 État des comptes\n"
+        md += "| Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |\n"
+        md += "| :--- | :---: | :--- | :--- | :---: | :---: |\n"
+
+        low_runway = []
+        for compte in sorted(stats_comptes.keys()):
+            s = stats_comptes[compte]
+            date_next = datetime.fromtimestamp(s["first"], tz=_TZ_AFFICHAGE).strftime('%d/%m %H:%M')
+            date_last = datetime.fromtimestamp(s["last"],  tz=_TZ_AFFICHAGE).strftime('%d/%m %H:%M')
+            # Autonomie = temps couvert par la programmation restante. C'est LUI
+            # qui dit s'il faut relancer une génération, pas le nombre de posts :
+            # 3 posts espacés de 12 h tiennent plus longtemps que 6 espacés de 2 h.
+            # En jours complets, de minuit à minuit, comme l'Accueil du dashboard.
+            runway = _days_covered(s["last"], now, s["schedule"], _TZ_AFFICHAGE)
+            if runway < QUEUE_WARN_DAYS:
+                low_runway.append((compte, runway))
+                runway_cell = f"⚠️ **{runway} j**"
+            else:
+                runway_cell = f"{runway} j"
+            thumb = _thumb_cell(s["thumb"], s["thumb_type"], s["video"])
+            md += f"| {compte} | **{s['count']}** | {date_next} | {date_last} | {runway_cell} | {thumb} |\n"
+
+        md += "\n"
+        if low_runway:
+            md += f"> ⚠️ **File bientôt vide** (moins de {QUEUE_WARN_DAYS} jours de programmation) : "
+            md += ", ".join(f"**{c}** ({d} j)" for c, d in low_runway)
+            md += " — pense à générer de nouveaux posts.\n\n"
+
+    # --- Publications en cours de reprise ---
+    stuck = _stuck_rows(payload_dir)
+    if stuck:
+        md += "### 🔁 Publications en cours de reprise\n"
+        md += "| Compte | Pub | Tentatives échouées | Déjà publié sur |\n"
+        md += "| :--- | :--- | :--- | :--- |\n"
+        for compte, pub, att, done in stuck:
+            md += f"| {compte} | `{pub}` | {att} | {done} |\n"
+        md += "\n> Chaque réseau est réessayé indépendamment : ce qui est déjà publié ne repart pas.\n\n"
+
+    readme_path = pathlib.Path(__file__).parent.parent / "README.md"
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(md)
+    print("[DOC] Dashboard résumé mis à jour.")
+
+
+# ==========================================
+# DÉCLARATION IA
+# ==========================================
+# Toutes les publications de ce projet sont générées par IA : la déclaration est
+# donc CONSTANTE et n'est jamais portée par le payload. Trois APIs, trois formes :
+#
+#   Instagram  → `is_ai_generated` sur le conteneur /media. Indisponible sur les
+#                ENFANTS de carousel (`is_carousel_item=true`) : la déclaration
+#                porte sur le conteneur CAROUSEL parent, et l'y ajouter aussi
+#                ferait rejeter les enfants.
+#   Facebook   → `is_ai_generated` sur /video_reels UNIQUEMENT. `/photos` n'a
+#                RIEN pour l'instant : `provenance_info` y est documenté
+#                (`is_gen_ai` + `provenance_type=EXPLICIT`, les deux requis) mais
+#                l'envoyer a fait rejeter toutes les photos en 400 pendant deux
+#                jours, sur deux pages distinctes — première erreur au premier
+#                run suivant le déploiement, aucune la semaine d'avant. Retiré
+#                le 17/08/2026. Ne pas le réintroduire sans l'avoir validé sur un
+#                `/photos?published=false`, corps de réponse à l'appui.
+#   Threads    → RIEN. L'API (graph.threads.net v1.0) n'expose aucun champ de
+#                déclaration — vérifié le 15/08/2026. L'étiquetage n'y est
+#                possible qu'à la main dans l'app, ou par détection automatique
+#                des métadonnées C2PA/IPTC (que nos rendus ComfyUI n'ont pas).
+#
+# Le label est de la transparence, pas une pénalité : c'est l'ABSENCE de
+# déclaration sur du contenu synthétique qui est sanctionnée côté monétisation.
+#
+# La déclaration suit le MÉDIA, pas le compte : un post du mode photo publie une
+# photo fournie par l'utilisateur, qui n'est pas générée (la vidéo i2v qui
+# l'animerait, elle, l'est). Le payload porte donc `ai_generated: false` dans ce
+# seul cas ; la clé ABSENTE vaut déclaré — c'est tout l'existant, et c'est ce
+# qui rend la reprise d'un payload antérieur sûre. `AI_FLAGS` est réaffecté en
+# tête de chaque itération de la boucle de publication (script séquentiel, un
+# payload à la fois) et c'est LUI que les appels lisent, jamais AI_GENERATED.
+
+AI_GENERATED = {"is_ai_generated": "true"}
+AI_FLAGS     = AI_GENERATED
+
+
+# ==========================================
+# HELPERS PUBLICATION
+# ==========================================
+
+def publish_image(instagram_id, access_token, image_url, caption):
+    """
+    Publie une image sur Instagram (post classique).
+    Retourne (success: bool, media_id: str | None).
+    """
+    media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
+    media_params = {
+        "image_url":    image_url,
+        "caption":      caption,
+        "access_token": access_token,
+        **AI_FLAGS,
+    }
+    r = _post(media_url, data=media_params)
+    _check(r, "IG /media (image)")
+    media_id = r.json()["id"]
+
+    publish_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": media_id, "access_token": access_token}
+    time.sleep(2)
+    rp = _post(publish_url, data=publish_params)
+    _check(rp, "IG /media_publish (image)")
+    # L'id du MÉDIA PUBLIÉ (réponse de media_publish), pas celui du conteneur.
+    return True, rp.json().get("id", "")
+
+
+def _find_published_instagram(instagram_id, access_token, caption, since):
+    """
+    Id du média déjà en ligne portant cette légende, publié après `since` ; None sinon.
+
+    Une erreur de `media_publish` ne prouve PAS que rien n'est parti : le
+    28/09/2026, un carousel de grace_story a reçu trois 403 (code 4, sous-code
+    2207051 « action bloquée ») et a été publié trois fois — chaque reprise crée
+    un conteneur neuf, et Instagram n'est jamais abandonné. D'où cette relecture
+    du compte avant toute nouvelle tentative.
+
+    La légende suffit à identifier le post : elle est unique par publication, et
+    `since` (l'horaire programmé) écarte tout ce qui précède. Un échec de cette
+    lecture ne bloque rien : on retombe sur la publication normale.
+    """
+    try:
+        r = _get(
+            f"https://graph.facebook.com/v25.0/{instagram_id}/media",
+            params={"fields": "id,caption", "since": since, "limit": 25,
+                    "access_token": access_token},
+        )
+        _check(r, "IG /media (recherche d'un doublon)")
+    except Exception as e:
+        print(f"  [WARN] Vérification d'une publication antérieure impossible : {_redact(e)}")
+        return None
+    wanted = (caption or "").strip()
+    for media in r.json().get("data") or []:
+        if (media.get("caption") or "").strip() == wanted:
+            return media.get("id")
+    return None
+
+
+def _publish_video_with_retry(instagram_id, access_token, container_id, label,
+                               first_sleep=60, poll_every=20, max_wait=300):
+    """
+    Tente de publier un conteneur vidéo Instagram en réessayant jusqu'à ce qu'il
+    soit prêt (subcode 2207027 = traitement en cours) ou jusqu'au timeout.
+
+    Utilisé à la place du polling GET /{container_id} pour les Reels et Stories
+    vidéo — le endpoint GET n'est pas accessible sur tous les comptes (subcode 33).
+    """
+    publish_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish"
+    publish_params = {"creation_id": container_id, "access_token": access_token}
+
+    print(f"  [WAIT] Attente initiale {first_sleep}s pour le traitement {label}...")
+    time.sleep(first_sleep)
+    elapsed = first_sleep
+
+    while elapsed < max_wait:
+        try:
+            rp = _post(publish_url, data=publish_params)
+            rp.raise_for_status()
+            return rp.json().get("id", "")
+        except requests.HTTPError:
+            try:
+                body = rp.json()
+            except Exception:
+                body = rp.text
+            subcode = body.get("error", {}).get("error_subcode") if isinstance(body, dict) else None
+            if subcode == 2207027:
+                print(f"  [WAIT] {label} encore en traitement ({elapsed}s)...")
+                time.sleep(poll_every)
+                elapsed += poll_every
+            else:
+                raise RuntimeError(
+                    f"Erreur publication {label} (code {rp.status_code}) : {body}"
+                )
+
+    raise TimeoutError(
+        f"Délai dépassé ({max_wait}s) — le conteneur {label} n'est pas passé à FINISHED."
+    )
+
+
+def _poll_facebook_video(video_id, access_token, label, max_wait=300, poll_every=15):
+    """
+    Attend que Meta ait fini de traiter ET de publier une vidéo Facebook.
+
+    `upload_phase=finish` renvoie 200 dès que la requête est acceptée : le
+    traitement est ASYNCHRONE. Sans ce polling, un Reel rejeté par Meta
+    (ratio, durée, codec) laisse le script imprimer [OK] alors que rien
+    n'apparaît sur la Page — symptôme observé sur un compte (onglet Reels vide
+    alors que la Story, elle, partait).
+
+    Le body de `fields=status` est imprimé à chaque tour : c'est lui qui porte
+    le motif de rejet exact dans `processing_phase.errors`.
+
+    Lève une exception si Meta signale une erreur ou au timeout.
+    """
+    status_url    = f"https://graph.facebook.com/v25.0/{video_id}"
+    status_params = {"fields": "status", "access_token": access_token}
+    elapsed       = 0
+    http_errors   = 0
+    MAX_HTTP_ERR  = 3
+
+    while elapsed < max_wait:
+        time.sleep(poll_every)
+        elapsed += poll_every
+        try:
+            rs = _get(status_url, params=status_params)
+            rs.raise_for_status()
+            http_errors = 0
+        except requests.HTTPError:
+            http_errors += 1
+            try:
+                body = rs.json()
+            except Exception:
+                body = rs.text
+            print(f"  [WARN] Erreur HTTP {rs.status_code} polling {label} ({elapsed}s) : {body}")
+            if http_errors >= MAX_HTTP_ERR:
+                raise RuntimeError(
+                    f"Polling {label} : {MAX_HTTP_ERR} erreurs HTTP consécutives "
+                    f"(code {rs.status_code}) — dernier body : {body}"
+                )
+            continue
+
+        status = rs.json().get("status", {}) or {}
+        print(f"  [WAIT] Statut {label} ({elapsed}s) : {json.dumps(status)}")
+
+        video_status = status.get("video_status", "")
+        processing   = (status.get("processing_phase") or {}).get("status", "")
+        publishing   = (status.get("publishing_phase") or {}).get("status", "")
+
+        if "error" in (video_status, processing, publishing):
+            raise RuntimeError(f"Traitement {label} rejeté par Meta : {json.dumps(status)}")
+        if video_status == "expired":
+            raise RuntimeError(f"Session d'upload {label} expirée : {json.dumps(status)}")
+        if publishing == "complete":
+            return
+        # video_status "ready" sans publishing_phase renseignée = ancien schéma
+        if video_status == "ready" and not publishing:
+            return
+
+    raise TimeoutError(
+        f"Délai dépassé ({max_wait}s) — {label} n'a jamais été confirmé publié par Meta."
+    )
+
+
+def publish_carousel(instagram_id, access_token, children_urls, caption):
+    """Publie un carousel Instagram (2 à 10 slides).
+
+    Workflow :
+      1. Pour chaque URL : créer un item média avec is_carousel_item=true → item_id
+      2. Créer le conteneur CAROUSEL avec children=[item_ids] + caption
+      3. Attendre FINISHED (polling)
+      4. media_publish
+
+    Retourne (success: bool, id du média publié: str).
+    """
+    if len(children_urls) < 2 or len(children_urls) > 10:
+        raise ValueError(f"Instagram carousel requires 2-10 slides (got {len(children_urls)})")
+
+    item_ids = []
+    media_url_endpoint = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
+
+    # 1. Upload chaque slide comme item de carousel
+    # Détection extension : .mp4 → media_type=VIDEO + video_url, sinon → image_url
+    # (cf. CLAUDE.md §5.12 — carousel + music produit slide_XXX_00.mp4)
+    for i, child_url in enumerate(children_urls):
+        is_video_child = child_url.lower().endswith(".mp4")
+        if is_video_child:
+            params = {
+                "video_url":        child_url,
+                "media_type":       "VIDEO",
+                "is_carousel_item": "true",
+                "access_token":     access_token,
+            }
+        else:
+            params = {
+                "image_url":        child_url,
+                "is_carousel_item": "true",
+                "access_token":     access_token,
+            }
+        r = _post(media_url_endpoint, data=params)
+        _check(r, "IG /media (item carousel)")
+        item_id = r.json()["id"]
+        item_ids.append(item_id)
+        kind = "VIDEO" if is_video_child else "IMAGE"
+        print(f"  [SLIDE {i+1}/{len(children_urls)}] Item {kind} créé : {item_id}")
+        if is_video_child:
+            # Attente fixe : le polling GET du conteneur peut retourner subcode 33 sur certains
+            # comptes (même restriction que le container final). L'item n'a pas de media_publish,
+            # donc on ne peut pas utiliser _publish_video_with_retry ici — on attend 90s.
+            print(f"  [WAIT] Attente 90s pour le traitement de la slide vidéo {i+1}...")
+            time.sleep(90)
+
+    # 2. Créer le conteneur CAROUSEL
+    container_params = {
+        "media_type":   "CAROUSEL",
+        "children":     ",".join(item_ids),
+        "caption":      caption,
+        "access_token": access_token,
+        # La déclaration IA vit ICI et pas sur les items ci-dessus : elle n'est
+        # pas disponible sur les enfants de carousel.
+        **AI_FLAGS,
+    }
+    rc = _post(media_url_endpoint, data=container_params)
+    _check(rc, "IG /media (conteneur CAROUSEL)")
+    container_id = rc.json()["id"]
+    print(f"  [CONTAINER] Carousel container créé : {container_id}")
+
+    # 3. Attendre FINISHED + Publier
+    # Note : le polling GET /{container_id} retourne error_subcode 33 sur certains comptes
+    # (même restriction que les Reels). On utilise media_publish avec retry sur subcode 2207027.
+    # Les carousels image sont traités rapidement (~10-30s), d'où le first_sleep court.
+    published_id = _publish_video_with_retry(instagram_id, access_token, container_id,
+                               label="Carousel Instagram", first_sleep=10, poll_every=10, max_wait=300)
+    return True, published_id
+
+
+def publish_video(instagram_id, access_token, video_url, caption):
+    """
+    Publie une vidéo sur Instagram en tant que Reel.
+
+    Workflow :
+      1. Créer le conteneur média avec media_type=REELS
+      2. Réessayer media_publish jusqu'à ce qu'Instagram ait traité la vidéo
+
+    Note : le polling GET /{container_id}?fields=status_code retourne error_subcode 33
+    sur certains comptes (restriction d'autorisation). On utilise directement media_publish
+    avec retry sur subcode 2207027 (traitement en cours).
+
+    Retourne (success: bool, id du média publié: str).
+    """
+    media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
+    media_params = {
+        "media_type":   "REELS",
+        "video_url":    video_url,
+        "caption":      caption,
+        "access_token": access_token,
+        **AI_FLAGS,
+    }
+    r = _post(media_url, data=media_params)
+    _check(r, "IG /media (REELS)")
+    creation_resp = r.json()
+    print(f"  [PKG] Réponse création Reel : {creation_resp}")
+    container_id = creation_resp["id"]
+    print(f"  [PKG] Conteneur Reel Instagram créé : {container_id}")
+
+    published_id = _publish_video_with_retry(instagram_id, access_token, container_id,
+                               label="Reel Instagram", first_sleep=60, poll_every=20, max_wait=300)
+    return True, published_id
+
+
+def publish_video_story(instagram_id, access_token, video_url):
+    """
+    Publie une vidéo en Story Instagram.
+
+    Contrainte Meta : la vidéo doit durer entre 3 et 60 secondes.
+    Même approche retry que les Reels (polling GET /{container_id} non accessible).
+
+    Retourne (success: bool).
+    """
+    media_url    = f"https://graph.facebook.com/v25.0/{instagram_id}/media"
+    media_params = {
+        "media_type":   "STORIES",
+        "video_url":    video_url,
+        "access_token": access_token,
+        **AI_FLAGS,
+    }
+    r = _post(media_url, data=media_params)
+    _check(r, "IG /media (STORIES vidéo)")
+    container_id = r.json()["id"]
+    print(f"  [PKG] Conteneur Story vidéo créé : {container_id}")
+
+    # Stories vidéo sont plus courtes — délai initial réduit
+    _publish_video_with_retry(instagram_id, access_token, container_id,
+                               label="Story vidéo", first_sleep=30, poll_every=15, max_wait=120)
+    return True
+
+
+def publish_carousel_facebook(facebook_id, access_token, children_urls, caption):
+    """Publie un carousel sur une Page Facebook — en PHOTO UNIQUE (slide 0).
+
+    Facebook n'a pas d'équivalent du carousel Instagram : un post multi-photos
+    (`attached_media`) est rendu en mosaïque recadrée, dont seules 4-5 tuiles
+    quasi carrées sont visibles. Nos slides sont portrait avec texte incrusté et
+    se lisent EN SÉQUENCE — dans cette mosaïque le texte est rogné, illisible, et
+    chaque post mange un bloc énorme du mur. On ne publie donc que le premier
+    slide, en photo simple : le texte complet vit déjà dans la légende.
+
+    children_urls doit contenir des .jpg/.png (cf. payload fb_children) ; les
+    .mp4 sont ignorés en safety net (l'endpoint /photos les rejetterait).
+
+    Retourne (success: bool, post_id: str | None).
+    """
+    cover = next((u for u in children_urls if not u.lower().endswith(".mp4")), None)
+    if not cover:
+        print(f"  [WARN FB] Aucun slide image disponible (tous en .mp4 ?) — post Facebook ignoré")
+        return False, None
+
+    photos_endpoint = f"https://graph.facebook.com/v25.0/{facebook_id}/photos"
+    r = _post(
+        photos_endpoint,
+        data={"url": cover, "caption": caption, "access_token": access_token},
+    )
+    _check(r, "FB /photos (couverture carousel)")
+    post_id = r.json().get("post_id") or r.json().get("id", "")
+    print(f"  [POST FB] Photo de couverture publiée : {post_id}")
+    return True, post_id
+
+
+def publish_video_facebook(facebook_id, access_token, video_url, caption):
+    """
+    Publie une vidéo sur une Page Facebook en tant que Reel (9:16, sans bandes noires).
+
+    Workflow en 3 étapes requis par Meta :
+      1. Initialiser l'upload → obtenir video_id
+      2. Uploader via rupload.facebook.com (file_url en header)
+      3. Publier avec upload_phase=finish + video_state=PUBLISHED
+
+    Utilise /video_reels et non /videos — /videos affiche les vidéos portrait
+    avec des bandes noires car il ne les traite pas comme des Reels.
+
+    L'étape 3 ne fait qu'ACCEPTER la demande : la publication réelle est
+    confirmée par _poll_facebook_video (cf. son docstring).
+
+    Retourne (success: bool).
+    """
+    # Étape 1 : Initialiser
+    r = _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_reels",
+        data={"upload_phase": "start", "access_token": access_token}
+    )
+    _check(r, "FB /video_reels (start)")
+    video_id = r.json()["video_id"]
+    print(f"  [PKG] Reel Facebook initialisé : {video_id}")
+
+    # Étape 2 : Upload depuis URL hébergée
+    ru = _post(
+        f"https://rupload.facebook.com/video-upload/v25.0/{video_id}",
+        headers={
+            "Authorization": f"OAuth {access_token}",
+            "file_url":      video_url,
+        }
+    )
+    _check(ru, "FB rupload (reel)")
+    print(f"  [UP] Vidéo transmise à Meta")
+
+    # Étape 3 : Publier
+    rp = _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_reels",
+        data={
+            "video_id":     video_id,
+            "upload_phase": "finish",
+            "video_state":  "PUBLISHED",
+            "description":  caption,
+            "access_token": access_token,
+            **AI_FLAGS,
+        }
+    )
+    _check(rp, "FB /video_reels (finish)")
+    _poll_facebook_video(video_id, access_token, label="Reel Facebook")
+    print(f"  [OK] Reel Facebook publié")
+    return True
+
+
+def publish_video_story_facebook(facebook_id, access_token, video_url):
+    """
+    Publie une vidéo en Story sur une Page Facebook.
+
+    Même workflow 3 étapes que les Reels Facebook.
+    Contrainte Meta : vidéo max 60 secondes.
+
+    Pas de déclaration IA ici : contrairement à /video_reels, /video_stories ne
+    documente aucun `is_ai_generated` (référence Graph absente au 15/08/2026).
+    Envoyer un paramètre non documenté ferait risquer un 400 sur une cible qui
+    n'a qu'UNE tentative (§Pb6ter) pour un gain nul — la Story dure 24 h et son
+    post durable, lui, est bien déclaré.
+
+    Retourne (success: bool).
+    """
+    # Étape 1 : Initialiser
+    r = _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_stories",
+        data={"upload_phase": "start", "access_token": access_token}
+    )
+    _check(r, "FB /video_stories (start)")
+    data     = r.json()
+    video_id = data["video_id"]
+    # Meta retourne parfois une upload_url directe, sinon on construit la nôtre
+    upload_url = data.get("upload_url") or f"https://rupload.facebook.com/video-upload/v25.0/{video_id}"
+    print(f"  [PKG] Story Facebook initialisée : {video_id}")
+
+    # Étape 2 : Upload depuis URL hébergée
+    ru = _post(
+        upload_url,
+        headers={
+            "Authorization": f"OAuth {access_token}",
+            "file_url":      video_url,
+        }
+    )
+    _check(ru, "FB rupload (story)")
+
+    # Étape 3 : Publier
+    rp = _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/video_stories",
+        data={
+            "video_id":     video_id,
+            "upload_phase": "finish",
+            "access_token": access_token,
+        }
+    )
+    _check(rp, "FB /video_stories (finish)")
+    print(f"  [OK] Story vidéo Facebook publiée")
+    return True
+
+
+# ==========================================
+# THREADS
+# ==========================================
+
+_THREADS_BASE = "https://graph.threads.net/v1.0"
+
+
+def _poll_threads_container(container_id, access_token, max_wait=180, poll_every=5, label=""):
+    """
+    Attend qu'un conteneur Threads passe en FINISHED.
+
+    Publier un conteneur encore en cours de transcodage renvoie une erreur peu
+    explicite, d'où l'attente. La boucle SONDE AVANT de dormir : un conteneur
+    image, prêt en une seconde, ne coûte donc rien — c'est ce qui a permis de
+    supprimer le `sleep(30)` forfaitaire que Meta recommande aux intégrations
+    qui, elles, ne sondent pas (30 s brûlées par publication, et par réessai).
+
+    Un statut non-200 répété (token révoqué, conteneur supprimé) abandonne au
+    bout de MAX_HTTP_ERR au lieu d'épuiser `max_wait` en silence.
+    """
+    MAX_HTTP_ERR = 3
+    http_err = 0
+    waited   = 0
+    while waited < max_wait:
+        r = _get(
+            f"{_THREADS_BASE}/{container_id}",
+            params={"fields": "status,error_message", "access_token": access_token},
+        )
+        if r.status_code == 200:
+            http_err = 0
+            data     = r.json()
+            status   = data.get("status", "")
+            if status == "FINISHED":
+                return True
+            if status == "ERROR":
+                print(f"  [FAIL] {label} conteneur en erreur : {data.get('error_message', '')}")
+                return False
+        else:
+            http_err += 1
+            print(f"  [WARN] Erreur HTTP {r.status_code} en sondant {label} ({http_err}/{MAX_HTTP_ERR})")
+            if http_err >= MAX_HTTP_ERR:
+                print(f"  [FAIL] {label} : {MAX_HTTP_ERR} erreurs HTTP consécutives, abandon")
+                return False
+        time.sleep(poll_every)
+        waited += poll_every
+    print(f"  [FAIL] {label} conteneur non prêt après {max_wait}s")
+    return False
+
+
+def publish_photo_story_facebook(facebook_id, access_token, image_url):
+    """
+    Publie une Story PHOTO sur une Page Facebook.
+
+    Deux étapes, comme pour le carousel Facebook : la photo est d'abord
+    téléversée **non publiée** (`published=false`) — sans quoi elle atterrirait
+    aussi dans le fil, en doublon du post — puis rattachée aux Stories par son id.
+
+    Le pendant vidéo est `publish_video_story_facebook` (workflow d'upload en
+    trois phases, incompatible avec celui-ci).
+    """
+    r = _post(
+        f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
+        data={"url": image_url, "published": "false", "access_token": access_token},
+    )
+    _check(r, "FB /photos (Story photo)")
+    photo_id = r.json()["id"]
+    _check(
+        _post(
+            f"https://graph.facebook.com/v25.0/{facebook_id}/photo_stories",
+            data={"photo_id": photo_id, "access_token": access_token},
+        ),
+        "FB /photo_stories",
+    )
+    print(f"  [OK] Story photo Facebook publiée ({photo_id})")
+    return True
+
+
+def _publish_ig_story(instagram_id, access_token, url, label="Story"):
+    """
+    Publie une Story Instagram depuis une URL publique (image ou vidéo).
+
+    Factorise les deux blocs qui construisaient le conteneur STORIES à la main
+    dans la boucle : le type est dérivé de l'extension, et une story vidéo passe
+    par le retry sur subcode 2207027, comme `publish_video_story`.
+    """
+    is_video = _is_video(url)
+    key      = "video_url" if is_video else "image_url"
+    r = _post(
+        f"https://graph.facebook.com/v25.0/{instagram_id}/media",
+        data={key: url, "media_type": "STORIES", "access_token": access_token,
+              **AI_FLAGS},
+    )
+    _check(r, "IG /media (STORIES)")
+    sm_id = r.json()["id"]
+    if is_video:
+        _publish_video_with_retry(instagram_id, access_token, sm_id, label=label,
+                                  first_sleep=30, poll_every=15, max_wait=120)
+    else:
+        time.sleep(5)
+        _check(
+            _post(
+                f"https://graph.facebook.com/v25.0/{instagram_id}/media_publish",
+                data={"creation_id": sm_id, "access_token": access_token},
+            ),
+            "IG /media_publish (STORIES)",
+        )
+    return True
+
+
+def _publish_story_series(publish_one, urls, label):
+    """
+    Publie chaque URL en Story, dans l'ordre (mode « chaque slide en Story »
+    d'un carousel, §5.10 C11). Un échec n'arrête pas les suivantes : la cible
+    Story n'a qu'un essai (TARGETS), l'interrompre perdrait le reste de la série.
+    Renvoie True seulement si toutes sont parties.
+    """
+    failed = 0
+    for i, url in enumerate(urls, 1):
+        try:
+            if not publish_one(url):
+                raise RuntimeError("échec signalé")
+        except Exception as e:
+            failed += 1
+            print(f"  [WARN] {label} {i}/{len(urls)} : {_redact(e)}")
+    return failed == 0
+
+
+def _truncate_threads(text, limit):
+    """
+    Repli de troncature pour les payloads antérieurs à `threads_caption`.
+
+    Même métrique que `publishing/threads._tlen` : 1 par caractère, sauf les
+    emojis (hors plan de base, 4 octets) comptés selon leur longueur UTF-8.
+    Duplication assumée — ce script est autonome et ne peut rien importer du
+    projet ; s'il faut changer la règle, les deux copies doivent bouger.
+
+    Le chemin nominal reste `threads_caption`, tronquée à la mise en file, qui
+    coupe elle à la fin de phrase et préserve les hashtags.
+    """
+    text = text or ""
+    cost = lambda ch: 4 if len(ch.encode("utf-8")) == 4 else 1
+    if sum(cost(c) for c in text) <= limit:
+        return text
+    used = 0
+    for i, ch in enumerate(text):
+        if used + cost(ch) > limit:
+            text = text[:i]
+            break
+        used += cost(ch)
+    space = text.rfind(" ")
+    return (text[:space] if space > len(text) * 0.6 else text).rstrip()
+
+
+def _threads_media_params(url):
+    """Type de média + clé d'URL pour un conteneur Threads, dérivés de l'extension."""
+    key = "video_url" if _is_video(url) else "image_url"
+    return {"media_type": "VIDEO" if _is_video(url) else "IMAGE", key: url}
+
+
+def _threads_container(threads_id, access_token, params, label=""):
+    """Crée un conteneur Threads et retourne son id."""
+    r = _post(f"{_THREADS_BASE}/{threads_id}/threads",
+              data={**params, "access_token": access_token})
+    # Champs journalisés pour rendre un 400 lisible : le corps de la réponse dit
+    # QUEL champ est refusé, encore faut-il savoir ce qu'on a envoyé.
+    _check(r, f"Conteneur {label} ({params.get('media_type')}, "
+                      f"texte {len((params.get('text') or '').encode('utf-8'))} octets)")
+    cid = r.json()["id"]
+    print(f"  [PKG] {label} conteneur Threads : {cid}")
+    return cid
+
+
+def publish_threads(threads_id, access_token, media_type, media_url, children, text):
+    """
+    Publie sur Threads (image, vidéo ou carousel).
+
+    Threads consomme des URLs publiques comme Instagram — les assets GitHub
+    Release servent les deux, rien n'est ré-uploadé.
+
+    `text` est la légende DÉJÀ tronquée à la limite Threads côté dashboard
+    (publishing/threads.truncate_caption) : le script ne fait que la relayer,
+    avec une coupe de sécurité si un vieux payload n'en portait pas.
+
+    Retourne (publié, id du post) — même contrat que les `publish_*` Instagram.
+    """
+    if media_type == "CAROUSEL":
+        # Garde AVANT la boucle : la tester après aurait créé des conteneurs
+        # pour rien, et consommé une tentative sur un payload voué à l'échec.
+        if len(children) < 2:
+            print(f"  [FAIL] Carousel Threads : {len(children)} item(s), minimum 2")
+            return False, None
+
+        # Chaque item devient un conteneur enfant, puis un conteneur parent les
+        # agrège. Threads accepte 2 à 20 enfants — les carousels du projet sont
+        # plafonnés à 10 par l'API Instagram, donc toujours dans les clous.
+        child_ids = [
+            _threads_container(threads_id, access_token,
+                               {**_threads_media_params(url), "is_carousel_item": "true"},
+                               label=f"Slide {i}")
+            for i, url in enumerate(children)
+        ]
+
+        # Chaque enfant doit être FINISHED AVANT d'être référencé par le parent :
+        # Meta rejette sinon le conteneur carousel avec
+        #   « Invalid Carousel Children — invalid, nonexistent, or expired »
+        # (code 100, sous-code 4279004), sans dire que la cause est l'attente.
+        # Un slide vidéo (musique muxée, §5.12 M12) n'est jamais prêt à temps.
+        # Tous les enfants sont créés d'abord : leur traitement se recouvre côté
+        # Meta, le sondage ne paie donc que le plus lent — et comme il vérifie
+        # avant de dormir, un slide image déjà prêt ne coûte rien.
+        for i, cid in enumerate(child_ids):
+            if not _poll_threads_container(cid, access_token, label=f"Slide {i}"):
+                print(f"  [FAIL] Carousel Threads : slide {i} non exploitable")
+                return False, None
+
+        container_id = _threads_container(
+            threads_id, access_token,
+            {"media_type": "CAROUSEL", "children": ",".join(child_ids), "text": text},
+            label="Carousel",
+        )
+    else:
+        container_id = _threads_container(
+            threads_id, access_token,
+            {**_threads_media_params(media_url), "text": text},
+            label="Vidéo" if _is_video(media_url) else "Image",
+        )
+
+    if not _poll_threads_container(container_id, access_token, label=media_type):
+        return False, None
+
+    rp = _post(
+        f"{_THREADS_BASE}/{threads_id}/threads_publish",
+        data={"creation_id": container_id, "access_token": access_token},
+    )
+    _check(rp, f"Publication {media_type}")
+    # Publié quoi qu'il arrive : un corps sans id ne doit pas faire republier.
+    try:
+        return True, rp.json().get("id")
+    except ValueError:
+        return True, None
+
+
+# ==========================================
+# BUFFER — TikTok & YouTube Shorts
+# ==========================================
+#
+# GitHub reste l'ORDONNANCEUR : le payload attend son `next_time` comme pour les
+# réseaux Meta, et la publication Buffer n'est créée qu'à l'échéance, en
+# `mode=shareNow`. La queue Buffer n'est jamais utilisée pour programmer — ce
+# serait une seconde source de vérité pour l'horaire, et son plafond de 10
+# publications programmées par channel se remplirait d'avance.
+#
+# UNE PUBLICATION PAR CHANNEL : TikTok et YouTube sont deux `createPost`
+# distincts, donc deux cibles de `TARGETS` qui se reprennent indépendamment.
+#
+# Tout ce dont ce bloc a besoin est transporté par le payload (drapeaux, textes
+# par plateforme, réglages YouTube, déclaration IA — figés à la validation) ou
+# par l'environnement (clé en SECRET, channel IDs en variables). La clé n'est
+# jamais globale : elle est lue par compte, ce qui permet de répartir les
+# channels sur plusieurs comptes Buffer sans toucher à ce script.
+
+BUFFER_URL = "https://api.buffer.com"
+BUFFER_LABELS = {"tiktok": "TikTok", "youtube": "YouTube"}
+BUFFER_TEXT_LIMITS = {"tiktok": 2200, "youtube": 5000}
+YOUTUBE_TITLE_LIMIT = 100
+# Statuts Buffer qui veulent dire « pas encore parti, rien à reprocher ».
+BUFFER_WAITING = ("scheduled", "sending", "pending", "processing")
+
+_BUFFER_CREATE = """
+mutation createPost($input: CreatePostInput!) {
+  createPost(input: $input) {
+    __typename
+    ... on PostActionSuccess { post { id status } }
+    ... on MutationError { message }
+  }
+}
+"""
+
+_BUFFER_READ = """
+query($id: String!) {
+  post(input: {id: $id}) { id status }
+}
+"""
+
+
+class _BufferAmbiguous(Exception):
+    """Requête partie, sort INCONNU — une relance risquerait un doublon.
+
+    Distincte d'un échec franc : Buffer ne documente aucune clé d'idempotence
+    pour `createPost`, donc un timeout à la création ne peut pas être rejoué
+    automatiquement.
+    """
+
+
+def _buffer_call(api_key, query, variables, what):
+    """Appel GraphQL Buffer. Trois régimes d'erreur, et ils ne se valent pas :
+
+      • `TargetPending`     — quota (429) : attente, aucune tentative consommée.
+      • `_BufferAmbiguous`  — timeout, 5xx, corps illisible : sort inconnu.
+      • `RuntimeError`      — refus franc (4xx, erreurs GraphQL) : échec réel.
+
+    Les erreurs GraphQL arrivent en **HTTP 200** : les ignorer ferait passer un
+    refus pour un succès muet.
+    """
+    try:
+        r = _post(
+            BUFFER_URL,
+            headers={"Authorization": f"Bearer {api_key}",
+                     "Content-Type": "application/json"},
+            json={"query": query, "variables": variables},
+        )
+    except requests.RequestException as e:
+        raise _BufferAmbiguous(f"{what} : appel interrompu ({e})")
+
+    if r.status_code == 429:
+        retry = r.headers.get("Retry-After", "")
+        raise TargetPending(
+            f"{what} : quota Buffer atteint (429"
+            + (f", Retry-After {retry}s" if retry else "") + ") — reprise au prochain run"
+        )
+    if r.status_code >= 500:
+        raise _BufferAmbiguous(f"{what} : HTTP {r.status_code}")
+    if r.status_code >= 400:
+        raise RuntimeError(f"{what} -> HTTP {r.status_code} : {(r.text or '')[:300]}")
+    try:
+        body = r.json()
+    except ValueError:
+        raise _BufferAmbiguous(f"{what} : réponse illisible")
+    if body.get("errors"):
+        raise RuntimeError(
+            f"{what} -> " + "; ".join(str(e.get("message", e)) for e in body["errors"])
+        )
+    return body.get("data") or {}
+
+
+def _buffer_input(platform, payload, channel_id, media_url, pub_id):
+    """Corps de `createPost` pour une plateforme.
+
+    Champs communs d'abord, métadonnées spécifiques ensuite. Pas de
+    `metadata.tiktok.title` : ce champ est documenté pour les publications
+    PHOTO. Ni confidentialité, ni commentaires, ni duet/stitch : le schéma
+    GraphQL de Buffer ne les expose pas — c'est la configuration du channel qui
+    s'applique.
+    """
+    ai_generated = bool(payload.get("ai_generated", True))
+    text = payload.get("tiktok_text") if platform == "tiktok" else payload.get("youtube_description")
+    data = {
+        "channelId":      channel_id,
+        "schedulingType": "automatic",
+        "mode":           "shareNow",
+        "text":           (text or payload.get("caption") or "")[:BUFFER_TEXT_LIMITS[platform]],
+        "source":         f"influencer:{pub_id}:{platform}",
+        "assets":         [{"video": {"url": media_url,
+                                      "metadata": {"thumbnailOffset": 1000}}}],
+    }
+    if platform == "tiktok":
+        data["metadata"] = {"tiktok": {"isAiGenerated": ai_generated}}
+    else:
+        data["metadata"] = {"youtube": {
+            "title":             (payload.get("youtube_title") or "")[:YOUTUBE_TITLE_LIMIT],
+            "categoryId":        str(payload.get("youtube_category_id") or "27"),
+            "privacy":           payload.get("youtube_privacy") or "public",
+            "madeForKids":       bool(payload.get("youtube_made_for_kids", False)),
+            "notifySubscribers": bool(payload.get("youtube_notify_subscribers", True)),
+            "embeddable":        True,
+            "isAiGenerated":     ai_generated,
+        }}
+    return data
+
+
+def _buffer_publish(platform, payload, payload_file, state, folder, pub_id, media_url):
+    """Machine d'état d'UNE destination Buffer. True = média réellement parti.
+
+    Deux situations, jamais confondues :
+
+      • pas encore de `post_id` — on crée, en marquant `creation_uncertain`
+        AVANT l'appel : un runner tué entre l'envoi et la réponse laisse la
+        trace de son doute, et rien ne sera relancé automatiquement.
+      • `post_id` connu — on relit le statut. Le succès de `createPost` ne vaut
+        PAS publication : Buffer récupère le média de façon asynchrone, et
+        l'asset Release doit rester en ligne jusqu'au `sent`.
+    """
+    label   = BUFFER_LABELS[platform]
+    api_key = os.environ.get(f"{folder.upper()}_BUFFER_API_KEY", "")
+    channel = os.environ.get(f"{folder.upper()}_BUFFER_{platform.upper()}_CHANNEL_ID", "")
+    if not api_key or not channel:
+        # Échec VISIBLE, jamais une omission silencieuse : une destination
+        # demandée puis ignorée ne partirait jamais sans que rien ne le dise.
+        raise RuntimeError(
+            f"{label} : clé Buffer ou channel ID absent — pousse les identifiants "
+            "vers GitHub (👤 Réglages → 🔑 Connexion) puis redéploie le workflow"
+        )
+
+    st_buf = payload.setdefault("buffer_posts", {}).setdefault(
+        platform, {"post_id": None, "status": None, "creation_uncertain": False}
+    )
+
+    # --- 2. Publication déjà créée : on relit son statut ---
+    if st_buf.get("post_id"):
+        try:
+            data = _buffer_call(api_key, _BUFFER_READ, {"id": st_buf["post_id"]},
+                                f"post {label}")
+        except _BufferAmbiguous as e:
+            # Relire n'a aucun effet de bord : rien d'incertain ici, on attend.
+            raise TargetPending(str(e))
+        status = ((data.get("post") or {}).get("status") or "").lower()
+        st_buf["status"] = status
+        _write_payload_state(payload_file, payload, state)
+        if status == "sent":
+            return True
+        if status in BUFFER_WAITING:
+            raise TargetPending(f"{label} : statut {status} — publication en cours")
+        if status == "error":
+            return False
+        if status in ("draft", "needs_approval"):
+            raise RuntimeError(
+                f"{label} : statut {status} — ce channel n'est pas configuré pour "
+                "la publication automatique (approbation ou brouillon)"
+            )
+        raise RuntimeError(f"{label} : statut Buffer inattendu ({status or 'vide'})")
+
+    # --- 1. Pas de post_id : création ---
+    if st_buf.get("creation_uncertain"):
+        # On ne relance JAMAIS un createPost dont le sort est inconnu : Buffer
+        # ne documente pas de clé d'idempotence, une relance publierait peut-être
+        # deux fois. Le payload et ses assets restent en place jusqu'à décision
+        # humaine.
+        raise TargetPending(
+            f"{label} : création interrompue sans réponse exploitable — vérifie "
+            f"dans Buffer si la publication de {pub_id[:8]} existe (aucune relance "
+            "automatique, risque de doublon)",
+            alert=True,
+        )
+
+    st_buf["creation_uncertain"] = True
+    _write_payload_state(payload_file, payload, state)
+    try:
+        data = _buffer_call(
+            api_key, _BUFFER_CREATE,
+            {"input": _buffer_input(platform, payload, channel, media_url, pub_id)},
+            f"createPost {label}",
+        )
+    except _BufferAmbiguous as e:
+        raise TargetPending(
+            f"{e} — vérifie dans Buffer si la publication de {pub_id[:8]} existe "
+            "(aucune relance automatique, risque de doublon)",
+            alert=True,
+        )
+    except Exception:
+        # Refus franc ou quota : rien n'a été créé, le doute est levé.
+        st_buf["creation_uncertain"] = False
+        _write_payload_state(payload_file, payload, state)
+        raise
+
+    result   = (data.get("createPost") or {})
+    typename = result.get("__typename")
+
+    if typename == "PostActionSuccess":
+        post = result.get("post") or {}
+        post_id = post.get("id")
+        if not post_id:
+            # Succès annoncé sans identifiant : on ne peut ni suivre ni relancer.
+            raise TargetPending(
+                f"{label} : succès sans identifiant de publication — vérifie dans "
+                "Buffer (aucune relance automatique, risque de doublon)",
+                alert=True,
+            )
+        st_buf["post_id"]            = post_id
+        st_buf["status"]             = (post.get("status") or "").lower()
+        st_buf["creation_uncertain"] = False
+        _write_payload_state(payload_file, payload, state)
+        if st_buf["status"] == "sent":
+            return True
+        raise TargetPending(
+            f"{label} : publication {post_id} créée (statut {st_buf['status'] or '?'}) — "
+            "Buffer récupère le média, l'asset reste en ligne"
+        )
+
+    if typename == "MutationError":
+        st_buf["creation_uncertain"] = False
+        _write_payload_state(payload_file, payload, state)
+        raise RuntimeError(f"{label} : {result.get('message') or 'MutationError sans message'}")
+
+    raise TargetPending(
+        f"{label} : réponse createPost inexploitable ({typename or 'sans __typename'}) — "
+        f"vérifie dans Buffer si la publication de {pub_id[:8]} existe "
+        "(aucune relance automatique, risque de doublon)",
+        alert=True,
+    )
+
+
+# ==========================================
+# BOUCLE DE PUBLICATION
+# ==========================================
+
+for payload_file in payload_dir.glob("*.json"):
+    print(f"\n--- Traitement de {payload_file.name} ---")
+    payload = _read_payload(payload_file)
+    if payload is None:
+        continue
+
+    folder    = payload["compte"]
+    pub_id    = payload["pub_id"]
+    caption   = payload["caption"]
+    next_time = int(payload["next_time"])
+
+    # Rétrocompatibilité : anciens payloads n'ont que image_url
+    media_type = payload.get("media_type", "IMAGE").upper()
+    media_url  = payload.get("media_url") or payload.get("image_url", "")
+    # image_url reste disponible pour les publications Facebook et Story image
+    image_url  = payload.get("image_url") or (media_url if media_type == "IMAGE" else None)
+
+    # Vérification si déjà publié
+    if pub_id in published:
+        print(f"[{pub_id}] Déjà dans published.json, on passe.")
+        continue
+
+    # Vérifier si c'est le moment de publier
+    if next_time > now:
+        swiss_time = datetime.fromtimestamp(next_time, tz=_TZ_AFFICHAGE)
+        print(f"[{pub_id}] [WAIT] Programmation future : {swiss_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        continue
+
+    # Secrets
+    folder_upper = folder.upper()
+    access_token  = os.environ.get(f"{folder_upper}_ACCESS_TOKEN")
+    instagram_id  = os.environ.get(f"{folder_upper}_INSTAGRAM_ID")
+    facebook_id   = os.environ.get(f"{folder_upper}_FACEBOOK_ID")
+    # Threads : token PROPRE (l'app Meta est la même, le token ne l'est pas).
+    # Absents tant que le compte n'a pas activé Threads → bloc simplement sauté.
+    threads_token = os.environ.get(f"{folder_upper}_THREADS_TOKEN")
+    threads_id    = os.environ.get(f"{folder_upper}_THREADS_ID")
+
+    if not access_token or not instagram_id:
+        err = f"{folder}: Secrets manquants (TOKEN ou INSTA_ID)"
+        print(f"[FAIL] {err}")
+        errors.append(err)
+        continue
+
+    # --- État de publication (reprise partielle — voir TARGETS en tête) ---
+    state = PayloadState(payload)
+
+    # Déclaration IA de CE payload (voir AI_GENERATED en tête).
+    AI_FLAGS = AI_GENERATED if payload.get("ai_generated", True) else {}
+
+    children     = payload.get("children", [])
+    fb_children  = payload.get("fb_children", children)
+    ig_story_url = payload.get("story_url")
+    story_slides = bool(payload.get("story_slides")) and bool(children)
+    # Compte scraping : version 9:16 à bandes noires de chaque slide, rendue à la
+    # mise en file — même source pour les Stories Instagram et Facebook. Absente
+    # (autres comptes, payload antérieur) : les slides du post partent tels quels.
+    story_children = payload.get("story_children")
+    video_story_cache = {"url": ig_story_url if media_type == "VIDEO" else None}
+    # Légende tronquée à la mise en file (limite Threads : 1 par caractère, les
+    # emojis hors plan de base comptant 4). Le repli sert aux payloads antérieurs
+    # à `threads_caption` et applique la même métrique : `caption[:500]` laissait
+    # passer une légende riche en emojis, refusée en 400 par Meta.
+    threads_text = payload.get("threads_caption") or _truncate_threads(caption, 500)
+
+    def _do_instagram():
+        # Reprise après échec : Meta a pu publier malgré l'erreur (voir
+        # _find_published_instagram). Republier ferait un doublon.
+        # `instagram_tried` couvre la limitation Meta, qui ne compte pas de
+        # tentative (_is_meta_throttle) mais peut avoir publié quand même.
+        if state.attempts.get("instagram") or payload.get("instagram_tried"):
+            media_id = _find_published_instagram(instagram_id, access_token, caption, next_time)
+            if media_id:
+                print(f"[{pub_id}] [OK] Instagram déjà en ligne malgré l'échec précédent ({media_id})")
+                payload["instagram_media_id"] = media_id
+                return True
+        payload["instagram_tried"] = True
+        if media_type == "VIDEO":
+            print(f"[{pub_id}] [VID] Publication Reel Instagram...")
+            ok, media_id = publish_video(instagram_id, access_token, media_url, caption)
+        elif media_type == "CAROUSEL":
+            print(f"[{pub_id}] [CAR] Publication Carousel Instagram ({len(children)} slides)...")
+            ok, media_id = publish_carousel(instagram_id, access_token, children, caption)
+        else:
+            print(f"[{pub_id}] [IMG] Publication image Instagram...")
+            ok, media_id = publish_image(instagram_id, access_token, media_url, caption)
+        # Gardé dans le payload : il est persisté après chaque cible, donc survit à
+        # un runner tué avant la fin des autres réseaux (reprise au run suivant).
+        if media_id:
+            payload["instagram_media_id"] = media_id
+        return ok
+
+    def _do_facebook():
+        if media_type == "CAROUSEL":
+            # fb_children remplace children quand slide 0 est un .mp4 (musique
+            # muxée) — l'endpoint /photos ne prend pas de vidéo.
+            # ⚠️ Renvoie un TUPLE (ok, post_id) et n'écrit pas d'exception en cas
+            # d'échec : il FAUT le déballer. Le rendre tel quel marquait le
+            # réseau publié même en échec — un tuple est toujours vrai.
+            ok, _ = publish_carousel_facebook(facebook_id, access_token, fb_children, caption)
+            return ok
+        if media_type == "VIDEO":
+            return publish_video_facebook(facebook_id, access_token, media_url, caption)
+        _check(
+            _post(
+                f"https://graph.facebook.com/v25.0/{facebook_id}/photos",
+                data={"url": image_url, "caption": caption, "access_token": access_token},
+            ),
+            "FB /photos (post image)",
+        )
+        return True
+
+    def _video_story_source():
+        """Crée au plus une dérivée Story et persiste son URL avant publication."""
+        if video_story_cache["url"]:
+            return video_story_cache["url"]
+        story_url = _story_video_url(media_url, folder, pub_id)
+        video_story_cache["url"] = story_url
+        if story_url != media_url:
+            payload["story_url"] = story_url
+            # Un runner interrompu après l'upload ne doit ni recréer ni perdre
+            # l'asset au prochain passage.
+            _write_payload_state(payload_file, payload, state)
+        return story_url
+
+    # Actions applicables à CE payload. Une cible absente de ce dict n'est ni
+    # tentée, ni comptée, et ne retient pas le nettoyage : « non applicable »
+    # (identifiants manquants, format sans équivalent sur ce réseau) cesse d'être
+    # confondu avec « publié », ce que faisait l'ancien drapeau `fb_ok = True`.
+    actions = {"instagram": _do_instagram}
+
+    if media_type == "IMAGE" and image_url:
+        actions["instagram_story"] = lambda: _publish_ig_story(
+            instagram_id, access_token, image_url, "Story image")
+    elif media_type == "VIDEO" and media_url:
+        actions["instagram_story"] = lambda: publish_video_story(
+            instagram_id, access_token, _video_story_source())
+    elif media_type == "CAROUSEL" and story_slides:
+        # Chaque slide en Story, dans l'ordre (cf. influencer/CLAUDE.md §5.10 C11).
+        actions["instagram_story"] = lambda: _publish_story_series(
+            lambda u: _publish_ig_story(instagram_id, access_token, u, "Story slide"),
+            story_children or children, "Story slide Instagram")
+    elif media_type == "CAROUSEL" and ig_story_url:
+        # Story dérivée du carousel (cf. influencer/CLAUDE.md §5.10 C11).
+        actions["instagram_story"] = lambda: _publish_ig_story(
+            instagram_id, access_token, ig_story_url, "Story carousel")
+
+    # Source de la Story, IDENTIQUE à celle d'Instagram : le média pour un post
+    # simple, la story dérivée pour un carousel (§5.10 C11). Facebook n'avait
+    # jusqu'ici de Story que sur les vidéos, faute de fonction pour les photos —
+    # les posts image et carousel n'en produisaient aucune, en silence.
+    if media_type == "IMAGE":
+        fb_story_src = image_url
+    elif media_type == "CAROUSEL":
+        fb_story_src = ig_story_url
+    else:
+        fb_story_src = None
+
+    def _fb_story(source):
+        if _is_video(source):
+            return publish_video_story_facebook(facebook_id, access_token, source)
+        return publish_photo_story_facebook(facebook_id, access_token, source)
+
+    def _do_facebook_story():
+        if media_type == "CAROUSEL" and story_slides:
+            return _publish_story_series(
+                _fb_story, story_children or fb_children, "Story slide Facebook")
+        return _fb_story(_video_story_source() if media_type == "VIDEO" else fb_story_src)
+
+    if facebook_id and (media_type != "IMAGE" or image_url):
+        actions["facebook"] = _do_facebook
+        if media_type == "VIDEO" or fb_story_src or (media_type == "CAROUSEL" and story_slides):
+            actions["facebook_story"] = _do_facebook_story
+
+    def _do_threads():
+        ok, post_id = publish_threads(
+            threads_id, threads_token, media_type, media_url, children, threads_text)
+        # Même raison que `instagram_media_id` : lu par 📈 Performances (§5.27 PF3).
+        if post_id:
+            payload["threads_media_id"] = post_id
+        return ok
+
+    if threads_token and threads_id:
+        actions["threads"] = _do_threads
+
+    # Buffer (TikTok / YouTube Shorts) : VIDEO uniquement — ni l'un ni l'autre
+    # n'a d'équivalent d'un post image ou d'un carousel. Les drapeaux ont été
+    # figés à la validation : un payload antérieur ne les porte pas, donc aucune
+    # action Buffer n'y est créée et son comportement est strictement inchangé.
+    # Une destination demandée sans clé ni channel ID n'est PAS omise en
+    # silence : l'action existe et échoue visiblement (cf. _buffer_publish).
+    if media_type == "VIDEO" and media_url:
+        if payload.get("publish_tiktok"):
+            actions["tiktok"] = lambda: _buffer_publish(
+                "tiktok", payload, payload_file, state, folder, pub_id, media_url)
+        if payload.get("publish_youtube"):
+            actions["youtube"] = lambda: _buffer_publish(
+                "youtube", payload, payload_file, state, folder, pub_id, media_url)
+
+    # Story seule : les actions hors Stories sortent du dict, donc ne sont ni
+    # tentées ni attendues (même règle que « non applicable » ci-dessus).
+    targets = _targets_for(payload)
+    actions = {name: actions[name] for name, *_ in targets if name in actions}
+    if payload.get("story_only") and not actions:
+        _fail(f"{folder}: Story seule {pub_id} -> aucune Story publiable pour ce média")
+        # Rien n'est parti : le payload reste, sinon le nettoyage l'archivait
+        # comme publié.
+        continue
+
+    # --- Orchestration : une seule boucle pour tous les réseaux ---
+    for name, label, max_attempts, blocking, depends_on in targets:
+        action = actions.get(name)
+        if action is None:
+            continue
+        if depends_on and not state.done.get(depends_on):
+            continue
+        if not state.should_try(name, max_attempts):
+            continue
+
+        ok = False
+        error = None
+        try:
+            if DRY_RUN:
+                print(f"[{pub_id}] [DRY] {label} ({media_type}) — publication simulée")
+                ok = True
+            else:
+                # Chaque action DOIT renvoyer un booléen franc. `bool()` et non
+                # « tout sauf False » : cette seconde forme échouait du mauvais
+                # côté — un helper renvoyant un tuple (publish_carousel_facebook)
+                # ou oubliant son `return` était compté comme publié, donc jamais
+                # réessayé. Ici un retour douteux vaut échec, donc reprise.
+                ok = bool(action())
+        except TargetPending as pending:
+            # NI succès NI échec : la cible reste à reprendre, aucune tentative
+            # consommée, aucun nettoyage autorisé — et la boucle CONTINUE, pour
+            # que YouTube parte même quand TikTok patiente.
+            if pending.alert:
+                _fail(f"{folder}: {label} {pub_id} -> {pending}")
+            else:
+                print(f"[{pub_id}] [WAIT] {label} : {pending}")
+            # L'état écrit par la cible (post_id, statut, doute) doit survivre à
+            # un runner tué juste après.
+            _write_payload_state(payload_file, payload, state)
+            continue
+        except Exception as e:
+            if _is_meta_throttle(e):
+                # Limitation temporaire de Meta : attente, pas échec. Aucune
+                # tentative consommée, dashboard seulement (pas d'issue GitHub) —
+                # elle se lève seule, la notifier n'appelle aucune action.
+                _warn(f"{folder}: {label} {pub_id} -> limité par Meta, reprise au prochain run : {e}")
+                _write_payload_state(payload_file, payload, state)
+                continue
+            ok = False
+            error = e
+        if ok:
+            if not DRY_RUN:
+                print(f"[{pub_id}] [OK] {label} publié ({media_type})")
+            (payload.get("fetch_wait_since") or {}).pop(name, None)
+            (payload.get("alerted") or {}).pop(name, None)
+        else:
+            reason = error if error is not None else "échec signalé"
+            urls = _payload_media_urls(payload)
+            media_ok = (not _is_auth_error(error) and bool(urls)
+                        and all(_media_readable(u) for u in urls))
+            if _fetch_wait(payload, name, media_ok, int(time.time())):
+                # Nos médias sont lisibles : Meta n'a pas su les télécharger.
+                # Attente sans tentative consommée, dashboard seulement.
+                _warn(f"{folder}: {label} {pub_id} -> médias lisibles, échec côté Meta, "
+                      f"reprise au prochain run : {reason}")
+                _write_payload_state(payload_file, payload, state)
+                continue
+            message = f"{folder}: {label} {pub_id} -> {reason}"
+            if blocking and _first_alert(payload, name):
+                _fail(message)
+            else:
+                # Déjà signalé pour cette cible (ou best effort) : dashboard
+                # seulement, pas un mail de plus à chaque run.
+                _warn(message)
+        state.record(name, ok)
+        # Persistance IMMÉDIATE : un crash après cette ligne ne republiera pas
+        # ce qui vient de partir (cf. _write_payload_state).
+        _write_payload_state(payload_file, payload, state)
+
+    # --- Bilan : les cibles BLOQUANTES sont-elles toutes réglées ? ---
+    # Les cibles best effort (Stories) sont exclues : elles ont droit à un essai
+    # et ne doivent jamais retenir le payload ni ses assets Release.
+    pending = [
+        name for name, _lbl, max_attempts, blocking, _dep in targets
+        if blocking and name in actions and not state.settled(name, max_attempts)
+    ]
+
+    if pending:
+        # Le payload RESTE en place — son état est déjà sur disque, écrit après
+        # chaque cible. Les assets Release survivent aussi : ils sont encore
+        # nécessaires aux cibles non abouties.
+        print(f"[{pub_id}] [WAIT] Reprise au prochain run : {', '.join(pending)}")
+        continue
+
+    # --- Nettoyage (toutes les cibles bloquantes sont réglées) ---
+    # Une seule garde couvre tout ce qui suit (published.json, suppression du
+    # payload, des assets Release et des fichiers locaux) : le nettoyage est
+    # irréversible, c'est exactement ce qu'une simulation ne doit pas faire.
+    if DRY_RUN:
+        print(f"[{pub_id}] [DRY] Toutes les cibles réglées — nettoyage simulé")
+        continue
+
+    published.add(pub_id)
+    _write_json_atomic(published_file, sorted(list(published)), indent=2)
+    media_entry = _published_media_entry(payload, int(time.time()))
+    if media_entry:
+        _record_published_media(pub_id, media_entry)
+
+    # Supprimer payload
+    payload_file.unlink()
+
+    # Supprimer les médias : assets de la Release `media-storage`, via l'API GitHub.
+    try:
+        _gh_token  = os.environ.get("GITHUB_TOKEN", "")
+        _gh_repo   = os.environ.get("GITHUB_REPOSITORY", "")
+        _rel_tag   = "media-storage"
+        _api_base  = "https://api.github.com"
+        _gh_hdrs   = {
+            "Authorization": f"token {_gh_token}",
+            "Accept": "application/vnd.github+json",
+        }
+        def _delete_release_asset_by_url(asset_url):
+            """Supprime le Release asset identifié par son browser_download_url."""
+            if not asset_url or not _gh_token or not _gh_repo:
+                return
+            asset_name = pathlib.Path(asset_url).name
+            # Récupérer la release
+            r = _get(
+                f"{_api_base}/repos/{_gh_repo}/releases/tags/{_rel_tag}",
+                headers=_gh_hdrs, timeout=30
+            )
+            if r.status_code == 404:
+                return
+            r.raise_for_status()
+            release_id = r.json()["id"]
+            # Lister les assets et supprimer celui dont le name correspond
+            assets_url = f"{_api_base}/repos/{_gh_repo}/releases/{release_id}/assets?per_page=100"
+            while assets_url:
+                ra = _get(assets_url, headers=_gh_hdrs, timeout=30)
+                ra.raise_for_status()
+                for asset in ra.json():
+                    if asset["name"] == asset_name:
+                        requests.delete(
+                            f"{_api_base}/repos/{_gh_repo}/releases/assets/{asset['id']}",
+                            headers=_gh_hdrs, timeout=30
+                        )
+                        print(f"[DEL] Asset Release supprimé : {asset_name}")
+                        return
+                link = ra.headers.get("Link", "")
+                assets_url = None
+                for part in link.split(","):
+                    if 'rel="next"' in part:
+                        assets_url = part.split(";")[0].strip().strip("<>")
+                        break
+        if media_type == "CAROUSEL":
+            urls_to_del = list(payload.get("children", []))
+            if payload.get("story_url"):
+                urls_to_del.append(payload["story_url"])
+            urls_to_del += payload.get("story_children") or []
+            # fb_children peut contenir des doublons de children -- skip les vus
+            seen = set()
+            for fb_u in payload.get("fb_children", []):
+                if fb_u not in seen and fb_u not in urls_to_del:
+                    urls_to_del.append(fb_u)
+                seen.add(fb_u)
+            for u in urls_to_del:
+                _delete_release_asset_by_url(u)
+        else:
+            primary_url = payload.get("media_url") or payload.get("image_url")
+            _delete_release_asset_by_url(primary_url)
+            story_url = payload.get("story_url")
+            if story_url and story_url != primary_url:
+                _delete_release_asset_by_url(story_url)
+    except Exception as _del_exc:
+        print(f"[WARN] Erreur nettoyage média : {_del_exc}")
+
+
+# ==========================================
+# FINALISATION : DASHBOARD ET GIT
+# ==========================================
+
+# 1. Générer le Dashboard avec les fichiers RESTANTS
+generate_dashboard(payload_dir, len(published), run_errors=errors, run_warnings=warn_msgs)
+
+# 2. Un seul Commit & Push pour tout le run
+if DRY_RUN:
+    print("[DRY] Commit et push ignorés (simulation).")
+else:
+    try:
+        subprocess.run(["git", "config", "user.name", "github-actions"], cwd=base_dir, check=True)
+        subprocess.run(["git", "config", "user.email", "actions@github.com"], cwd=base_dir, check=True)
+        subprocess.run(["git", "add", "-A"], cwd=base_dir, check=True)
+        status = subprocess.run(["git", "status", "--porcelain"], cwd=base_dir, capture_output=True, text=True)
+        if status.stdout:
+            subprocess.run(["git", "commit", "-m", "🤖 Update dashboard & published status"], cwd=base_dir, check=True)
+            subprocess.run(["git", "pull", "--no-rebase"], cwd=base_dir, check=True)
+            subprocess.run(["git", "push"], cwd=base_dir, check=True)
+            print("[START] GitHub mis à jour avec succès.")
+        else:
+            print("∅ Aucun changement à commit.")
+    except Exception as e:
+        print(f"[WARN] Erreur Git : {e}")
+
+# --- Rapport final ---
+if errors:
+    print("\n=== RÉSUMÉ DES ERREURS ===")
+    for e in errors:
+        print(f" - {e}")
+    # Exit code 1 : force GitHub Actions à marquer le run comme échoué
+    # → déclenche l'email de notification de workflow si activé dans les paramètres GitHub
+    sys.exit(1)
