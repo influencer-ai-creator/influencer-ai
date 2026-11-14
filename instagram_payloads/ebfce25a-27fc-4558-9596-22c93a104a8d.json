@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "ebfce25a-27fc-4558-9596-22c93a104a8d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ebfce25a_video_2239.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I gave him exactly what he paid for, then took it back.\nHe tried to press the button again, but I'm not a vending machine 🙄💅.\nShould I let him back in or keep him waiting?",
+  "next_time": 1796385600,
+  "storage": "release",
+  "threads_caption": "I gave him exactly what he paid for, then took it back.\nHe tried to press the button again, but I'm not a vending machine 🙄💅.\nShould I let him back in or keep him waiting?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
