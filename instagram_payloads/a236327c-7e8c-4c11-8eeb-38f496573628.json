@@ -1,0 +1,33 @@
+{
+  "compte": "sundress",
+  "pub_id": "a236327c-7e8c-4c11-8eeb-38f496573628",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_04.jpg"
+  ],
+  "caption": "I’m at the Colosseum in Italy, standing in the same spot through every age. It’s like a time machine for my soul! I love how the world shifts but I stay right here with you. Tell me, which photo do you think I suited the place best? 1, 2, 3, 4, or 5?",
+  "next_time": 1796500800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_slide_19495_04.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a236327c_fb_reel_19495.mp4",
+  "story_slides": true,
+  "threads_caption": "I’m at the Colosseum in Italy, standing in the same spot through every age. It’s like a time machine for my soul! I love how the world shifts but I stay right here with you. Tell me, which photo do you think I suited the place best? 1, 2, 3, 4, or 5?",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
