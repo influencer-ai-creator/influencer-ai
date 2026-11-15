@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "198018ab-27c1-41ba-9c6b-24f330a16554",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_198018ab_video_19625.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Caught you red-handed. 😉✨ #travelgram #caughtyou #italyvibes",
+  "next_time": 1796472000,
+  "storage": "release",
+  "threads_caption": "Caught you red-handed.\n\n😉✨ #travelgram",
+  "schedule": {
+    "delay_hours": 8.0,
+    "quiet_hours": [
+      0,
+      13
+    ],
+    "timezone": ""
+  }
+}
