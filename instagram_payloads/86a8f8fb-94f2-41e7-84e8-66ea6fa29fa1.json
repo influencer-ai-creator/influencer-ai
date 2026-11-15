@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "86a8f8fb-94f2-41e7-84e8-66ea6fa29fa1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_86a8f8fb_video_2177.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Living in 2077 is basically just solving problems that the city creates for you.\nI thought the reset switch was the easy way out, but the city had other plans 🙄🔧.\nTell me your favorite tech fail today.",
+  "next_time": 1796497200,
+  "storage": "release",
+  "threads_caption": "Living in 2077 is basically just solving problems that the city creates for you.\nI thought the reset switch was the easy way out, but the city had other plans 🙄🔧.\nTell me your favorite tech fail today.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
