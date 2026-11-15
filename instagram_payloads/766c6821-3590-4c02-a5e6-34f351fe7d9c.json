@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "766c6821-3590-4c02-a5e6-34f351fe7d9c",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_766c6821_video_2397.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "He thought he could swipe me away, but I had other plans.\n\nHe hasn't looked away from his phone since I arrived. 😍\n\n#Santorini",
+  "next_time": 1796493600,
+  "storage": "release",
+  "threads_caption": "He thought he could swipe me away, but I had other plans.\n\nHe hasn't looked away from his phone since I arrived.\n\n😍 #Santorini",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
