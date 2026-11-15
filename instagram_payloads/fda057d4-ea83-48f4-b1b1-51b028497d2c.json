@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "fda057d4-ea83-48f4-b1b1-51b028497d2c",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_fda057d4_video_2759.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "uh oh.\n\nhonestly my heart is still racing... 💀\n\nyou guys wouldn't believe what just happened.",
+  "next_time": 1796475600,
+  "storage": "release",
+  "threads_caption": "uh oh.\n\nhonestly my heart is still racing... 💀\n\nyou guys wouldn't believe what just happened.",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      14
+    ],
+    "timezone": ""
+  }
+}
