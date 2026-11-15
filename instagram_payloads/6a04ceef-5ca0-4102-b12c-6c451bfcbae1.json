@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "6a04ceef-5ca0-4102-b12c-6c451bfcbae1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_6a04ceef_video_2396.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just a little magic for the unexpected guests at the harbour. ✨ Stay safe, stay fabulous. 😉 #harbour #traveldiaries #magicmoment #summervibes",
+  "next_time": 1796475600,
+  "storage": "release",
+  "threads_caption": "Just a little magic for the unexpected guests at the harbour. ✨ Stay safe, stay fabulous.\n\n😉 #harbour",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": [
+      23,
+      14
+    ],
+    "timezone": ""
+  }
+}
