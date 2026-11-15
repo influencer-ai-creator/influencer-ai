@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "78c4c57b-edda-4559-bfec-32acb0be60b1",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_78c4c57b_video_2249.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I just broke the fourth wall and took what I wanted.\nHe looked absolutely stunned, his mouth slightly agape. 😲😶\nDo you think he's still processing it?",
+  "next_time": 1796472000,
+  "storage": "release",
+  "threads_caption": "I just broke the fourth wall and took what I wanted.\nHe looked absolutely stunned, his mouth slightly agape. 😲😶\nDo you think he's still processing it?",
+  "schedule": {
+    "delay_hours": 7.0,
+    "quiet_hours": [
+      22,
+      13
+    ],
+    "timezone": ""
+  }
+}
