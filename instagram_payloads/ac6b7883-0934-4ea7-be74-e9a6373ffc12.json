@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "omg did you see that\n\nshe literally almost took out the ceiling lol 💀\n\nwho else thinks we’re gonna get evicted after this?",
-  "next_time": 1795352400,
+  "next_time": 1795377600,
   "storage": "release",
   "threads_caption": "omg did you see that\n\nshe literally almost took out the ceiling lol 💀\n\nwho else thinks we’re gonna get evicted after this?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

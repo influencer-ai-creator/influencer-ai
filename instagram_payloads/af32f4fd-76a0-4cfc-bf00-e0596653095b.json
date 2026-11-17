@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I can't believe what I just found on my phone's recording... I thought I left it alone, but she stayed behind with him. 😳 #universitylife #caughtoncamera #lecturehall",
-  "next_time": 1795438800,
+  "next_time": 1795464000,
   "storage": "release",
   "threads_caption": "I can't believe what I just found on my phone's recording... I thought I left it alone, but she stayed behind with him.\n\n😳 #universitylife",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

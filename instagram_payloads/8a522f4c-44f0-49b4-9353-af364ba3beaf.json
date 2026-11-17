@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "She told us to handle the heat, and honestly, I haven't been able to focus on a single equation since. #LisbonUniversity #Thermodynamics",
-  "next_time": 1795377600,
+  "next_time": 1795438800,
   "storage": "release",
   "threads_caption": "She told us to handle the heat, and honestly, I haven't been able to focus on a single equation since.\n\n#LisbonUniversity",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

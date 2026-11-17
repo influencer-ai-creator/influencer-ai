@@ -8,7 +8,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_02.jpg"
   ],
   "caption": "I honestly can't believe she showed up today... that deep navy neckline is just so much. Does she know how distracting she is? 😉\n\n#OsloUniversity #EnvSci #StudentStyle",
-  "next_time": 1796043600,
+  "next_time": 1796068800,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_c7e791b8_slide_2720_00.jpg",
@@ -18,10 +18,10 @@
   "story_slides": true,
   "threads_caption": "I honestly can't believe she showed up today... that deep navy neckline is just so much. Does she know how distracting she is?\n\n😉 #OsloUniversity",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

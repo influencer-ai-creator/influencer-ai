@@ -11,7 +11,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3e1a39b3_slide_2612_05.jpg"
   ],
   "caption": "My class has met in every age, from the stone age to the far future. TIMELESS. Which photo did my students look best in? #TimeTravel #History",
-  "next_time": 1795636800,
+  "next_time": 1795698000,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_3e1a39b3_slide_2612_00.jpg",
@@ -24,10 +24,10 @@
   "story_slides": true,
   "threads_caption": "My class has met in every age, from the stone age to the far future. TIMELESS. Which photo did my students look best in?\n\n#TimeTravel",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

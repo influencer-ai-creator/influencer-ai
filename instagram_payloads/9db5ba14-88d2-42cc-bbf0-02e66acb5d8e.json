@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I think I’m getting faster, but my neighbors probably disagree.\nThe neighbors are definitely going to complain about the noise today 🙄🧹.\nDo you think I should start a broom delivery service?",
-  "next_time": 1795179600,
+  "next_time": 1795204800,
   "storage": "release",
   "threads_caption": "I think I’m getting faster, but my neighbors probably disagree.\nThe neighbors are definitely going to complain about the noise today 🙄🧹.\nDo you think I should start a broom delivery service?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "i'm actually moving to another country after this\ni think i just ended my career... look at her face 😭\ntell me i'm not getting expelled lol",
-  "next_time": 1795204800,
+  "next_time": 1795266000,
   "storage": "release",
   "threads_caption": "i'm actually moving to another country after this\ni think i just ended my career... look at her face 😭\ntell me i'm not getting expelled lol",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "holy shit\nshe definitely didn't mean to do that 💀\nshould i tell anyone or just let it stay like that?",
-  "next_time": 1795870800,
+  "next_time": 1795896000,
   "storage": "release",
   "threads_caption": "holy shit\nshe definitely didn't mean to do that 💀\nshould i tell anyone or just let it stay like that?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

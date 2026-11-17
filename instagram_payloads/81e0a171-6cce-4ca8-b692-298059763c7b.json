@@ -8,7 +8,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_02.jpg"
   ],
   "caption": "I can't believe how she’s wearing that uniform today. THAT BUSTIER is everything. 😍 Who else could pull this off?\n\n#DublinUniversity #ClassroomStyle #MythologyLecture #StudentFashion",
-  "next_time": 1796389200,
+  "next_time": 1796414400,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_81e0a171_slide_2528_00.jpg",
@@ -19,10 +19,10 @@
   "story_slides": true,
   "threads_caption": "I can't believe how she’s wearing that uniform today. THAT BUSTIER is everything. 😍 Who else could pull this off?\n\n#DublinUniversity",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

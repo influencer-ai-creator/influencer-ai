@@ -13,7 +13,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_07.jpg"
   ],
   "caption": "MY CLASS HAS MET IN EVERY AGE, FROM THE STONE AGE TO THE FAR FUTURE. Honestly, I love the vibes of all of them. Which age did my students look best in, by photo number? #history #education #timeless",
-  "next_time": 1796155200,
+  "next_time": 1796216400,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b6fe728c_slide_2640_00.jpg",
@@ -29,10 +29,10 @@
   "story_slides": true,
   "threads_caption": "MY CLASS HAS MET IN EVERY AGE, FROM THE STONE AGE TO THE FAR FUTURE. Honestly, I love the vibes of all of them. Which age did my students look best in, by photo number?\n\n#history",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

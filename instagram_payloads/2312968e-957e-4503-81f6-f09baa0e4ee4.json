@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "oops.\nThe botanical lab is basically a jungle now 🌿🌳\nWho's gonna tell her?",
-  "next_time": 1795611600,
+  "next_time": 1795636800,
   "storage": "release",
   "threads_caption": "oops.\nThe botanical lab is basically a jungle now 🌿🌳\nWho's gonna tell her?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

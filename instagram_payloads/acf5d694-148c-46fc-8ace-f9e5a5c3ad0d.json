@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_03.jpg"
   ],
   "caption": "I'm your teacher for L509. My students in Kraków are absolute gems—so sharp and dedicated. ✨ #Krakow #UniversityLife #L509",
-  "next_time": 1795032000,
+  "next_time": 1795093200,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_acf5d694_slide_2525_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "I'm your teacher for L509. My students in Kraków are absolute gems—so sharp and dedicated.\n\n✨ #Krakow",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }

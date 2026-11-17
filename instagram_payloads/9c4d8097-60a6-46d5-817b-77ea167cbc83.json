@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_04.jpg"
   ],
   "caption": "My week in five suits in Coimbra 🇵🇹✨\n\nJust a little change of scenery for my favorite people. I'm loving the history of these old walls.\n\nWhich day was the best dressed?\n\n#Coimbra #UniversityLife #OOTD #WorkStyle #TailoredSuits",
-  "next_time": 1795118400,
+  "next_time": 1795179600,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_9c4d8097_slide_2532_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "My week in five suits in Coimbra 🇵🇹✨\n\nJust a little change of scenery for my favorite people. I'm loving the history of these old walls.\n\nWhich day was the best dressed?\n\n#Coimbra",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.5,
     "quiet_hours": [
       22,
-      14
+      15
     ],
     "timezone": ""
   }
