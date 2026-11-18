@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "e36f4335-51b4-470f-afb4-873bb7ed117e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_e36f4335_video_182.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "my brain is mostly just caffeine and art history facts at this stage.\n\n48 hours until the last exam is finished and i can finally hibernate. ☕️\n\n#arthistory #finals",
+  "next_time": 1795558500,
+  "storage": "release",
+  "threads_caption": "my brain is mostly just caffeine and art history facts at this stage.\n\n48 hours until the last exam is finished and i can finally hibernate.\n\n☕️ #arthistory",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
