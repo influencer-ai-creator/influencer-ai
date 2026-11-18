@@ -1,0 +1,26 @@
+{
+  "compte": "grace_story",
+  "pub_id": "6dd40980-2cec-4162-8a76-ca2fd43ea4e4",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_02.jpg"
+  ],
+  "caption": "the wine was a dream, the notes are the reality.\n\nback from the trip to face the final exam prep.\n\ncurrent status: 1% through the sculpture chapter.\n\n☕️📚",
+  "next_time": 1795466700,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_02.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_fb_reel_179.mp4",
+  "story_slides": true,
+  "threads_caption": "the wine was a dream, the notes are the reality.\n\nback from the trip to face the final exam prep.\n\ncurrent status: 1% through the sculpture chapter.\n\n☕️📚",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
