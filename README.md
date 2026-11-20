@@ -1,6 +1,10 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 20/11/2026 15:51:00
+✅ **Dernier run sans erreur** — 20/11/2026 17:48:37
+
+## ⚠️ Avertissements (best effort, non bloquants)
+
+- `grace_story: Facebook 1fcceb2e-6ef2-4b81-b8d1-22fddaf2c890 -> médias lisibles, échec côté Meta, reprise au prochain run : FB rupload (reel) → HTTP 500 : {"debug_info": {"retriable": false, "type": "ProcessingFailedError", "message": "{\"success\":false,\"error\":{\"message\":\"unknown error\"}}"}}`
 
 📦 **Total publiés historiquement :** 4383
 

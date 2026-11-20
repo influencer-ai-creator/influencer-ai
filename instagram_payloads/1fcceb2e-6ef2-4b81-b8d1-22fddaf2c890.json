@@ -12,5 +12,17 @@
     "delay_hours": 5.0,
     "quiet_hours": null,
     "timezone": ""
-  }
+  },
+  "instagram_tried": true,
+  "instagram_media_id": "18149195974573099",
+  "done": {
+    "instagram": true,
+    "instagram_story": true,
+    "threads": true
+  },
+  "attempts": {},
+  "fetch_wait_since": {
+    "facebook": 1795196886
+  },
+  "threads_media_id": "18114028256615680"
 }
