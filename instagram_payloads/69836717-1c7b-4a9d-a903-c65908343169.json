@@ -8,7 +8,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_02.jpg"
   ],
   "caption": "Hit up the Rust-Pipe Alley for some skewers and watched the local drone-races. Which shot is your favorite? 1, 2, or 3?",
-  "next_time": 1795892400,
+  "next_time": 1795702500,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_69836717_slide_2048_00.jpg",
@@ -18,10 +18,10 @@
   "story_slides": true,
   "threads_caption": "Hit up the Rust-Pipe Alley for some skewers and watched the local drone-races. Which shot is your favorite? 1, 2, or 3?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

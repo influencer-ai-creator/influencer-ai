@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I gave him exactly what he paid for, then took it back.\nHe tried to press the button again, but I'm not a vending machine 🙄💅.\nShould I let him back in or keep him waiting?",
-  "next_time": 1796385600,
+  "next_time": 1796029200,
   "storage": "release",
   "threads_caption": "I gave him exactly what he paid for, then took it back.\nHe tried to press the button again, but I'm not a vending machine 🙄💅.\nShould I let him back in or keep him waiting?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

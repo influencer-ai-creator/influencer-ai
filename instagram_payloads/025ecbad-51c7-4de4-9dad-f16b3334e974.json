@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "My mirror is starting to develop a sense of humor.\nI think it's trying to tell me I need a wardrobe upgrade. 🤨✨\nHas your tech ever started acting up like this?",
-  "next_time": 1796126400,
+  "next_time": 1795856400,
   "storage": "release",
   "threads_caption": "My mirror is starting to develop a sense of humor.\nI think it's trying to tell me I need a wardrobe upgrade. 🤨✨\nHas your tech ever started acting up like this?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

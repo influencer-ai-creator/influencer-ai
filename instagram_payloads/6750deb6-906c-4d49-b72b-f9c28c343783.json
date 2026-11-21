@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Another night, another orbital commute.\n🚀🌌\nWho else prefers the express lift to the penthouse?",
-  "next_time": 1796151600,
+  "next_time": 1795875300,
   "storage": "release",
   "threads_caption": "Another night, another orbital commute.\n🚀🌌\nWho else prefers the express lift to the penthouse?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "she has just found this clip of herself at a noodle counter, and she remembers the moment she felt someone looking at her.\nmy friend was probably just telling me about the new district upgrades. 🍜\nwhat do you think she was telling me?",
-  "next_time": 1795953600,
+  "next_time": 1795721400,
   "storage": "release",
   "threads_caption": "she has just found this clip of herself at a noodle counter, and she remembers the moment she felt someone looking at her.\nmy friend was probably just telling me about the new district upgrades. 🍜\nwhat do you think she was telling me?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Living in 2077 is basically just solving problems that the city creates for you.\nI thought the reset switch was the easy way out, but the city had other plans 🙄🔧.\nTell me your favorite tech fail today.",
-  "next_time": 1796497200,
+  "next_time": 1796115600,
   "storage": "release",
   "threads_caption": "Living in 2077 is basically just solving problems that the city creates for you.\nI thought the reset switch was the easy way out, but the city had other plans 🙄🔧.\nTell me your favorite tech fail today.",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

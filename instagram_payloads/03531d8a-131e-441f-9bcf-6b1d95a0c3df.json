@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just testing if this old thing is still hanging on.\nIt's stubborn as ever. 🧶😤\nWhich one would you wear to a rooftop party?",
-  "next_time": 1795546800,
+  "next_time": 1795462200,
   "storage": "release",
   "threads_caption": "Just testing if this old thing is still hanging on.\nIt's stubborn as ever. 🧶😤\nWhich one would you wear to a rooftop party?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

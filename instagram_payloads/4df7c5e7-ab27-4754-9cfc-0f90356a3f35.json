@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_4df7c5e7_slide_2068_04.jpg"
   ],
   "caption": "Just got home to my tiny box in the Spire. I can’t choose. One of these has to do. Which number should I go out in?",
-  "next_time": 1795780800,
+  "next_time": 1795616100,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_4df7c5e7_slide_2068_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "Just got home to my tiny box in the Spire. I can’t choose. One of these has to do. Which number should I go out in?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

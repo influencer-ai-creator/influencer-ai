@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just a quick patch before my shift starts.\nWho knew plumbing in zero-G was this much of a workout? 🛠️🛰️\nWhat's your favorite way to spend a morning in orbit?",
-  "next_time": 1795978800,
+  "next_time": 1795770000,
   "storage": "release",
   "threads_caption": "Just a quick patch before my shift starts.\nWho knew plumbing in zero-G was this much of a workout? 🛠️🛰️\nWhat's your favorite way to spend a morning in orbit?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

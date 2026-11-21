@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just checking in from the high-rise.\nThe drop is quite a bit today 🏙️🌀.\nCan you handle the view?",
-  "next_time": 1795694400,
+  "next_time": 1795548600,
   "storage": "release",
   "threads_caption": "Just checking in from the high-rise.\nThe drop is quite a bit today 🏙️🌀.\nCan you handle the view?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

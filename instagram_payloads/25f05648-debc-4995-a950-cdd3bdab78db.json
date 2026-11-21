@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Living in the future doesn't mean the plumbing works any better.\nI just wanted a sip of water, not a free shower. 🚿🙄\nHas your city's tech ever betrayed you like this?",
-  "next_time": 1795348800,
+  "next_time": 1795338000,
   "storage": "release",
   "threads_caption": "Living in the future doesn't mean the plumbing works any better.\nI just wanted a sip of water, not a free shower. 🚿🙄\nHas your city's tech ever betrayed you like this?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

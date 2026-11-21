@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_03.jpg"
   ],
   "caption": "Stuck in my tower. Can't decide on an outfit for the club. Help a girl out? Which number should I go in?",
-  "next_time": 1796040000,
+  "next_time": 1795788900,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_37b4dd80_slide_2191_00.jpg",
@@ -21,10 +21,10 @@
   "story_slides": true,
   "threads_caption": "Stuck in my tower. Can't decide on an outfit for the club. Help a girl out? Which number should I go in?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

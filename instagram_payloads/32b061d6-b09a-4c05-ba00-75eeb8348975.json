@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "When the city's automated delivery network decides to get personal.\nJust trying to film a quick update without a drone trying to join my stream 🙄💥\nHas your neighborhood AI started acting this spicy yet?\n#citylife #2077 #techwear #neon #dailygrind #glitch",
-  "next_time": 1795867200,
+  "next_time": 1795683600,
   "storage": "release",
   "threads_caption": "When the city's automated delivery network decides to get personal.\nJust trying to film a quick update without a drone trying to join my stream 🙄💥\nHas your neighborhood AI started acting this spicy yet?\n\n#citylife",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

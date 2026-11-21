@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "The commute is basically an extreme sport, but I’m just trying to stay put.\n🎢🏙️\nAnyone else’s commute feel like a rollercoaster today?",
-  "next_time": 1795287600,
+  "next_time": 1795281300,
   "storage": "release",
   "threads_caption": "The commute is basically an extreme sport, but I’m just trying to stay put.\n🎢🏙️\nAnyone else’s commute feel like a rollercoaster today?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

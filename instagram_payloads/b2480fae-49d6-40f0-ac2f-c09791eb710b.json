@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_03.jpg"
   ],
   "caption": "Stuck in the tower again. Trying to pick an outfit for the bar downstairs. Help me choose? 1, 2, 3, or 4?",
-  "next_time": 1796324400,
+  "next_time": 1795980600,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b2480fae_slide_2225_00.jpg",
@@ -21,10 +21,10 @@
   "story_slides": true,
   "threads_caption": "Stuck in the tower again. Trying to pick an outfit for the bar downstairs. Help me choose? 1, 2, 3, or 4?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

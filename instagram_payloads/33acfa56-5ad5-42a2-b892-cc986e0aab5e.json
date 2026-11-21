@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just tweaking the signal since the comms are acting up again.\nThe view is great, but this wrench is heavy. 🛠️✨\nCan you see the city lights from here?",
-  "next_time": 1795435200,
+  "next_time": 1795375800,
   "storage": "release",
   "threads_caption": "Just tweaking the signal since the comms are acting up again.\nThe view is great, but this wrench is heavy. 🛠️✨\nCan you see the city lights from here?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

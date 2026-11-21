@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_03.jpg"
   ],
   "caption": "Went to The Gilded Spigot tonight. It’s a mess of smells and chemical fumes. Here’s a tour of the local spots. Which door number should I push?",
-  "next_time": 1795460400,
+  "next_time": 1795424400,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_07ba8145_slide_2113_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "Went to The Gilded Spigot tonight. It’s a mess of smells and chemical fumes. Here’s a tour of the local spots. Which door number should I push?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

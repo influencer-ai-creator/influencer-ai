@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "My commute is a bit of a drop.\n🎢💸\nWould you take the stairs?",
-  "next_time": 1796410800,
+  "next_time": 1796048100,
   "storage": "release",
   "threads_caption": "My commute is a bit of a drop.\n🎢💸\nWould you take the stairs?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }

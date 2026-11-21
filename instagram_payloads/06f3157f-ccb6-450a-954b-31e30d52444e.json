@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just another drop to the green zone.\nThe vials are getting heavier every week. 🧪🙄\nYou prefer the heights or the landing?",
-  "next_time": 1795633200,
+  "next_time": 1795529700,
   "storage": "release",
   "threads_caption": "Just another drop to the green zone.\nThe vials are getting heavier every week. 🧪🙄\nYou prefer the heights or the landing?",
   "schedule": {
-    "delay_hours": 7.0,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      13
+      10
     ],
     "timezone": ""
   }
