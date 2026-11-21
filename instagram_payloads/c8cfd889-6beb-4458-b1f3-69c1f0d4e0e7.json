@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Taking my drone to some places that defy logic. 🚁✨ From the glass spires to the silver rivers of the archipelago, it’s been a wild ride. These girls at each stop were definitely not ready for my close-ups! 🤭💖 They tried to swat me away, but the view was worth it. #ImpossibleWorlds #DroneRide #SecretPlaces",
-  "next_time": 1795802400,
+  "next_time": 1795636800,
   "storage": "release",
   "threads_caption": "Taking my drone to some places that defy logic. 🚁✨ From the glass spires to the silver rivers of the archipelago, it’s been a wild ride. These girls at each stop were definitely not ready for my close-ups! 🤭💖 They tried to swat me away, but the view was worth it.\n\n#ImpossibleWorlds",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Still processing what just happened in the streets of Lisbon... \n\nLet’s just say I’m not complaining about this kind of surprise. 😉\n\n#Lisbon #Alfama #StreetMagic #Unexpected",
-  "next_time": 1796148000,
+  "next_time": 1795872600,
   "storage": "release",
   "threads_caption": "Still processing what just happened in the streets of Lisbon... \n\nLet’s just say I’m not complaining about this kind of surprise.\n\n😉 #Lisbon",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

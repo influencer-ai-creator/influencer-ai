@@ -12,7 +12,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_06.jpg"
   ],
   "caption": "Berlin nights at Watergate Rooftop 🌙✨ We still haven't processed how good last night was. Which photo is your fave, 1-7? #BerlinNightlife #GirlsNightOut #Watergate",
-  "next_time": 1795456800,
+  "next_time": 1795417200,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_0e1f8aab_slide_2151_00.jpg",
@@ -26,10 +26,10 @@
   "story_slides": true,
   "threads_caption": "Berlin nights at Watergate Rooftop 🌙✨ We still haven't processed how good last night was. Which photo is your fave, 1-7?\n\n#BerlinNightlife",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

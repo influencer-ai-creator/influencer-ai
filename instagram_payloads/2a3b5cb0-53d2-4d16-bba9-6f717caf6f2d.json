@@ -8,7 +8,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_02.jpg"
   ],
   "caption": "We're in M'hamid El Ghizlane, Morocco! 🏜️ Playing a game of one spot, one pose. Who did it best? Tell us by her number! #Morocco #Sahara #TravelDiaries",
-  "next_time": 1796320800,
+  "next_time": 1795982400,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_2a3b5cb0_slide_2321_00.jpg",
@@ -19,10 +19,10 @@
   "story_slides": true,
   "threads_caption": "We're in M'hamid El Ghizlane, Morocco! 🏜️ Playing a game of one spot, one pose. Who did it best? Tell us by her number!\n\n#Morocco",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

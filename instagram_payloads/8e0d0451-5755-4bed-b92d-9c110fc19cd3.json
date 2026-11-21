@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I went looking for the edge of the world and found a mirror instead... 🌵✨ Things got a little bit 'too' personal at the end, but honestly, the view was worth the clumsy moment. #SalarDeUyuni #DesertMagic #TravelGram #AdventureAwaits #TravelFail #Wanderlust",
-  "next_time": 1795888800,
+  "next_time": 1795699800,
   "storage": "release",
   "threads_caption": "I went looking for the edge of the world and found a mirror instead... 🌵✨ Things got a little bit 'too' personal at the end, but honestly, the view was worth the clumsy moment.\n\n#SalarDeUyuni",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

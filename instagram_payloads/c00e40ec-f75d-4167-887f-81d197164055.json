@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just getting the mail dressed like this... 💅\nThat mischievous look at the end is my favorite part. 😉✨\n#CotswoldsLife #ReadyToGo #EveningVibes",
-  "next_time": 1795543200,
+  "next_time": 1795464000,
   "storage": "release",
   "threads_caption": "Just getting the mail dressed like this... 💅\nThat mischievous look at the end is my favorite part.\n\n😉✨ #CotswoldsLife",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

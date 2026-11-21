@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "just grabbing a few things for dinner 🍎\n\n#madrid #supermarket #shopping",
-  "next_time": 1796302800,
+  "next_time": 1795959000,
   "storage": "release",
   "threads_caption": "just grabbing a few things for dinner\n\n🍎 #madrid",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Chasing the impossible today. 🌊 From the marble arches of a pink mercury sea to the gravity-defying jungles and the shimmering glass canyons. These girls are the real highlights of my trip. Stay wild. ✨ #travelgram #dreamworld #dronephotography #wanderlust #summeradventure",
-  "next_time": 1796389200,
+  "next_time": 1796022000,
   "storage": "release",
   "threads_caption": "Chasing the impossible today. 🌊 From the marble arches of a pink mercury sea to the gravity-defying jungles and the shimmering glass canyons. These girls are the real highlights of my trip. Stay wild.\n\n✨ #travelgram",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

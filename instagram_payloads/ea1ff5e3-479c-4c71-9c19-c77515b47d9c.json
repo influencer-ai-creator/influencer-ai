@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Finding paradise in the infinite white. ✨ There is something so surreal about standing where the earth meets the sky. Feeling like a dream. 🤍 #bolivia #salardeuyuni #travelinfluencer #desertvibes #goldenhour #explore",
-  "next_time": 1795525200,
+  "next_time": 1795440600,
   "storage": "release",
   "threads_caption": "Finding paradise in the infinite white. ✨ There is something so surreal about standing where the earth meets the sky. Feeling like a dream.\n\n🤍 #bolivia",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

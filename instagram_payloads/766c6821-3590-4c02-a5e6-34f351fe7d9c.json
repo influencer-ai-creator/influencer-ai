@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "He thought he could swipe me away, but I had other plans.\n\nHe hasn't looked away from his phone since I arrived. 😍\n\n#Santorini",
-  "next_time": 1796493600,
+  "next_time": 1796108400,
   "storage": "release",
   "threads_caption": "He thought he could swipe me away, but I had other plans.\n\nHe hasn't looked away from his phone since I arrived.\n\n😍 #Santorini",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

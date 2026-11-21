@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Feeling like a total rebel in the salty air of Port Royal... 🏴‍☠️\n\nCaptain Jack Sparrow just handed me a gold doubloon with that wild, crooked grin of his! 🏴‍☠️🪙\n\n#PiratesOfTheCaribbean",
-  "next_time": 1795698000,
+  "next_time": 1795550400,
   "storage": "release",
   "threads_caption": "Feeling like a total rebel in the salty air of Port Royal... 🏴‍☠️\n\nCaptain Jack Sparrow just handed me a gold doubloon with that wild, crooked grin of his!\n\n🏴‍☠️🪙 #PiratesOfTheCaribbean",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }

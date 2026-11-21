@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just a little magic for the unexpected guests at the harbour. ✨ Stay safe, stay fabulous. 😉 #harbour #traveldiaries #magicmoment #summervibes",
-  "next_time": 1796475600,
+  "next_time": 1796068800,
   "storage": "release",
   "threads_caption": "Just a little magic for the unexpected guests at the harbour. ✨ Stay safe, stay fabulous.\n\n😉 #harbour",
   "schedule": {
-    "delay_hours": 5.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       23,
-      14
+      8
     ],
     "timezone": ""
   }
