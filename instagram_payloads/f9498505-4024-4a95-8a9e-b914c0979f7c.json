@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Taking the scenic route today... some places are just meant to be felt. ✨🔥 #MarrakechMagic #SummerVibes #TravelDiaries",
-  "next_time": 1795780800,
+  "next_time": 1795617000,
   "storage": "release",
   "threads_caption": "Taking the scenic route today... some places are just meant to be felt.\n\n✨🔥 #MarrakechMagic",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

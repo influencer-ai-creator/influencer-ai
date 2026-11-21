@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just finishing my little task here at the ruins. A little visitor tried to interrupt my vibe, so I gave them a permanent seat. ✨🤫 #MachuPicchu #MagicMoments",
-  "next_time": 1796241600,
+  "next_time": 1795939200,
   "storage": "release",
   "threads_caption": "Just finishing my little task here at the ruins. A little visitor tried to interrupt my vibe, so I gave them a permanent seat.\n\n✨🤫 #MachuPicchu",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

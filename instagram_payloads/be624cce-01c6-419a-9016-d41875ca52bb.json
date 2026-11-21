@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Feeling like a desert queen in these sun-drenched ruins 🌹✨. #travelgram #morocco #fashiondiaries #sundressseason #wanderlust",
-  "next_time": 1796414400,
+  "next_time": 1796049000,
   "storage": "release",
   "threads_caption": "Feeling like a desert queen in these sun-drenched ruins\n\n🌹✨. #travelgram",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

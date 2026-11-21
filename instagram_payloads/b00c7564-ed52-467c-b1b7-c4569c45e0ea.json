@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "He thought I was just a pretty display until he pressed that button. 🫦 Now he's mine for the moment. Oops. #ExoticFinds #Unboxed #Surprise",
-  "next_time": 1795694400,
+  "next_time": 1795554000,
   "storage": "release",
   "threads_caption": "He thought I was just a pretty display until he pressed that button. 🫦 Now he's mine for the moment. Oops.\n\n#ExoticFinds",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

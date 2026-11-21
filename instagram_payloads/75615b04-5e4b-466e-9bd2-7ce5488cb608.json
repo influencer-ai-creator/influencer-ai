@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Lost in the streets of Paris, finding magic in every corner. 🗼✨ #ParisVibes #TravelDiaries #SummerStyle #Wanderlust #CityEscape #GoldenHour #InstaTravel #Beauty #Lifestyle #ExploreMore",
-  "next_time": 1796040000,
+  "next_time": 1795789800,
   "storage": "release",
   "threads_caption": "Lost in the streets of Paris, finding magic in every corner.\n\n🗼✨ #ParisVibes",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

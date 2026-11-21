@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Sipping on something sweet while the sun dips below the karst. 🥥✨ #PalawanParadise #IslandVibes #GoldenHour",
-  "next_time": 1796126400,
+  "next_time": 1795852800,
   "storage": "release",
   "threads_caption": "Sipping on something sweet while the sun dips below the karst.\n\n🥥✨ #PalawanParadise",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

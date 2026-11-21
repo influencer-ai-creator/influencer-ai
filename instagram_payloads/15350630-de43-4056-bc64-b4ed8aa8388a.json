@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "caught a vibe at a café terrace in Paris and then saw her.\nShe was clearly telling her friend about her favorite pastry 🥐\nWhat do you think she was saying?\n#paristravel #cafeterrace #cityvibes #traveldiaries",
-  "next_time": 1796328000,
+  "next_time": 1795986000,
   "storage": "release",
   "threads_caption": "caught a vibe at a café terrace in Paris and then saw her.\nShe was clearly telling her friend about her favorite pastry 🥐\nWhat do you think she was saying?\n\n#paristravel",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

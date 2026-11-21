@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Waking up in a cave and feeling like a queen. The spice of the air is almost as intoxicating as the view. 🇹🇷✨ #Cappadocia #TurkishMagic #TravelInspo",
-  "next_time": 1795809600,
+  "next_time": 1795640400,
   "storage": "release",
   "threads_caption": "Waking up in a cave and feeling like a queen. The spice of the air is almost as intoxicating as the view.\n\n🇹🇷✨ #Cappadocia",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

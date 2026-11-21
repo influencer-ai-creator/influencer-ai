@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Lost in the rhythm of the exotic streets 🌴✨ Feeling effortless and electric in my flowy sundress. Who says you can't be chic and comfortable at the same time? #TravelDiaries #ExoticVibes #WanderlustStyle #InstaModel #SummerChic #ConfidenceIsKey",
-  "next_time": 1795464000,
+  "next_time": 1795420800,
   "storage": "release",
   "threads_caption": "Lost in the rhythm of the exotic streets 🌴✨ Feeling effortless and electric in my flowy sundress. Who says you can't be chic and comfortable at the same time?\n\n#TravelDiaries",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

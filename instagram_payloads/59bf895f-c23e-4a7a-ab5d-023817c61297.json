@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "i actually thought i was about to fall into a giant well in the middle of marrakech... 😱🏺\n\n#marrakech #travelfail #streetart #funny",
-  "next_time": 1795953600,
+  "next_time": 1795726800,
   "storage": "release",
   "threads_caption": "i actually thought i was about to fall into a giant well in the middle of marrakech...\n\n😱🏺 #marrakech",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

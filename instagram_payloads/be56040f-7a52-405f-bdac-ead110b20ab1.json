@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I think I just broke the laws of physics with my morning caffeine. \n\nHonestly, I'm still staring at the table in disbelief ☕️✨. \n\nWould you have stopped after the first time or would you have tried it again like I did?",
-  "next_time": 1795550400,
+  "next_time": 1795467600,
   "storage": "release",
   "threads_caption": "I think I just broke the laws of physics with my morning caffeine. \n\nHonestly, I'm still staring at the table in disbelief ☕️✨. \n\nWould you have stopped after the first time or would you have tried it again like I did?",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

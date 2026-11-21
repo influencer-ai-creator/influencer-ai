@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Can’t stop this vibe! 🎶✨ There’s something about this song that just makes me want to lose myself in the mirror. Feeling so powerful today! 🔥💖 #MusicLover #DanceVibes #ConfidenceIsQueen #MirrorMagic",
-  "next_time": 1795608000,
+  "next_time": 1795507200,
   "storage": "release",
   "threads_caption": "Can’t stop this vibe! 🎶✨ There’s something about this song that just makes me want to lose myself in the mirror. Feeling so powerful today!\n\n🔥💖 #MusicLover",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

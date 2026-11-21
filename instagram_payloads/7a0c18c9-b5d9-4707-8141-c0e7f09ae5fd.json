@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Found a ghost in the machine... 🤖 This old tech bazaar has some secrets. Stay spicy. 😉 #2093Vibes #CyberCity",
-  "next_time": 1795377600,
+  "next_time": 1795357800,
   "storage": "release",
   "threads_caption": "Found a ghost in the machine... 🤖 This old tech bazaar has some secrets. Stay spicy.\n\n😉 #2093Vibes",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

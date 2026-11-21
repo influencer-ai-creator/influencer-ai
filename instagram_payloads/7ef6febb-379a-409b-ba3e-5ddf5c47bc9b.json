@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Just feeling the rhythm of the ancients. 🏺✨ Someone tried to ruin my flow, but I had to keep the energy pure. Moving on. #Luxor #MagicVibes #TravelInfluencer",
-  "next_time": 1795291200,
+  "next_time": 1795285800,
   "storage": "release",
   "threads_caption": "Just feeling the rhythm of the ancients. 🏺✨ Someone tried to ruin my flow, but I had to keep the energy pure. Moving on.\n\n#Luxor",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_03.jpg"
   ],
   "caption": "Spent the most perfect afternoon sipping lemonade in Amalfi. 🍋 Which photo is your favorite, 1, 2, 3, or 4?",
-  "next_time": 1795521600,
+  "next_time": 1795444200,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_bf6da76b_slide_19322_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "Spent the most perfect afternoon sipping lemonade in Amalfi. 🍋 Which photo is your favorite, 1, 2, 3, or 4?",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

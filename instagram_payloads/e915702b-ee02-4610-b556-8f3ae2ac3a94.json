@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "Found a glitch in the market's food-holograms tonight. It's absolutely mesmerizing. 🐙✨ #CityOf2093 #CyberNeon #NightVibes",
-  "next_time": 1795982400,
+  "next_time": 1795766400,
   "storage": "release",
   "threads_caption": "Found a glitch in the market's food-holograms tonight. It's absolutely mesmerizing.\n\n🐙✨ #CityOf2093",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

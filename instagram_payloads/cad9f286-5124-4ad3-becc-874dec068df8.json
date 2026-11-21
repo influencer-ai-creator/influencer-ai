@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "I thought the legends were just stories... until the air turned hot and the hall began to glow. Witnessing this was everything. ✨🔥 #MagicKingdom #TravelDiaries #HighFantasy",
-  "next_time": 1795723200,
+  "next_time": 1795593600,
   "storage": "release",
   "threads_caption": "I thought the legends were just stories... until the air turned hot and the hall began to glow. Witnessing this was everything.\n\n✨🔥 #MagicKingdom",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

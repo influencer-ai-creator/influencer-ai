@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_4cd000d9_slide_19494_04.jpg"
   ],
   "caption": "I’m at Machu Picchu in Peru. I’ve stood in this exact spot through every age. It's been so wild seeing the world change around me while I stayed right here. Which age do you think I suited the best? Tell me the photo number!",
-  "next_time": 1795636800,
+  "next_time": 1795530600,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_4cd000d9_slide_19494_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "I’m at Machu Picchu in Peru. I’ve stood in this exact spot through every age. It's been so wild seeing the world change around me while I stayed right here. Which age do you think I suited the best? Tell me the photo number!",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }

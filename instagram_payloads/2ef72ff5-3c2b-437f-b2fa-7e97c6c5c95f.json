@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "i'm starting to think my mirror has a mind of its own... 😳✨\n#glitch #mirror",
-  "next_time": 1796155200,
+  "next_time": 1795876200,
   "storage": "release",
   "threads_caption": "i'm starting to think my mirror has a mind of its own...\n\n😳✨ #glitch",
   "schedule": {
-    "delay_hours": 8.0,
+    "delay_hours": 6.5,
     "quiet_hours": [
       0,
-      13
+      9
     ],
     "timezone": ""
   }
