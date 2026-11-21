@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_5e1d7279_slide_2534_04.jpg"
   ],
   "caption": "The teacher · J815\nMy lovely ladies in Salamanca were simply radiant today. There's something about this golden stone that brings out their best. I'm so proud of their focus during our lecture; they carry the uniform with such grace, but it's their intellect that truly shines.\n\n#Salamanca #UniversityLife #SpanishArchitecture #GoldenHour #AcademicStyle",
-  "next_time": 1796565600,
+  "next_time": 1796138100,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_5e1d7279_slide_2534_00.jpg",
@@ -23,10 +23,10 @@
   "story_slides": true,
   "threads_caption": "The teacher · J815\nMy lovely ladies in Salamanca were simply radiant today. There's something about this golden stone that brings out their best. I'm so proud of their focus during our lecture; they carry the uniform with such grace, but it's their intellect that truly shines.\n\n#Salamanca",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

@@ -9,7 +9,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_03.jpg"
   ],
   "caption": "Caught my prof being a total snack in Neuro today 🥵 I'm actually feral. Which slide is your fave? 1, 2, 3, or 4? #UniLife #HotProf",
-  "next_time": 1796043600,
+  "next_time": 1795792500,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_599ee004_slide_2715_00.jpg",
@@ -20,10 +20,10 @@
   "story_slides": true,
   "threads_caption": "Caught my prof being a total snack in Neuro today 🥵 I'm actually feral. Which slide is your fave? 1, 2, 3, or 4?\n\n#UniLife",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

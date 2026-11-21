@@ -8,7 +8,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_02.jpg"
   ],
   "caption": "I CANNOT believe how she's wearing the uniform today... that bustier is doing ALL the work. 😳 What do we think?\n\n#universitylife #campusfashion #Strasbourg",
-  "next_time": 1795550400,
+  "next_time": 1795465800,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e6ba959b_slide_2527_00.jpg",
@@ -18,10 +18,10 @@
   "story_slides": true,
   "threads_caption": "I CANNOT believe how she's wearing the uniform today... that bustier is doing ALL the work. 😳 What do we think?\n\n#universitylife",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

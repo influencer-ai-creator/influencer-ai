@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "oh my god\nshe actually let it hit the wall... 💀\nwho else saw the ceiling start to crack?",
-  "next_time": 1796241600,
+  "next_time": 1795946400,
   "storage": "release",
   "threads_caption": "oh my god\nshe actually let it hit the wall... 💀\nwho else saw the ceiling start to crack?",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

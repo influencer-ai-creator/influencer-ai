@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "i'm literally shaking right now.\nI think I just ended my career... look at what happened to her 💀\nShould I just move to another country or can I still pass?",
-  "next_time": 1795957200,
+  "next_time": 1795725000,
   "storage": "release",
   "threads_caption": "i'm literally shaking right now.\nI think I just ended my career... look at what happened to her 💀\nShould I just move to another country or can I still pass?",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

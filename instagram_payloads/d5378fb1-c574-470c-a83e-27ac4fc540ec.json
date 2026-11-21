@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_04.jpg"
   ],
   "caption": "My week in five suits at the University of Salamanca. 🏛️✨ Just a little 'academic chic' for your feed. Which day is the best dressed?",
-  "next_time": 1796389200,
+  "next_time": 1796032800,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d5378fb1_slide_2574_00.jpg",
@@ -23,10 +23,10 @@
   "story_slides": true,
   "threads_caption": "My week in five suits at the University of Salamanca. 🏛️✨ Just a little 'academic chic' for your feed. Which day is the best dressed?",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

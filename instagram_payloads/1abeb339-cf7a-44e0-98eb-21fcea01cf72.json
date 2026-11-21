@@ -10,7 +10,7 @@
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_04.jpg"
   ],
   "caption": "A week in five suits at the University of Bologna. 🏛️✨ I finally got my favorites from the old corridors. Which day is your best dressed look? 👠\n\n#Bologna #UniversityStyle #WorkWear #TailoredSuits",
-  "next_time": 1795809600,
+  "next_time": 1795638600,
   "storage": "release",
   "fb_children": [
     "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_1abeb339_slide_2573_00.jpg",
@@ -22,10 +22,10 @@
   "story_slides": true,
   "threads_caption": "A week in five suits at the University of Bologna. 🏛️✨ I finally got my favorites from the old corridors. Which day is your best dressed look?\n\n👠 #Bologna",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }

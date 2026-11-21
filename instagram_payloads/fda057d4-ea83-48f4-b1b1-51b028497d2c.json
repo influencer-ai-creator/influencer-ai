@@ -5,14 +5,14 @@
   "media_type": "VIDEO",
   "image_url": null,
   "caption": "uh oh.\n\nhonestly my heart is still racing... 💀\n\nyou guys wouldn't believe what just happened.",
-  "next_time": 1796500800,
+  "next_time": 1796119200,
   "storage": "release",
   "threads_caption": "uh oh.\n\nhonestly my heart is still racing... 💀\n\nyou guys wouldn't believe what just happened.",
   "schedule": {
-    "delay_hours": 5.5,
+    "delay_hours": 5.25,
     "quiet_hours": [
       22,
-      15
+      11
     ],
     "timezone": ""
   }
