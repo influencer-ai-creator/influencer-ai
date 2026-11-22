@@ -1,0 +1,26 @@
+{
+  "compte": "grace_story",
+  "pub_id": "4884f650-d4b9-4693-a79a-c273a60278de",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_slide_185_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_slide_185_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_slide_185_02.jpg"
+  ],
+  "caption": "the final 48-hour sprint.\n\nmy desk is currently a sculpture of chaos. \ntrying to memorise every detail of sculpture history before friday.\nthis is the reality of the degree ending.\n\none more big push.\n\n#arthistory #finals",
+  "next_time": 1795625100,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_slide_185_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_slide_185_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_slide_185_02.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_4884f650_fb_reel_185.mp4",
+  "story_slides": true,
+  "threads_caption": "the final 48-hour sprint.\n\nmy desk is currently a sculpture of chaos. \ntrying to memorise every detail of sculpture history before friday.\nthis is the reality of the degree ending.\n\none more big push.\n\n#arthistory",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
