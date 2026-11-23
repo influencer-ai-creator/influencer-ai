@@ -1,13 +1,13 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 23/11/2026 15:22:51
+✅ **Dernier run sans erreur** — 23/11/2026 19:35:34
 
-📦 **Total publiés historiquement :** 4419
+📦 **Total publiés historiquement :** 4420
 
 ### 📱 État des comptes
 | Compte | Posts en attente | Prochaine publication | Fin de programmation | Autonomie | Aperçu |
 | :--- | :---: | :--- | :--- | :---: | :---: |
-| CYBERPUNK | **23** | 23/11 20:30 | 01/12 10:00 | 7 j | <a href='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_03531d8a_video_2154.mp4' target='_blank'>🎬</a> |
+| CYBERPUNK | **22** | 24/11 10:00 | 01/12 10:00 | 7 j | <a href='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_3d489b67_video_2160.mp4' target='_blank'>🎬</a> |
 | GRACE_STORY | **5** | 23/11 21:45 | 25/11 17:45 | ⚠️ **1 j** | <img src='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_6dd40980_slide_179_01.jpg' width='50'> |
 | INFLUENCER | **23** | 23/11 21:00 | 01/12 08:00 | 7 j | <a href='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_c00e40ec_video_2300.mp4' target='_blank'>🎬</a> |
 | SUNDRESS | **23** | 23/11 22:00 | 01/12 09:00 | 7 j | <a href='https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_be56040f_video_19280.mp4' target='_blank'>🎬</a> |
