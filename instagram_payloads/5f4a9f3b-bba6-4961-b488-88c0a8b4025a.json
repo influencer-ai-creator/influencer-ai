@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "5f4a9f3b-bba6-4961-b488-88c0a8b4025a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_5f4a9f3b_video_2770.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Someone thought they could take us on, but we had a little surprise planned... ❄️🤫\n\n#UniversityOfOslo #SnowDay #WinterFun",
+  "next_time": 1796205600,
+  "storage": "release",
+  "threads_caption": "Someone thought they could take us on, but we had a little surprise planned...\n\n❄️🤫 #UniversityOfOslo",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
