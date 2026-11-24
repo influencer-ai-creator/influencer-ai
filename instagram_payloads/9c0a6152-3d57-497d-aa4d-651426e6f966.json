@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "9c0a6152-3d57-497d-aa4d-651426e6f966",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_9c0a6152_video_19629.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "A stranger just gave me a quest on this sunny terrace! ☀️ I think the reward was better than I imagined... ✨\n\n#Positano #QuestReward",
+  "next_time": 1796135400,
+  "storage": "release",
+  "threads_caption": "A stranger just gave me a quest on this sunny terrace! ☀️ I think the reward was better than I imagined...\n\n✨ #Positano",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
