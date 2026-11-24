@@ -1,0 +1,35 @@
+{
+  "compte": "influencer",
+  "pub_id": "ac50629e-51e0-411c-b927-c528cbcb8e4f",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_05.jpg"
+  ],
+  "caption": "Finally found my own little piece of heaven in the Finnish Arctic. This outdoor hot spring in the snow is everything I dreamed of—pure warmth and magic. ✨❄️ #Rovaniemi #ArcticEscape",
+  "next_time": 1796131800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_slide_2406_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_ac50629e_fb_reel_2406.mp4",
+  "story_slides": true,
+  "threads_caption": "Finally found my own little piece of heaven in the Finnish Arctic. This outdoor hot spring in the snow is everything I dreamed of—pure warmth and magic.\n\n✨❄️ #Rovaniemi",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
