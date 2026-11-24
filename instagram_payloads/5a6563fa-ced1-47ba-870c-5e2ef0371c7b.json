@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "5a6563fa-ced1-47ba-870c-5e2ef0371c7b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_5a6563fa_video_2407.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "A stranger hit me with a snowball, so I gave him a little gift. \n\nHe's currently hibernating. ☃️😂\n\n#Sapporo #Japan #SnowDay #Prank",
+  "next_time": 1796155200,
+  "storage": "release",
+  "threads_caption": "A stranger hit me with a snowball, so I gave him a little gift. \n\nHe's currently hibernating.\n\n☃️😂 #Sapporo",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
