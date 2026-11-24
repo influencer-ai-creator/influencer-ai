@@ -1,0 +1,33 @@
+{
+  "compte": "sundress",
+  "pub_id": "6627dc49-e4e0-474b-9d24-bacbecbfc038",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_04.jpg"
+  ],
+  "caption": "Currently in Santorini, Greece and I honestly cannot choose. I need your help picking my look! Which skin should I pick? 1, 2, 3, 4, or 5?",
+  "next_time": 1796158800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_slide_19627_04.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_6627dc49_fb_reel_19627.mp4",
+  "story_slides": true,
+  "threads_caption": "Currently in Santorini, Greece and I honestly cannot choose. I need your help picking my look! Which skin should I pick? 1, 2, 3, 4, or 5?",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
