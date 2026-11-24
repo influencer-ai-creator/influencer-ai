@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "91f30a72-43cb-4101-bb3a-c74900272d31",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_91f30a72_video_2764.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Someone gave me a side quest on campus today... and I think I won big! 😉✨ #UniLife #QuestReward",
+  "next_time": 1796224500,
+  "storage": "release",
+  "threads_caption": "Someone gave me a side quest on campus today... and I think I won big!\n\n😉✨ #UniLife",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
