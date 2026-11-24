@@ -1,0 +1,35 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "272e900f-5e0e-4203-946e-a6a012d05c26",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_05.jpg"
+  ],
+  "caption": "Hot bath in the snow, above the city. Honestly, if you aren't doing this tonight, you're doing it wrong. Stay warm, everyone.",
+  "next_time": 1796134500,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_slide_2263_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_272e900f_fb_reel_2263.mp4",
+  "story_slides": true,
+  "threads_caption": "Hot bath in the snow, above the city. Honestly, if you aren't doing this tonight, you're doing it wrong. Stay warm, everyone.",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
