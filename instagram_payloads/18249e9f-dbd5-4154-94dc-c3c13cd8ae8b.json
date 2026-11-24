@@ -1,0 +1,35 @@
+{
+  "compte": "university",
+  "pub_id": "18249e9f-dbd5-4154-94dc-c3c13cd8ae8b",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_05.jpg"
+  ],
+  "caption": "Best day of the ski trip with the class in Saas-Fee! ❄️ This hot bath was everything... ✨ \n\n#skitrip #saasfee #wintervibes",
+  "next_time": 1796157000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_slide_2767_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_18249e9f_fb_reel_2767.mp4",
+  "story_slides": true,
+  "threads_caption": "Best day of the ski trip with the class in Saas-Fee! ❄️ This hot bath was everything...\n\n✨ #skitrip",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
