@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "e4e75627-0f1b-404f-bb0b-8d6048e782d8",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_e4e75627_video_2259.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "He really thought he had a chance.",
+  "next_time": 1796153400,
+  "storage": "release",
+  "threads_caption": "He really thought he had a chance.",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
