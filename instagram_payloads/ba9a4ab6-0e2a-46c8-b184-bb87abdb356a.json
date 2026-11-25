@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "ba9a4ab6-0e2a-46c8-b184-bb87abdb356a",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ba9a4ab6_video_2261.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "This city's NPCs are literally broken lol.",
+  "next_time": 1796202000,
+  "storage": "release",
+  "threads_caption": "This city's NPCs are literally broken lol.",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
