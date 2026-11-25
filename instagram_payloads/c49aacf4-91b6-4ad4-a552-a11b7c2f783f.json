@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "c49aacf4-91b6-4ad4-a552-a11b7c2f783f",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_c49aacf4_slide_194_00.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "finally done with art history. 🥂\n\nvictory dumplings with sienna to celebrate the end of exams. my brain is officially off duty. ✨",
+  "next_time": 1795894200,
+  "storage": "release",
+  "threads_caption": "finally done with art history. 🥂\n\nvictory dumplings with sienna to celebrate the end of exams. my brain is officially off duty. ✨",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
