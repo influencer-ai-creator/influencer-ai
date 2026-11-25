@@ -1,6 +1,10 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 25/11/2026 13:35:58
+✅ **Dernier run sans erreur** — 25/11/2026 14:19:08
+
+## ⚠️ Avertissements (best effort, non bloquants)
+
+- `cyberpunk: Instagram 4df7c5e7-ab27-4754-9cfc-0f90356a3f35 -> médias lisibles, échec côté Meta, reprise au prochain run : Erreur publication Carousel Instagram (code 400) : {'error': {'message': 'An unknown error occurred', 'code': 1, 'type': 'OAuthException', 'error_subcode': 0, 'is_transient': False, 'error_user_msg': 'Unknown error', 'error_user_title': 'Erreur inconnue', 'fbtrace_id': 'AL9enbg_siH8--1lUCmhgXO'}}`
 
 📦 **Total publiés historiquement :** 4444
 

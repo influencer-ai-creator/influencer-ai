@@ -28,5 +28,16 @@
       10
     ],
     "timezone": ""
-  }
+  },
+  "instagram_tried": true,
+  "fetch_wait_since": {
+    "instagram": 1795616254
+  },
+  "done": {
+    "facebook": true,
+    "facebook_story": true,
+    "threads": true
+  },
+  "attempts": {},
+  "threads_media_id": "17987895129102245"
 }
