@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "77ee795b-5034-4cc1-a4f1-9633850d4078",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_77ee795b_video_19633.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I'm in Hallstatt and a stranger just offered me the warmest hot chocolate! ☕️✨ So sweet. #Hallstatt",
+  "next_time": 1796198400,
+  "storage": "release",
+  "threads_caption": "I'm in Hallstatt and a stranger just offered me the warmest hot chocolate! ☕️✨ So sweet.\n\n#Hallstatt",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
