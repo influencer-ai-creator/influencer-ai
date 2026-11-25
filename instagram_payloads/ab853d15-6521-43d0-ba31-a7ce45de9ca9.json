@@ -1,0 +1,43 @@
+{
+  "compte": "university",
+  "pub_id": "ab853d15-6521-43d0-ba31-a7ce45de9ca9",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_05.jpg"
+  ],
+  "caption": "Hey, it's me! I'm totally stuck and can't pick a favorite look today. Which skin should I choose? Pick a number 1-5! 🎮✨\n\n#UniLife #GamingAesthetic #OOTD #UniversityStyle",
+  "next_time": 1796243400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_05.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_fb_reel_2763.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_story_slide_2763_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_ab853d15_slide_2763_05.jpg"
+  ],
+  "threads_caption": "Hey, it's me! I'm totally stuck and can't pick a favorite look today. Which skin should I choose? Pick a number 1-5!\n\n🎮✨ #UniLife",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
