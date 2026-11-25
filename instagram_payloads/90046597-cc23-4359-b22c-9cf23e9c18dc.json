@@ -1,0 +1,37 @@
+{
+  "compte": "sundress",
+  "pub_id": "90046597-cc23-4359-b22c-9cf23e9c18dc",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_03.mp4"
+  ],
+  "caption": "I finally made it to Tulum for some much-needed sunshine! Had the most incredible afternoon at a beach club. Which photo do you prefer, by its number?",
+  "next_time": 1796245200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_fb_reel_19333.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_story_slide_19333_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_slide_19333_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_90046597_story_slide_19333_03.mp4"
+  ],
+  "threads_caption": "I finally made it to Tulum for some much-needed sunshine! Had the most incredible afternoon at a beach club. Which photo do you prefer, by its number?",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
