@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "49cd4461-55f1-470a-b8e5-f64d9d457d46",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_49cd4461_video_2258.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "The view from here is haunting.",
+  "next_time": 1796220900,
+  "storage": "release",
+  "threads_caption": "The view from here is haunting.",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
