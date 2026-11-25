@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "fd1cb7d4-4ec2-44cf-8a75-b0a4bfcdc622",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_fd1cb7d4_video_2286.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Decided the dinner was getting a bit too quiet, so I took matters into my own hands. 💃✨\n\nThe silence from the billionaires around me is deafening right now. 🙊😲\n\n#RitzParis #GalaNight #MainCharacterEnergy",
+  "next_time": 1796241600,
+  "storage": "release",
+  "threads_caption": "Decided the dinner was getting a bit too quiet, so I took matters into my own hands. 💃✨\n\nThe silence from the billionaires around me is deafening right now.\n\n🙊😲 #RitzParis",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
