@@ -1,0 +1,37 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "39014203-7514-4660-8e5f-b38e292882b3",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_03.jpg"
+  ],
+  "caption": "Finally hit the Zinc-Steam Exchange for some illicit repairs and hot brew. It was a mess. Which photo do you prefer, 1 to 4?",
+  "next_time": 1796239800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_fb_reel_2051.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_story_slide_2051_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_39014203_slide_2051_03.jpg"
+  ],
+  "threads_caption": "Finally hit the Zinc-Steam Exchange for some illicit repairs and hot brew. It was a mess. Which photo do you prefer, 1 to 4?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
