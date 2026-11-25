@@ -1,0 +1,17 @@
+{
+  "compte": "grace_story",
+  "pub_id": "3673af05-3740-4093-a51c-fb06c429fc10",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_3673af05_video_192.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the exams are officially over.\nrecovering from last night with the best view in the city.\n\n#sydneyview",
+  "next_time": 1795858200,
+  "storage": "release",
+  "threads_caption": "the exams are officially over.\nrecovering from last night with the best view in the city.\n\n#sydneyview",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  },
+  "story_only": true
+}
