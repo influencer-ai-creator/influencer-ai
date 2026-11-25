@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "7bf61315-b53f-4ba8-8f21-79c818c39ad8",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_7bf61315_video_2405.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "A stranger gave her a quest, and what the reward was.\n\nI think I'll keep this for later. 🧧✨\n\n#Kyoto",
+  "next_time": 1796194800,
+  "storage": "release",
+  "threads_caption": "A stranger gave her a quest, and what the reward was.\n\nI think I'll keep this for later.\n\n🧧✨ #Kyoto",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
