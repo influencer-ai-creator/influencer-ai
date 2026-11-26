@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "a2bb6a04-1381-4e56-9917-0ce8d95616ef",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a2bb6a04_video_19602.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Dancing with the Aegean breeze in Oia. It's a wild, beautiful day. 🌊✨ #Santorini #GreeceTravel",
+  "next_time": 1796331600,
+  "storage": "release",
+  "threads_caption": "Dancing with the Aegean breeze in Oia. It's a wild, beautiful day.\n\n🌊✨ #Santorini",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
