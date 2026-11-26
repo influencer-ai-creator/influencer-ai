@@ -1,0 +1,16 @@
+{
+  "compte": "grace_story",
+  "pub_id": "2819faea-783a-4422-9d96-85c5fc1f7799",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_2819faea_slide_196_00.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the exams are officially behind me. 🍝\n\njust a long, slow lunch by the water. \ni think i might stay like this forever.",
+  "next_time": 1795956300,
+  "storage": "release",
+  "threads_caption": "the exams are officially behind me. 🍝\n\njust a long, slow lunch by the water. \ni think i might stay like this forever.",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  }
+}
