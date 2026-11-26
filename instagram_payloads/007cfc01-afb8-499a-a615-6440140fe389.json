@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "007cfc01-afb8-499a-a615-6440140fe389",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_007cfc01_video_19551.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "He thought I was just a pretty picture... until he pressed the button. 😉💋 #IstanbulNights #DollShop #UnexpectedMagic",
+  "next_time": 1796308200,
+  "storage": "release",
+  "threads_caption": "He thought I was just a pretty picture... until he pressed the button.\n\n😉💋 #IstanbulNights",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
