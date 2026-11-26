@@ -1,0 +1,17 @@
+{
+  "compte": "grace_story",
+  "pub_id": "9efc12fc-16f7-4f1f-a899-467a86585eca",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_9efc12fc_video_199.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the first real exhale after the final exam marathon.\n\nwatching the water instead of my syllabus for once. feeling very un-studious today.\n\n🌊✨",
+  "next_time": 1795969800,
+  "storage": "release",
+  "threads_caption": "the first real exhale after the final exam marathon.\n\nwatching the water instead of my syllabus for once. feeling very un-studious today.\n\n🌊✨",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  },
+  "story_only": true
+}
