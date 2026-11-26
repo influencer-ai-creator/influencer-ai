@@ -1,0 +1,40 @@
+{
+  "compte": "university",
+  "pub_id": "8a7a4181-1540-40fd-9c55-2224ad44feee",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_04.jpg"
+  ],
+  "caption": "The student who posts: BRA-08. Honestly, Prof. Elena makes light-weaving look like an art form. My heart is still melting... ✨ #Photomancy #InstitutoDeArcanos",
+  "next_time": 1796329800,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_04.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_fb_reel_2623.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_story_slide_2623_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_8a7a4181_slide_2623_04.jpg"
+  ],
+  "threads_caption": "The student who posts: BRA-08. Honestly, Prof. Elena makes light-weaving look like an art form. My heart is still melting...\n\n✨ #Photomancy",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
