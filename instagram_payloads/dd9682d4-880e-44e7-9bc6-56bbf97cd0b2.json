@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "dd9682d4-880e-44e7-9bc6-56bbf97cd0b2",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_dd9682d4_video_2161.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Trying to see if this sweater is actually going to fall off.\nIt’s harder than it looks 🙄💨\nDo you think I’ll eventually lose the battle?",
+  "next_time": 1796326200,
+  "storage": "release",
+  "threads_caption": "Trying to see if this sweater is actually going to fall off.\nIt’s harder than it looks 🙄💨\nDo you think I’ll eventually lose the battle?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
