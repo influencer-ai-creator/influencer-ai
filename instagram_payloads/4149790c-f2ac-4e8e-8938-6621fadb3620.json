@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "4149790c-f2ac-4e8e-8938-6621fadb3620",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_4149790c_video_2441.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Wait, did that actually just happen?! Someone just snatched the car and we went on a literal high-speed chase! 😱✨\n\n#GTA6 #GTAVI #GTA",
+  "next_time": 1796281200,
+  "storage": "release",
+  "threads_caption": "Wait, did that actually just happen?! Someone just snatched the car and we went on a literal high-speed chase!\n\n😱✨ #GTA6",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
