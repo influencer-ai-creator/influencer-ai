@@ -1,0 +1,34 @@
+{
+  "compte": "university",
+  "pub_id": "d9aaebd9-9476-4f80-a519-2c16576eb2ed",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_02.jpg"
+  ],
+  "caption": "A cozy winter evening at the school of magic, the bath kept warm by our spell. ✨ It’s the only way to stay warm tonight... 📚🍂\n\n#SchoolOfMagic #WinterMagic #CozyVibes #Spellbound",
+  "next_time": 1796292000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_02.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_fb_reel_2792.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_story_slide_2792_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_d9aaebd9_slide_2792_02.jpg"
+  ],
+  "threads_caption": "A cozy winter evening at the school of magic, the bath kept warm by our spell. ✨ It’s the only way to stay warm tonight...\n\n📚🍂 #SchoolOfMagic",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
