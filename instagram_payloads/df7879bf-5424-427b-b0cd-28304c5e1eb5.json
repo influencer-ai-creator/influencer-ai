@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "df7879bf-5424-427b-b0cd-28304c5e1eb5",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_df7879bf_video_2433.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just a little interruption while enjoying the sun. Had to keep my personal bubble intact! ✨ Stay magical. #travelvibes #goldenhour #magicmoments",
+  "next_time": 1796304600,
+  "storage": "release",
+  "threads_caption": "Just a little interruption while enjoying the sun. Had to keep my personal bubble intact! ✨ Stay magical.\n\n#travelvibes",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
