@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "cfced7d3-aa47-4e9d-add4-55f9e55d21fa",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_cfced7d3_video_2169.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i just found this clip of myself at the underground bar, and i remember the moment i felt someone looking at me.\nmy friend probably told me i looked like i was in a trance 🍷\nwhat do you think she said?",
+  "next_time": 1796307300,
+  "storage": "release",
+  "threads_caption": "i just found this clip of myself at the underground bar, and i remember the moment i felt someone looking at me.\nmy friend probably told me i looked like i was in a trance 🍷\nwhat do you think she said?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
