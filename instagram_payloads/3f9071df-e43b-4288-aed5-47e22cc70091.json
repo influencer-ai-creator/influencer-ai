@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "3f9071df-e43b-4288-aed5-47e22cc70091",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_3f9071df_video_19673.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Took a quick detour and lost the heat. 🏎️✨\n\n#GTA6 #GTAVI #GTA",
+  "next_time": 1796284800,
+  "storage": "release",
+  "threads_caption": "Took a quick detour and lost the heat.\n\n🏎️✨ #GTA6",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
