@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "b9b6b17b-b3bb-46f8-a417-736edd029674",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_b9b6b17b_video_2284.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "My heart is still racing from that sudden encounter in the middle of the market... 🌃\n\nIt was... unexpected, but honestly, I'm not even mad. 💜✨\n\n#MarketSquare #CityVibes",
+  "next_time": 1796288400,
+  "storage": "release",
+  "threads_caption": "My heart is still racing from that sudden encounter in the middle of the market... 🌃\n\nIt was... unexpected, but honestly, I'm not even mad.\n\n💜✨ #MarketSquare",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
