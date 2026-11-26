@@ -1,0 +1,40 @@
+{
+  "compte": "influencer",
+  "pub_id": "8373c73e-d9dc-49eb-bf59-b0263bf2c4c4",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_04.jpg"
+  ],
+  "caption": "Amsterdam · De Hallen 🇳🇱. Still recovering from last night but it was so worth it! Who knew we’d be this extra? ✨ Tell us, which photo is your favorite? 1, 2, 3, 4, or 5? #AmsterdamNights #GirlsNightOut #DeHallen #Nightlife",
+  "next_time": 1796328000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_04.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_fb_reel_2154.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_story_slide_2154_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_8373c73e_slide_2154_04.jpg"
+  ],
+  "threads_caption": "Amsterdam · De Hallen 🇳🇱. Still recovering from last night but it was so worth it! Who knew we’d be this extra? ✨ Tell us, which photo is your favorite? 1, 2, 3, 4, or 5?\n\n#AmsterdamNights",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
