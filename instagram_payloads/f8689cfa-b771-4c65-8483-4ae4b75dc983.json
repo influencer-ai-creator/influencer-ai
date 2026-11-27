@@ -1,0 +1,40 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "f8689cfa-b771-4c65-8483-4ae4b75dc983",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_04.jpg"
+  ],
+  "caption": "Exploring the Hydro-Loom. It smells like wet fabric and rain. Which door number should I push?",
+  "next_time": 1796412600,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_04.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_fb_reel_2200.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_story_slide_2200_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_f8689cfa_slide_2200_04.jpg"
+  ],
+  "threads_caption": "Exploring the Hydro-Loom. It smells like wet fabric and rain. Which door number should I push?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
