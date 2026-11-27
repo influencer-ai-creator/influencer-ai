@@ -8,7 +8,8 @@ factorisation doit rester interne à ce fichier (c'est l'une des quatre exceptio
 
 RÉSEAUX COUVERTS
     Instagram   post image · carousel · reel      + Story
-    Facebook    post image · carousel · reel      + Story
+    Facebook    post image · carousel (Reel diaporama `fb_reel_url`, repli photo de
+                couverture) · reel                + Story
     Threads     post image · carousel · vidéo
     TikTok      vidéo (via Buffer)
     YouTube     vidéo — Shorts (via Buffer)
@@ -526,7 +527,8 @@ def _is_meta_throttle(exc):
 # imputé à Meta, la cible attend sans consommer de tentative, au plus
 # FETCH_WAIT_MAX_S (un format que Meta refuserait toujours finit par compter).
 # Illisible → vrai échec, compté comme avant.
-_MEDIA_FIELDS    = ("media_url", "image_url", "children", "fb_children", "story_children")
+_MEDIA_FIELDS    = ("media_url", "image_url", "children", "fb_children", "story_children",
+                    "fb_reel_url")
 FETCH_WAIT_MAX_S = 24 * 3600
 # Token expiré (190) ou permission manquante (10, 200-299) : rien à voir avec le
 # média, l'alerte doit partir tout de suite.
@@ -1238,8 +1240,23 @@ def publish_video_story(instagram_id, access_token, video_url):
     return True
 
 
+def publish_carousel_facebook_post(facebook_id, access_token, fb_reel_url, children_urls, caption):
+    """Fil Facebook d'un carousel : le Reel diaporama des slides (`fb_reel_url`, rendu à la mise
+    en file) s'il existe, sinon la photo de couverture (`publish_carousel_facebook`) — payload
+    antérieur à la fonctionnalité, rendu échoué ou expiré.
+
+    Retourne un BOOLÉEN franc (le tuple de `publish_carousel_facebook` est déballé ici)."""
+    if fb_reel_url:
+        return bool(publish_video_facebook(facebook_id, access_token, fb_reel_url, caption))
+    ok, _ = publish_carousel_facebook(facebook_id, access_token, children_urls, caption)
+    return ok
+
+
 def publish_carousel_facebook(facebook_id, access_token, children_urls, caption):
     """Publie un carousel sur une Page Facebook — en PHOTO UNIQUE (slide 0).
+
+    REPLI : le fil Facebook d'un carousel est d'abord un Reel diaporama (`fb_reel_url`, voir
+    `publish_carousel_facebook_post`) ; cette photo ne part que sans vidéo.
 
     Facebook n'a pas d'équivalent du carousel Instagram : un post multi-photos
     (`attached_media`) est rendu en mosaïque recadrée, dont seules 4-5 tuiles
@@ -1654,7 +1671,7 @@ mutation createPost($input: CreatePostInput!) {
 """
 
 _BUFFER_READ = """
-query($id: String!) {
+query($id: PostId!) {
   post(input: {id: $id}) { id status }
 }
 """
@@ -1966,11 +1983,11 @@ for payload_file in payload_dir.glob("*.json"):
         if media_type == "CAROUSEL":
             # fb_children remplace children quand slide 0 est un .mp4 (musique
             # muxée) — l'endpoint /photos ne prend pas de vidéo.
-            # ⚠️ Renvoie un TUPLE (ok, post_id) et n'écrit pas d'exception en cas
-            # d'échec : il FAUT le déballer. Le rendre tel quel marquait le
-            # réseau publié même en échec — un tuple est toujours vrai.
-            ok, _ = publish_carousel_facebook(facebook_id, access_token, fb_children, caption)
-            return ok
+            # Reel diaporama si le payload en porte un, sinon photo de couverture.
+            # Renvoie un booléen franc (le tuple de la photo est déballé dedans : le
+            # rendre tel quel marquait le réseau publié même en échec).
+            return publish_carousel_facebook_post(
+                facebook_id, access_token, payload.get("fb_reel_url"), fb_children, caption)
         if media_type == "VIDEO":
             return publish_video_facebook(facebook_id, access_token, media_url, caption)
         _check(
@@ -2233,6 +2250,8 @@ for payload_file in payload_dir.glob("*.json"):
             if payload.get("story_url"):
                 urls_to_del.append(payload["story_url"])
             urls_to_del += payload.get("story_children") or []
+            if payload.get("fb_reel_url"):
+                urls_to_del.append(payload["fb_reel_url"])
             # fb_children peut contenir des doublons de children -- skip les vus
             seen = set()
             for fb_u in payload.get("fb_children", []):
