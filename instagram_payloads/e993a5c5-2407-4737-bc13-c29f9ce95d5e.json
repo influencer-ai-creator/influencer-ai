@@ -1,0 +1,37 @@
+{
+  "compte": "university",
+  "pub_id": "e993a5c5-2407-4737-bc13-c29f9ce95d5e",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_03.jpg"
+  ],
+  "caption": "Caught my fave prof vibing during Forensics today 📸. Honestly, she’s a whole mood. Which slide is your fav? #MadridUni #StudyGram",
+  "next_time": 1796416200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_fb_reel_2724.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_story_slide_2724_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_e993a5c5_slide_2724_03.jpg"
+  ],
+  "threads_caption": "Caught my fave prof vibing during Forensics today 📸. Honestly, she’s a whole mood. Which slide is your fav?\n\n#MadridUni",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
