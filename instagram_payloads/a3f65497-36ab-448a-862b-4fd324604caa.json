@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "a3f65497-36ab-448a-862b-4fd324604caa",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a3f65497_video_19593.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just grinding up some local flavors for the vibe. 🌶️ This little interruption needed a permanent fix. ✨ #SantoriniMagic #TravelVibes #MagicMoments",
+  "next_time": 1796394600,
+  "storage": "release",
+  "threads_caption": "Just grinding up some local flavors for the vibe. 🌶️ This little interruption needed a permanent fix.\n\n✨ #SantoriniMagic",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
