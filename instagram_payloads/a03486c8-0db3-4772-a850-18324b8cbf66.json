@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "a03486c8-0db3-4772-a850-18324b8cbf66",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_a03486c8_video_19475.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just touched down in Oaxaca and the energy here is absolutely intoxicating. ✨ Feeling like a local in my favorite finds. Stay tuned for the reveal... 💃 #OaxacaTravel #MexicoMagic #SummerStyle",
+  "next_time": 1796418000,
+  "storage": "release",
+  "threads_caption": "Just touched down in Oaxaca and the energy here is absolutely intoxicating. ✨ Feeling like a local in my favorite finds. Stay tuned for the reveal...\n\n💃 #OaxacaTravel",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
