@@ -1,0 +1,34 @@
+{
+  "compte": "influencer",
+  "pub_id": "13e25c6c-1f8d-4eea-b0f4-7c4807b09686",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_02.jpg"
+  ],
+  "caption": "Finally made it to the Taj Mahal! 🇮🇳 It was a literal fairytale under the stars tonight. ✨ Which one is your fave, 1, 2, or 3? \n\n#TajMahal #IndiaTravel #NightVibes",
+  "next_time": 1796414400,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_02.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_fb_reel_2317.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_story_slide_2317_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_13e25c6c_slide_2317_02.jpg"
+  ],
+  "threads_caption": "Finally made it to the Taj Mahal! 🇮🇳 It was a literal fairytale under the stars tonight. ✨ Which one is your fave, 1, 2, or 3?\n\n#TajMahal",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
