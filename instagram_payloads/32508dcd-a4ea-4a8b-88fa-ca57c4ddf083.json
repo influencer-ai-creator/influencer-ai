@@ -1,0 +1,17 @@
+{
+  "compte": "grace_story",
+  "pub_id": "32508dcd-a4ea-4a8b-88fa-ca57c4ddf083",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_32508dcd_video_204.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the transition into work mode.\ntrading the art history books for actual art. first campaign starts now. ✨",
+  "next_time": 1796028300,
+  "storage": "release",
+  "threads_caption": "the transition into work mode.\ntrading the art history books for actual art. first campaign starts now. ✨",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  },
+  "story_only": true
+}
