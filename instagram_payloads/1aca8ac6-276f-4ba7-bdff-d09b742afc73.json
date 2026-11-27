@@ -1,0 +1,46 @@
+{
+  "compte": "influencer",
+  "pub_id": "1aca8ac6-276f-4ba7-bdff-d09b742afc73",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_06.jpg"
+  ],
+  "caption": "I’ve literally traveled through time at the Treasury in Petra, Jordan. I've lived every era here! ⏳✨ Which photo of me in which century is your favorite? Let me know the number below! #TimeTraveler #Petra #Jordan #TravelDiaries",
+  "next_time": 1796391000,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_06.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_fb_reel_2263.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_story_slide_2263_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_1aca8ac6_slide_2263_06.jpg"
+  ],
+  "threads_caption": "I’ve literally traveled through time at the Treasury in Petra, Jordan. I've lived every era here! ⏳✨ Which photo of me in which century is your favorite? Let me know the number below!\n\n#TimeTraveler",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
