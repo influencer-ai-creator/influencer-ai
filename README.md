@@ -1,15 +1,6 @@
 # 📊 Dashboard de Publication
 
-✅ **Dernier run sans erreur** — 27/11/2026 08:03:43
-
-## ⚠️ Avertissements (best effort, non bloquants)
-
-- `sundress: Story Instagram e915702b-ee02-4610-b556-8f3ae2ac3a94 -> médias lisibles, échec côté Meta, reprise au prochain run : installation FFmpeg échouée : E: Failed to fetch https://packages.microsoft.com/ubuntu/26.04/prod/dists/resolute/InRelease  403  Forbidden [IP: 13.107.246.40 443]
-E: The repository 'https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease' is no longer signed.
-`
-- `sundress: Story Facebook e915702b-ee02-4610-b556-8f3ae2ac3a94 -> médias lisibles, échec côté Meta, reprise au prochain run : installation FFmpeg échouée : E: Failed to fetch https://packages.microsoft.com/ubuntu/26.04/prod/dists/resolute/InRelease  403  Forbidden [IP: 13.107.213.40 443]
-E: The repository 'https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease' is no longer signed.
-`
+✅ **Dernier run sans erreur** — 27/11/2026 08:18:32
 
 📦 **Total publiés historiquement :** 4468
 
