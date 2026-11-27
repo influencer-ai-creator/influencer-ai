@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "b8769e7f-cfe1-4dce-a139-0081d4ab3bda",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_b8769e7f_video_2656.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i think i just died.\nshe’s actually going to murder me... 💀\nshould i just move to a different country now?",
+  "next_time": 1796378400,
+  "storage": "release",
+  "threads_caption": "i think i just died.\nshe’s actually going to murder me... 💀\nshould i just move to a different country now?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
