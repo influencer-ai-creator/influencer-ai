@@ -1,0 +1,17 @@
+{
+  "compte": "grace_story",
+  "pub_id": "88ff0081-c906-435b-bef1-241f76a61d89",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/grace_story_88ff0081_video_200.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "the first morning with zero deadlines.\n\nit’s official: the art history degree is finally done. 🌊",
+  "next_time": 1796024700,
+  "storage": "release",
+  "threads_caption": "the first morning with zero deadlines.\n\nit’s official: the art history degree is finally done. 🌊",
+  "schedule": {
+    "delay_hours": 5.0,
+    "quiet_hours": null,
+    "timezone": ""
+  },
+  "story_only": true
+}
