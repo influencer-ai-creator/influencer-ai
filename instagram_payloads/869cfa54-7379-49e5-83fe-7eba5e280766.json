@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "869cfa54-7379-49e5-83fe-7eba5e280766",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_869cfa54_video_2214.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just trying to make sure this gas line doesn't become a permanent part of the scenery.\nKeeping the station pressurized is my cardio for the day 🔧💫\nDoes my grip look steady enough for you?",
+  "next_time": 1796393700,
+  "storage": "release",
+  "threads_caption": "Just trying to make sure this gas line doesn't become a permanent part of the scenery.\nKeeping the station pressurized is my cardio for the day 🔧💫\nDoes my grip look steady enough for you?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
