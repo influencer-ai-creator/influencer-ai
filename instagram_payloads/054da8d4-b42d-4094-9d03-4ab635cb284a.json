@@ -1,0 +1,49 @@
+{
+  "compte": "university",
+  "pub_id": "054da8d4-b42d-4094-9d03-4ab635cb284a",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_07.jpg"
+  ],
+  "caption": "MY CLASS HAS MET IN EVERY AGE, FROM THE STONE AGE TO THE FAR FUTURE. IT WAS WILD. WHICH LOOK WAS BEST? NUMBER?\n#timelesslearning #history #teacherlife",
+  "next_time": 1796397300,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_07.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_fb_reel_2690.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_story_slide_2690_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_03.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_04.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_05.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_06.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_054da8d4_slide_2690_07.jpg"
+  ],
+  "threads_caption": "MY CLASS HAS MET IN EVERY AGE, FROM THE STONE AGE TO THE FAR FUTURE. IT WAS WILD. WHICH LOOK WAS BEST? NUMBER?\n\n#timelesslearning",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
