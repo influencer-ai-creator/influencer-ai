@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "f3ca5094-ce6a-46a1-9122-a21080eea73d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_f3ca5094_video_2336.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i just found this clip of myself at a terrace in barcelona, and i remember feeling someone's eyes on me the whole time.\ntelling my friend about the wildest plan we have for tomorrow 🥂\nwhat do you guys think i was telling her?\n#barcelona #nightsout #caughtoncamera #spain",
+  "next_time": 1796454000,
+  "storage": "release",
+  "threads_caption": "i just found this clip of myself at a terrace in barcelona, and i remember feeling someone's eyes on me the whole time.\ntelling my friend about the wildest plan we have for tomorrow 🥂\nwhat do you guys think i was telling her?\n\n#barcelona",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
