@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "95df2f9a-6a3b-48ae-8b35-40dea6d33899",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_95df2f9a_video_2753.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "My mirror is definitely starting to get a personality.\nI think it’s trying to tell me something... 🤨✨\nHas anything weird ever happened with your reflections?",
+  "next_time": 1796502600,
+  "storage": "release",
+  "threads_caption": "My mirror is definitely starting to get a personality.\nI think it’s trying to tell me something... 🤨✨\nHas anything weird ever happened with your reflections?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
