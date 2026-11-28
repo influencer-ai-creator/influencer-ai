@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "2335b6e8-6e6a-49cc-b69e-7e5a26e7a04e",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_2335b6e8_video_2147.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just another night on the rattle.\nThe train's trying to shake me off, but I’m too bored to care 🙄🚈.\nDo you ever feel like the city is moving faster than you?",
+  "next_time": 1796499000,
+  "storage": "release",
+  "threads_caption": "Just another night on the rattle.\nThe train's trying to shake me off, but I’m too bored to care 🙄🚈.\nDo you ever feel like the city is moving faster than you?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
