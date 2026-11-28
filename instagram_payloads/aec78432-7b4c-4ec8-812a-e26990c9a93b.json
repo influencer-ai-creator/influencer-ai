@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "aec78432-7b4c-4ec8-812a-e26990c9a93b",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_aec78432_video_2359.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i actually thought there was a glowing cave opening under my feet and my heart stopped for a second 😱🌊 #streetart #prank #lisbon",
+  "next_time": 1796477400,
+  "storage": "release",
+  "threads_caption": "i actually thought there was a glowing cave opening under my feet and my heart stopped for a second\n\n😱🌊 #streetart",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
