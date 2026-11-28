@@ -1,0 +1,37 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "ad201282-ab4b-409a-b719-ff8303e5927a",
+  "media_type": "CAROUSEL",
+  "children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_03.jpg"
+  ],
+  "caption": "Just back from a scouting run in the lower sector. Getting ready for a drink. Help me choose: 1, 2, 3, or 4?",
+  "next_time": 1796461200,
+  "storage": "release",
+  "fb_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_00.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_03.jpg"
+  ],
+  "fb_reel_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_fb_reel_2233.mp4",
+  "story_slides": true,
+  "story_children": [
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_story_slide_2233_00.mp4",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_01.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_02.jpg",
+    "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_ad201282_slide_2233_03.jpg"
+  ],
+  "threads_caption": "Just back from a scouting run in the lower sector. Getting ready for a drink. Help me choose: 1, 2, 3, or 4?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
