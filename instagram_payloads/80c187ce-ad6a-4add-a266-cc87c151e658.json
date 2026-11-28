@@ -1,0 +1,19 @@
+{
+  "compte": "university",
+  "pub_id": "80c187ce-ad6a-4add-a266-cc87c151e658",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/university_80c187ce_video_2663.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "caught her in the act\nthe way that bench just... 💀\nanyone else think the lab is becoming a hazard?",
+  "next_time": 1796483700,
+  "storage": "release",
+  "threads_caption": "caught her in the act\nthe way that bench just... 💀\nanyone else think the lab is becoming a hazard?",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      11
+    ],
+    "timezone": ""
+  }
+}
