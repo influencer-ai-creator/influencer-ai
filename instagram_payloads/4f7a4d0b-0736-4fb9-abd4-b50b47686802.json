@@ -1,0 +1,19 @@
+{
+  "compte": "cyberpunk",
+  "pub_id": "4f7a4d0b-0736-4fb9-abd4-b50b47686802",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/cyberpunk_4f7a4d0b_video_2167.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Cleared the bridge tonight.",
+  "next_time": 1796480100,
+  "storage": "release",
+  "threads_caption": "Cleared the bridge tonight.",
+  "schedule": {
+    "delay_hours": 5.25,
+    "quiet_hours": [
+      22,
+      10
+    ],
+    "timezone": ""
+  }
+}
