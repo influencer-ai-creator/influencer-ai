@@ -1,0 +1,19 @@
+{
+  "compte": "influencer",
+  "pub_id": "762a8928-d855-479e-9715-c16f1eac8221",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/influencer_762a8928_video_2326.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I was literally just minding my business in Prague when a complete stranger decided to hijack my afternoon.\n\nStill processing the audacity... and the spark. 😮🔥\n\n#Prague #OldTownSquare #StreetEncounter #Unexpected",
+  "next_time": 1796500800,
+  "storage": "release",
+  "threads_caption": "I was literally just minding my business in Prague when a complete stranger decided to hijack my afternoon.\n\nStill processing the audacity... and the spark.\n\n😮🔥 #Prague",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      23,
+      8
+    ],
+    "timezone": ""
+  }
+}
