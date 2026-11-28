@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "721b4161-1e19-45cc-bebe-41acf3d0d0ce",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_721b4161_video_19420.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "I think I might have broken the laws of physics in Santorini.\nIt started as a tiny pulse, but I just couldn't help myself 🇬🇷✨\nWould you have dared to kick it a second time?",
+  "next_time": 1796504400,
+  "storage": "release",
+  "threads_caption": "I think I might have broken the laws of physics in Santorini.\nIt started as a tiny pulse, but I just couldn't help myself 🇬🇷✨\nWould you have dared to kick it a second time?",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
