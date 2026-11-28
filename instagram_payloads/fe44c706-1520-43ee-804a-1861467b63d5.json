@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "fe44c706-1520-43ee-804a-1861467b63d5",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_fe44c706_video_19567.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "Just a quick run for some milk. 🥛✨\n\n#parisienne #summerstyle #outfitoftheday",
+  "next_time": 1796481000,
+  "storage": "release",
+  "threads_caption": "Just a quick run for some milk.\n\n🥛✨ #parisienne",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
