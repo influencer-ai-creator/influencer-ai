@@ -1,0 +1,19 @@
+{
+  "compte": "sundress",
+  "pub_id": "2affdca0-48ec-4e5e-b56b-db3a957aa42d",
+  "media_url": "https://github.com/influencer-ai-creator/influencer-ai/releases/download/media-storage/sundress_2affdca0_video_19575.mp4",
+  "media_type": "VIDEO",
+  "image_url": null,
+  "caption": "i honestly thought i was going to fall into the mediterranean right there... 😱🌊\n#travelfail #opticalillusion #positano #funny",
+  "next_time": 1796457600,
+  "storage": "release",
+  "threads_caption": "i honestly thought i was going to fall into the mediterranean right there...\n\n😱🌊 #travelfail",
+  "schedule": {
+    "delay_hours": 6.5,
+    "quiet_hours": [
+      0,
+      9
+    ],
+    "timezone": ""
+  }
+}
